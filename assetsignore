@@ -1,0 +1,14 @@
+# Archivos que NO se publican en internet, aunque estén en el repositorio.
+# Mismo formato que .gitignore.
+
+**/.git
+**/.github
+**/node_modules
+**/.DS_Store
+.wrangler
+.gitignore
+.assetsignore
+wrangler.jsonc
+
+# Documentación interna del proyecto: útil para el equipo, no para el público.
+*.md
