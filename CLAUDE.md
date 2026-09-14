@@ -6,13 +6,19 @@ framework, sin build, sin dependencias. Se publica solo con hacer push a `main`.
 ## Estructura
 
 ```
-index.html            ← toda la web: HTML, CSS y JS en un archivo
+index.html            ← página de lanzamiento (la que ve el público)
+web.html              ← la web completa, todavía sin linkear ni indexar
 manifest.webmanifest  ← datos de la app instalable
 sw.js                 ← service worker (caché offline)
 iconos/               ← íconos de la app (192, 512 y 180 px)
 fotos/                ← imágenes de la galería
 CLAUDE.md             ← este archivo
 ```
+
+**Mientras dure el lanzamiento:** `index.html` es la página de espera con la cuenta
+regresiva. La web completa vive en `web.html`, con `noindex` para que Google no la
+levante a medio llenar. El día de la apertura se reemplaza el contenido de `index.html`
+por el de `web.html`, se borra la etiqueta `noindex` y se sube la versión del `sw.js`.
 
 ## Reglas al editar
 
