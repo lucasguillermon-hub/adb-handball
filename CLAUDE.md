@@ -1,7 +1,7 @@
 # Web del Ateneo Don Bosco Handball
 
-Sitio del club de handball de Bernal (Quilmes, Buenos Aires). Un solo archivo, sin
-framework, sin build, sin dependencias. Se publica solo con hacer push a `main`.
+Sitio del club de handball de Bernal (Quilmes, Buenos Aires). Sin framework, sin build,
+sin dependencias. Se publica solo con hacer push a `main` (Cloudflare Workers).
 
 ## Estructura
 
@@ -14,6 +14,10 @@ sw.js                 ← service worker (caché offline)
 iconos/               ← íconos de la app (192, 512 y 180 px)
 fotos/                ← imágenes de la galería
 CLAUDE.md             ← este archivo
+worker.js             ← backend mínimo: guarda los mails de los formularios en la base D1
+migraciones/          ← esquema de la base de contactos (tabla `contactos`)
+wrangler.jsonc        ← configuración de Cloudflare (Worker + base D1 `adb-contactos`)
+recetas.md            ← pedidos tipo para Claude Code
 ```
 
 **Mientras dure el lanzamiento:** `index.html` es la página de espera con la cuenta
@@ -53,6 +57,14 @@ por el de `web.html`, se borra la etiqueta `noindex` y se sube la versión del `
 9. **Accesibilidad:** contraste suficiente, foco visible, y todo lo que sea interactivo
    tiene que funcionar con teclado.
 
+10. **Contactos:** todo formulario que pida mail lo manda a `POST /api/suscribir`
+    (`worker.js`), que lo guarda en la base D1 `adb-contactos`. Nunca mandar mail,
+    teléfono ni nombre a Google Analytics: `track()` recibe solo el nombre del evento.
+    Si un formulario nuevo pide mail, sumar su `origen` a la lista `ORIGENES` del Worker
+    y ponerle el campo trampa `<input class="trampa" name="web">`. Un cambio de esquema
+    va en un archivo nuevo en `migraciones/` y se aplica con
+    `npx wrangler d1 migrations apply adb-contactos --remote` antes de hacer push.
+
 ## Tono de los textos
 
 Castellano rioplatense, voseo, en frases cortas. Nada de lenguaje corporativo ni de
@@ -70,6 +82,8 @@ pertenencia. Los textos hablan de la tribuna, de las familias y del barrio, no d
 - Acordar cada beneficio del Club de Beneficios con su comercio antes de publicarlo.
 - Números reales del media kit (jugadores, familias, fechas de local).
 - Link de la comunidad de WhatsApp.
+- Elegir la herramienta para mandar los mails (Brevo, MailerLite o similar) e importarle
+  el CSV de contactos. Hasta entonces la lista solo se acumula en D1.
 
 ## Antes de dar por terminado un cambio
 

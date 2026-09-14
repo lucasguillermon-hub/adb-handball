@@ -239,6 +239,7 @@ header{position:sticky;top:0;z-index:60;background:rgba(10,20,40,.92);backdrop-f
 .claro .campo input::placeholder,.claro .campo textarea::placeholder{color:rgba(10,20,40,.42)}
 .campo select option{color:#0A1428;background:#fff}
 .ok{grid-column:1/-1;padding:14px 16px;border-radius:12px;background:rgba(228,86,143,.14);border:1px solid rgba(228,86,143,.4);font-size:14.5px;display:none}
+.trampa{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
 .ok.visible{display:block}
 
 /* ---------- comunidad y pie ---------- */
@@ -530,6 +531,7 @@ footer a:hover{color:var(--rosa)}
         <div class="campo"><label for="j-nombre">Nombre y apellido</label><input id="j-nombre" name="nombre" required autocomplete="name"></div>
         <div class="campo"><label for="j-tel">WhatsApp</label><input id="j-tel" name="tel" type="tel" required autocomplete="tel" placeholder="11 5555 5555"></div>
         <div class="campo"><label for="j-mail">Mail</label><input id="j-mail" name="mail" type="email" required autocomplete="email"></div>
+        <input class="trampa" name="web" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
         <div class="campo"><label for="j-cat">Categoría que te interesa</label><select id="j-cat" name="categoria"></select></div>
         <div class="campo ancho" style="flex-direction:row;align-items:flex-start;gap:10px"><input id="j-imagen" name="imagen" type="checkbox" value="si" style="width:20px;height:20px;flex:0 0 auto;margin-top:2px"><label for="j-imagen" style="font-weight:400;line-height:1.5">Autorizo al club a publicar fotos y videos donde aparezca el jugador o la jugadora, en la web y en las redes del club. Si es menor de edad, firma quien ejerce la responsabilidad parental. Podés revocarlo cuando quieras escribiéndonos.</label></div>
         <div class="campo ancho"><label for="j-msj">¿Jugaste antes? Contanos lo que quieras</label><textarea id="j-msj" name="mensaje"></textarea></div>
@@ -616,6 +618,7 @@ footer a:hover{color:var(--rosa)}
         <p>Un mail los jueves: dónde y a qué hora juega cada plantel, cómo salimos el finde pasado y el beneficio de la semana.</p>
         <form id="form-news" style="display:flex;gap:8px;flex-wrap:wrap">
           <input id="n-mail" type="email" required placeholder="tu@mail.com" aria-label="Tu mail" style="flex:1;min-width:150px;padding:12px 14px;border-radius:10px;border:1px solid var(--linea-oscura);font-family:inherit;font-size:15px">
+          <input class="trampa" name="web" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
           <button class="btn" type="submit" data-track="newsletter">Recibirlo</button>
         </form>
         <div class="ok" id="ok-news" role="status" style="margin-top:12px"></div>
@@ -928,36 +931,53 @@ $("#visor-descargar").addEventListener("click", function(){
 });
 
 /* ============================ formularios ============================
-   Ahora abren WhatsApp con el mensaje armado: cero infraestructura.
-   Cuando quieras guardarlos, conectá Formspree, Google Forms o tu backend.
+   Los de jugar y sponsor abren WhatsApp con el mensaje armado. Los que
+   piden mail además lo guardan en la base de contactos del club
+   (POST /api/suscribir, ver worker.js). A Analytics no se le manda ningún
+   dato personal: solo el nombre del evento.
    ==================================================================== */
-function manejar(form, okBox, armarMsj, evento){
+function suscribir(mail, origen, nombre, trampa){
+  return fetch("/api/suscribir", {
+    method:"POST", headers:{ "Content-Type":"application/json" },
+    body: JSON.stringify({ mail, origen, nombre: nombre||"", web: trampa||"" })
+  }).then(r=>{ if(!r.ok) throw new Error(r.status); });
+}
+
+function manejar(form, okBox, armarMsj, evento, origen){
   form.addEventListener("submit", e=>{
     e.preventDefault();
     if(!form.checkValidity()){ form.reportValidity(); return; }
     const d = Object.fromEntries(new FormData(form));
+    if(origen && d.mail) suscribir(d.mail, origen, d.nombre, d.web).catch(()=>{});
     window.open(wspBase+encodeURIComponent(armarMsj(d)), "_blank", "noopener");
     okBox.textContent = "Te abrimos WhatsApp con el mensaje listo. Si no se abrió, escribinos al 11 5112 8153.";
     okBox.classList.add("visible");
-    track(evento, d);
+    track(evento);
     form.reset();
   });
 }
 manejar($("#form-jugar"), $("#ok-jugar"),
   d=>"Hola! Soy "+d.nombre+" y quiero probar un entrenamiento de "+d.categoria+". Mi mail es "+d.mail+". "+(d.mensaje||""),
-  "lead-jugador");
+  "lead-jugador", "quiero-jugar");
 manejar($("#form-sponsor"), $("#ok-sponsor"),
   d=>"Hola! Soy "+d.nombre+" de "+d.empresa+". Me interesa: "+d.paquete+". "+(d.mensaje||""),
   "lead-sponsor");
 
-$("#form-news").addEventListener("submit", e=>{
+$("#form-news").addEventListener("submit", async e=>{
   e.preventDefault();
-  const m = $("#n-mail");
+  const form = e.currentTarget, m = $("#n-mail"), btn = form.querySelector("button");
   if(!m.checkValidity()){ m.reportValidity(); return; }
-  $("#ok-news").textContent = "Anotado. El primer mail te llega este jueves.";
+  btn.disabled = true;
+  try {
+    await suscribir(m.value, "newsletter", "", form.web.value);
+    $("#ok-news").textContent = "Anotado. El primer mail te llega este jueves.";
+    track("newsletter-alta");
+    m.value="";
+  } catch {
+    $("#ok-news").textContent = "No pudimos anotarte. Probá de nuevo en un rato o escribinos por WhatsApp.";
+  }
   $("#ok-news").classList.add("visible");
-  track("newsletter-alta",{mail:m.value});
-  m.value="";
+  btn.disabled = false;
 });
 /* ============================ instalar como app ============================
    El sitio funciona como aplicación instalable: se agrega a la pantalla de

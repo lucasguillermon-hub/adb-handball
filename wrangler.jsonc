@@ -1,10 +1,21 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "adb-handball",
+  "main": "worker.js",
   "compatibility_date": "2026-09-11",
   "assets": {
-    "directory": "."
+    "directory": ".",
+    "binding": "ASSETS",
+    "run_worker_first": ["/api/*"]
   },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "adb-contactos",
+      "database_id": "bc2b2db3-a6a3-413b-8f4a-e83bca1294bd",
+      "migrations_dir": "migraciones"
+    }
+  ],
   "observability": {
     "enabled": true
   }

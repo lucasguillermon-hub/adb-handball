@@ -92,6 +92,7 @@ section{padding:64px 0;border-top:1px solid rgba(255,255,255,.08)}
 .aviso-form{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px;max-width:520px}
 .aviso-form input{flex:1;min-width:190px;padding:13px 16px;border-radius:11px;border:1px solid var(--linea);background:rgba(255,255,255,.06);color:#fff;font-family:inherit;font-size:15px}
 .aviso-form input::placeholder{color:rgba(255,255,255,.42)}
+.aviso-form .trampa{position:absolute;left:-9999px;width:1px;height:1px;min-width:0;opacity:0}
 .ok{margin-top:16px;padding:13px 16px;border-radius:12px;background:rgba(228,86,143,.14);border:1px solid rgba(228,86,143,.4);font-size:14.5px;display:none;max-width:520px}
 .ok.visible{display:block}
 
@@ -217,6 +218,7 @@ footer h4{font-family:var(--display);font-size:13px;font-weight:400;letter-spaci
     <p class="bajada">Dejanos tu mail y el día que la web esté lista te llega un solo mensaje. Después, si querés, seguís recibiendo la previa de cada fecha los jueves.</p>
     <form class="aviso-form" id="form-aviso" novalidate>
       <input id="mail" type="email" required placeholder="tu@mail.com" aria-label="Tu mail" autocomplete="email">
+      <input class="trampa" name="web" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
       <button class="btn" type="submit">Avisame</button>
     </form>
     <div class="ok" id="ok" role="status"></div>
@@ -310,18 +312,30 @@ const MARCAS = DATOS.tiers.flatMap(t => t.marcas.map(m => m.n));
 $("#marcas").innerHTML = MARCAS.map(m => "<span>" + m + "</span>").join("")
   + '<span class="libre">Tu marca acá</span>';
 
-/* aviso de apertura: abre el mail ya escrito, sin infraestructura */
-$("#form-aviso").addEventListener("submit", e => {
+/* aviso de apertura: guarda el mail en la base del club (POST /api/suscribir).
+   Si el servidor no responde, abre el mail ya escrito para no perder el contacto. */
+$("#form-aviso").addEventListener("submit", async e => {
   e.preventDefault();
-  const m = $("#mail");
+  const form = e.currentTarget, m = $("#mail"), btn = form.querySelector("button");
   if (!m.checkValidity()){ m.reportValidity(); return; }
-  window.location.href = "mailto:" + DATOS.contacto.mail
-    + "?subject=" + encodeURIComponent("Avisenme cuando abra la web")
-    + "&body=" + encodeURIComponent("Hola! Mi mail es " + m.value + ", avisenme cuando esté lista la web del club.");
-  $("#ok").textContent = "Te abrimos el mail con el mensaje listo. Mandalo y te avisamos el día que abra.";
+  btn.disabled = true;
+  try {
+    const r = await fetch("/api/suscribir", {
+      method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ mail: m.value, origen: "aviso-apertura", web: form.web.value })
+    });
+    if (!r.ok) throw new Error(r.status);
+    $("#ok").textContent = "Listo. El día que abra te llega un mail.";
+  } catch {
+    window.location.href = "mailto:" + DATOS.contacto.mail
+      + "?subject=" + encodeURIComponent("Avisenme cuando abra la web")
+      + "&body=" + encodeURIComponent("Hola! Mi mail es " + m.value + ", avisenme cuando esté lista la web del club.");
+    $("#ok").textContent = "Te abrimos el mail con el mensaje listo. Mandalo y te avisamos el día que abra.";
+  }
   $("#ok").classList.add("visible");
   track("aviso-apertura");
   m.value = "";
+  btn.disabled = false;
 });
 </script>
 </body>

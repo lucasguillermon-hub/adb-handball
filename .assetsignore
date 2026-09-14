@@ -12,3 +12,7 @@ wrangler.jsonc
 
 # Documentación interna del proyecto: útil para el equipo, no para el público.
 *.md
+
+# Código del Worker y de la base: corre en Cloudflare, no se sirve como archivo.
+worker.js
+migraciones

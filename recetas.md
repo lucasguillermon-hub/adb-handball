@@ -113,6 +113,28 @@ Antes de subir nada, mostrame qué vas a cambiar.
 
 ---
 
+## Exportar los contactos
+
+Los mails que deja la gente en la web (Avisame, la newsletter y "quiero jugar") se
+guardan en la base `adb-contactos` de Cloudflare. Para bajarlos:
+
+```
+Exportá los contactos de la base D1 a un archivo contactos.csv en mi escritorio,
+con las columnas mail, nombre, origen y fecha de alta, solo los que no pidieron la
+baja. Decime cuántos hay y cuántos entraron por cada formulario.
+```
+
+Ese CSV es el que se importa en la herramienta de envío (Brevo, MailerLite o la que
+elijan) cuando quieran mandar un mail a todos.
+
+Si alguien pide que no le escriban más:
+
+```
+Marcá la baja en la base de contactos para [mail] con la fecha de hoy. No lo borres.
+```
+
+---
+
 ## Si algo se rompió
 
 ```
