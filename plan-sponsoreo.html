@@ -72,6 +72,17 @@ section{padding:66px 0;border-top:1px solid rgba(255,255,255,.09)}
 .pos .tam{font-style:normal;font-family:var(--texto);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;border-radius:999px;background:rgba(255,255,255,.1);color:rgba(255,255,255,.6);margin-left:7px;vertical-align:2px}
 .pos .tam.mayor{background:var(--rosa-vivo);color:#fff}
 
+/* pasos del club de beneficios */
+.pasos{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:32px}
+@media(max-width:860px){.pasos{grid-template-columns:1fr}}
+.paso{border:1px solid var(--linea);border-radius:16px;padding:24px;background:rgba(255,255,255,.04);position:relative}
+.paso .num{font-family:var(--display);font-size:40px;line-height:1;color:rgba(228,86,143,.42);display:block;margin-bottom:6px}
+.paso b{display:block;font-family:var(--display);font-size:19px;font-weight:400;margin-bottom:8px}
+.paso span{font-size:14.5px;color:rgba(255,255,255,.72)}
+.remate{margin-top:26px;border:1px solid var(--rosa-vivo);background:rgba(228,86,143,.1);border-radius:16px;padding:24px 26px}
+.remate p{margin:0;font-size:15.5px;color:rgba(255,255,255,.86);max-width:74ch}
+.remate strong{color:#fff}
+
 /* niveles */
 .niveles{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:32px}
 @media(max-width:1000px){.niveles{grid-template-columns:1fr 1fr}}
@@ -170,6 +181,20 @@ footer a{color:var(--rosa);text-decoration:none}
     <h2 class="h2">Se acompaña al club,<br>no a una categoría</h2>
     <p class="bajada" style="margin-top:14px">Todos los planteles del Bosco comparten la misma identidad: el mismo diseño de camiseta, la misma cancha, la misma web. Por eso el sponsoreo es uno solo para todo el club, y funciona con cuatro reglas simples.</p>
     <div class="principios" id="principios"></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="rotulo">Lo que nos diferencia</p>
+    <h2 class="h2">El Club de Beneficios</h2>
+    <p class="bajada" style="margin-top:14px">Un logo se ve. Un beneficio se usa. Los comercios que acompañan al club le hacen un precio especial a las familias del Bosco, y nosotros nos encargamos de que se enteren y de contarte cuántas lo usaron. Está incluido en los cuatro niveles, desde el más accesible.</p>
+
+    <div class="pasos" id="pasos"></div>
+
+    <div class="remate">
+      <p><strong>Por qué importa más que el resto.</strong> Todo lo demás que ofrecemos es exposición: te ven. El beneficio es lo único que termina con alguien entrando a tu local. Y como el cupón se abre desde la web, podemos contar exactamente cuántas personas lo hicieron. Es la diferencia entre auspiciar a ciegas y saber qué te dio.</p>
+    </div>
   </div>
 </section>
 
@@ -329,6 +354,12 @@ const PLAN = {
     { t:"Rendimos cuentas", d:"Todos los meses te contamos cuánta gente vio tu marca en la web y cuántas usaron tu beneficio. Sin números, no es sponsoreo." }
   ],
 
+  pasos: [
+    { n:"1", t:"Elegís el beneficio", d:"Un descuento, un producto bonificado, una primera consulta sin cargo. Lo definís vos, con las condiciones que te sirvan." },
+    { n:"2", t:"Lo publicamos con tu marca", d:"Queda en la web del club con tu logo y un código, y lo difundimos por Instagram y por el mail de los jueves." },
+    { n:"3", t:"Te pasamos los números", d:"Todos los meses te contamos cuánta gente abrió tu cupón. Con eso sabés si te rindió, y podemos ajustar la oferta." }
+  ],
+
   plazos: [
     { dura:"Marzo a febrero", nombre:"Anual", principal:true,
       d:"El acuerdo completo. Es el único que incluye la camiseta, porque la indumentaria se manda a producir una sola vez al año y después ya no entra ningún logo más.",
@@ -355,7 +386,7 @@ const PLAN = {
 
   niveles: [
     { orden:"Nivel 1", nombre:"Tribuna", para:"Para el comercio de la cuadra que quiere estar cerca.",
-      items:["Logo en el muro de sponsors de la web","Cupón en el Club de Beneficios","Una historia en Instagram por mes","Reporte mensual de cuánta gente abrió tu cupón"],
+      items:["Logo en el muro de sponsors de la web","Tu beneficio en el Club de Beneficios del club","Una historia en Instagram por mes","Reporte mensual de cuánta gente abrió tu cupón"],
       precio:"A convenir", cupos:"Sin límite · se acepta canje", vigencia:"Anual o por torneo" },
 
     { orden:"Nivel 2", nombre:"Cancha", para:"Para el que quiere que lo vean todos los fines de semana.",
@@ -407,6 +438,9 @@ $("#cifras").innerHTML = PLAN.cifras.map(c =>
 
 $("#principios").innerHTML = PLAN.principios.map(p =>
   '<article class="principio"><h3 class="h3">'+p.t+'</h3><p>'+p.d+'</p></article>').join("");
+
+$("#pasos").innerHTML = PLAN.pasos.map(p =>
+  '<article class="paso"><span class="num">'+p.n+'</span><b>'+p.t+'</b><span>'+p.d+'</span></article>').join("");
 
 $("#plazos").innerHTML = PLAN.plazos.map(p =>
   '<article class="plazo'+(p.principal?" principal":"")+'">'

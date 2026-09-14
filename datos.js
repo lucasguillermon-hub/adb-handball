@@ -192,7 +192,7 @@ const DATOS = {
   paquetes: [
     { t:"Tribuna", p:"Para el comercio de la cuadra que quiere estar cerca.", destacado:false, items:[
       "Logo en el muro de sponsors de la web",
-      "Cupón en el Club de Beneficios",
+      "Tu beneficio en el Club de Beneficios del club",
       "Una historia en Instagram por mes",
       "Reporte mensual de cuánta gente abrió tu cupón"
     ], cta:"Quiero estar cerca" },
