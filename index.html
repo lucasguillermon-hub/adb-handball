@@ -106,7 +106,7 @@ footer h4{font-family:var(--display);font-size:13px;font-weight:400;letter-spaci
 
 <!-- ==========================================================
      Página de lanzamiento del Ateneo Don Bosco Handball.
-     Editá el bloque DATOS al final del archivo.
+     El contenido se edita en datos.js, no acá.
      La web completa vive en web.html, todavía sin linkear.
      ========================================================== -->
 
@@ -247,55 +247,8 @@ footer h4{font-family:var(--display);font-size:13px;font-weight:400;letter-spaci
   <div class="wrap"><p class="copy">Sensus pertinendi — desde Bernal para toda la zona sur. © 2026 Ateneo Don Bosco Handball</p></div>
 </footer>
 
+<script src="datos.js"></script>
 <script>
-/* ===================== DATOS EDITABLES ===================== */
-const DATOS = {
-  // Día y hora en que abre la web completa.
-  lanzamiento: "2026-10-11T10:00:00",
-
-  contacto: {
-    wsp: "5491151128153",
-    mail: "ateneodonboscohandball@gmail.com",
-    ig: "https://instagram.com/adb.handball"
-  },
-
-  // Promoción de apertura. Poné oferta:"" si no la querés mostrar.
-  oferta: "Los primeros diez comercios que se sumen entran sin cargo hasta fin de temporada.",
-
-  marcas: ["Ladran Sancho","Franco Liontix","Agua Tronador","Delicias Doradas","De Cascia",
-    "Carnevale","Lic. Kine Vale Trelles","Textil Calchaquí","Supermercado Magdalena","Sorar RRHH",
-    "JL Javier López","Bernuts","Administración Palmieri","Century 21 Sunset","INK 360",
-    "La Conocida","Inti Bernal","Lalomatic","Redbee","Graferme Gráfica","Santa Paz"],
-
-  // Fixture del Clausura, solo para calcular el próximo partido.
-  planteles: [
-    { nombre:"Mayores A", dia:"Sábado", hora:"20:00", partidos:[
-      ["2026-08-08","V","C.A.T."],["2026-08-15","L","San Fernando"],["2026-08-22","V","Dorrego"],
-      ["2026-08-29","L","Lapte"],["2026-09-05","V","AFALP"],["2026-09-12","L","C.F.L."],
-      ["2026-09-19","V","Polvorines"],["2026-09-26","L","Sagrado Corazón"],["2026-10-03","V","All Boys"],
-      ["2026-10-17","L","Vilo"],["2026-10-24","V","C.A.T."],["2026-10-31","V","V.J.B."],
-      ["2026-11-07","L","Argentinos Jrs."],["2026-11-14","V","Secla"],["2026-11-21","L","C.S.C.D.M."]]},
-    { nombre:"Mayores B", dia:"Sábado", hora:"18:00", partidos:[
-      ["2026-08-08","V","C.B.C."],["2026-08-15","L","Bernal B."],["2026-08-22","V","Boca Juniors"],
-      ["2026-08-29","L","AFALP"],["2026-09-05","V","Argentinos Jrs."],["2026-09-12","L","D.B.H."],
-      ["2026-09-19","V","Independiente"],["2026-09-26","L","Querandí"],["2026-10-03","V","C.A.D.M."],
-      ["2026-10-17","L","M.A. Handball"],["2026-10-24","V","San Telmo"],["2026-10-31","V","C.A.N.CH."],
-      ["2026-11-07","L","Secla"],["2026-11-14","V","Colegio del Parque"],["2026-11-21","L","Ceder Caseros"]]},
-    { nombre:"Inferiores damas", dia:"Domingo", hora:"11:00", partidos:[
-      ["2026-08-09","V","C.V.D."],["2026-08-16","L","Independiente"],["2026-08-23","V","Colegio Ward"],
-      ["2026-08-30","L","Boca Juniors"],["2026-09-06","V","C.A.B."],["2026-09-13","L","Villa Modelo"],
-      ["2026-09-20","V","Vélez Sarsfield"],["2026-09-27","L","Ceder Caseros"],["2026-10-04","V","Ciudad Jardín"],
-      ["2026-10-11","L","La Patriada"],["2026-10-25","V","C.S.C.D.M."],["2026-11-01","L","Polvorines"],
-      ["2026-11-08","V","Handball C.I.D."],["2026-11-15","V","Sagrado Corazón"],["2026-11-22","L","C.E.B."]]},
-    { nombre:"Mayores caballeros", dia:"Domingo", hora:"16:00", partidos:[
-      ["2026-08-09","V","Bernal B."],["2026-08-16","L","Dep. Laferrere"],["2026-08-23","V","Juniors"],
-      ["2026-08-30","L","General Las Heras"],["2026-09-06","V","Dorrego"],["2026-09-13","L","Ferrocarril Mitre"],
-      ["2026-10-04","V","C.A.D.G."],["2026-10-11","L","C.A.T."],["2026-10-25","V","H.M.B."],
-      ["2026-11-01","L","San Telmo"],["2026-11-08","V","El Portugués"],["2026-11-15","V","Círculo Gral. Belgrano"],
-      ["2026-11-22","L","Handball Escobar"]]}
-  ]
-};
-
 /* ===================== lógica ===================== */
 const $ = s => document.querySelector(s);
 function track(ev, extra){ if (window.gtag) window.gtag("event", ev, extra||{}); }
@@ -332,21 +285,23 @@ tic(); setInterval(tic, 30000);
 /* próximo partido del club */
 (function(){
   const ahora = new Date(); let mejor = null;
-  DATOS.planteles.forEach(pl => pl.partidos.forEach(([f,c,r]) => {
-    const d = new Date(f + "T" + pl.hora + ":00");
-    if (d > ahora && (!mejor || d < mejor.d)) mejor = { d, c, r, pl, f };
+  DATOS.planteles.forEach(pl => pl.partidos.forEach(p => {
+    if (p.c === "libre") return;
+    const d = new Date(p.f + "T" + pl.hora + ":00");
+    if (d > ahora && (!mejor || d < mejor.d)) mejor = { d, p, pl };
   }));
   if (!mejor){ $("#partido").remove(); return; }
-  const parte = mejor.f.split("-");
-  $("#p-torneo").textContent = "Clausura 2026 · Fecha " + (mejor.pl.partidos.findIndex(p=>p[0]===mejor.f)+1);
-  $("#p-cuando").textContent = mejor.pl.dia + " " + parte[2] + "/" + parte[1] + " · " + mejor.pl.hora + " hs";
+  const parte = mejor.p.f.split("-");
+  $("#p-torneo").textContent = DATOS.torneo + " · Fecha " + (mejor.pl.partidos.indexOf(mejor.p) + 1);
+  $("#p-cuando").textContent = mejor.pl.dia.slice(0,-1) + " " + parte[2] + "/" + parte[1] + " · " + mejor.pl.hora + " hs";
   $("#p-plantel").textContent = mejor.pl.nombre;
-  $("#p-rival").textContent = mejor.r;
-  $("#p-cond").textContent = mejor.c === "L" ? "En Don Bosco 116" : "De visitante";
+  $("#p-rival").textContent = mejor.p.r;
+  $("#p-cond").textContent = mejor.p.c === "L" ? "En Don Bosco 116" : "De visitante";
 })();
 
 /* marcas que acompañan */
-$("#marcas").innerHTML = DATOS.marcas.map(m => "<span>" + m + "</span>").join("")
+const MARCAS = DATOS.tiers.flatMap(t => t.marcas.map(m => m.n));
+$("#marcas").innerHTML = MARCAS.map(m => "<span>" + m + "</span>").join("")
   + '<span class="libre">Tu marca acá</span>';
 
 /* aviso de apertura: abre el mail ya escrito, sin infraestructura */

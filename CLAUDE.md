@@ -6,6 +6,7 @@ framework, sin build, sin dependencias. Se publica solo con hacer push a `main`.
 ## Estructura
 
 ```
+datos.js              ← TODO el contenido editable: el único archivo a tocar
 index.html            ← página de lanzamiento (la que ve el público)
 web.html              ← la web completa, todavía sin linkear ni indexar
 manifest.webmanifest  ← datos de la app instalable
@@ -22,9 +23,10 @@ por el de `web.html`, se borra la etiqueta `noindex` y se sube la versión del `
 
 ## Reglas al editar
 
-1. **Todo el contenido variable vive en el objeto `DATOS`**, al final del `index.html`.
-   Fixture, staff, categorías, sponsors, beneficios, álbumes de fotos y números del
-   media kit. Si el cambio es de contenido, se toca `DATOS` y nada más.
+1. **Todo el contenido variable vive en `datos.js`.** Fixture, staff, categorías,
+   sponsors, beneficios, álbumes de fotos, números del media kit, contacto y fecha de
+   lanzamiento. Lo comparten las dos páginas, así que un cambio ahí impacta en ambas.
+   Si el cambio es de contenido, se toca `datos.js` y ningún otro archivo.
 
 2. **No agregar dependencias.** Nada de React, Tailwind, npm ni CDN de librerías.
    El sitio tiene que seguir funcionando abriendo el archivo con doble clic.
