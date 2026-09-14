@@ -222,8 +222,9 @@ header{position:sticky;top:0;z-index:60;background:rgba(10,20,40,.92);backdrop-f
 .num{background:var(--tinta);padding:22px 18px}
 .num b{display:block;font-family:var(--display);font-size:clamp(30px,4vw,44px);line-height:1;color:var(--rosa)}
 .num span{font-size:13.5px;color:rgba(255,255,255,.66);display:block;margin-top:6px}
-.paquetes{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-@media(max-width:900px){.paquetes{grid-template-columns:1fr}}
+.paquetes{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+@media(max-width:1000px){.paquetes{grid-template-columns:1fr 1fr}}
+@media(max-width:620px){.paquetes{grid-template-columns:1fr}}
 .paq{border:1px solid var(--linea);border-radius:16px;padding:26px;display:flex;flex-direction:column;background:rgba(255,255,255,.04)}
 .paq.destacado{border-color:var(--rosa-vivo);background:rgba(228,86,143,.09)}
 .paq h4{font-family:var(--display);font-size:26px;font-weight:400;margin:0 0 6px}

@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Plan de sponsoreo — Ateneo Don Bosco Handball</title>
+<meta name="theme-color" content="#0A1428">
+<link rel="icon" href="iconos/icono-192.png" sizes="192x192">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tinta:#0A1428; --azul:#152A54; --azul-2:#1E3A6E;
+  --rosa:#F2B7CF; --rosa-vivo:#E4568F;
+  --hueso:#F5F2ED;
+  --linea:rgba(242,183,207,.26); --linea-osc:rgba(10,20,40,.14);
+  --display:'Anton',Impact,sans-serif; --texto:'Archivo',system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--tinta);color:#fff;font-family:var(--texto);font-size:16.5px;line-height:1.6;-webkit-font-smoothing:antialiased}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+img,svg{max-width:100%}
+:focus-visible{outline:3px solid var(--rosa-vivo);outline-offset:3px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+.h1,.h2,.h3{font-family:var(--display);font-weight:400;line-height:.95;margin:0}
+.h1{font-size:clamp(38px,6.6vw,70px)}
+.h2{font-size:clamp(27px,3.8vw,44px)}
+.h3{font-size:clamp(19px,2.2vw,24px)}
+p{margin:0 0 14px}
+section{padding:66px 0;border-top:1px solid rgba(255,255,255,.09)}
+.claro{background:var(--hueso);color:var(--tinta);border-top-color:var(--linea-osc)}
+.rotulo{font-family:var(--display);font-size:11.5px;letter-spacing:.24em;color:var(--rosa-vivo);text-transform:uppercase;margin:0 0 12px}
+.bajada{color:rgba(255,255,255,.74);max-width:64ch}
+.claro .bajada{color:rgba(10,20,40,.72)}
+
+/* portada */
+.portada{padding:60px 0 70px;position:relative;overflow:hidden;border:0}
+.portada::before{content:"";position:absolute;inset:0;background:
+  radial-gradient(860px 420px at 72% -14%,rgba(228,86,143,.3),transparent 62%),
+  radial-gradient(660px 400px at 6% 108%,rgba(30,58,110,.9),transparent 60%)}
+.portada>*{position:relative}
+.escudo{width:78px;margin-bottom:26px}
+.lema{font-family:var(--display);font-size:11.5px;letter-spacing:.4em;color:var(--rosa);margin:0 0 14px}
+.cifras{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--linea);border:1px solid var(--linea);border-radius:16px;overflow:hidden;margin-top:38px}
+@media(max-width:700px){.cifras{grid-template-columns:1fr 1fr}}
+.cifra{background:rgba(10,20,40,.86);padding:20px 18px}
+.cifra b{display:block;font-family:var(--display);font-size:clamp(26px,3.6vw,38px);line-height:1;color:var(--rosa)}
+.cifra span{font-size:13px;color:rgba(255,255,255,.64);display:block;margin-top:6px}
+
+/* antes y despues */
+.comparo{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:30px}
+@media(max-width:760px){.comparo{grid-template-columns:1fr}}
+.caja{border:1px solid var(--linea-osc);border-radius:16px;padding:26px;background:#fff}
+.caja.bien{border-color:var(--rosa-vivo);background:rgba(228,86,143,.06)}
+.caja h3{margin-bottom:14px}
+.caja ul{margin:0;padding-left:18px;font-size:15px;color:rgba(10,20,40,.76)}
+.caja li{margin-bottom:8px}
+.sello{display:inline-block;font-family:var(--display);font-size:11px;letter-spacing:.18em;text-transform:uppercase;padding:5px 11px;border-radius:999px;margin-bottom:12px}
+.sello.mal{background:rgba(10,20,40,.1);color:rgba(10,20,40,.6)}
+.sello.ok{background:var(--rosa-vivo);color:#fff}
+
+/* camiseta */
+.camiseta-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center;margin-top:34px}
+@media(max-width:840px){.camiseta-grid{grid-template-columns:1fr}}
+.posiciones{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.pos{display:flex;gap:14px;align-items:flex-start;border:1px solid var(--linea);border-radius:12px;padding:14px 16px;background:rgba(255,255,255,.04)}
+.pos .n{width:28px;height:28px;flex:0 0 auto;border-radius:50%;background:var(--rosa-vivo);color:#fff;display:grid;place-items:center;font-family:var(--display);font-size:15px}
+.pos b{display:block;font-size:15.5px}
+.pos span{font-size:13.5px;color:rgba(255,255,255,.62)}
+.pos .tam{font-style:normal;font-family:var(--texto);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;border-radius:999px;background:rgba(255,255,255,.1);color:rgba(255,255,255,.6);margin-left:7px;vertical-align:2px}
+.pos .tam.mayor{background:var(--rosa-vivo);color:#fff}
+
+/* niveles */
+.niveles{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:32px}
+@media(max-width:1000px){.niveles{grid-template-columns:1fr 1fr}}
+@media(max-width:620px){.niveles{grid-template-columns:1fr}}
+.nivel{border:1px solid var(--linea-osc);border-radius:16px;padding:24px;background:#fff;display:flex;flex-direction:column}
+.nivel.top{background:var(--tinta);color:#fff;border-color:var(--tinta)}
+.nivel.destacado{border-color:var(--rosa-vivo);box-shadow:0 0 0 3px rgba(228,86,143,.12)}
+.nivel .orden{font-family:var(--display);font-size:11px;letter-spacing:.2em;color:var(--rosa-vivo);text-transform:uppercase}
+.nivel h3{margin:6px 0 4px}
+.nivel .para{font-size:13.5px;color:rgba(10,20,40,.6);margin-bottom:16px;min-height:38px}
+.nivel.top .para{color:rgba(255,255,255,.66)}
+.nivel ul{list-style:none;margin:0 0 18px;padding:0;display:flex;flex-direction:column;gap:8px;font-size:14.5px}
+.nivel li{padding-left:19px;position:relative;color:rgba(10,20,40,.84)}
+.nivel.top li{color:rgba(255,255,255,.84)}
+.nivel li::before{content:"";position:absolute;left:0;top:8px;width:8px;height:8px;border-radius:2px;background:var(--rosa-vivo)}
+.nivel li.hereda{color:rgba(10,20,40,.52);font-style:italic}
+.nivel.top li.hereda{color:rgba(255,255,255,.55)}
+.nivel li.hereda::before{background:rgba(10,20,40,.25)}
+.nivel.top li.hereda::before{background:rgba(255,255,255,.3)}
+.nivel .precio{margin-top:auto;padding-top:16px;border-top:1px solid var(--linea-osc);font-family:var(--display);font-size:21px}
+.nivel.top .precio{border-top-color:rgba(255,255,255,.18)}
+.nivel .cupos{font-size:12.5px;letter-spacing:.06em;color:var(--rosa-vivo);font-weight:700;display:block;font-family:var(--texto)}
+
+/* principios */
+.principios{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:30px}
+@media(max-width:760px){.principios{grid-template-columns:1fr}}
+.principio{border:1px solid var(--linea-osc);border-radius:16px;padding:24px;background:#fff}
+.principio h3{margin-bottom:10px}
+.principio p{margin:0;font-size:15px;color:rgba(10,20,40,.74)}
+
+/* plazos */
+.plazos{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:30px}
+@media(max-width:860px){.plazos{grid-template-columns:1fr}}
+.plazo{border:1px solid var(--linea);border-radius:16px;padding:24px;background:rgba(255,255,255,.04);display:flex;flex-direction:column}
+.plazo.principal{border-color:var(--rosa-vivo);background:rgba(228,86,143,.09)}
+.plazo .dura{font-family:var(--display);font-size:11px;letter-spacing:.2em;color:var(--rosa-vivo);text-transform:uppercase}
+.plazo h3{margin:6px 0 10px}
+.plazo p{font-size:14.5px;color:rgba(255,255,255,.74)}
+.plazo .incluye{margin-top:auto;padding-top:14px;border-top:1px solid var(--linea);font-size:13.5px}
+.plazo .incluye b{color:var(--rosa);font-weight:600}
+.nota{margin-top:22px;border-left:3px solid var(--rosa-vivo);padding:6px 0 6px 16px;font-size:15px;color:rgba(255,255,255,.76);max-width:70ch}
+
+/* menu suelto */
+.menu{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px;margin-top:30px}
+.item{border:1px solid var(--linea);border-radius:13px;padding:18px;background:rgba(255,255,255,.04)}
+.item b{display:block;font-family:var(--display);font-size:18px;font-weight:400;margin-bottom:5px}
+.item span{font-size:14px;color:rgba(255,255,255,.68)}
+
+/* reglas */
+.reglas{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:30px}
+@media(max-width:760px){.reglas{grid-template-columns:1fr}}
+.regla{border-left:3px solid var(--rosa-vivo);padding:4px 0 4px 16px}
+.regla b{display:block;font-family:var(--display);font-size:18px;font-weight:400;margin-bottom:5px}
+.regla span{font-size:14.5px;color:rgba(255,255,255,.7)}
+
+/* calendario */
+.linea-tiempo{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--linea-osc);border:1px solid var(--linea-osc);border-radius:14px;overflow:hidden;margin-top:30px}
+@media(max-width:760px){.linea-tiempo{grid-template-columns:1fr 1fr}}
+.hito{background:#fff;padding:20px 18px}
+.hito b{display:block;font-family:var(--display);font-size:15px;letter-spacing:.12em;color:var(--rosa-vivo);text-transform:uppercase;margin-bottom:8px}
+.hito span{font-size:14.5px;color:rgba(10,20,40,.76)}
+
+footer{background:#060D1C;padding:44px 0;font-size:14.5px;color:rgba(255,255,255,.6);border-top:1px solid var(--linea)}
+footer a{color:var(--rosa);text-decoration:none}
+.pie-cta{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
+.btn{display:inline-block;text-decoration:none;font-weight:700;font-size:15px;padding:13px 24px;border-radius:999px;background:var(--rosa-vivo);color:#fff}
+@media print{body{background:#fff;color:#000}section{border:0;padding:26px 0}.portada::before{display:none}}
+</style>
+</head>
+<body>
+
+<!-- =========================================================================
+     Plan de sponsoreo. Página interna, no linkeada y sin indexar.
+     Los precios y cupos están en el bloque PLAN, al final del archivo.
+     ========================================================================= -->
+
+<header class="portada">
+  <div class="wrap">
+    <svg class="escudo" viewBox="0 0 100 120" role="img" aria-label="Escudo del club">
+      <path d="M4 4h92v66c0 26-24 40-46 46C28 110 4 96 4 70Z" fill="#0A1428" stroke="#F2B7CF" stroke-width="5"/>
+      <path d="M18 22 82 88M82 22 18 88" stroke="#fff" stroke-width="3"/>
+      <circle cx="50" cy="84" r="10" fill="none" stroke="#fff" stroke-width="3"/>
+    </svg>
+    <p class="lema">SENSUS PERTINENDI</p>
+    <h1 class="h1">Plan de sponsoreo<br>Ateneo Don Bosco Handball</h1>
+    <p class="bajada" style="margin-top:18px">Un solo esquema para todo el club. Tu marca deja de estar en una camiseta de una categoría y pasa a estar en todas: en la cancha, en la web, en el teléfono de cada familia y en el comercio de la vuelta.</p>
+    <div class="cifras" id="cifras"></div>
+  </div>
+</header>
+
+<main>
+
+<section class="claro">
+  <div class="wrap">
+    <p class="rotulo">El modelo</p>
+    <h2 class="h2">Se acompaña al club,<br>no a una categoría</h2>
+    <p class="bajada" style="margin-top:14px">Todos los planteles del Bosco comparten la misma identidad: el mismo diseño de camiseta, la misma cancha, la misma web. Por eso el sponsoreo es uno solo para todo el club, y funciona con cuatro reglas simples.</p>
+    <div class="principios" id="principios"></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="rotulo">La camiseta</p>
+    <h2 class="h2">Siete posiciones,<br>nueve categorías cada una</h2>
+    <p class="bajada" style="margin-top:14px">Todos los planteles del club usan el mismo diseño. Quien toma una posición aparece en todas las camisetas, en todas las canchas donde jugamos, todos los fines de semana de la temporada.</p>
+
+    <div class="camiseta-grid">
+      <div>
+        <svg viewBox="0 0 460 300" role="img" aria-label="Diagrama de la camiseta con las cinco posiciones de sponsor numeradas">
+          <defs>
+            <linearGradient id="tela" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#1E3A6E"/><stop offset="100%" stop-color="#152A54"/>
+            </linearGradient>
+          </defs>
+
+          <!-- FRENTE -->
+          <g transform="translate(12,18)">
+            <text x="115" y="0" fill="#F2B7CF" font-family="Anton,Impact,sans-serif" font-size="13" letter-spacing="3" text-anchor="middle">FRENTE</text>
+            <path d="M60 18 L98 6 Q110 22 132 6 L170 18 L188 52 L162 64 L162 168 Q115 176 68 168 L68 64 L42 52 Z"
+                  fill="url(#tela)" stroke="#F2B7CF" stroke-width="2.5" stroke-linejoin="round"/>
+            <path d="M98 6 Q115 26 132 6" fill="none" stroke="#F2B7CF" stroke-width="2.5"/>
+
+            <!-- escudo del club -->
+            <path d="M76 28h17v13c0 5-4.5 8-8.5 9-4-1-8.5-4-8.5-9Z" fill="none" stroke="#fff" stroke-width="1.6"/>
+            <text x="84" y="52" fill="rgba(255,255,255,.5)" font-family="Archivo,sans-serif" font-size="6.5" text-anchor="middle">escudo</text>
+
+            <!-- 2 pecho lateral -->
+            <rect x="136" y="28" width="30" height="17" rx="3.5" fill="rgba(228,86,143,.2)" stroke="#E4568F" stroke-width="1.5" stroke-dasharray="4 3"/>
+            <circle cx="151" cy="36" r="9" fill="#E4568F"/>
+            <text x="151" y="40.5" fill="#fff" font-family="Anton,Impact,sans-serif" font-size="12" text-anchor="middle">2</text>
+
+            <!-- 1 pecho central -->
+            <rect x="76" y="62" width="78" height="32" rx="4" fill="rgba(228,86,143,.24)" stroke="#E4568F" stroke-width="2" stroke-dasharray="5 3"/>
+            <circle cx="115" cy="78" r="12" fill="#E4568F"/>
+            <text x="115" y="83.5" fill="#fff" font-family="Anton,Impact,sans-serif" font-size="15" text-anchor="middle">1</text>
+
+            <!-- 3 bajo pecho -->
+            <rect x="92" y="106" width="46" height="19" rx="3.5" fill="rgba(228,86,143,.2)" stroke="#E4568F" stroke-width="1.5" stroke-dasharray="4 3"/>
+            <circle cx="115" cy="115" r="9" fill="#E4568F"/>
+            <text x="115" y="119.5" fill="#fff" font-family="Anton,Impact,sans-serif" font-size="12" text-anchor="middle">3</text>
+
+            <!-- 6 manga -->
+            <rect x="166" y="52" width="22" height="18" rx="3.5" fill="rgba(228,86,143,.2)" stroke="#E4568F" stroke-width="1.5" stroke-dasharray="4 3"/>
+            <circle cx="177" cy="61" r="9" fill="#E4568F"/>
+            <text x="177" y="65.5" fill="#fff" font-family="Anton,Impact,sans-serif" font-size="12" text-anchor="middle">6</text>
+
+            <!-- 7 short -->
+            <path d="M78 196 L152 196 L158 244 L126 244 L115 214 L104 244 L72 244 Z" fill="url(#tela)" stroke="#F2B7CF" stroke-width="2.5" stroke-linejoin="round"/>
+            <rect x="86" y="206" width="34" height="17" rx="3.5" fill="rgba(228,86,143,.2)" stroke="#E4568F" stroke-width="1.5" stroke-dasharray="4 3"/>
+            <circle cx="103" cy="214" r="9" fill="#E4568F"/>
+            <text x="103" y="218.5" fill="#fff" font-family="Anton,Impact,sans-serif" font-size="12" text-anchor="middle">7</text>
+          </g>
+
+          <!-- ESPALDA -->
+          <g transform="translate(250,18)">
+            <text x="95" y="0" fill="#F2B7CF" font-family="Anton,Impact,sans-serif" font-size="13" letter-spacing="3" text-anchor="middle">ESPALDA</text>
+            <path d="M60 18 L98 6 Q115 16 132 6 L170 18 L188 52 L162 64 L162 168 Q115 176 68 168 L68 64 L42 52 Z"
+                  fill="url(#tela)" stroke="#F2B7CF" stroke-width="2.5" stroke-linejoin="round"/>
+            <!-- 4 espalda alta -->
+            <rect x="76" y="30" width="78" height="22" rx="4" fill="rgba(228,86,143,.2)" stroke="#E4568F" stroke-width="1.6" stroke-dasharray="4 3"/>
+            <circle cx="115" cy="41" r="10" fill="#E4568F"/>
+            <text x="115" y="46" fill="#fff" font-family="Anton,Impact,sans-serif" font-size="13" text-anchor="middle">4</text>
+            <!-- numero -->
+            <text x="115" y="112" fill="#fff" font-family="Anton,Impact,sans-serif" font-size="52" text-anchor="middle" opacity=".9">7</text>
+            <!-- 5 espalda baja -->
+            <rect x="80" y="128" width="70" height="24" rx="4" fill="rgba(228,86,143,.2)" stroke="#E4568F" stroke-width="1.6" stroke-dasharray="4 3"/>
+            <circle cx="115" cy="140" r="10" fill="#E4568F"/>
+            <text x="115" y="145" fill="#fff" font-family="Anton,Impact,sans-serif" font-size="13" text-anchor="middle">5</text>
+          </g>
+        </svg>
+      </div>
+
+      <ul class="posiciones" id="posiciones"></ul>
+    </div>
+  </div>
+</section>
+
+<section class="claro">
+  <div class="wrap">
+    <p class="rotulo">Los niveles</p>
+    <h2 class="h2">Cuatro formas<br>de estar adentro</h2>
+    <p class="bajada" style="margin-top:14px">Cada nivel incluye todo lo del anterior. Se entra por donde se pueda y se sube cuando el resultado lo justifique.</p>
+    <div class="niveles" id="niveles"></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="rotulo">Plazos</p>
+    <h2 class="h2">Cuándo se puede entrar</h2>
+    <p class="bajada" style="margin-top:14px">Hay una diferencia que conviene tener clara desde el principio: la indumentaria se manda a imprimir una sola vez al año. Todo lo demás se puede sumar en cualquier momento.</p>
+    <div class="plazos" id="plazos"></div>
+    <p class="nota" id="nota-plazos"></p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="rotulo">A la carta</p>
+    <h2 class="h2">Acciones sueltas</h2>
+    <p class="bajada" style="margin-top:14px">Se suman a cualquier nivel o se contratan por única vez. Sirven para probar antes de comprometerse a un año.</p>
+    <div class="menu" id="menu"></div>
+  </div>
+</section>
+
+<section class="claro">
+  <div class="wrap">
+    <p class="rotulo">Cómo trabajamos</p>
+    <h2 class="h2">Las reglas del acuerdo</h2>
+    <div class="reglas" id="reglas" style="color:var(--tinta)"></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="rotulo">El año</p>
+    <h2 class="h2">Cuándo pasa cada cosa</h2>
+    <div class="linea-tiempo" id="calendario"></div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap pie-cta">
+    <div>
+      <strong style="color:#fff;font-family:var(--display);font-size:21px;font-weight:400;display:block">Hablemos</strong>
+      Don Bosco 116, Bernal · <a id="f-wsp" href="#">11 5112 8153</a> · <a id="f-mail" href="#">ateneodonboscohandball@gmail.com</a><br>
+      <a href="https://adbhandball.com">adbhandball.com</a> · <a id="f-ig" href="#">@adb.handball</a>
+    </div>
+    <a class="btn" id="f-cta" href="#">Quiero sumarme</a>
+  </div>
+</footer>
+
+<script>
+/* ========================= PLAN EDITABLE =========================
+   Precios y cupos: completá con tus números. Mientras digan "A convenir",
+   la página funciona igual y sirve para presentar el esquema.
+   ================================================================ */
+const PLAN = {
+  contacto: { wsp:"5491151128153", mail:"ateneodonboscohandball@gmail.com", ig:"https://instagram.com/adb.handball" },
+
+  cifras: [
+    { b:"9",      l:"categorías, de minis a maxihandball" },
+    { b:"150+",   l:"jugadoras y jugadores" },   // ⚠️ número real
+    { b:"2.717",  l:"seguidores en Instagram, casi todos de la zona" },
+    { b:"30",     l:"fechas de local por año en Don Bosco 116" }
+  ],
+
+  principios: [
+    { t:"Una marca, todas las categorías", d:"Quien toma una posición aparece en las nueve categorías del club, de minis a maxihandball. La misma marca, en el mismo lugar, en toda la indumentaria." },
+    { t:"Espacios definidos", d:"Cada lugar de la camiseta, de la cancha y de la web está delimitado y tiene su medida. Se sabe exactamente qué se contrata y cómo se va a ver." },
+    { t:"Exclusividad por rubro", d:"Desde el nivel Camiseta, no entra otro comercio del mismo rubro. Un supermercado, una panadería, una inmobiliaria." },
+    { t:"Rendimos cuentas", d:"Todos los meses te contamos cuánta gente vio tu marca en la web y cuántas usaron tu beneficio. Sin números, no es sponsoreo." }
+  ],
+
+  plazos: [
+    { dura:"Marzo a febrero", nombre:"Anual", principal:true,
+      d:"El acuerdo completo. Es el único que incluye la camiseta, porque la indumentaria se manda a producir una sola vez al año y después ya no entra ningún logo más.",
+      incluye:"Incluye todo, camiseta incluida" },
+    { dura:"Cinco meses", nombre:"Por torneo",
+      d:"Apertura o Clausura. Cubre toda la temporada de ese torneo: cancha, web, Club de Beneficios, fotos y redes. Se puede arrancar cuando quieras.",
+      incluye:"Todo menos la camiseta" },
+    { dura:"Una fecha o una acción", nombre:"Puntual",
+      d:"Para probar sin comprometerse: el álbum de fotos de un partido, el presenting de una fecha, un sorteo con el plantel o un evento del club.",
+      incluye:"Solo la acción acordada" }
+  ],
+
+  notaPlazos: "Si te sumás con el torneo empezado, entrás en todo salvo la indumentaria — y tenés prioridad para elegir tu posición en la camiseta del año siguiente, antes de que se ofrezca afuera.",
+
+  posiciones: [
+    { n:"1", t:"Pecho central", tam:"Posición mayor", d:"El lugar más visible de la camiseta y el único grande del frente. Aparece en cada foto y cada saludo inicial. Exclusivo del nivel Sensus." },
+    { n:"2", t:"Pecho lateral", tam:"Posición menor", d:"Arriba, del lado opuesto al escudo. Chico pero siempre en cuadro: es la zona que más aparece en los primeros planos." },
+    { n:"3", t:"Bajo pecho", tam:"Posición mayor", d:"Debajo del sponsor principal, sobre el abdomen. Muy legible desde la tribuna y desde la mesa de control." },
+    { n:"4", t:"Espalda alta", tam:"Posición mayor", d:"Arriba del número. Es lo que la tribuna mira durante todo el partido, porque el juego se ve de espaldas." },
+    { n:"5", t:"Espalda baja", tam:"Posición menor", d:"Debajo del número, sobre la cintura." },
+    { n:"6", t:"Mangas", tam:"Posición menor", d:"Las dos mangas, misma marca. Se ve en los lanzamientos y en los festejos." },
+    { n:"7", t:"Short", tam:"Posición menor", d:"Pierna izquierda. La forma más accesible de entrar a la indumentaria." }
+  ],
+
+  niveles: [
+    { orden:"Nivel 1", nombre:"Tribuna", para:"Para el comercio de la cuadra que quiere estar cerca.",
+      items:["Logo en el muro de sponsors de la web","Cupón en el Club de Beneficios","Una historia en Instagram por mes","Reporte mensual de cuánta gente abrió tu cupón"],
+      precio:"A convenir", cupos:"Sin límite · se acepta canje", vigencia:"Anual o por torneo" },
+
+    { orden:"Nivel 2", nombre:"Cancha", para:"Para el que quiere que lo vean todos los fines de semana.",
+      hereda:"Todo lo del nivel Tribuna",
+      items:["Banner en la cancha en todos los partidos de local","Logo en los flyers de fixture y resultados","Presentás dos fechas al año en la portada de la web","Mención en el newsletter de los jueves"],
+      precio:"A convenir", cupos:"6 lugares", vigencia:"Anual o por torneo" },
+
+    { orden:"Nivel 3", nombre:"Camiseta", destacado:true, para:"Para la marca que quiere quedarse todo el año.",
+      hereda:"Todo lo del nivel Cancha",
+      items:["Tu logo en una posición de la camiseta, en las nueve categorías","Exclusividad en tu rubro","Presentás la votación de la figura un mes al año","Una producción de fotos con un plantel"],
+      precio:"A convenir", cupos:"6 lugares · 2 posiciones mayores y 4 menores", vigencia:"Solo anual" },
+
+    { orden:"Nivel 4", nombre:"Sensus", top:true, para:"Un solo sponsor por temporada. El que le pone el nombre al año.",
+      hereda:"Todo lo del nivel Camiseta",
+      items:["El pecho de la camiseta, en las nueve categorías","Naming de la copa de pretemporada del club","Presentás el marcador de la web todo el año","Presencia en todas las comunicaciones del club"],
+      precio:"A convenir", cupos:"1 lugar por temporada", vigencia:"Solo anual" }
+  ],
+
+  menu: [
+    { t:"Álbum de fotos de una fecha", d:"Tu marca presenta las fotos del partido. Las descarga y comparte todo el plantel." },
+    { t:"Naming de un evento", d:"La copa de pretemporada, el torneo interno o el día de la familia llevan tu nombre." },
+    { t:"Camiseta de entrenamiento", d:"Se usa tres veces por semana, todo el año. Más horas de exposición que la de juego." },
+    { t:"Pechera de arqueras", d:"Una posición chica y muy visible, ideal para presupuestos acotados." },
+    { t:"Sorteo o acción con el plantel", d:"Producción de contenido con las jugadoras para tus redes." },
+    { t:"Botella o bolso del club", d:"Tu marca viaja con cada jugadora a cada partido." }
+  ],
+
+  reglas: [
+    { t:"Exclusividad por rubro", d:"Desde el nivel Camiseta, no entra otro comercio del mismo rubro. Un supermercado, una panadería, una inmobiliaria." },
+    { t:"Ciclo anual", d:"Los acuerdos van de marzo a febrero. La venta cierra el 31 de enero, antes de mandar a producir la indumentaria." },
+    { t:"Aceptamos canje", d:"Indumentaria, gráfica, agua, kinesiología o comida de los viajes valen lo mismo que la plata. Se valúa y se acuerda." },
+    { t:"Rendimos cuentas", d:"Todos los meses te mandamos cuánta gente vio tu marca en la web y cuántas abrieron tu beneficio. Sin eso, no es sponsoreo, es donación." }
+  ],
+
+  calendario: [
+    { t:"Noviembre a enero", d:"Se arman los acuerdos anuales y se renuevan los vigentes. Los sponsors del año en curso eligen primero." },
+    { t:"31 de enero", d:"Cierra la venta de indumentaria. Es la única fecha rígida del año: después de esto el diseño se manda a imprimir." },
+    { t:"Febrero", d:"Producción de la camiseta con todas las marcas confirmadas." },
+    { t:"Todo el año", d:"Cancha, web, beneficios, fotos y acciones puntuales se suman en cualquier momento, por torneo o por fecha." }
+  ]
+};
+
+/* ========================= render ========================= */
+const $ = s => document.querySelector(s);
+const wsp = t => "https://wa.me/"+PLAN.contacto.wsp+"?text="+encodeURIComponent(t);
+
+$("#cifras").innerHTML = PLAN.cifras.map(c =>
+  '<div class="cifra"><b>'+c.b+'</b><span>'+c.l+'</span></div>').join("");
+
+$("#principios").innerHTML = PLAN.principios.map(p =>
+  '<article class="principio"><h3 class="h3">'+p.t+'</h3><p>'+p.d+'</p></article>').join("");
+
+$("#plazos").innerHTML = PLAN.plazos.map(p =>
+  '<article class="plazo'+(p.principal?" principal":"")+'">'
+  + '<span class="dura">'+p.dura+'</span><h3 class="h3">'+p.nombre+'</h3>'
+  + '<p>'+p.d+'</p><div class="incluye"><b>'+p.incluye+'</b></div></article>').join("");
+
+$("#nota-plazos").textContent = PLAN.notaPlazos;
+
+$("#posiciones").innerHTML = PLAN.posiciones.map(p =>
+  '<li class="pos"><span class="n">'+p.n+'</span><span><b>'+p.t
+  +' <i class="tam'+(p.tam==="Posición mayor"?" mayor":"")+'">'+p.tam+'</i></b><span>'+p.d+'</span></span></li>').join("");
+
+$("#niveles").innerHTML = PLAN.niveles.map(n => {
+  const hereda = n.hereda ? '<li class="hereda">'+n.hereda+'</li>' : '';
+  return '<article class="nivel'+(n.top?" top":"")+(n.destacado?" destacado":"")+'">'
+    + '<span class="orden">'+n.orden+'</span>'
+    + '<h3 class="h3">'+n.nombre+'</h3>'
+    + '<p class="para">'+n.para+'</p>'
+    + '<ul>'+hereda+n.items.map(i=>'<li>'+i+'</li>').join("")+'</ul>'
+    + '<div class="precio">'+n.precio+'<span class="cupos">'+n.cupos+'</span><span class="cupos" style="color:inherit;opacity:.6">'+n.vigencia+'</span></div>'
+    + '</article>';
+}).join("");
+
+$("#menu").innerHTML = PLAN.menu.map(m =>
+  '<div class="item"><b>'+m.t+'</b><span>'+m.d+'</span></div>').join("");
+
+$("#reglas").innerHTML = PLAN.reglas.map(r =>
+  '<div class="regla"><b>'+r.t+'</b><span style="color:rgba(10,20,40,.72)">'+r.d+'</span></div>').join("");
+
+$("#calendario").innerHTML = PLAN.calendario.map(c =>
+  '<div class="hito"><b>'+c.t+'</b><span>'+c.d+'</span></div>').join("");
+
+$("#f-wsp").href = wsp("Hola! Vi el plan de sponsoreo del club y quiero hacer una consulta.");
+$("#f-mail").href = "mailto:"+PLAN.contacto.mail;
+$("#f-ig").href = PLAN.contacto.ig;
+$("#f-cta").href = wsp("Hola! Me interesa sumarme como sponsor del Ateneo Don Bosco Handball.");
+</script>
+</body>
+</html>

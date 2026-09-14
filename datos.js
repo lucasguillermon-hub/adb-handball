@@ -187,26 +187,35 @@ const DATOS = {
     { b:"600+", l:"familias del club y del colegio en la comunidad" }
   ],
 
+  // Los cuatro niveles del plan de sponsoreo. Mismos textos que plan-sponsoreo.html:
+  // si cambia uno, cambiá el otro.
   paquetes: [
-    { t:"Beneficio", p:"Para el comercio de la cuadra", destacado:false, items:[
-      "Tu cupón en el Club de Beneficios de la web",
+    { t:"Tribuna", p:"Para el comercio de la cuadra que quiere estar cerca.", destacado:false, items:[
+      "Logo en el muro de sponsors de la web",
+      "Cupón en el Club de Beneficios",
       "Una historia en Instagram por mes",
-      "Reporte mensual de cuánta gente abrió tu cupón",
-      "Ideal para canje"
-    ], cta:"Quiero mi cupón" },
-    { t:"Fecha", p:"El más elegido", destacado:true, items:[
-      "Presentás el marcador de la fecha en la portada",
-      "Tu marca en la votación de la MVP durante una semana",
-      "Logo en el fixture de un plantel",
-      "Mención en el newsletter de los jueves",
-      "Cupón en el Club de Beneficios incluido"
-    ], cta:"Quiero una fecha" },
-    { t:"Camiseta", p:"Para quedarse todo el año", destacado:false, items:[
-      "Tu marca en la camiseta de una categoría",
-      "Presentación fija en la web durante toda la temporada",
-      "Contenido con el plantel: una producción de fotos al año",
-      "Todo lo del paquete Fecha, los doce meses",
-      "Reporte trimestral con resultados"
-    ], cta:"Hablemos del año" }
+      "Reporte mensual de cuánta gente abrió tu cupón"
+    ], cta:"Quiero estar cerca" },
+    { t:"Cancha", p:"Para el que quiere que lo vean todos los fines de semana.", destacado:false, items:[
+      "Todo lo del nivel Tribuna",
+      "Banner en la cancha en todos los partidos de local",
+      "Logo en los flyers de fixture y resultados",
+      "Presentás dos fechas al año en la portada de la web",
+      "Mención en el newsletter de los jueves"
+    ], cta:"Quiero estar en la cancha" },
+    { t:"Camiseta", p:"Para la marca que quiere quedarse todo el año.", destacado:true, items:[
+      "Todo lo del nivel Cancha",
+      "Tu logo en una posición de la camiseta, en las nueve categorías",
+      "Exclusividad en tu rubro",
+      "Presentás la votación de la figura un mes al año",
+      "Una producción de fotos con un plantel"
+    ], cta:"Hablemos del año" },
+    { t:"Sensus", p:"Un solo sponsor por temporada. El que le pone el nombre al año.", destacado:false, items:[
+      "Todo lo del nivel Camiseta",
+      "El pecho de la camiseta, en las nueve categorías",
+      "Naming de la copa de pretemporada del club",
+      "Presentás el marcador de la web todo el año",
+      "Presencia en todas las comunicaciones del club"
+    ], cta:"Hablemos de la temporada" }
   ]
 };
