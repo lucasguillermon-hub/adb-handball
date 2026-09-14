@@ -596,14 +596,7 @@ footer a:hover{color:var(--rosa)}
         <div class="campo"><label for="s-empresa">Comercio o empresa</label><input id="s-empresa" name="empresa" required></div>
         <div class="campo"><label for="s-nombre">Con quién hablamos</label><input id="s-nombre" name="nombre" required autocomplete="name"></div>
         <div class="campo"><label for="s-tel">WhatsApp</label><input id="s-tel" name="tel" type="tel" required autocomplete="tel"></div>
-        <div class="campo"><label for="s-paq">Qué te interesa</label><select id="s-paq" name="paquete">
-          <option>Presenting de la fecha</option>
-          <option>Fixture de un plantel</option>
-          <option>Votación de la MVP</option>
-          <option>Cupón en el Club de Beneficios</option>
-          <option>Camiseta de una categoría</option>
-          <option>Todavía no sé, contame</option>
-        </select></div>
+        <div class="campo"><label for="s-paq">Qué te interesa</label><select id="s-paq" name="paquete"></select></div>
         <div class="campo ancho"><label for="s-msj">Algo más que quieras contarnos</label><textarea id="s-msj" name="mensaje"></textarea></div>
         <div class="campo ancho"><button class="btn" type="submit" data-track="form-sponsor">Enviar y coordinar una charla</button></div>
         <div class="ok" id="ok-sponsor" role="status"></div>
@@ -885,6 +878,10 @@ $("#paquetes").innerHTML = DATOS.paquetes.map(p=>
   '<article class="paq'+(p.destacado?" destacado":"")+'"><h4>'+p.t+'</h4><p class="para">'+p.p+'</p>'
   + '<ul>'+p.items.map(i=>'<li>'+i+'</li>').join("")+'</ul>'
   + '<a class="btn'+(p.destacado?"":" linea")+'" href="#form-sponsor" data-track="paquete-'+p.t.toLowerCase()+'">'+p.cta+'</a></article>').join("");
+
+/* El desplegable del formulario ofrece los mismos niveles que las tarjetas. */
+$("#s-paq").innerHTML = DATOS.paquetes.map(p=>'<option>Nivel '+p.t+'</option>').join("")
+  + '<option>Todavía no sé, contame</option>';
 
 /* ============================ galería ============================
    Mientras no existan los archivos en /fotos, cada lugar muestra un
