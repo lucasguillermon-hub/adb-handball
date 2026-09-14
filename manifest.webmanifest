@@ -9,15 +9,42 @@
   "orientation": "portrait",
   "background_color": "#0A1428",
   "theme_color": "#0A1428",
-  "categories": ["sports"],
+  "categories": [
+    "sports"
+  ],
   "icons": [
-    { "src": "iconos/icono-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
-    { "src": "iconos/icono-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
-    { "src": "iconos/icono-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+    {
+      "src": "iconos/icono-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "iconos/icono-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "iconos/icono-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
   ],
   "shortcuts": [
-    { "name": "Fixture", "url": "./index.html#fixture" },
-    { "name": "Fotos", "url": "./index.html#fotos" },
-    { "name": "Beneficios", "url": "./index.html#beneficios" }
-  ]
+    {
+      "name": "Fixture",
+      "url": "./index.html#fixture"
+    },
+    {
+      "name": "Fotos",
+      "url": "./index.html#fotos"
+    },
+    {
+      "name": "Beneficios",
+      "url": "./index.html#beneficios"
+    }
+  ],
+  "id": "/"
 }
