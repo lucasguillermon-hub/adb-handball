@@ -16,13 +16,14 @@ const DATOS = {
   lanzamiento: "2026-10-04T10:00:00",
 
   // Promoción de apertura. Dejalo en "" para que no se muestre.
-  oferta: "Los primeros diez comercios que se sumen entran sin cargo hasta fin de temporada.",
+  oferta: "",
 
   /* --------- DATOS GENERALES DEL CLUB --------- */
   torneo: "Clausura 2026",
 
   contacto: {
-    wsp: "5491151128153",                       // ⚠️ verificar (11 5112 8153)
+    wsp: "5491151128153",                       // ⚠️ verificar
+    tel: "11 5112 8153",                        // el mismo número, como se muestra en pantalla
     mail: "ateneodonboscohandball@gmail.com",
     ig: "https://instagram.com/adb.handball",
     comunidad: "https://chat.whatsapp.com/"      // ⚠️ pegar el link real de la comunidad
@@ -72,7 +73,8 @@ const DATOS = {
       { d:"20", nom:"Jugadora #20", pos:"Extremo derecho",   votos:19 }
     ]
   },
-  sponsorProde: "La Conocida",
+  // El prode no tiene sponsor fijo: cada partido lo presenta una marca distinta del
+  // muro, elegida de forma pareja y estable (todos ven la misma para ese partido).
 
   // ============ GALERÍA ============
   // Poné las fotos en una carpeta /fotos junto a este archivo.
@@ -113,7 +115,9 @@ const DATOS = {
     { marca:"Agua Tronador", rubro:"Bidones y dispensers", oferta:"Primer bidón bonificado", letra:"Clientes nuevos de la zona.", codigo:"BOSCOAGUA" }
   ],
 
-  // Muro de sponsors. Por cada marca:
+  // Muro de sponsors de la temporada 2026. Son acuerdos anteriores al plan de
+  // sponsoreo (que arranca en 2027), por eso siguen agrupados por categoría y no
+  // por nivel. Por cada marca:
   //   n            nombre, siempre.
   //   logo         archivo en fotos/sponsors/, por ejemplo "fotos/sponsors/ladran-sancho.png".
   //                Vacío = se muestra el nombre en texto.
@@ -180,10 +184,12 @@ const DATOS = {
   ],
 
   // ⚠️ Poné tus números reales antes de mostrarle esto a un sponsor.
+  // Los usan web.html y plan-sponsoreo.html. El de partidos de local se calcula
+  // solo desde el fixture: la cantidad cambia cada torneo.
   numeros: [
     { b:"2.717", l:"seguidores en Instagram, casi todos de Quilmes y Bernal" },
     { b:"150+", l:"jugadoras y jugadores en 9 categorías" },
-    { b:"30", l:"fechas de local por año, con tribuna llena" },
+    { calc:"local", l:"partidos de local este torneo" },   // se calcula solo desde el fixture
     { b:"600+", l:"familias del club y del colegio en la comunidad" }
   ],
 
@@ -194,7 +200,7 @@ const DATOS = {
       "Logo en el muro de sponsors de la web",
       "Tu beneficio en el Club de Beneficios del club",
       "Una historia en Instagram por mes",
-      "Reporte mensual de cuánta gente abrió tu cupón"
+      "Reporte mensual de cuánta gente vio tu marca y abrió tu cupón"
     ], cta:"Quiero estar cerca" },
     { t:"Cancha", p:"Para el que quiere que lo vean todos los fines de semana.", destacado:false, items:[
       "Todo lo del nivel Tribuna",

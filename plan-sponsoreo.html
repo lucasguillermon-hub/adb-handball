@@ -206,7 +206,7 @@ footer a{color:var(--rosa);text-decoration:none}
 
     <div class="camiseta-grid">
       <div>
-        <svg viewBox="0 0 460 300" role="img" aria-label="Diagrama de la camiseta con las cinco posiciones de sponsor numeradas">
+        <svg viewBox="0 0 460 300" role="img" aria-label="Diagrama de la camiseta con las siete posiciones de sponsor numeradas">
           <defs>
             <linearGradient id="tela" x1="0" y1="0" x2="0" y2="1">
               <stop offset="0%" stop-color="#1E3A6E"/><stop offset="100%" stop-color="#152A54"/>
@@ -325,27 +325,22 @@ footer a{color:var(--rosa);text-decoration:none}
   <div class="wrap pie-cta">
     <div>
       <strong style="color:#fff;font-family:var(--display);font-size:21px;font-weight:400;display:block">Hablemos</strong>
-      Don Bosco 116, Bernal · <a id="f-wsp" href="#">11 5112 8153</a> · <a id="f-mail" href="#">ateneodonboscohandball@gmail.com</a><br>
+      Don Bosco 116, Bernal · <a id="f-wsp" href="#">—</a> · <a id="f-mail" href="#">ateneodonboscohandball@gmail.com</a><br>
       <a href="https://adbhandball.com">adbhandball.com</a> · <a id="f-ig" href="#">@adb.handball</a>
     </div>
     <a class="btn" id="f-cta" href="#">Quiero sumarme</a>
   </div>
 </footer>
 
+<script src="datos.js"></script>
 <script>
 /* ========================= PLAN EDITABLE =========================
    Precios y cupos: completá con tus números. Mientras digan "A convenir",
    la página funciona igual y sirve para presentar el esquema.
    ================================================================ */
+/* El contacto y las cifras del club salen de datos.js, como en la web
+   (DATOS.contacto y DATOS.numeros). Acá va solo lo propio del plan. */
 const PLAN = {
-  contacto: { wsp:"5491151128153", mail:"ateneodonboscohandball@gmail.com", ig:"https://instagram.com/adb.handball" },
-
-  cifras: [
-    { b:"9",      l:"categorías, de minis a maxihandball" },
-    { b:"150+",   l:"jugadoras y jugadores" },   // ⚠️ número real
-    { b:"2.717",  l:"seguidores en Instagram, casi todos de la zona" },
-    { b:"30",     l:"fechas de local por año en Don Bosco 116" }
-  ],
 
   principios: [
     { t:"Una marca, todas las categorías", d:"Quien toma una posición aparece en las nueve categorías del club, de minis a maxihandball. La misma marca, en el mismo lugar, en toda la indumentaria." },
@@ -386,8 +381,8 @@ const PLAN = {
 
   niveles: [
     { orden:"Nivel 1", nombre:"Tribuna", para:"Para el comercio de la cuadra que quiere estar cerca.",
-      items:["Logo en el muro de sponsors de la web","Tu beneficio en el Club de Beneficios del club","Una historia en Instagram por mes","Reporte mensual de cuánta gente abrió tu cupón"],
-      precio:"A convenir", cupos:"Sin límite · se acepta canje", vigencia:"Anual o por torneo" },
+      items:["Logo en el muro de sponsors de la web","Tu beneficio en el Club de Beneficios del club","Una historia en Instagram por mes","Reporte mensual de cuánta gente vio tu marca y abrió tu cupón"],
+      precio:"A convenir", cupos:"Sin límite", vigencia:"Anual o por torneo" },
 
     { orden:"Nivel 2", nombre:"Cancha", para:"Para el que quiere que lo vean todos los fines de semana.",
       hereda:"Todo lo del nivel Tribuna",
@@ -407,7 +402,8 @@ const PLAN = {
 
   menu: [
     { t:"Álbum de fotos de una fecha", d:"Tu marca presenta las fotos del partido. Las descarga y comparte todo el plantel." },
-    { t:"Naming de un evento", d:"La copa de pretemporada, el torneo interno o el día de la familia llevan tu nombre." },
+    { t:"Naming de un evento", d:"El torneo interno o el día de la familia llevan tu nombre. La copa de pretemporada es del nivel Sensus." },
+    { t:"Fixture de un plantel", d:"Tu marca presenta la grilla de ese plantel en la web y el marcador de sus partidos durante el torneo." },
     { t:"Camiseta de entrenamiento", d:"Se usa tres veces por semana, todo el año. Más horas de exposición que la de juego." },
     { t:"Pechera de arqueras", d:"Una posición chica y muy visible, ideal para presupuestos acotados." },
     { t:"Sorteo o acción con el plantel", d:"Producción de contenido con las jugadoras para tus redes." },
@@ -416,7 +412,7 @@ const PLAN = {
 
   reglas: [
     { t:"Exclusividad por rubro", d:"Desde el nivel Camiseta, no entra otro comercio del mismo rubro. Un supermercado, una panadería, una inmobiliaria." },
-    { t:"Ciclo anual", d:"Los acuerdos van de marzo a febrero. La venta cierra el 31 de enero, antes de mandar a producir la indumentaria." },
+    { t:"Ciclo anual", d:"Los acuerdos van de marzo a febrero. La venta de indumentaria cierra el 31 de enero, antes de mandarla a producir; todo lo demás se suma en cualquier momento." },
     { t:"Aceptamos canje", d:"Indumentaria, gráfica, agua, kinesiología o comida de los viajes valen lo mismo que la plata. Se valúa y se acuerda." },
     { t:"Rendimos cuentas", d:"Todos los meses te mandamos cuánta gente vio tu marca en la web y cuántas abrieron tu beneficio. Sin eso, no es sponsoreo, es donación." }
   ],
@@ -431,10 +427,11 @@ const PLAN = {
 
 /* ========================= render ========================= */
 const $ = s => document.querySelector(s);
-const wsp = t => "https://wa.me/"+PLAN.contacto.wsp+"?text="+encodeURIComponent(t);
+const wsp = t => "https://wa.me/"+DATOS.contacto.wsp+"?text="+encodeURIComponent(t);
+const partidosDeLocal = DATOS.planteles.reduce((t,pl)=>t+pl.partidos.filter(p=>p.c==="L").length, 0);
 
-$("#cifras").innerHTML = PLAN.cifras.map(c =>
-  '<div class="cifra"><b>'+c.b+'</b><span>'+c.l+'</span></div>').join("");
+$("#cifras").innerHTML = DATOS.numeros.map(c =>
+  '<div class="cifra"><b>'+(c.calc==="local" ? partidosDeLocal : c.b)+'</b><span>'+c.l+'</span></div>').join("");
 
 $("#principios").innerHTML = PLAN.principios.map(p =>
   '<article class="principio"><h3 class="h3">'+p.t+'</h3><p>'+p.d+'</p></article>').join("");
@@ -474,8 +471,9 @@ $("#calendario").innerHTML = PLAN.calendario.map(c =>
   '<div class="hito"><b>'+c.t+'</b><span>'+c.d+'</span></div>').join("");
 
 $("#f-wsp").href = wsp("Hola! Vi el plan de sponsoreo del club y quiero hacer una consulta.");
-$("#f-mail").href = "mailto:"+PLAN.contacto.mail;
-$("#f-ig").href = PLAN.contacto.ig;
+$("#f-mail").href = "mailto:"+DATOS.contacto.mail;
+$("#f-ig").href = DATOS.contacto.ig;
+$("#f-wsp").textContent = DATOS.contacto.tel;
 $("#f-cta").href = wsp("Hola! Me interesa sumarme como sponsor del Ateneo Don Bosco Handball.");
 </script>
 </body>

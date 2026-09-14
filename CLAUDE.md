@@ -17,6 +17,7 @@ CLAUDE.md             ← este archivo
 worker.js             ← backend mínimo: guarda los mails de los formularios en la base D1
 migraciones/          ← esquema de la base de contactos (tabla `contactos`)
 wrangler.jsonc        ← configuración de Cloudflare (Worker + base D1 `adb-contactos`)
+plan-sponsoreo.html   ← plan de sponsoreo 2027, sin enlazar ni indexar (lee datos.js)
 recetas.md            ← pedidos tipo para Claude Code
 ```
 
@@ -29,7 +30,9 @@ por el de `web.html`, se borra la etiqueta `noindex` y se sube la versión del `
 
 1. **Todo el contenido variable vive en `datos.js`.** Fixture, staff, categorías,
    sponsors, beneficios, álbumes de fotos, números del media kit, contacto y fecha de
-   lanzamiento. Lo comparten las dos páginas, así que un cambio ahí impacta en ambas.
+   lanzamiento. Lo comparten las tres páginas (`plan-sponsoreo.html` toma de ahí el
+   contacto y las cifras), así que un cambio ahí impacta en todas. El teléfono se
+   muestra desde `contacto.tel`: no escribirlo a mano en el HTML.
    Si el cambio es de contenido, se toca `datos.js` y ningún otro archivo.
 
 2. **No agregar dependencias.** Nada de React, Tailwind, npm ni CDN de librerías.
@@ -82,6 +85,10 @@ pertenencia. Los textos hablan de la tribuna, de las familias y del barrio, no d
 - Acordar cada beneficio del Club de Beneficios con su comercio antes de publicarlo.
 - Números reales del media kit (jugadores, familias, fechas de local).
 - Link de la comunidad de WhatsApp.
+- Votación de la MVP por plantel y por fecha, como el prode (hoy hay una sola votación
+  con jugadoras de ejemplo). Necesita el plantel de cada categoría en `datos.js`.
+- Los sponsors del muro son acuerdos 2026, anteriores al plan; el plan de niveles
+  arranca en 2027. Hasta entonces el muro sigue agrupado por categoría.
 - Elegir la herramienta para mandar los mails (Brevo, MailerLite o similar) e importarle
   el CSV de contactos. Hasta entonces la lista solo se acumula en D1.
 

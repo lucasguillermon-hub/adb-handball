@@ -353,7 +353,7 @@ footer a:hover{color:var(--rosa)}
   <div class="wrap">
     <p class="lema">SENSUS PERTINENDI</p>
     <h1 class="h1">Acá se juega<br><em>por los colores.</em></h1>
-    <p class="bajada">Handball en Bernal desde las minis hasta maxi. Seis planteles, un club, la misma tribuna. Entrenamos en Don Bosco 116 y jugamos todos los fines de semana el Clausura 2026.</p>
+    <p class="bajada">Handball en Bernal desde las minis hasta maxi. <span id="hero-planteles">Cuatro</span> planteles, un club, la misma tribuna. Entrenamos en Don Bosco 116 y jugamos todos los fines de semana el Clausura 2026.</p>
     <div class="hero-cta">
       <a class="btn" href="#sumate" data-track="cta-hero-inscripcion">Vení a probar un entrenamiento</a>
       <a class="btn linea" href="#fixture" data-track="cta-hero-fixture">Ver el fixture</a>
@@ -386,7 +386,7 @@ footer a:hover{color:var(--rosa)}
         </div>
       </div>
       <div class="tablero-pie">
-        <div class="presenta">Esta fecha la presenta <strong id="tab-sponsor">Ladran Sancho</strong></div>
+        <div class="presenta">Esta fecha la presenta <strong id="tab-sponsor">—</strong></div>
         <a class="btn linea" href="#fixture" data-track="tablero-todas-las-fechas">Todas las fechas</a>
       </div>
     </div>
@@ -437,7 +437,7 @@ footer a:hover{color:var(--rosa)}
 
     <div class="duo">
       <div class="panel">
-        <p class="patro">La MVP la elige la tribuna, con <span id="sponsor-mvp">Delicias Doradas</span></p>
+        <p class="patro">La MVP la elige la tribuna, con <span id="sponsor-mvp">—</span></p>
         <h3 class="h3">Votá la figura de la fecha</h3>
         <p class="aviso" id="mvp-contexto">—</p>
         <ul class="opciones" id="mvp"></ul>
@@ -445,7 +445,7 @@ footer a:hover{color:var(--rosa)}
       </div>
 
       <div class="panel">
-        <p class="patro">El prode del Bosco, con <span id="sponsor-prode">La Conocida</span></p>
+        <p class="patro">El prode del Bosco, con <span id="sponsor-prode">—</span></p>
         <h3 class="h3">¿Cómo termina el próximo?</h3>
         <p class="aviso" id="prode-contexto">—</p>
         <div class="prode-fila">
@@ -646,7 +646,7 @@ footer a:hover{color:var(--rosa)}
       <div>
         <h5>Ateneo Don Bosco Handball</h5>
         <p style="color:rgba(255,255,255,.7);font-size:15px;margin:0 0 14px">Don Bosco 116, Bernal, Quilmes<br>Provincia de Buenos Aires (1879)</p>
-        <a id="pie-wsp" href="#">WhatsApp 11 5112 8153 — Jimmy Righi, coordinador</a>
+        <a id="pie-wsp" href="#">WhatsApp <span id="pie-tel">—</span> — Jimmy Righi, coordinador</a>
         <a id="pie-mail" href="#">ateneodonboscohandball@gmail.com</a>
       </div>
       <div>
@@ -709,6 +709,19 @@ $("#pie-wsp").href = wspBase+encodeURIComponent("Hola! Quiero consultar por el h
 $("#pie-mail").href = "mailto:"+DATOS.contacto.mail;
 $("#ig-link").href = DATOS.contacto.ig;
 $("#wsp-comunidad").href = DATOS.contacto.comunidad;
+$("#pie-tel").textContent = DATOS.contacto.tel;
+
+const EN_LETRAS = ["", "Un", "Dos", "Tres", "Cuatro", "Cinco", "Seis", "Siete", "Ocho", "Nueve"];
+$("#hero-planteles").textContent = EN_LETRAS[DATOS.planteles.length] || DATOS.planteles.length;
+
+/* Sponsor del prode: rota entre las marcas del muro, una distinta por partido.
+   Se elige por posición del partido en el calendario, así todos ven la misma
+   marca para ese partido y después se puede reportar. */
+function sponsorDelProde(pl, p){
+  const marcas = DATOS.tiers.flatMap(t=>t.marcas.map(m=>m.n));
+  const nro = DATOS.planteles.indexOf(pl) + pl.partidos.indexOf(p) * DATOS.planteles.length;
+  return marcas[nro % marcas.length];
+}
 
 /* ============================ próximo partido ============================ */
 function cuando(p, plantel){ return new Date(p.f+"T"+plantel.hora+":00"); }
@@ -735,6 +748,7 @@ if (prox){
   $("#mvp-contexto").textContent = DATOS.mvp.contexto;
   $("#prode-contexto").textContent = prox.pl.nombre+" · "+prox.pl.dia.slice(0,-1)+" "+DIA_MES(prox.p.f)+" vs "+prox.p.r;
   $("#prode-rival").textContent = prox.p.r;
+  $("#sponsor-prode").textContent = sponsorDelProde(prox.pl, prox.p);
 
   const tick = ()=>{
     const dif = prox.fecha - new Date();
@@ -759,7 +773,7 @@ if (prox){
       : '<span'+clase+'>'+dentro+'</span>';
   };
   const items = DATOS.tiers.flatMap(t=>t.marcas).map(item).join("")
-    + '<span class="libre">Tu marca acá — 11 5112 8153</span>';
+    + '<span class="libre">Tu marca acá — '+DATOS.contacto.tel+'</span>';
   $("#franja").innerHTML = items + items;
 })();
 
@@ -789,7 +803,7 @@ pintarFixture(0);
 
 /* ============================ votación MVP ============================ */
 $("#sponsor-mvp").textContent = DATOS.mvp.sponsor;
-$("#sponsor-prode").textContent = DATOS.sponsorProde;
+
 const listaMvp = $("#mvp");
 let yaVoto = false;   // en producción: guardar el voto en tu backend o en una hoja de cálculo
 function pintarMvp(){
@@ -819,7 +833,7 @@ $("#prode-enviar").addEventListener("click", e=>{
   e.preventDefault();
   const a = $("#prode-local").value, b = $("#prode-visita").value, res = $("#prode-res");
   if (a==="" || b===""){ res.textContent = "Faltan los dos marcadores para poder jugar."; res.classList.add("visible"); return; }
-  res.innerHTML = "Jugaste <b>"+a+" a "+b+"</b>. Si acertás, te llevás el premio de "+DATOS.sponsorProde+" — te avisamos por Instagram.";
+  res.innerHTML = "Jugaste <b>"+a+" a "+b+"</b>. Si acertás, te llevás el premio de "+$("#sponsor-prode").textContent+" — te avisamos por Instagram.";
   res.classList.add("visible");
   track("prode-jugado",{marcador:a+"-"+b});
 });
@@ -871,8 +885,10 @@ $("#tiers").innerHTML = DATOS.tiers.map(t=>
   + '<a class="logo-b" href="#ser-sponsor" style="border-style:dashed;color:var(--rosa-vivo)" data-track="logo-vacante">Espacio disponible</a>'
   + '</div></div>').join("");
 
+/* Los partidos de local se cuentan desde el fixture: cambian con cada torneo. */
+const partidosDeLocal = DATOS.planteles.reduce((t,pl)=>t+pl.partidos.filter(p=>p.c==="L").length, 0);
 $("#numeros").innerHTML = DATOS.numeros.map(n=>
-  '<div class="num"><b>'+n.b+'</b><span>'+n.l+'</span></div>').join("");
+  '<div class="num"><b>'+(n.calc==="local" ? partidosDeLocal : n.b)+'</b><span>'+n.l+'</span></div>').join("");
 
 $("#paquetes").innerHTML = DATOS.paquetes.map(p=>
   '<article class="paq'+(p.destacado?" destacado":"")+'"><h4>'+p.t+'</h4><p class="para">'+p.p+'</p>'
@@ -975,7 +991,7 @@ function manejar(form, okBox, armarMsj, evento, origen){
     const d = Object.fromEntries(new FormData(form));
     if(origen && d.mail) suscribir(d.mail, origen, d.nombre, d.web).catch(()=>{});
     window.open(wspBase+encodeURIComponent(armarMsj(d)), "_blank", "noopener");
-    okBox.textContent = "Te abrimos WhatsApp con el mensaje listo. Si no se abrió, escribinos al 11 5112 8153.";
+    okBox.textContent = "Te abrimos WhatsApp con el mensaje listo. Si no se abrió, escribinos al "+DATOS.contacto.tel+".";
     okBox.classList.add("visible");
     track(evento);
     form.reset();

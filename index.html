@@ -144,7 +144,7 @@ footer h4{font-family:var(--display);font-size:13px;font-weight:400;letter-spaci
         <div><b id="r-h">—</b><span>horas</span></div>
         <div><b id="r-m">—</b><span>minutos</span></div>
       </div>
-      <p class="cierre">Ese día jugamos de local en Don Bosco 116. Te esperamos en la tribuna.</p>
+      <p class="cierre" id="cierre-fecha">Te esperamos en la tribuna.</p>
     </div>
   </div>
 </header>
@@ -247,13 +247,13 @@ footer h4{font-family:var(--display);font-size:13px;font-weight:400;letter-spaci
     </div>
     <div>
       <h4>Contacto</h4>
-      <a id="pie-wsp" href="#">WhatsApp 11 5112 8153</a>
+      <a id="pie-wsp" href="#">WhatsApp <span id="pie-tel">—</span></a>
       <a id="pie-mail" href="#">ateneodonboscohandball@gmail.com</a>
       <a id="pie-ig" href="#" target="_blank" rel="noopener">Instagram @adb.handball</a>
     </div>
     <div>
       <h4>Coordinación</h4>
-      <p style="margin:0;color:rgba(255,255,255,.72);font-size:15px">Jimmy Righi<br>Iván Piscopo</p>
+      <p style="margin:0;color:rgba(255,255,255,.72);font-size:15px" id="pie-coord">—</p>
     </div>
   </div>
   <div class="wrap"><p class="copy">Sensus pertinendi — desde Bernal para toda la zona sur. © 2026 Ateneo Don Bosco Handball</p></div>
@@ -271,6 +271,8 @@ $("#cta-sponsor").href = wsp("Hola! Tengo un comercio y me interesa sumarme al C
 $("#pie-wsp").href     = wsp("Hola! Quiero hacer una consulta.");
 $("#pie-mail").href    = "mailto:" + DATOS.contacto.mail;
 $("#pie-ig").href      = DATOS.contacto.ig;
+$("#pie-tel").textContent = DATOS.contacto.tel;
+$("#pie-coord").innerHTML = DATOS.staff.filter(s => /coordinador/i.test(s.r)).map(s => s.n).join("<br>");
 $("#cta-jugar").addEventListener("click", ()=>track("cta-jugar"));
 $("#cta-sponsor").addEventListener("click", ()=>track("cta-sponsor"));
 
@@ -280,6 +282,15 @@ if (DATOS.oferta) $("#oferta").textContent = DATOS.oferta; else $("#oferta").rem
 const apertura = new Date(DATOS.lanzamiento);
 $("#rotulo-fecha").textContent = "Abrimos el " +
   apertura.toLocaleDateString("es-AR", { weekday:"long", day:"numeric", month:"long" });
+
+/* El cierre solo promete "de local" si ese día hay un partido en casa en el fixture. */
+const diaApertura = DATOS.lanzamiento.slice(0, 10);
+const partidosDelFinde = DATOS.planteles.flatMap(pl => pl.partidos.filter(p =>
+  p.c !== "libre" && Math.abs(new Date(p.f) - new Date(diaApertura)) <= 864e5));
+$("#cierre-fecha").textContent = partidosDelFinde.some(p => p.f === diaApertura && p.c === "L")
+  ? "Ese día jugamos de local en Don Bosco 116. Te esperamos en la tribuna."
+  : partidosDelFinde.length ? "Ese fin de semana hay fecha. Te esperamos en la tribuna."
+  : "Te esperamos en la tribuna.";
 
 function tic(){
   const dif = apertura - new Date();
