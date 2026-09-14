@@ -124,7 +124,12 @@ header{position:sticky;top:0;z-index:60;background:rgba(10,20,40,.92);backdrop-f
 .franja-in{display:flex;gap:44px;align-items:center;padding:16px 0;white-space:nowrap;animation:corre 42s linear infinite}
 .franja:hover .franja-in{animation-play-state:paused}
 @keyframes corre{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.franja span{font-family:var(--display);font-size:17px;letter-spacing:.04em;color:rgba(255,255,255,.62);flex:0 0 auto}
+.franja span,.franja a{font-family:var(--display);font-size:17px;letter-spacing:.04em;color:rgba(255,255,255,.62);flex:0 0 auto}
+.franja a{text-decoration:none}
+.franja a:hover{color:#fff}
+.franja .logo{background:#fff;border-radius:8px;height:40px;padding:5px 12px;display:flex;align-items:center;flex:0 0 auto}
+.franja .logo.oscuro{background:var(--azul)}
+.franja .logo img{display:block;height:100%;width:auto;max-width:140px;object-fit:contain}
 .franja span.libre{color:var(--rosa-vivo)}
 @media (prefers-reduced-motion:reduce){.franja-in{animation:none;flex-wrap:wrap;white-space:normal;gap:20px}}
 
@@ -204,9 +209,11 @@ header{position:sticky;top:0;z-index:60;background:rgba(10,20,40,.92);backdrop-f
 .tier{margin-bottom:34px}
 .tier h4{font-family:var(--display);font-size:17px;font-weight:400;letter-spacing:.14em;color:var(--rosa-vivo);margin:0 0 12px;text-transform:uppercase}
 .logos{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:10px}
-.logo-b{border:1px solid var(--linea-oscura);border-radius:11px;background:#fff;min-height:78px;display:grid;place-items:center;padding:14px;text-align:center;font-family:var(--display);font-size:16px;line-height:1.05;color:var(--tinta);text-decoration:none}
+.logo-b{border:1px solid var(--linea-oscura);border-radius:11px;background:#fff;height:92px;display:flex;align-items:center;justify-content:center;padding:14px 18px;text-align:center;font-family:var(--display);font-size:16px;line-height:1.05;color:var(--tinta);text-decoration:none;overflow:hidden}
 .logo-b:hover{border-color:var(--rosa-vivo)}
-.logo-b.principal{grid-column:span 2;min-height:110px;font-size:26px;background:var(--tinta);color:#fff;border-color:var(--tinta)}
+.logo-b img{display:block;width:100%;height:100%;object-fit:contain}
+.logo-b.oscuro{background:var(--azul);border-color:var(--azul);color:#fff}
+.logo-b.principal{grid-column:span 2;height:124px;font-size:26px;background:var(--tinta);color:#fff;border-color:var(--tinta)}
 @media(max-width:520px){.logo-b.principal{grid-column:span 1;font-size:20px}}
 
 /* ---------- media kit ---------- */
@@ -745,9 +752,19 @@ if (prox){
 }
 
 /* ============================ franja de marcas ============================ */
+/* Mismo criterio que el muro: logo si lo hay, si no el nombre; si el logo no
+   carga vuelve al nombre. Con url, abre el sitio del sponsor en pestaña nueva. */
 (function(){
-  const marcas = DATOS.tiers.flatMap(t=>t.marcas.map(m=>m.n));
-  const items = marcas.map(n=>'<span>'+n+'</span>').join("")
+  const item = m => {
+    const clase = m.logo ? ' class="logo'+(m.fondoOscuro ? " oscuro" : "")+'"' : "";
+    const dentro = m.logo
+      ? '<img src="'+m.logo+'" alt="'+m.n+'" onerror="this.parentNode.removeAttribute(\'class\');this.parentNode.textContent=this.alt">'
+      : m.n;
+    return m.url
+      ? '<a'+clase+' href="'+m.url+'" target="_blank" rel="noopener" data-track="franja-sponsor">'+dentro+'</a>'
+      : '<span'+clase+'>'+dentro+'</span>';
+  };
+  const items = DATOS.tiers.flatMap(t=>t.marcas).map(item).join("")
     + '<span class="libre">Tu marca acá — 11 5112 8153</span>';
   $("#franja").innerHTML = items + items;
 })();
@@ -844,9 +861,19 @@ $("#j-cat").innerHTML = DATOS.categorias.map(c=>'<option>'+c.n+'</option>').join
 $("#staff").innerHTML = DATOS.staff.map(s=>
   '<div class="persona"><b>'+s.n+'</b><span>'+s.r+'</span></div>').join("");
 
+/* Tarjeta de sponsor: logo si lo hay, si no el nombre. Si el logo no carga,
+   vuelve al nombre en texto. Con url abre el sitio del sponsor en pestaña nueva. */
+function tarjetaSponsor(m){
+  const clase = "logo-b" + (m.destacado ? " principal" : "") + (m.logo && m.fondoOscuro ? " oscuro" : "");
+  const destino = m.url ? ' href="'+m.url+'" target="_blank" rel="noopener"' : ' href="#beneficios"';
+  const dentro = m.logo
+    ? '<img src="'+m.logo+'" alt="'+m.n+'" loading="lazy" onerror="this.parentNode.classList.remove(\'oscuro\');this.parentNode.textContent=this.alt">'
+    : m.n;
+  return '<a class="'+clase+'"'+destino+' data-track="logo-sponsor">'+dentro+'</a>';
+}
 $("#tiers").innerHTML = DATOS.tiers.map(t=>
   '<div class="tier"><h4>'+t.titulo+'</h4><div class="logos">'
-  + t.marcas.map(m=>'<a class="logo-b'+(m.destacado?" principal":"")+'" href="#beneficios" data-track="logo-sponsor">'+m.n+'</a>').join("")
+  + t.marcas.map(tarjetaSponsor).join("")
   + '<a class="logo-b" href="#ser-sponsor" style="border-style:dashed;color:var(--rosa-vivo)" data-track="logo-vacante">Espacio disponible</a>'
   + '</div></div>').join("");
 

@@ -98,7 +98,11 @@ section{padding:64px 0;border-top:1px solid rgba(255,255,255,.08)}
 
 /* sponsors */
 .marcas{display:flex;flex-wrap:wrap;gap:9px;margin-top:24px}
-.marcas span{border:1px solid var(--linea);border-radius:9px;padding:9px 15px;font-family:var(--display);font-size:14.5px;letter-spacing:.02em;color:rgba(255,255,255,.8)}
+.marcas span,.marcas a{border:1px solid var(--linea);border-radius:9px;height:48px;padding:0 15px;display:inline-flex;align-items:center;justify-content:center;font-family:var(--display);font-size:14.5px;letter-spacing:.02em;color:rgba(255,255,255,.8);text-decoration:none}
+.marcas a:hover{border-color:var(--rosa-vivo)}
+.marcas .logo{background:#fff;border-color:#fff;color:var(--tinta);padding:6px 14px}
+.marcas .logo.oscuro{background:var(--azul);border-color:var(--azul);color:#fff}
+.marcas img{display:block;height:100%;width:auto;max-width:150px;object-fit:contain}
 .marcas span.libre{border-style:dashed;color:var(--rosa-vivo)}
 
 footer{padding:48px 0 34px;border-top:1px solid rgba(255,255,255,.08);background:#060D1C}
@@ -307,10 +311,23 @@ tic(); setInterval(tic, 30000);
   $("#p-cond").textContent = mejor.p.c === "L" ? "En Don Bosco 116" : "De visitante";
 })();
 
-/* marcas que acompañan */
-const MARCAS = DATOS.tiers.flatMap(t => t.marcas.map(m => m.n));
-$("#marcas").innerHTML = MARCAS.map(m => "<span>" + m + "</span>").join("")
+/* marcas que acompañan: logo si lo hay, si no el nombre. Si el logo no carga,
+   vuelve al nombre. Con url, la ficha abre el sitio del sponsor en pestaña nueva. */
+function fichaMarca(m){
+  const clase = m.logo ? ' class="logo' + (m.fondoOscuro ? " oscuro" : "") + '"' : "";
+  const dentro = m.logo
+    ? '<img src="' + m.logo + '" alt="' + m.n + '" loading="lazy" onerror="this.parentNode.removeAttribute(\'class\');this.parentNode.textContent=this.alt">'
+    : m.n;
+  return m.url
+    ? '<a' + clase + ' href="' + m.url + '" target="_blank" rel="noopener" data-track="marca-portada">' + dentro + '</a>'
+    : '<span' + clase + '>' + dentro + '</span>';
+}
+$("#marcas").innerHTML = DATOS.tiers.flatMap(t => t.marcas).map(fichaMarca).join("")
   + '<span class="libre">Tu marca acá</span>';
+$("#marcas").addEventListener("click", e => {
+  const a = e.target.closest("[data-track]");
+  if (a) track(a.dataset.track, { marca: a.querySelector("img") ? a.querySelector("img").alt : a.textContent });
+});
 
 /* aviso de apertura: guarda el mail en la base del club (POST /api/suscribir).
    Si el servidor no responde, abre el mail ya escrito para no perder el contacto. */

@@ -113,12 +113,44 @@ const DATOS = {
     { marca:"Agua Tronador", rubro:"Bidones y dispensers", oferta:"Primer bidón bonificado", letra:"Clientes nuevos de la zona.", codigo:"BOSCOAGUA" }
   ],
 
+  // Muro de sponsors. Por cada marca:
+  //   n            nombre, siempre.
+  //   logo         archivo en fotos/sponsors/, por ejemplo "fotos/sponsors/ladran-sancho.png".
+  //                Vacío = se muestra el nombre en texto.
+  //   url          Instagram o sitio del sponsor. Vacío = la tarjeta lleva al Club de Beneficios.
+  //   fondoOscuro  true si el logo es claro y necesita la tarjeta azul para verse.
   tiers: [
-    { titulo:"Sponsor principal", marcas:[{n:"Ladran Sancho", destacado:true}] },
-    { titulo:"Mayores A", marcas:[{n:"Franco Liontix"},{n:"Agua Tronador"},{n:"Delicias Doradas"},{n:"De Cascia"},{n:"Carnevale"},{n:"Lic. Kine Vale Trelles"}] },
-    { titulo:"Mayores B", marcas:[{n:"Textil Calchaquí"},{n:"Supermercado Magdalena"},{n:"Sorar RRHH"},{n:"JL Javier López"},{n:"Bernuts"}] },
-    { titulo:"Minis", marcas:[{n:"Administración Palmieri"},{n:"Century 21 Sunset"},{n:"INK 360"},{n:"La Conocida"}] },
-    { titulo:"Maxihandball", marcas:[{n:"Inti Bernal"},{n:"Lalomatic"},{n:"Redbee"},{n:"Graferme Gráfica"},{n:"Santa Paz"}] }
+    { titulo:"Sponsor principal", marcas:[
+      { n:"Ladran Sancho", destacado:true, logo:"", url:"", fondoOscuro:false }
+    ]},
+    { titulo:"Mayores A", marcas:[
+      { n:"Franco Liontix",         logo:"", url:"", fondoOscuro:false },
+      { n:"Agua Tronador",          logo:"", url:"", fondoOscuro:false },
+      { n:"Delicias Doradas",       logo:"", url:"", fondoOscuro:false },
+      { n:"De Cascia",              logo:"", url:"", fondoOscuro:false },
+      { n:"Carnevale",              logo:"", url:"", fondoOscuro:false },
+      { n:"Lic. Kine Vale Trelles", logo:"", url:"", fondoOscuro:false }
+    ]},
+    { titulo:"Mayores B", marcas:[
+      { n:"Textil Calchaquí",       logo:"", url:"", fondoOscuro:false },
+      { n:"Supermercado Magdalena", logo:"", url:"", fondoOscuro:false },
+      { n:"Sorar RRHH",             logo:"", url:"", fondoOscuro:false },
+      { n:"JL Javier López",        logo:"", url:"", fondoOscuro:false },
+      { n:"Bernuts",                logo:"", url:"", fondoOscuro:false }
+    ]},
+    { titulo:"Minis", marcas:[
+      { n:"Administración Palmieri", logo:"", url:"", fondoOscuro:false },
+      { n:"Century 21 Sunset",       logo:"", url:"", fondoOscuro:false },
+      { n:"INK 360",                 logo:"", url:"", fondoOscuro:false },
+      { n:"La Conocida",             logo:"", url:"", fondoOscuro:false }
+    ]},
+    { titulo:"Maxihandball", marcas:[
+      { n:"Inti Bernal",      logo:"", url:"", fondoOscuro:false },
+      { n:"Lalomatic",        logo:"", url:"", fondoOscuro:false },
+      { n:"Redbee",           logo:"", url:"", fondoOscuro:false },
+      { n:"Graferme Gráfica", logo:"", url:"", fondoOscuro:false },
+      { n:"Santa Paz",        logo:"", url:"", fondoOscuro:false }
+    ]}
   ],
 
   // ⚠️ Edades y horarios: confirmá con la coordinación.
