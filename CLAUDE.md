@@ -11,7 +11,8 @@ index.html            ← página de lanzamiento (la que ve el público)
 web.html              ← la web completa, todavía sin linkear ni indexar
 manifest.webmanifest  ← datos de la app instalable
 sw.js                 ← service worker (caché offline)
-iconos/               ← íconos de la app (192, 512 y 180 px)
+iconos/               ← escudo.svg (el escudo oficial, se usa en las tres páginas) e
+                        íconos de la app (192, 512 y 180 px, generados desde el SVG)
 fotos/                ← imágenes de la galería
 CLAUDE.md             ← este archivo
 worker.js             ← backend mínimo: guarda los mails de los formularios en la base D1

@@ -16,6 +16,7 @@
 <link rel="canonical" href="https://adbhandball.com/">
 <meta name="theme-color" content="#0A1428">
 <link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="iconos/escudo.svg" type="image/svg+xml">
 <link rel="icon" href="iconos/icono-192.png" sizes="192x192">
 <link rel="apple-touch-icon" href="iconos/icono-180.png">
 <meta name="apple-mobile-web-app-title" content="ADB Handball">
@@ -48,7 +49,7 @@ img{max-width:100%;display:block}
   radial-gradient(820px 400px at 50% -12%,rgba(228,86,143,.30),transparent 64%),
   radial-gradient(680px 420px at 12% 108%,rgba(30,58,110,.9),transparent 62%)}
 .portada>*{position:relative}
-.escudo{width:clamp(96px,17vw,130px);margin:0 auto 26px}
+.escudo{width:clamp(96px,17vw,130px);height:auto;margin:0 auto 26px}
 .lema{font-family:var(--display);font-size:12px;letter-spacing:.42em;color:var(--rosa);margin:0 0 16px}
 .portada p.intro{max-width:56ch;margin:20px auto 0;color:rgba(255,255,255,.78)}
 .cuenta{margin:40px auto 0;max-width:640px;border:1px solid var(--linea);border-radius:18px;background:linear-gradient(180deg,rgba(21,42,84,.9),rgba(10,20,40,.9));padding:26px 22px}
@@ -123,15 +124,7 @@ footer h4{font-family:var(--display);font-size:13px;font-weight:400;letter-spaci
 
 <header class="portada">
   <div class="wrap">
-    <svg class="escudo" viewBox="0 0 100 120" role="img" aria-label="Escudo del Ateneo Don Bosco Handball">
-      <path d="M4 4h92v66c0 26-24 40-46 46C28 110 4 96 4 70Z" fill="#0A1428" stroke="#F2B7CF" stroke-width="5"/>
-      <path d="M18 22h64v50c0 18-16 28-32 33-16-5-32-15-32-33Z" fill="none" stroke="#fff" stroke-width="2.5"/>
-      <path d="M18 22 82 88M82 22 18 88" stroke="#fff" stroke-width="3"/>
-      <text x="33" y="60" font-family="Anton,Impact,sans-serif" font-size="25" fill="#F2B7CF" text-anchor="middle">A</text>
-      <text x="50" y="45" font-family="Anton,Impact,sans-serif" font-size="25" fill="#fff" text-anchor="middle">D</text>
-      <text x="67" y="60" font-family="Anton,Impact,sans-serif" font-size="25" fill="#F2B7CF" text-anchor="middle">B</text>
-      <circle cx="50" cy="84" r="10" fill="none" stroke="#fff" stroke-width="3"/>
-    </svg>
+    <img class="escudo" src="iconos/escudo.svg" alt="Escudo del Ateneo Don Bosco Handball" width="300" height="400">
 
     <p class="lema">SENSUS PERTINENDI</p>
     <h1 class="h1">La casa del Bosco,<br>ahora también acá.</h1>
