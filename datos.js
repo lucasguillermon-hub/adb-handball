@@ -125,35 +125,72 @@ const DATOS = {
   //   fondoOscuro  true si el logo es claro y necesita la tarjeta azul para verse.
   tiers: [
     { titulo:"Sponsor principal", marcas:[
-      { n:"Ladran Sancho", destacado:true, logo:"", url:"", fondoOscuro:false }
-    ]},
-    { titulo:"Mayores A", marcas:[
-      { n:"Franco Liontix",         logo:"", url:"", fondoOscuro:false },
-      { n:"Agua Tronador",          logo:"", url:"", fondoOscuro:false },
-      { n:"Delicias Doradas",       logo:"", url:"", fondoOscuro:false },
-      { n:"De Cascia",              logo:"", url:"", fondoOscuro:false },
-      { n:"Carnevale",              logo:"", url:"", fondoOscuro:false },
-      { n:"Lic. Kine Vale Trelles", logo:"", url:"", fondoOscuro:false }
-    ]},
-    { titulo:"Mayores B", marcas:[
-      { n:"Textil Calchaquí",       logo:"", url:"", fondoOscuro:false },
-      { n:"Supermercado Magdalena", logo:"", url:"", fondoOscuro:false },
-      { n:"Sorar RRHH",             logo:"", url:"", fondoOscuro:false },
-      { n:"JL Javier López",        logo:"", url:"", fondoOscuro:false },
-      { n:"Bernuts",                logo:"", url:"", fondoOscuro:false }
+      { n:"Ladran Sancho", destacado:true, logo:"fotos/sponsors/ladran-sancho.png", url:"", fondoOscuro:false }
     ]},
     { titulo:"Minis", marcas:[
-      { n:"Administración Palmieri", logo:"", url:"", fondoOscuro:false },
-      { n:"Century 21 Sunset",       logo:"", url:"", fondoOscuro:false },
-      { n:"INK 360",                 logo:"", url:"", fondoOscuro:false },
-      { n:"La Conocida",             logo:"", url:"", fondoOscuro:false }
+      { n:"Administración Palmieri", logo:"fotos/sponsors/administracion-palmieri.png", url:"", fondoOscuro:false },
+      { n:"Century 21 Sunset",       logo:"fotos/sponsors/century-21.png",              url:"", fondoOscuro:false },
+      { n:"INK 360",                 logo:"fotos/sponsors/ink-360.png",                 url:"", fondoOscuro:false },
+      { n:"La Conocida",             logo:"fotos/sponsors/parrilla-la-conocida.png",    url:"", fondoOscuro:false }
+    ]},
+    { titulo:"Infantiles", marcas:[
+      { n:"A lo Rabal",                        logo:"fotos/sponsors/a-lo-rabal.png",                   url:"", fondoOscuro:false },
+      { n:"Cortinas Calchaquí",                logo:"fotos/sponsors/cortinas-calchaqui.png",           url:"", fondoOscuro:false },
+      { n:"Expreso Vitale",                    logo:"fotos/sponsors/expreso-vitale.png",               url:"", fondoOscuro:false },
+      { n:"Mundo Dental",                      logo:"fotos/sponsors/mundo-dental.png",                 url:"", fondoOscuro:false },
+      { n:"Kinesiología Lic. Valeria Trelles", logo:"fotos/sponsors/valeria-trelles-kinesiologia.png", url:"", fondoOscuro:false }
+    ]},
+    { titulo:"Menores", marcas:[
+      { n:"Expreso Vitale", logo:"fotos/sponsors/expreso-vitale.png", url:"", fondoOscuro:false },
+      { n:"Fior Pilates",   logo:"fotos/sponsors/fior-pilates.png",   url:"", fondoOscuro:false },
+      { n:"Ladran Sancho",  logo:"fotos/sponsors/ladran-sancho.png",  url:"", fondoOscuro:false },
+      { n:"Núcleo Deportes",logo:"fotos/sponsors/nucleo-deportes.png",url:"", fondoOscuro:false },
+      { n:"Via Cosenza",    logo:"fotos/sponsors/via-cosenza.png",    url:"", fondoOscuro:false }
+    ]},
+    { titulo:"Cadetas", marcas:[
+      { n:"Body Bernal",   logo:"fotos/sponsors/body-bernal.png",   url:"", fondoOscuro:false },
+      { n:"Ladran Sancho", logo:"fotos/sponsors/ladran-sancho.png", url:"", fondoOscuro:false },
+      { n:"Neobrokers",    logo:"fotos/sponsors/neobrokers.png",    url:"", fondoOscuro:false },
+      { n:"Sr. Cartel",    logo:"fotos/sponsors/senor-cartel.png",  url:"", fondoOscuro:false },
+      { n:"Via Cosenza",   logo:"fotos/sponsors/via-cosenza.png",   url:"", fondoOscuro:false }
+    ]},
+    { titulo:"Juveniles", marcas:[
+      { n:"AB Transbelt · Autogoma Bernal", logo:"fotos/sponsors/autogoma-bernal-transvelt.png", url:"", fondoOscuro:false },
+      { n:"Grupo Uno",                      logo:"fotos/sponsors/grupo-uno.png",                 url:"", fondoOscuro:false },
+      { n:"La Asunción",                    logo:"fotos/sponsors/la-asuncion.png",               url:"", fondoOscuro:false },
+      { n:"Ladran Sancho",                  logo:"fotos/sponsors/ladran-sancho.png",             url:"", fondoOscuro:false },
+      { n:"Le Coin",                        logo:"fotos/sponsors/le-coin.png",                   url:"", fondoOscuro:false },
+      { n:"Morty's Burgers",                logo:"fotos/sponsors/morty-s.png",                   url:"", fondoOscuro:false }
+    ]},
+    { titulo:"Juniors", marcas:[
+      { n:"A los Mandarines", logo:"fotos/sponsors/a-los-mandarines.png", url:"", fondoOscuro:false },
+      { n:"Acimet",           logo:"fotos/sponsors/acimet.png",           url:"", fondoOscuro:false },
+      { n:"Cosentino",        logo:"fotos/sponsors/cosentino.png",        url:"", fondoOscuro:false },
+      { n:"Paher Plásticos",  logo:"fotos/sponsors/paher-plasticos.png",  url:"", fondoOscuro:false },
+      { n:"Agua Tronador",    logo:"fotos/sponsors/tronador.png",         url:"", fondoOscuro:false }
+    ]},
+    { titulo:"Mayores A", marcas:[
+      { n:"Franco Liontix",         logo:"fotos/sponsors/franco-lionti.png",                url:"", fondoOscuro:false },
+      { n:"Agua Tronador",          logo:"fotos/sponsors/tronador.png",                     url:"", fondoOscuro:false },
+      { n:"Delicias Doradas",       logo:"fotos/sponsors/delicias-doradas.png",             url:"", fondoOscuro:false },
+      { n:"De Cascia",              logo:"fotos/sponsors/de-cascia.png",                    url:"", fondoOscuro:false },
+      { n:"Carnevale",              logo:"fotos/sponsors/carnevale.png",                    url:"", fondoOscuro:false },
+      { n:"Lic. Kine Vale Trelles", logo:"fotos/sponsors/valeria-trelles-kinesiologia.png", url:"", fondoOscuro:false }
+    ]},
+    { titulo:"Mayores B", marcas:[
+      { n:"Textil Calchaquí",       logo:"fotos/sponsors/cortinas-calchaqui.png",     url:"", fondoOscuro:false },
+      { n:"Supermercado Magdalena", logo:"fotos/sponsors/magdalena-supermercado.png", url:"", fondoOscuro:false },
+      { n:"Sorar RRHH",             logo:"fotos/sponsors/sora-rrhh.png",              url:"", fondoOscuro:false },
+      { n:"JL Javier López",        logo:"fotos/sponsors/javier-lopez.png",           url:"", fondoOscuro:false },
+      { n:"Bernuts",                logo:"fotos/sponsors/bernutss.png",               url:"", fondoOscuro:false },
+      { n:"Agua Tronador",          logo:"fotos/sponsors/tronador.png",               url:"", fondoOscuro:false }
     ]},
     { titulo:"Maxihandball", marcas:[
-      { n:"Inti Bernal",      logo:"", url:"", fondoOscuro:false },
-      { n:"Lalomatic",        logo:"", url:"", fondoOscuro:false },
-      { n:"Redbee",           logo:"", url:"", fondoOscuro:false },
-      { n:"Graferme Gráfica", logo:"", url:"", fondoOscuro:false },
-      { n:"Santa Paz",        logo:"", url:"", fondoOscuro:false }
+      { n:"Inti Bernal",      logo:"fotos/sponsors/inti-bernal.png", url:"", fondoOscuro:false },
+      { n:"Lalomatic",        logo:"fotos/sponsors/lalomatic.png",   url:"", fondoOscuro:false },
+      { n:"Redbee",           logo:"fotos/sponsors/redbee.png",      url:"", fondoOscuro:false },
+      { n:"Graferme Gráfica", logo:"fotos/sponsors/graferne.png",    url:"", fondoOscuro:false },
+      { n:"Santa Paz",        logo:"fotos/sponsors/santa-paz.png",   url:"", fondoOscuro:false }
     ]}
   ],
 

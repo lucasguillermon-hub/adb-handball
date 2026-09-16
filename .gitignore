@@ -2,3 +2,7 @@
 # Estado local de wrangler (base D1 de prueba, caché)
 .wrangler/
 node_modules/
+
+# Material de diseño de los sponsors (PDF, PSD, placas). Los logos para la web
+# ya están exportados en fotos/sponsors/. No va al repo ni se publica.
+6. SPONSORS 2026/

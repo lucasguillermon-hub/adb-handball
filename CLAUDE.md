@@ -13,7 +13,7 @@ manifest.webmanifest  ← datos de la app instalable
 sw.js                 ← service worker (caché offline)
 iconos/               ← escudo.svg (el escudo oficial, se usa en las tres páginas) e
                         íconos de la app (192, 512 y 180 px, generados desde el SVG)
-fotos/                ← imágenes de la galería
+fotos/                ← imágenes de la galería; fotos/sponsors/ los logos del muro
 CLAUDE.md             ← este archivo
 worker.js             ← backend mínimo: guarda los mails de los formularios en la base D1
 migraciones/          ← esquema de la base de contactos (tabla `contactos`)
@@ -81,8 +81,10 @@ pertenencia. Los textos hablan de la tribuna, de las familias y del barrio, no d
 - Confirmar nombres de algunos rivales del fixture (Lapte, C.F.L., el rival del 04/10
   de inferiores, el "B" con flor de lis, M.A. Handball).
 - Horarios reales de partido y de entrenamiento por categoría.
-- Logos de los sponsors: hoy se muestran como texto. Cuando lleguen los archivos, van
-  en `fotos/sponsors/` y se reemplaza el texto por `<img>` dentro de `.logo-b`.
+- Logos: los 39 de la temporada 2026 ya están en `fotos/sponsors/` (exportados de los PDF
+  de la carpeta de diseño `6. SPONSORS 2026/`, que está ignorada en git y no se publica).
+  Si llega un logo nuevo, va ahí en PNG transparente, azul sobre fondo claro, y se
+  carga en `logo` dentro de `tiers`.
 - Acordar cada beneficio del Club de Beneficios con su comercio antes de publicarlo.
 - Números reales del media kit (jugadores, familias, fechas de local).
 - Link de la comunidad de WhatsApp.

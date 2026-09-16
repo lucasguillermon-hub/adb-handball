@@ -16,3 +16,6 @@ wrangler.jsonc
 # Código del Worker y de la base: corre en Cloudflare, no se sirve como archivo.
 worker.js
 migraciones
+
+# Material de diseño: no se publica (los PSD superan el límite de 25 MB por archivo).
+6. SPONSORS 2026

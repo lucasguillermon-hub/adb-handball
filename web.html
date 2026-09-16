@@ -703,11 +703,16 @@ $("#pie-tel").textContent = DATOS.contacto.tel;
 const EN_LETRAS = ["", "Un", "Dos", "Tres", "Cuatro", "Cinco", "Seis", "Siete", "Ocho", "Nueve"];
 $("#hero-planteles").textContent = EN_LETRAS[DATOS.planteles.length] || DATOS.planteles.length;
 
+/* Una marca puede estar en varias categorías del muro: esto la devuelve una sola vez. */
+function marcasUnicas(){
+  return DATOS.tiers.flatMap(t=>t.marcas).filter((m,i,a)=>a.findIndex(x=>(x.logo||x.n)===(m.logo||m.n))===i);
+}
+
 /* Sponsor del prode: rota entre las marcas del muro, una distinta por partido.
    Se elige por posición del partido en el calendario, así todos ven la misma
    marca para ese partido y después se puede reportar. */
 function sponsorDelProde(pl, p){
-  const marcas = DATOS.tiers.flatMap(t=>t.marcas.map(m=>m.n));
+  const marcas = marcasUnicas().map(m=>m.n);
   const nro = DATOS.planteles.indexOf(pl) + pl.partidos.indexOf(p) * DATOS.planteles.length;
   return marcas[nro % marcas.length];
 }
@@ -761,7 +766,7 @@ if (prox){
       ? '<a'+clase+' href="'+m.url+'" target="_blank" rel="noopener" data-track="franja-sponsor">'+dentro+'</a>'
       : '<span'+clase+'>'+dentro+'</span>';
   };
-  const items = DATOS.tiers.flatMap(t=>t.marcas).map(item).join("")
+  const items = marcasUnicas().map(item).join("")
     + '<span class="libre">Tu marca acá — '+DATOS.contacto.tel+'</span>';
   $("#franja").innerHTML = items + items;
 })();

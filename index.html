@@ -326,7 +326,9 @@ function fichaMarca(m){
     ? '<a' + clase + ' href="' + m.url + '" target="_blank" rel="noopener" data-track="marca-portada">' + dentro + '</a>'
     : '<span' + clase + '>' + dentro + '</span>';
 }
-$("#marcas").innerHTML = DATOS.tiers.flatMap(t => t.marcas).map(fichaMarca).join("")
+// Una marca puede estar en varias categorías: acá se muestra una sola vez.
+const marcasUnicas = DATOS.tiers.flatMap(t => t.marcas).filter((m, i, a) => a.findIndex(x => (x.logo || x.n) === (m.logo || m.n)) === i);
+$("#marcas").innerHTML = marcasUnicas.map(fichaMarca).join("")
   + '<span class="libre">Tu marca acá</span>';
 $("#marcas").addEventListener("click", e => {
   const a = e.target.closest("[data-track]");
