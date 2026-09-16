@@ -199,30 +199,32 @@ const DATOS = {
   // ⚠️ Horarios: confirmá con la coordinación.
   // Las que tienen especial:true no cuentan en el total de categorías que muestra el sitio.
   categorias: [
-    { n:"Iniciación", e:"6 a 8 años", dt:"Joel Szczur", h:"Martes y jueves, 17:30" },
+    { n:"Iniciación", e:"6 a 8 años", dt:"Joel Szcsur", h:"Martes y jueves, 17:30" },   // ⚠️ no figura en la lista de DT del club: confirmar si sigue
     { n:"Minis", e:"9 y 10 años", dt:"Paula Glisciak", h:"Martes y jueves, 18:00" },
-    { n:"Infantiles", e:"11 y 12 años", dt:"Cecilia Esquivel", h:"Martes y jueves, 18:30" },
-    { n:"Menores", e:"13 y 14 años", dt:"Iván Piscopo y Cecilia Esquivel", h:"Lunes, miércoles y viernes, 19:00" },
-    { n:"Cadetas", e:"15 y 16 años", dt:"A confirmar", h:"A confirmar" },        // ⚠️ DT y horario
-    { n:"Juveniles", e:"17 y 18 años", dt:"A confirmar", h:"A confirmar" },      // ⚠️ DT y horario
-    { n:"Juniors", e:"Sub-21, hasta 21 años", dt:"Joel Szczur · PF Facundo Fariña", h:"Lunes, miércoles y viernes, 20:00" },
-    { n:"Mayores A", e:"Primera damas", dt:"Christian Gull · PF Facundo Fariña", h:"Lunes, miércoles y viernes, 21:00" },
-    { n:"Mayores B", e:"Tercera damas", dt:"Majo Daneri · PF Facundo Fariña", h:"Lunes, miércoles y viernes, 21:00" },
-    { n:"Mayores caballeros", e:"Cuarta caballeros", dt:"Joel Szczur", h:"Martes y jueves, 21:00" },
-    { n:"Maxihandball", e:"Femenino, +30", dt:"Iván Piscopo · PF Joel Szczur", h:"Miércoles, 21:00" },
+    { n:"Infantiles", e:"11 y 12 años", dt:"Cecilia Esquivel · Asist. Julieta Zárate", h:"Martes y jueves, 18:30" },
+    { n:"Menores", e:"13 y 14 años", dt:"Iván Piscopo · Asist. Cecilia Esquivel · PF Agustín Valado", h:"Lunes, miércoles y viernes, 19:00" },
+    { n:"Cadetas", e:"15 y 16 años", dt:"Iván Piscopo · Asist. Cecilia Esquivel · PF Agustín Valado", h:"A confirmar" },   // ⚠️ horario
+    { n:"Juveniles", e:"17 y 18 años", dt:"Iván Piscopo · PF Facundo Fariña", h:"A confirmar" },   // ⚠️ horario
+    { n:"Juniors", e:"Sub-21, hasta 21 años", dt:"Joel Szcsur · PF Facundo Fariña", h:"Lunes, miércoles y viernes, 20:00" },
+    { n:"Mayores A", e:"Primera damas", dt:"Cristian Gull · PF Facundo Fariña", h:"Lunes, miércoles y viernes, 21:00" },
+    { n:"Mayores B", e:"Tercera damas", dt:"María José Daneri · PF Facundo Fariña", h:"Lunes, miércoles y viernes, 21:00" },
+    { n:"Mayores caballeros", e:"Cuarta caballeros", dt:"Joel Szcsur", h:"Martes y jueves, 21:00" },
+    { n:"Maxihandball", e:"Femenino, +30", dt:"Iván Piscopo · PF Joel Szcsur", h:"Miércoles, 21:00" },
     { n:"Arqueras", e:"Entrenamiento específico", dt:"Nicolás Lizarraga", h:"A coordinar con cada categoría", especial:true }   // no cuenta como categoría
   ],
 
   staff: [
     { n:"Jimmy Righi", r:"Coordinador" },
-    { n:"Iván Piscopo", r:"Coordinador · DT menores y maxi" },
-    { n:"Christian Gull", r:"DT Mayores A" },
-    { n:"Majo Daneri", r:"DT Mayores B" },
-    { n:"Joel Szczur", r:"DT juniors, iniciación y caballeros" },
-    { n:"Cecilia Esquivel", r:"DT infantiles y menores" },
+    { n:"Iván Piscopo", r:"Coordinador · DT menores, cadetas, juveniles y maxi" },
+    { n:"Cristian Gull", r:"DT Mayores A" },
+    { n:"María José Daneri", r:"DT Mayores B" },
+    { n:"Joel Szcsur", r:"DT juniors y caballeros · PF maxi" },
+    { n:"Cecilia Esquivel", r:"DT infantiles · asistente de menores y cadetas" },
     { n:"Paula Glisciak", r:"DT minis" },
-    { n:"Nicolás Lizarraga", r:"Entrenador de arqueras" },
-    { n:"Facundo Fariña", r:"Preparador físico" }
+    { n:"Julieta Zárate", r:"Asistente de infantiles" },
+    { n:"Facundo Fariña", r:"PF de juveniles, juniors y mayores" },
+    { n:"Agustín Valado", r:"PF de menores y cadetas" },
+    { n:"Nicolás Lizarraga", r:"Entrenador de arqueras" }
   ],
 
   // ⚠️ Poné tus números reales antes de mostrarle esto a un sponsor.
