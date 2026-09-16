@@ -198,7 +198,7 @@ footer a{color:var(--rosa);text-decoration:none}
 <section>
   <div class="wrap">
     <p class="rotulo">La camiseta</p>
-    <h2 class="h2">Siete posiciones,<br>nueve categorías cada una</h2>
+    <h2 class="h2">Siete posiciones,<br><span id="n-categorias">todas las</span> categorías cada una</h2>
     <p class="bajada" style="margin-top:14px">Todos los planteles del club usan el mismo diseño. Quien toma una posición aparece en todas las camisetas, en todas las canchas donde jugamos, todos los fines de semana de la temporada.</p>
 
     <div class="camiseta-grid">
@@ -340,7 +340,7 @@ footer a{color:var(--rosa);text-decoration:none}
 const PLAN = {
 
   principios: [
-    { t:"Una marca, todas las categorías", d:"Quien toma una posición aparece en las nueve categorías del club, de minis a maxihandball. La misma marca, en el mismo lugar, en toda la indumentaria." },
+    { t:"Una marca, todas las categorías", d:"Quien toma una posición aparece en todas las categorías del club, de minis a maxihandball. La misma marca, en el mismo lugar, en toda la indumentaria." },
     { t:"Espacios definidos", d:"Cada lugar de la camiseta, de la cancha y de la web está delimitado y tiene su medida. Se sabe exactamente qué se contrata y cómo se va a ver." },
     { t:"Exclusividad por rubro", d:"Desde el nivel Camiseta, no entra otro comercio del mismo rubro. Un supermercado, una panadería, una inmobiliaria." },
     { t:"Rendimos cuentas", d:"Todos los meses te contamos cuánta gente vio tu marca en la web y cuántas usaron tu beneficio. Sin números, no es sponsoreo." }
@@ -388,12 +388,12 @@ const PLAN = {
 
     { orden:"Nivel 3", nombre:"Camiseta", destacado:true, para:"Para la marca que quiere quedarse todo el año.",
       hereda:"Todo lo del nivel Cancha",
-      items:["Tu logo en una posición de la camiseta, en las nueve categorías","Exclusividad en tu rubro","Presentás la votación de la figura un mes al año","Una producción de fotos con un plantel"],
+      items:["Tu logo en una posición de la camiseta, en todas las categorías","Exclusividad en tu rubro","Presentás la votación de la figura un mes al año","Una producción de fotos con un plantel"],
       precio:"A convenir", cupos:"6 lugares · 2 posiciones mayores y 4 menores", vigencia:"Solo anual" },
 
     { orden:"Nivel 4", nombre:"Sensus", top:true, para:"Un solo sponsor por temporada. El que le pone el nombre al año.",
       hereda:"Todo lo del nivel Camiseta",
-      items:["El pecho de la camiseta, en las nueve categorías","Naming de la copa de pretemporada del club","Presentás el marcador de la web todo el año","Presencia en todas las comunicaciones del club"],
+      items:["El pecho de la camiseta, en todas las categorías","Naming de la copa de pretemporada del club","Presentás el marcador de la web todo el año","Presencia en todas las comunicaciones del club"],
       precio:"A convenir", cupos:"1 lugar por temporada", vigencia:"Solo anual" }
   ],
 
@@ -426,9 +426,12 @@ const PLAN = {
 const $ = s => document.querySelector(s);
 const wsp = t => "https://wa.me/"+DATOS.contacto.wsp+"?text="+encodeURIComponent(t);
 const partidosDeLocal = DATOS.planteles.reduce((t,pl)=>t+pl.partidos.filter(p=>p.c==="L").length, 0);
+const totalCategorias = DATOS.categorias.filter(c=>!c.especial).length;
+const EN_LETRAS = ["", "una", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve", "diez", "once", "doce"];
+$("#n-categorias").textContent = EN_LETRAS[totalCategorias] || totalCategorias;
 
 $("#cifras").innerHTML = DATOS.numeros.map(c =>
-  '<div class="cifra"><b>'+(c.calc==="local" ? partidosDeLocal : c.b)+'</b><span>'+c.l+'</span></div>').join("");
+  '<div class="cifra"><b>'+(c.calc==="local" ? partidosDeLocal : c.b)+'</b><span>'+c.l.replace("{categorias}", totalCategorias)+'</span></div>').join("");
 
 $("#principios").innerHTML = PLAN.principios.map(p =>
   '<article class="principio"><h3 class="h3">'+p.t+'</h3><p>'+p.d+'</p></article>').join("");

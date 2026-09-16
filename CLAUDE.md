@@ -80,7 +80,9 @@ pertenencia. Los textos hablan de la tribuna, de las familias y del barrio, no d
 
 - Confirmar nombres de algunos rivales del fixture (Lapte, C.F.L., el rival del 04/10
   de inferiores, el "B" con flor de lis, M.A. Handball).
-- Horarios reales de partido y de entrenamiento por categoría.
+- Horarios reales de partido y de entrenamiento por categoría. Cadetas y Juveniles
+  están cargadas sin DT ni horario, y las edades de Cadetas, Juveniles y Juniors son
+  estimadas: confirmarlas con la coordinación.
 - Logos: los 39 de la temporada 2026 ya están en `fotos/sponsors/` (exportados de los PDF
   de la carpeta de diseño `6. SPONSORS 2026/`, que está ignorada en git y no se publica).
   Si llega un logo nuevo, va ahí en PNG transparente, azul sobre fondo claro, y se

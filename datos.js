@@ -195,17 +195,20 @@ const DATOS = {
   ],
 
   // ⚠️ Edades y horarios: confirmá con la coordinación.
+  // Las que tienen especial:true no cuentan en el total de categorías que muestra el sitio.
   categorias: [
     { n:"Iniciación", e:"6 a 8 años", dt:"Joel Szczur", h:"Martes y jueves, 17:30" },
     { n:"Minis", e:"9 y 10 años", dt:"Paula Glisciak", h:"Martes y jueves, 18:00" },
     { n:"Infantiles", e:"11 y 12 años", dt:"Cecilia Esquivel", h:"Martes y jueves, 18:30" },
     { n:"Menores", e:"13 y 14 años", dt:"Iván Piscopo y Cecilia Esquivel", h:"Lunes, miércoles y viernes, 19:00" },
-    { n:"Juniors", e:"15 a 18 años", dt:"Joel Szczur · PF Facundo Fariña", h:"Lunes, miércoles y viernes, 20:00" },
+    { n:"Cadetas", e:"15 y 16 años", dt:"A confirmar", h:"A confirmar" },        // ⚠️ edad, DT y horario
+    { n:"Juveniles", e:"17 y 18 años", dt:"A confirmar", h:"A confirmar" },      // ⚠️ edad, DT y horario
+    { n:"Juniors", e:"19 a 21 años", dt:"Joel Szczur · PF Facundo Fariña", h:"Lunes, miércoles y viernes, 20:00" },   // ⚠️ edad: antes decía 15 a 18
     { n:"Mayores A", e:"Primera damas", dt:"Christian Gull · PF Facundo Fariña", h:"Lunes, miércoles y viernes, 21:00" },
     { n:"Mayores B", e:"Tercera damas", dt:"Majo Daneri · PF Facundo Fariña", h:"Lunes, miércoles y viernes, 21:00" },
     { n:"Mayores caballeros", e:"Cuarta caballeros", dt:"Joel Szczur", h:"Martes y jueves, 21:00" },
     { n:"Maxihandball", e:"Femenino, +30", dt:"Iván Piscopo · PF Joel Szczur", h:"Miércoles, 21:00" },
-    { n:"Arqueras", e:"Entrenamiento específico", dt:"Nicolás Lizarraga", h:"A coordinar con cada categoría" }
+    { n:"Arqueras", e:"Entrenamiento específico", dt:"Nicolás Lizarraga", h:"A coordinar con cada categoría", especial:true }   // no cuenta como categoría
   ],
 
   staff: [
@@ -225,7 +228,7 @@ const DATOS = {
   // solo desde el fixture: la cantidad cambia cada torneo.
   numeros: [
     { b:"2.717", l:"seguidores en Instagram, casi todos de Quilmes y Bernal" },
-    { b:"150+", l:"jugadoras y jugadores en 9 categorías" },
+    { b:"150+", l:"jugadoras y jugadores en {categorias} categorías" },   // {categorias} se reemplaza por el total real
     { calc:"local", l:"partidos de local este torneo" },   // se calcula solo desde el fixture
     { b:"600+", l:"familias del club y del colegio en la comunidad" }
   ],
@@ -248,14 +251,14 @@ const DATOS = {
     ], cta:"Quiero estar en la cancha" },
     { t:"Camiseta", p:"Para la marca que quiere quedarse todo el año.", destacado:true, items:[
       "Todo lo del nivel Cancha",
-      "Tu logo en una posición de la camiseta, en las nueve categorías",
+      "Tu logo en una posición de la camiseta, en todas las categorías",
       "Exclusividad en tu rubro",
       "Presentás la votación de la figura un mes al año",
       "Una producción de fotos con un plantel"
     ], cta:"Hablemos del año" },
     { t:"Sensus", p:"Un solo sponsor por temporada. El que le pone el nombre al año.", destacado:false, items:[
       "Todo lo del nivel Camiseta",
-      "El pecho de la camiseta, en las nueve categorías",
+      "El pecho de la camiseta, en todas las categorías",
       "Naming de la copa de pretemporada del club",
       "Presentás el marcador de la web todo el año",
       "Presencia en todas las comunicaciones del club"

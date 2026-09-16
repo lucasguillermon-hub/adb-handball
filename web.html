@@ -881,8 +881,9 @@ $("#tiers").innerHTML = DATOS.tiers.map(t=>
 
 /* Los partidos de local se cuentan desde el fixture: cambian con cada torneo. */
 const partidosDeLocal = DATOS.planteles.reduce((t,pl)=>t+pl.partidos.filter(p=>p.c==="L").length, 0);
+const totalCategorias = DATOS.categorias.filter(c=>!c.especial).length;
 $("#numeros").innerHTML = DATOS.numeros.map(n=>
-  '<div class="num"><b>'+(n.calc==="local" ? partidosDeLocal : n.b)+'</b><span>'+n.l+'</span></div>').join("");
+  '<div class="num"><b>'+(n.calc==="local" ? partidosDeLocal : n.b)+'</b><span>'+n.l.replace("{categorias}", totalCategorias)+'</span></div>').join("");
 
 $("#paquetes").innerHTML = DATOS.paquetes.map(p=>
   '<article class="paq'+(p.destacado?" destacado":"")+'"><h4>'+p.t+'</h4><p class="para">'+p.p+'</p>'
