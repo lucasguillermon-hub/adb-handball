@@ -194,16 +194,18 @@ const DATOS = {
     ]}
   ],
 
-  // ⚠️ Edades y horarios: confirmá con la coordinación.
+  // Edades según las categorías del handball: Minis hasta 9-10, Infantiles 11-12, Menores 13-14,
+  // Cadetas 15-16, Juveniles 17-18, Juniors (Sub-21) hasta 21, Mayores desde 19, Maxi +30.
+  // ⚠️ Horarios: confirmá con la coordinación.
   // Las que tienen especial:true no cuentan en el total de categorías que muestra el sitio.
   categorias: [
     { n:"Iniciación", e:"6 a 8 años", dt:"Joel Szczur", h:"Martes y jueves, 17:30" },
     { n:"Minis", e:"9 y 10 años", dt:"Paula Glisciak", h:"Martes y jueves, 18:00" },
     { n:"Infantiles", e:"11 y 12 años", dt:"Cecilia Esquivel", h:"Martes y jueves, 18:30" },
     { n:"Menores", e:"13 y 14 años", dt:"Iván Piscopo y Cecilia Esquivel", h:"Lunes, miércoles y viernes, 19:00" },
-    { n:"Cadetas", e:"15 y 16 años", dt:"A confirmar", h:"A confirmar" },        // ⚠️ edad, DT y horario
-    { n:"Juveniles", e:"17 y 18 años", dt:"A confirmar", h:"A confirmar" },      // ⚠️ edad, DT y horario
-    { n:"Juniors", e:"19 a 21 años", dt:"Joel Szczur · PF Facundo Fariña", h:"Lunes, miércoles y viernes, 20:00" },   // ⚠️ edad: antes decía 15 a 18
+    { n:"Cadetas", e:"15 y 16 años", dt:"A confirmar", h:"A confirmar" },        // ⚠️ DT y horario
+    { n:"Juveniles", e:"17 y 18 años", dt:"A confirmar", h:"A confirmar" },      // ⚠️ DT y horario
+    { n:"Juniors", e:"Sub-21, hasta 21 años", dt:"Joel Szczur · PF Facundo Fariña", h:"Lunes, miércoles y viernes, 20:00" },
     { n:"Mayores A", e:"Primera damas", dt:"Christian Gull · PF Facundo Fariña", h:"Lunes, miércoles y viernes, 21:00" },
     { n:"Mayores B", e:"Tercera damas", dt:"Majo Daneri · PF Facundo Fariña", h:"Lunes, miércoles y viernes, 21:00" },
     { n:"Mayores caballeros", e:"Cuarta caballeros", dt:"Joel Szczur", h:"Martes y jueves, 21:00" },
