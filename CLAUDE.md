@@ -98,7 +98,9 @@ pertenencia. Los textos hablan de la tribuna, de las familias y del barrio, no d
   prode, cuando empieza el partido. Planteles de LISTAS PRESENTISMO 2026.xlsx (ignorado en
   git). Minis e Infantiles son formativas: `jugadoras: []`, no entran en nada que sea por
   nombre. Menores, Cadetas y Juveniles muestran nombres cortos (`nombresCortos: true`).
-- Planteles: Minis, Infantiles, Menores, Cadetas, Juveniles y Juniors son la tira de
+- Planteles: los nombres son los del club (Primera damas, Tercera damas, Cuarta caballeros) y
+  cada uno lleva `division`, el nombre de FeMeBal, que se muestra en la tabla de posiciones.
+  Minis, Infantiles, Menores, Cadetas, Juveniles y Juniors son la tira de
   inferiores (mismas fechas y lugar, cada una a su hora). Cada partido puede llevar `h`
   (hora propia) y `g` (resultado "nuestros-de ellos"). Faltan: el fixture de Maxihandball
   (hoy vacío), el horario de Minis, y decidir qué sponsor presenta cada plantel nuevo (sin

@@ -450,7 +450,7 @@ footer a:hover{color:var(--rosa)}
     <div class="cabeza">
       <div>
         <h2 class="h2">Clausura 2026,<br>fecha por fecha</h2>
-        <p class="bajada">Quince fechas por plantel. Los sábados juegan Mayores A y B; los domingos, las inferiores y Caballeros. Guardate la página: se actualiza con cada resultado.</p>
+        <p class="bajada">Quince fechas por plantel. Los sábados juegan Primera y Tercera damas; los domingos, las inferiores y Cuarta caballeros. Guardate la página: se actualiza con cada resultado.</p>
       </div>
       <a class="btn oscuro" href="#comunidad" data-track="fixture-recordatorio">Quiero el aviso por WhatsApp</a>
     </div>
@@ -900,7 +900,7 @@ function pintarPosiciones(pl){
     ? '<span class="esc bosco"><img src="iconos/escudo.svg" alt=""></span>'
     : '<span class="esc">' + escudoRival(e) + '</span>';
   caja.innerHTML = '<h3>Tabla de posiciones · ' + DATOS.torneo + '</h3>'
-    + '<p class="nota">' + pl.nombre + ' · ' + t.length + ' equipos · PTS puntos, PJ jugados, PG ganados, PE empatados, PP perdidos, GF/GC goles a favor y en contra.</p>'
+    + '<p class="nota">' + pl.nombre + (pl.division ? ' · ' + pl.division : '') + ' · ' + t.length + ' equipos · PTS puntos, PJ jugados, PG ganados, PE empatados, PP perdidos, GF/GC goles a favor y en contra.</p>'
     + '<div class="tabla-pos-envoltorio"><table class="tabla-pos"><thead><tr><th>#</th><th>Equipo</th><th>PTS</th><th class="sec">PJ</th><th class="sec">PG</th><th class="sec">PE</th><th class="sec">PP</th><th class="sec">GF</th><th class="sec">GC</th><th>DIF</th></tr></thead><tbody>'
     + t.map(f => '<tr' + (f[1] === "Ateneo Don Bosco" ? ' class="bosco"' : '') + '><td>' + f[0] + '</td><td>' + escudo(f[1]) + f[1] + '</td><td class="pts">' + f[2] + '</td>'
       + '<td class="sec">' + f[3] + '</td><td class="sec">' + f[4] + '</td><td class="sec">' + f[5] + '</td><td class="sec">' + f[6] + '</td><td class="sec">' + f[7] + '</td><td class="sec">' + f[8] + '</td><td>' + (f[7] - f[8] > 0 ? "+" : "") + (f[7] - f[8]) + '</td></tr>').join("")

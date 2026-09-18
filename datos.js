@@ -34,11 +34,12 @@ const DATOS = {
   },
 
   // Fixture sincronizado con FeMeBal (femebal.com/tournament-tracker) el 18/09/2026.
+  // nombre: como lo llama el club · division: como lo llama FeMeBal (se muestra en la tabla).
   // jugadoras: el plantel que se vota como figura de la fecha (de LISTAS PRESENTISMO 2026).
   // Minis e Infantiles son formativas: van con jugadoras:[] y no entran en nada que sea por nombre.
   // nombresCortos: true muestra "Nombre A." en vez del nombre completo (para menores de edad).
   planteles: [
-    { id:"mayores-a", nombre:"Mayores A", dia:"Sábados", hora:"18:00", sponsor:"Franco Liontix", jugadoras:[
+    { id:"mayores-a", nombre:"Primera damas", division:"Mayores · 1º División", dia:"Sábados", hora:"18:00", sponsor:"Franco Liontix", jugadoras:[
       "Luz Agüero", "Noelia Alcala", "Millaray Cocha", "Daniela Cristaldo", "Katia Cuomo", "Guadalupe Fernandez",
       "Julieta Gimenez", "Mora Lionti", "Carla Martinez", "Thayssa Montaly", "Barbara Ramirez",
       "Micaela Ramirez", "Valeria Trelles", "Justine Vargas", "Emilia Zarantonello"
@@ -67,7 +68,7 @@ const DATOS = {
       [15,"AFALP",6,6,0,0,6,150,175],
       [16,"Dep. Laferrere",6,6,0,0,6,163,214]
     ]},
-    { id:"mayores-b", nombre:"Mayores B", dia:"Sábados", hora:"18:00", sponsor:"Supermercado Magdalena", jugadoras:[
+    { id:"mayores-b", nombre:"Tercera damas", division:"Mayores · 3º División", dia:"Sábados", hora:"18:00", sponsor:"Supermercado Magdalena", jugadoras:[
       "Ariana Acosta", "Jazmin Alarcon", "Paula Ayala", "Mia Badaracco", "Marina Chazarreta", "Ariana Cuervo Diaz",
       "Sofia Dekker", "Julieta Di Bona", "Cecilia Esquivel", "Paula Glisciak", "Camila Gomez", "Camila Hermosid",
       "Patricia Marsicovetere", "Sofia Marsicovetere", "Julieta Mercado", "Zoe Rodriguez", "Ariana Veiga",
@@ -113,7 +114,7 @@ const DATOS = {
       {f:"2026-10-11",c:"L",r:"La Patriada"},{f:"2026-10-25",c:"V",r:"Muñiz"},{f:"2026-11-01",c:"L",r:"Polvorines"},
       {f:"2026-11-08",c:"V",r:"C.I.D. Moreno"},{f:"2026-11-15",c:"V",r:"Sagrado Corazón"},{f:"2026-11-22",c:"L",r:"Estrella de Boedo"}
     ]},
-    { id:"infantiles", nombre:"Infantiles", dia:"Domingos", hora:"10:30",
+    { id:"infantiles", nombre:"Infantiles", division:"Infantiles · División C", dia:"Domingos", hora:"10:30",
       nombresCortos:true, jugadoras:[], partidos:[
       {f:"2026-08-09",c:"V",r:"Círculo de Villa Devoto",g:"35-15"},{f:"2026-08-16",c:"L",r:"Independiente",g:"27-7"},
       {f:"2026-08-23",c:"V",r:"Colegio Ward",g:"15-21"},{f:"2026-08-30",c:"L",r:"Boca Juniors",g:"21-12"},{f:"2026-09-06",c:"V",r:"Banfield",g:"27-20"},
@@ -139,7 +140,7 @@ const DATOS = {
       [15,"Cedem Caseros",6,6,0,0,6,85,154],
       [16,"Círculo de Villa Devoto",6,6,0,0,6,110,205]
     ] },
-    { id:"menores", nombre:"Menores", dia:"Domingos", hora:"11:30",
+    { id:"menores", nombre:"Menores", division:"Menores · División C", dia:"Domingos", hora:"11:30",
       nombresCortos:true, jugadoras:[
       "Martina Antero", "Sofia Ballares", "Matilda Barrera", "Victoria Bassi", "Celeste Bello",
       "Pilar Bustamante", "Mia Calo", "Macarena De León", "Guillemina Fortunato", "Emilia Greco",
@@ -171,7 +172,7 @@ const DATOS = {
       [15,"Muñiz",6,6,0,0,6,112,166],
       [16,"Círculo de Villa Devoto",6,6,0,0,6,92,196]
     ] },
-    { id:"cadetas", nombre:"Cadetas", dia:"Domingos", hora:"13:00",
+    { id:"cadetas", nombre:"Cadetas", division:"Cadetes · División C", dia:"Domingos", hora:"13:00",
       nombresCortos:true, jugadoras:[
       "Luciana Chiesa", "Abril Coria", "Isabella Greco", "Elilia Juarez Leikam", "Ema Rosello", "Maria Eugenia Rotta"
     ], partidos:[
@@ -199,7 +200,7 @@ const DATOS = {
       [15,"Círculo de Villa Devoto",8,6,1,0,5,135,159],
       [16,"Ateneo Don Bosco",8,6,1,0,5,117,148]
     ] },
-    { id:"juveniles", nombre:"Juveniles", dia:"Domingos", hora:"14:30",
+    { id:"juveniles", nombre:"Juveniles", division:"Juveniles · División C", dia:"Domingos", hora:"14:30",
       nombresCortos:true, jugadoras:[
       "Julieta Antero", "Valentina Antero", "Camila Dib", "Antonella Durzo", "Uma Estanga", "Angela Farias",
       "Renata Giachello", "Martina Gomez", "Isabella Scarfo", "Luciana Toledo"
@@ -228,7 +229,7 @@ const DATOS = {
       [15,"Muñiz",6,6,0,0,6,101,155],
       [16,"Estrella de Boedo",6,6,0,0,6,156,216]
     ] },
-    { id:"juniors", nombre:"Juniors", dia:"Domingos", hora:"16:00",
+    { id:"juniors", nombre:"Juniors", division:"Junior · División C", dia:"Domingos", hora:"16:00",
       jugadoras:[
       "Jazmin Alarcon", "Mia Badaracco", "Katia Cuomo", "Julia Damario", "Camila Gomez", "Patricia Marsico",
       "Sofia Marsico", "Thayssa Montali", "Milagros Mosqueda", "Catalina Ravazzano", "Emilia Zarantonello"
@@ -257,7 +258,7 @@ const DATOS = {
       [15,"Hurlingham",6,6,0,0,6,126,163],
       [16,"Independiente",6,6,0,0,6,126,210]
     ] },
-    { id:"masculino", nombre:"Mayores caballeros", dia:"Domingos", hora:"18:00", sponsor:"Ladran Sancho", jugadoras:[
+    { id:"masculino", nombre:"Cuarta caballeros", division:"Mayores · 4º División", dia:"Domingos", hora:"18:00", sponsor:"Ladran Sancho", jugadoras:[
       "Lionel Benitez", "Patricio Britez", "Maximiliano Burakoski", "Valentin Carriego", "Martin Casco",
       "Guillermo Corbelli", "Agustin Fernandez", "Fabian Franco", "Gabriel Franco", "Enzo Golnner",
       "Maximiliano Gomez", "Lucas Guillermon", "Agustin Iacuzzi", "Leonel Legal", "Leandro Maggi",
@@ -314,9 +315,9 @@ const DATOS = {
       { titulo:"Cadetas", fotos:[] },
       { titulo:"Juveniles", fotos:[] },
       { titulo:"Juniors", fotos:[] },
-      { titulo:"Mayores A", fotos:[] },
-      { titulo:"Mayores B", fotos:[] },
-      { titulo:"Mayores caballeros", fotos:[] },
+      { titulo:"Primera damas", fotos:[] },
+      { titulo:"Tercera damas", fotos:[] },
+      { titulo:"Cuarta caballeros", fotos:[] },
       { titulo:"Maxihandball", fotos:[] }
     ]
   },
@@ -385,7 +386,7 @@ const DATOS = {
       { n:"Paher Plásticos",  logo:"fotos/sponsors/paher-plasticos.png",  url:"", fondoOscuro:false },
       { n:"Agua Tronador",    logo:"fotos/sponsors/tronador.png",         url:"", fondoOscuro:false }
     ]},
-    { titulo:"Mayores A", marcas:[
+    { titulo:"Primera damas", marcas:[
       { n:"Franco Liontix",         logo:"fotos/sponsors/franco-lionti.png",                url:"", fondoOscuro:false },
       { n:"Agua Tronador",          logo:"fotos/sponsors/tronador.png",                     url:"", fondoOscuro:false },
       { n:"Delicias Doradas",       logo:"fotos/sponsors/delicias-doradas.png",             url:"", fondoOscuro:false },
@@ -393,7 +394,7 @@ const DATOS = {
       { n:"Carnevale",              logo:"fotos/sponsors/carnevale.png",                    url:"", fondoOscuro:false },
       { n:"Lic. Kine Vale Trelles", logo:"fotos/sponsors/valeria-trelles-kinesiologia.png", url:"", fondoOscuro:false }
     ]},
-    { titulo:"Mayores B", marcas:[
+    { titulo:"Tercera damas", marcas:[
       { n:"Textil Calchaquí",       logo:"fotos/sponsors/cortinas-calchaqui.png",     url:"", fondoOscuro:false },
       { n:"Supermercado Magdalena", logo:"fotos/sponsors/magdalena-supermercado.png", url:"", fondoOscuro:false },
       { n:"Sorar RRHH",             logo:"fotos/sponsors/sora-rrhh.png",              url:"", fondoOscuro:false },
@@ -401,7 +402,7 @@ const DATOS = {
       { n:"Bernuts",                logo:"fotos/sponsors/bernutss.png",               url:"", fondoOscuro:false },
       { n:"Agua Tronador",          logo:"fotos/sponsors/tronador.png",               url:"", fondoOscuro:false }
     ]},
-    { titulo:"Mayores caballeros", marcas:[
+    { titulo:"Cuarta caballeros", marcas:[
       { n:"Ladran Sancho",        logo:"fotos/sponsors/ladran-sancho.png", url:"", fondoOscuro:false },
       { n:"Svencen Propiedades",  logo:"fotos/sponsors/svencen.png",       url:"", fondoOscuro:false }
     ]},
@@ -426,9 +427,9 @@ const DATOS = {
     { n:"Cadetas", e:"15 y 16 años", dt:"Iván Piscopo · Asist. Cecilia Esquivel · PF Agustín Valado", h:"Martes y jueves, 18:30 · Viernes, 19:00" },
     { n:"Juveniles", e:"17 y 18 años", dt:"Iván Piscopo · PF Agustín Valado", h:"Martes y jueves, 18:30 · Viernes, 19:00" },
     { n:"Juniors", e:"Sub-21, hasta 21 años", dt:"Joel Szczur · PF Facundo Fariña", h:"Lunes, miércoles y viernes, 20:00" },
-    { n:"Mayores A", e:"Primera damas", dt:"Christian Gull · PF Facundo Fariña", h:"Lunes, miércoles y viernes, 21:00" },
-    { n:"Mayores B", e:"Tercera damas", dt:"María José Daneri · PF Facundo Fariña", h:"Lunes, miércoles y viernes, 21:00" },
-    { n:"Mayores caballeros", e:"Cuarta caballeros", dt:"Joel Szczur", h:"Martes y jueves, 21:00" },
+    { n:"Primera damas", e:"Mayores · 1º División", dt:"Christian Gull · PF Facundo Fariña", h:"Lunes, miércoles y viernes, 21:00" },
+    { n:"Tercera damas", e:"Mayores · 3º División", dt:"María José Daneri · PF Facundo Fariña", h:"Lunes, miércoles y viernes, 21:00" },
+    { n:"Cuarta caballeros", e:"Mayores · 4º División", dt:"Joel Szczur", h:"Martes y jueves, 21:00" },
     { n:"Maxihandball", e:"Femenino, +30", dt:"Iván Piscopo · PF Joel Szczur", h:"Miércoles, 21:00" },
     { n:"Arqueras", e:"Entrenamiento específico", dt:"Nicolás Lizarraga", h:"A coordinar con cada categoría", especial:true }   // no cuenta como categoría
   ],
@@ -436,9 +437,9 @@ const DATOS = {
   staff: [
     { n:"Jimmy Righi", r:"Coordinador" },
     { n:"Iván Piscopo", r:"Coordinador · DT menores, cadetas, juveniles y maxi" },
-    { n:"Christian Gull", r:"DT Mayores A" },
-    { n:"María José Daneri", r:"DT Mayores B" },
-    { n:"Joel Szczur", r:"DT juniors y caballeros · PF maxi" },
+    { n:"Christian Gull", r:"DT Primera damas" },
+    { n:"María José Daneri", r:"DT Tercera damas" },
+    { n:"Joel Szczur", r:"DT juniors y Cuarta caballeros · PF maxi" },
     { n:"Cecilia Esquivel", r:"DT infantiles · asistente de menores y cadetas" },
     { n:"Paula Glisciak", r:"DT minis" },
     { n:"Julieta Zárate", r:"Asistente de infantiles" },
