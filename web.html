@@ -935,7 +935,10 @@ async function traerVotos(pl, p, cuerpo){
   const r = await fetch("/api/mvp" + (cuerpo ? "" : "?plantel=" + pl.id + "&fecha=" + p.f), cuerpo
     ? { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(cuerpo) }
     : {});
-  if (!r.ok) throw new Error(r.status);
+  if (!r.ok){   // el servidor contestó pero rechazó el pedido (por ejemplo, el partido ya empezó)
+    let motivo = ""; try { motivo = (await r.json()).error || ""; } catch {}
+    const err = new Error(motivo || ("Error " + r.status)); err.rechazado = true; throw err;
+  }
   return r.json();
 }
 
@@ -991,7 +994,14 @@ listaMvp.addEventListener("click", async e => {
   votando = true;
   try {
     Object.assign(est, await traerVotos(pl, p, { plantel: pl.id, fecha: p.f, jugadora: n }));
-  } catch {
+  } catch (err) {
+    if (err.rechazado){   // el servidor dijo que no (por ejemplo, la votación ya cerró)
+      votando = false;
+      if (/cerr/i.test(err.message)) est.cerrada = true;
+      $("#mvp-estado").textContent = err.message + ".";
+      if (plantelMvp === pl && est.cerrada) pintarMvp(pl);
+      return;
+    }
     // sin servidor: el voto queda en esta pantalla nada más
     est.conteo[n] = (est.conteo[n] || 0) + 1; est.total++; est.miVoto = n;
   }
@@ -1018,7 +1028,10 @@ async function traerProde(pl, p, cuerpo){
   const r = await fetch("/api/prode" + (cuerpo ? "" : "?plantel=" + pl.id + "&fecha=" + p.f + "&inicio=" + encodeURIComponent(inicio)), cuerpo
     ? { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(Object.assign({ plantel: pl.id, fecha: p.f, inicio }, cuerpo)) }
     : {});
-  if (!r.ok) throw new Error(r.status);
+  if (!r.ok){   // el servidor contestó pero rechazó el pedido (por ejemplo, el partido ya empezó)
+    let motivo = ""; try { motivo = (await r.json()).error || ""; } catch {}
+    const err = new Error(motivo || ("Error " + r.status)); err.rechazado = true; throw err;
+  }
   return r.json();
 }
 
@@ -1039,7 +1052,7 @@ function pintarProde(pl){
     + '<div><b>' + pl.nombre + ' vs ' + p.r + '</b>' + DIA_SEM(p.f) + ' ' + DIA_MES(p.f) + ' · ' + horaDe(p, pl) + ' hs · ' + (p.c === "L" ? "En Don Bosco 116" : "De visitante") + '</div>';
   $("#prode-rival").textContent = p.r;
 
-  const e = estadoProde[pl.id] || { total: 0, mio: null, cerrado: false };
+  const e = estadoProde[pl.id] || { total: 0, mio: null, cerrado: false, gana: 0, empata: 0, pierde: 0 };
   const listo = e.mio || e.cerrado;
   $("#prode-local").value = e.mio ? e.mio.local : ""; $("#prode-visita").value = e.mio ? e.mio.visita : "";
   $("#prode-local").disabled = $("#prode-visita").disabled = $("#prode-enviar").disabled = !!listo;
@@ -1048,7 +1061,7 @@ function pintarProde(pl){
 
   const t = $("#prode-tribuna");
   if (listo && e.total){
-    const fila = (txt, pct, mio) => '<div class="fila' + (mio ? " mio" : "") + '"><span>' + txt + '</span><div class="b"><i style="width:' + pct + '%"></i></div><em>' + pct + '%</em></div>';
+    const fila = (txt, pct, mio) => { pct = pct || 0; return '<div class="fila' + (mio ? " mio" : "") + '"><span>' + txt + '</span><div class="b"><i style="width:' + pct + '%"></i></div><em>' + pct + '%</em></div>'; };
     const mioRes = e.mio ? (e.mio.local > e.mio.visita ? "gana" : e.mio.local === e.mio.visita ? "empata" : "pierde") : "";
     t.innerHTML = '<h4>Lo que dice la tribuna</h4>'
       + fila("Ganamos", e.gana, mioRes === "gana") + fila("Empate", e.empata, mioRes === "empata") + fila("Perdemos", e.pierde, mioRes === "pierde")
@@ -1072,11 +1085,20 @@ $("#prode-enviar").addEventListener("click", async e => {
   const a = $("#prode-local").value, b = $("#prode-visita").value;
   if (a === "" || b === ""){ res.textContent = "Faltan los dos marcadores para poder jugar."; res.classList.add("visible"); return; }
   jugando = true;
-  const est = estadoProde[pl.id] || (estadoProde[pl.id] = { total: 0, mio: null, cerrado: false, pedido: true });
+  const est = estadoProde[pl.id] || (estadoProde[pl.id] = { total: 0, mio: null, cerrado: false, gana: 0, empata: 0, pierde: 0, pedido: true });
   try {
     Object.assign(est, await traerProde(pl, p, { local: +a, visita: +b }));
-  } catch {
-    est.mio = { local: +a, visita: +b }; est.total = (est.total || 0) + 1;   // sin servidor: queda en esta pantalla
+  } catch (err) {
+    if (err.rechazado){   // el servidor dijo que no: se muestra el motivo y no se da por jugado
+      jugando = false;
+      if (/empez/i.test(err.message)) { est.cerrado = true; if (plantelProde === pl) pintarProde(pl); }
+      res.textContent = err.message + ".";
+      res.classList.add("visible");
+      return;
+    }
+    // sin conexión: el pronóstico queda solo en esta pantalla, con sus porcentajes
+    const gana = +a > +b, empata = +a === +b;
+    Object.assign(est, { mio: { local: +a, visita: +b }, total: 1, gana: gana ? 100 : 0, empata: empata ? 100 : 0, pierde: !gana && !empata ? 100 : 0, promedio: { local: +a, visita: +b }, masVotado: null });
   }
   jugando = false;
   if (plantelProde === pl) pintarProde(pl);
