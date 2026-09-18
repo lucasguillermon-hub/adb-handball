@@ -15,8 +15,8 @@ iconos/               ← escudo.svg (el escudo oficial, se usa en las tres pág
                         íconos de la app (192, 512 y 180 px, generados desde el SVG)
 fotos/                ← imágenes de la galería; fotos/sponsors/ los logos del muro
 CLAUDE.md             ← este archivo
-worker.js             ← backend mínimo: guarda los mails de los formularios en la base D1
-migraciones/          ← esquema de la base de contactos (tabla `contactos`)
+worker.js             ← backend mínimo: mails de los formularios y votos de la MVP en la base D1
+migraciones/          ← esquema de la base (tablas `contactos` y `votos_mvp`)
 wrangler.jsonc        ← configuración de Cloudflare (Worker + base D1 `adb-contactos`)
 plan-sponsoreo.html   ← plan de sponsoreo 2027, sin enlazar ni indexar (lee datos.js)
 recetas.md            ← pedidos tipo para Claude Code
@@ -91,11 +91,11 @@ pertenencia. Los textos hablan de la tribuna, de las familias y del barrio, no d
   menú, pie y tarjeta de la portada). Acordar cada beneficio con su comercio y pasarlo a true.
 - Números reales del media kit (jugadores, familias, fechas de local).
 - Link de la comunidad de WhatsApp.
-- Votación de la MVP y prode: los votos viven en memoria (se pierden al recargar y no se
-  suman entre personas). Para contarlos de verdad hay que guardarlos en D1 vía `worker.js`.
-  Los planteles que se votan son los cuatro con fixture (`planteles[].jugadoras`, sacados
-  de LISTAS PRESENTISMO 2026.xlsx, que está ignorado en git). Inferiores muestra nombres
-  cortos (`nombresCortos: true`) porque son menores de edad.
+- Prode: los pronósticos viven en memoria (no se guardan). La MVP sí se guarda en D1
+  (`GET/POST /api/mvp`): una cookie anónima por persona, solo la fecha vigente de cada
+  plantel, cierra el viernes a las 20. Los planteles que se votan son los cuatro con
+  fixture (`planteles[].jugadoras`, de LISTAS PRESENTISMO 2026.xlsx, ignorado en git).
+  Inferiores muestra nombres cortos (`nombresCortos: true`) porque son menores de edad.
 - Galería: un álbum por categoría, todos vacíos hasta que se carguen fotos en `datos.js`.
   El álbum por fecha con sponsor queda para el plan 2027.
 - Los sponsors del muro son acuerdos 2026, anteriores al plan; el plan de niveles

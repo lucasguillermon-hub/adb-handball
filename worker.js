@@ -1,8 +1,10 @@
 /* Worker del Ateneo Don Bosco Handball.
-   Sirve los archivos estáticos como siempre y suma un solo endpoint:
-   POST /api/suscribir guarda un contacto en la base D1 (tabla "contactos").
-   Los formularios de index.html y web.html le pegan con fetch.
-   Para bajar la lista, ver "Exportar los contactos" en recetas.md. */
+   Sirve los archivos estáticos como siempre y suma dos cosas:
+   - POST /api/suscribir guarda un contacto en la base D1 (tabla "contactos").
+     Para bajar la lista, ver "Exportar los contactos" en recetas.md.
+   - GET/POST /api/mvp lee y guarda los votos de la figura de la fecha (tabla
+     "votos_mvp"). Una persona = una cookie anónima; solo vive la fecha vigente
+     de cada plantel y la votación cierra el viernes a las 20 (hora argentina). */
 
 const ORIGENES = ["aviso-apertura", "newsletter", "quiero-jugar"];
 const MAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
@@ -11,6 +13,7 @@ export default {
   async fetch(req, env){
     const url = new URL(req.url);
     if (url.pathname === "/api/suscribir") return suscribir(req, env);
+    if (url.pathname === "/api/mvp") return mvp(req, env, url);
     if (url.pathname.startsWith("/api/")) return json({ error: "No existe" }, 404);
     return env.ASSETS.fetch(req);
   }
@@ -47,6 +50,63 @@ async function suscribir(req, env){
   `).bind(mail, nombre, origen, ahora).run();
 
   return json({ ok: true });
+}
+
+/* ============================ votación de la figura ============================ */
+const COOKIE = "adb_v";
+const PLANTEL_RE = /^[a-z0-9-]{2,30}$/, FECHA_RE = /^\d{4}-\d{2}-\d{2}$/;
+
+// La votación de un partido cierra el viernes siguiente a las 20:00 de Argentina (UTC-3).
+function cierre(fecha){
+  const d = new Date(fecha + "T00:00:00-03:00");
+  const dias = (5 - d.getUTCDay() + 7) % 7 || 7;      // próximo viernes (si el partido es viernes, el siguiente)
+  return new Date(d.getTime() + dias * 864e5 + 20 * 36e5);   // d ya está en hora argentina: + 20 h
+}
+
+function votante(req){
+  const m = (req.headers.get("Cookie") || "").match(new RegExp("(?:^|;\\s*)" + COOKIE + "=([a-f0-9]{32})"));
+  return m ? m[1] : null;
+}
+
+async function mvp(req, env, url){
+  const origin = req.headers.get("Origin");
+  if (origin && new URL(origin).host !== url.host) return json({ error: "Origen no permitido" }, 403);
+
+  let plantel, fecha, jugadora;
+  if (req.method === "GET"){ plantel = url.searchParams.get("plantel"); fecha = url.searchParams.get("fecha"); }
+  else if (req.method === "POST"){
+    let d; try { d = await req.json(); } catch { return json({ error: "Cuerpo inválido" }, 400); }
+    plantel = d.plantel; fecha = d.fecha; jugadora = String(d.jugadora || "").trim().slice(0, 80);
+  } else return json({ error: "Método no permitido" }, 405);
+  if (!PLANTEL_RE.test(plantel || "") || !FECHA_RE.test(fecha || "")) return json({ error: "Plantel o fecha inválidos" }, 400);
+
+  let id = votante(req), cookie = null;
+  if (!id){
+    id = [...crypto.getRandomValues(new Uint8Array(16))].map(b => b.toString(16).padStart(2, "0")).join("");
+    cookie = COOKIE + "=" + id + "; Path=/api/mvp; Max-Age=31536000; SameSite=Lax; HttpOnly" + (url.protocol === "https:" ? "; Secure" : "");
+  }
+  const cerrada = Date.now() > cierre(fecha).getTime();
+
+  if (req.method === "POST"){
+    if (!jugadora) return json({ error: "Falta la jugadora" }, 400);
+    if (cerrada) return json({ error: "La votación de esta fecha ya cerró" }, 409);
+    // Solo vive la fecha vigente: los votos de fechas anteriores del plantel se borran.
+    await env.DB.batch([
+      env.DB.prepare("DELETE FROM votos_mvp WHERE plantel = ?1 AND fecha < ?2").bind(plantel, fecha),
+      env.DB.prepare("INSERT OR IGNORE INTO votos_mvp (plantel, fecha, votante, jugadora, creado) VALUES (?1, ?2, ?3, ?4, ?5)")
+        .bind(plantel, fecha, id, jugadora, new Date().toISOString())
+    ]);
+  }
+
+  const { results } = await env.DB.prepare(
+    "SELECT jugadora, COUNT(*) AS n, MAX(votante = ?3) AS mio FROM votos_mvp WHERE plantel = ?1 AND fecha = ?2 GROUP BY jugadora"
+  ).bind(plantel, fecha, id).all();
+  const conteo = {}; let total = 0, miVoto = null;
+  for (const r of results){ conteo[r.jugadora] = r.n; total += r.n; if (r.mio) miVoto = r.jugadora; }
+
+  const res = json({ ok: true, plantel, fecha, total, conteo, miVoto, cerrada, cierra: cierre(fecha).toISOString() });
+  if (cookie) res.headers.append("Set-Cookie", cookie);
+  return res;
 }
 
 function json(cuerpo, estado = 200){

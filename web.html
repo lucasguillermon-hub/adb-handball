@@ -172,6 +172,9 @@ header{position:sticky;top:0;z-index:60;background:rgba(10,20,40,.92);backdrop-f
 .opcion{display:flex;align-items:center;gap:12px;width:100%;text-align:left;background:rgba(255,255,255,.04);border:1px solid var(--linea);color:inherit;border-radius:11px;padding:12px 14px;cursor:pointer;position:relative;overflow:hidden}
 .claro .opcion{background:var(--hueso);border-color:var(--linea-oscura)}
 .opcion:hover{border-color:var(--rosa-vivo)}
+.opcion:disabled{cursor:default}
+.opcion:disabled:hover{border-color:var(--linea)}
+.opcion:disabled[aria-pressed="true"]:hover{border-color:var(--rosa-vivo)}
 .opcion .dorsal{font-family:var(--display);font-size:20px;color:var(--rosa-vivo);min-width:34px}
 .opcion .nom{font-weight:600;font-size:15px}
 .opcion .pos{font-size:13px;opacity:.6}
@@ -802,13 +805,13 @@ pintarFixture(0);
 
 /* ============================ votación MVP ============================
    Una votación por plantel, sobre el último partido jugado de ese plantel.
-   Las jugadoras salen de DATOS.planteles[].jugadoras. Los votos viven en
-   memoria (un voto por plantel por visita); para contarlos de verdad hay que
-   guardarlos en el backend. */
+   Las jugadoras salen de DATOS.planteles[].jugadoras. Los votos se guardan en
+   el backend (GET/POST /api/mvp): una persona, un voto por plantel y fecha; la
+   votación cierra el viernes a las 20. Si el servidor no responde, el voto
+   queda solo en esta pantalla. */
 const listaMvp = $("#mvp");
-const votos = {};        // { idPlantel: { nombre: cantidad } }
-const yaVoto = {};       // { idPlantel: nombre votado }
-let plantelMvp = null;
+const estadoMvp = {};    // por plantel: { conteo, total, miVoto, cerrada }
+let plantelMvp = null, votando = false;
 
 function ultimoPartido(pl){
   const ahora = new Date();
@@ -824,9 +827,16 @@ function sponsorDeLaMvp(pl, p){                  // otra marca que la del prode,
   const nro = DATOS.planteles.indexOf(pl) + pl.partidos.indexOf(p) * DATOS.planteles.length;
   return marcas[(nro + 7) % marcas.length];
 }
+async function traerVotos(pl, p, cuerpo){
+  const r = await fetch("/api/mvp" + (cuerpo ? "" : "?plantel=" + pl.id + "&fecha=" + p.f), cuerpo
+    ? { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(cuerpo) }
+    : {});
+  if (!r.ok) throw new Error(r.status);
+  return r.json();
+}
 
 const plantelesConVoto = DATOS.planteles.filter(pl => pl.jugadoras && pl.jugadoras.length);
-plantelesConVoto.forEach((pl, i) => {
+plantelesConVoto.forEach(pl => {
   const b = document.createElement("button");
   b.className = "tab"; b.textContent = pl.nombre; b.setAttribute("role", "tab");
   b.addEventListener("click", () => { pintarMvp(pl); track("mvp-plantel", { plantel: pl.id }); });
@@ -840,34 +850,49 @@ function pintarMvp(pl){
   if (!p){
     $("#mvp-contexto").textContent = pl.nombre + " · todavía no jugó ninguna fecha.";
     $("#sponsor-mvp").textContent = "el Bosco";
-    listaMvp.innerHTML = ""; return;
+    listaMvp.innerHTML = ""; $("#mvp-estado").textContent = ""; return;
   }
   const nro = pl.partidos.indexOf(p) + 1;
   $("#mvp-contexto").textContent = pl.nombre + " · Fecha " + nro + " · " + pl.dia.slice(0, -1) + " " + DIA_MES(p.f) + " vs " + p.r;
   $("#sponsor-mvp").textContent = sponsorDeLaMvp(pl, p);
-  const v = votos[pl.id] || {}, total = Object.values(v).reduce((a, b) => a + b, 0), votado = yaVoto[pl.id];
+
+  const e = estadoMvp[pl.id] || { conteo: {}, total: 0, miVoto: null, cerrada: false };
+  const mostrar = e.miVoto || e.cerrada;      // los resultados se ven después de votar o al cierre
   listaMvp.innerHTML = pl.jugadoras.map((n, i) => {
-    const pct = total ? Math.round((v[n] || 0) / total * 100) : 0;
-    return '<li><button class="opcion" data-i="' + i + '" aria-pressed="' + (votado === n) + '">'
-      + (votado ? '<span class="barra" style="width:' + pct + '%"></span>' : '')
+    const pct = e.total ? Math.round((e.conteo[n] || 0) / e.total * 100) : 0;
+    return '<li><button class="opcion" data-i="' + i + '" aria-pressed="' + (e.miVoto === n) + '"' + (mostrar ? ' disabled' : '') + '>'
+      + (mostrar ? '<span class="barra" style="width:' + pct + '%"></span>' : '')
       + '<span class="dorsal">' + (i + 1) + '</span>'
       + '<span><span class="nom">' + nombreMostrado(pl, n) + '</span></span>'
-      + (votado ? '<span class="pct">' + pct + '%</span>' : '')
+      + (mostrar ? '<span class="pct">' + pct + '%</span>' : '')
       + '</button></li>';
   }).join("");
-  $("#mvp-estado").textContent = votado
-    ? "Listo, tu voto quedó. El resultado se publica el viernes en Instagram junto a " + $("#sponsor-mvp").textContent + "."
-    : "Un voto por persona y por plantel. Cierra el viernes a las 20.";
+  $("#mvp-estado").textContent = e.cerrada
+    ? "La votación de esta fecha cerró con " + e.total + " voto" + (e.total === 1 ? "" : "s") + ". El resultado se publica en Instagram junto a " + $("#sponsor-mvp").textContent + "."
+    : e.miVoto
+      ? "Listo, tu voto quedó. Van " + e.total + " voto" + (e.total === 1 ? "" : "s") + ". El resultado se publica el viernes en Instagram junto a " + $("#sponsor-mvp").textContent + "."
+      : "Un voto por persona y por plantel. Cierra el viernes a las 20.";
+
+  if (!e.pedido){
+    e.pedido = true; estadoMvp[pl.id] = e;
+    traerVotos(pl, p).then(r => { estadoMvp[pl.id] = Object.assign(e, r); if (plantelMvp === pl) pintarMvp(pl); }).catch(() => {});
+  }
 }
 
-listaMvp.addEventListener("click", e => {
-  const b = e.target.closest(".opcion"); if (!b || !plantelMvp || yaVoto[plantelMvp.id]) return;
-  const n = plantelMvp.jugadoras[+b.dataset.i];
-  votos[plantelMvp.id] = votos[plantelMvp.id] || {};
-  votos[plantelMvp.id][n] = (votos[plantelMvp.id][n] || 0) + 1;
-  yaVoto[plantelMvp.id] = n;
-  pintarMvp(plantelMvp);
-  track("voto-mvp", { plantel: plantelMvp.id });
+listaMvp.addEventListener("click", async e => {
+  const b = e.target.closest(".opcion"); if (!b || !plantelMvp || votando) return;
+  const pl = plantelMvp, p = ultimoPartido(pl), n = pl.jugadoras[+b.dataset.i];
+  const est = estadoMvp[pl.id]; if (!est || est.miVoto || est.cerrada) return;
+  votando = true;
+  try {
+    Object.assign(est, await traerVotos(pl, p, { plantel: pl.id, fecha: p.f, jugadora: n }));
+  } catch {
+    // sin servidor: el voto queda en esta pantalla nada más
+    est.conteo[n] = (est.conteo[n] || 0) + 1; est.total++; est.miVoto = n;
+  }
+  votando = false;
+  if (plantelMvp === pl) pintarMvp(pl);
+  track("voto-mvp", { plantel: pl.id });
 });
 
 // Arranca en el plantel que jugó más recientemente.

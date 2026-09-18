@@ -135,6 +135,15 @@ Marcá la baja en la base de contactos para [mail] con la fecha de hoy. No lo bo
 
 ---
 
+## Ver cómo va la votación de la figura
+
+```
+Mostrame los votos de la figura de la fecha vigente de cada plantel, con el total y
+el porcentaje de cada jugadora, desde la tabla votos_mvp de la base D1.
+```
+
+---
+
 ## Si algo se rompió
 
 ```
