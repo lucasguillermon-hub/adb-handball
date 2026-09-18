@@ -225,6 +225,10 @@ const DATOS = {
       { n:"Bernuts",                logo:"fotos/sponsors/bernutss.png",               url:"", fondoOscuro:false },
       { n:"Agua Tronador",          logo:"fotos/sponsors/tronador.png",               url:"", fondoOscuro:false }
     ]},
+    { titulo:"Mayores caballeros", marcas:[
+      { n:"Ladran Sancho",        logo:"fotos/sponsors/ladran-sancho.png", url:"", fondoOscuro:false },
+      { n:"Svencen Propiedades",  logo:"fotos/sponsors/svencen.png",       url:"", fondoOscuro:false }
+    ]},
     { titulo:"Maxihandball", marcas:[
       { n:"Inti Bernal",      logo:"fotos/sponsors/inti-bernal.png", url:"", fondoOscuro:false },
       { n:"Lalomatic",        logo:"fotos/sponsors/lalomatic.png",   url:"", fondoOscuro:false },
