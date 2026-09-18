@@ -49,6 +49,23 @@ const DATOS = {
       {f:"2026-09-19",c:"V",r:"Polvorines"},{f:"2026-09-25",c:"L",r:"Sagrado Corazón",h:"20:00"},{f:"2026-10-03",c:"V",r:"All Boys"},
       {f:"2026-10-17",c:"L",r:"Vicente López"},{f:"2026-10-24",c:"V",r:"Temperley"},{f:"2026-10-31",c:"V",r:"Villa Ballester"},
       {f:"2026-11-07",c:"L",r:"Argentinos Juniors"},{f:"2026-11-14",c:"V",r:"Secla"},{f:"2026-11-21",c:"L",r:"Muñiz"}
+    ], tabla:[
+      [1,"Polvorines",21,7,7,0,0,213,186],
+      [2,"Ateneo Don Bosco",15,6,4,1,1,167,147],
+      [3,"Secla",15,6,4,1,1,142,129],
+      [4,"Argentinos Juniors",15,7,4,0,3,177,184],
+      [5,"Talleres",14,6,4,0,2,170,132],
+      [6,"Vicente López",14,6,4,0,2,168,150],
+      [7,"Villa Ballester",14,6,4,0,2,133,137],
+      [8,"Dorrego",12,6,2,2,2,147,127],
+      [9,"Ferro Carril Oeste",12,6,3,0,3,178,161],
+      [10,"Sagrado Corazón",12,6,3,0,3,184,172],
+      [11,"Muñiz",12,6,3,0,3,136,135],
+      [12,"All Boys",12,6,3,0,3,160,171],
+      [13,"San Fernando",8,6,1,0,5,131,153],
+      [14,"Temperley",8,6,1,0,5,137,183],
+      [15,"AFALP",6,6,0,0,6,150,175],
+      [16,"Dep. Laferrere",6,6,0,0,6,163,214]
     ]},
     { id:"mayores-b", nombre:"Mayores B", dia:"Sábados", hora:"18:00", sponsor:"Supermercado Magdalena", jugadoras:[
       "Ariana Acosta", "Jazmin Alarcon", "Paula Ayala", "Mia Badaracco", "Marina Chazarreta", "Ariana Cuervo Diaz",
@@ -62,6 +79,23 @@ const DATOS = {
       {f:"2026-09-19",c:"V",r:"Independiente"},{f:"2026-09-26",c:"L",r:"Querandí"},{f:"2026-10-03",c:"V",r:"Defensores de Moreno"},
       {f:"2026-10-17",c:"L",r:"Mariano Acosta"},{f:"2026-09-24",c:"V",r:"San Telmo",h:"21:15"},{f:"2026-10-31",c:"V",r:"Nueva Chicago"},
       {f:"2026-11-07",c:"L",r:"Secla"},{f:"2026-11-14",c:"V",r:"Colegio del Parque"},{f:"2026-11-21",c:"L",r:"Cedem Caseros"}
+    ], tabla:[
+      [1,"Campana Boat Club",17,6,5,1,0,165,156],
+      [2,"Mariano Acosta",16,6,5,0,1,159,126],
+      [3,"Almirante Brown",16,6,5,0,1,192,166],
+      [4,"San Telmo",16,6,5,0,1,164,147],
+      [5,"Nueva Chicago",15,6,4,1,1,161,134],
+      [6,"Colegio del Parque",14,6,4,0,2,182,159],
+      [7,"Querandí",14,6,4,0,2,176,156],
+      [8,"Secla",12,6,3,0,3,136,128],
+      [9,"Boca Juniors",10,6,2,0,4,129,134],
+      [10,"Argentinos Juniors",10,6,2,0,4,113,125],
+      [11,"Ateneo Don Bosco",10,6,2,0,4,125,139],
+      [12,"AFALP",10,6,2,0,4,151,179],
+      [13,"Cedem Caseros",8,6,1,0,5,143,163],
+      [14,"Defensores de Moreno",8,6,1,0,5,134,158],
+      [15,"Independiente",8,6,1,0,5,134,161],
+      [16,"Huracán de San Justo",8,6,1,0,5,115,148]
     ]},
     // Inferiores damas es una tira: Minis, Infantiles, Menores, Cadetas, Juveniles y Juniors
     // juegan el mismo día en el mismo lugar, todas de local o todas de visitante, cada una
@@ -69,6 +103,8 @@ const DATOS = {
     // compite en FeMeBal y copia las fechas. Sin "sponsor", el marcador no muestra presentador.
     // Campos de cada partido: f fecha · c L/V/libre · r rival · h hora (si difiere de la del
     // plantel) · g resultado "nuestros-de ellos" cuando ya se jugó.
+    // tabla: posiciones del torneo, una fila por equipo:
+    // [puesto, equipo, puntos, jugados, ganados, empatados, perdidos, goles a favor, en contra].
     { id:"minis", nombre:"Minis", dia:"Domingos", hora:"10:30",   // ⚠️ confirmar horario de Minis (no está en FeMeBal)
       nombresCortos:true, jugadoras:[], partidos:[
       {f:"2026-08-09",c:"V",r:"Círculo de Villa Devoto"},{f:"2026-08-16",c:"L",r:"Independiente"},{f:"2026-08-23",c:"V",r:"Colegio Ward"},
@@ -85,6 +121,23 @@ const DATOS = {
       {f:"2026-10-04",c:"V",r:"Hurlingham"},{f:"2026-10-11",c:"L",r:"La Patriada"},{f:"2026-10-25",c:"V",r:"Muñiz"},
       {f:"2026-11-01",c:"L",r:"Polvorines"},{f:"2026-11-08",c:"V",r:"C.I.D. Moreno"},{f:"2026-11-15",c:"V",r:"Sagrado Corazón"},
       {f:"2026-11-22",c:"L",r:"Estrella de Boedo"}
+    ], tabla:[
+      [1,"Sagrado Corazón",18,6,6,0,0,158,63],
+      [2,"La Patriada",18,6,6,0,0,176,102],
+      [3,"C.I.D. Moreno",18,6,6,0,0,137,94],
+      [4,"Ateneo Don Bosco",16,6,5,0,1,157,88],
+      [5,"Muñiz",16,6,5,0,1,167,120],
+      [6,"Polvorines",16,6,5,0,1,102,84],
+      [7,"Colegio Ward",15,6,4,1,1,127,101],
+      [8,"Hurlingham",12,6,3,0,3,120,109],
+      [9,"Estrella de Boedo",12,6,2,2,2,135,132],
+      [10,"Independiente",8,6,1,0,5,91,117],
+      [11,"Vélez Sarsfield",8,6,1,0,5,93,134],
+      [12,"Banfield",8,6,1,0,5,114,158],
+      [13,"Villa Modelo",8,6,1,0,5,103,160],
+      [14,"Boca Juniors",7,6,0,1,5,81,135],
+      [15,"Cedem Caseros",6,6,0,0,6,85,154],
+      [16,"Círculo de Villa Devoto",6,6,0,0,6,110,205]
     ] },
     { id:"menores", nombre:"Menores", dia:"Domingos", hora:"11:30",
       nombresCortos:true, jugadoras:[
@@ -100,6 +153,23 @@ const DATOS = {
       {f:"2026-10-04",c:"V",r:"Hurlingham"},{f:"2026-10-11",c:"L",r:"La Patriada"},{f:"2026-10-25",c:"V",r:"Muñiz"},
       {f:"2026-11-01",c:"L",r:"Polvorines"},{f:"2026-11-08",c:"V",r:"C.I.D. Moreno"},{f:"2026-11-15",c:"V",r:"Sagrado Corazón"},
       {f:"2026-11-22",c:"L",r:"Estrella de Boedo"}
+    ], tabla:[
+      [1,"Colegio Ward",18,6,6,0,0,198,100],
+      [2,"La Patriada",18,6,6,0,0,217,123],
+      [3,"Independiente",18,6,6,0,0,188,106],
+      [4,"C.I.D. Moreno",15,6,4,1,1,145,123],
+      [5,"Sagrado Corazón",14,6,4,0,2,155,110],
+      [6,"Ateneo Don Bosco",14,6,4,0,2,170,150],
+      [7,"Vélez Sarsfield",14,6,4,0,2,140,127],
+      [8,"Hurlingham",12,6,2,2,2,147,154],
+      [9,"Polvorines",11,6,2,1,3,100,108],
+      [10,"Cedem Caseros",11,6,2,1,3,121,131],
+      [11,"Boca Juniors",10,6,1,2,3,120,139],
+      [12,"Estrella de Boedo",9,6,1,1,4,132,168],
+      [13,"Banfield",8,6,1,0,5,114,177],
+      [14,"Villa Modelo",8,6,1,0,5,119,192],
+      [15,"Muñiz",6,6,0,0,6,112,166],
+      [16,"Círculo de Villa Devoto",6,6,0,0,6,92,196]
     ] },
     { id:"cadetas", nombre:"Cadetas", dia:"Domingos", hora:"13:00",
       nombresCortos:true, jugadoras:[
@@ -111,6 +181,23 @@ const DATOS = {
       {f:"2026-10-04",c:"V",r:"Hurlingham"},{f:"2026-10-11",c:"L",r:"La Patriada"},{f:"2026-10-25",c:"V",r:"Muñiz"},
       {f:"2026-11-01",c:"L",r:"Polvorines"},{f:"2026-11-08",c:"V",r:"C.I.D. Moreno"},{f:"2026-11-15",c:"V",r:"Sagrado Corazón"},
       {f:"2026-11-22",c:"L",r:"Estrella de Boedo"}
+    ], tabla:[
+      [1,"Banfield",18,6,6,0,0,131,103],
+      [2,"Vélez Sarsfield",17,6,5,1,0,116,102],
+      [3,"Independiente",16,6,5,0,1,149,126],
+      [4,"Villa Modelo",14,6,4,0,2,137,128],
+      [5,"Colegio Ward",14,6,3,2,1,135,130],
+      [6,"Cedem Caseros",13,6,3,1,2,137,123],
+      [7,"Sagrado Corazón",13,6,3,1,2,143,141],
+      [8,"Polvorines",12,6,2,2,2,124,118],
+      [9,"C.I.D. Moreno",12,6,3,0,3,124,123],
+      [10,"Muñiz",10,6,2,0,4,103,106],
+      [11,"Estrella de Boedo",10,6,2,0,4,133,137],
+      [12,"La Patriada",10,6,2,0,4,109,123],
+      [13,"Hurlingham",9,6,1,1,4,106,112],
+      [14,"Boca Juniors",8,6,1,0,5,91,111],
+      [15,"Círculo de Villa Devoto",8,6,1,0,5,135,159],
+      [16,"Ateneo Don Bosco",8,6,1,0,5,117,148]
     ] },
     { id:"juveniles", nombre:"Juveniles", dia:"Domingos", hora:"14:30",
       nombresCortos:true, jugadoras:[
@@ -123,6 +210,23 @@ const DATOS = {
       {f:"2026-10-04",c:"V",r:"Hurlingham"},{f:"2026-10-11",c:"L",r:"La Patriada"},{f:"2026-10-25",c:"V",r:"Muñiz"},
       {f:"2026-11-01",c:"L",r:"Polvorines"},{f:"2026-11-08",c:"V",r:"C.I.D. Moreno"},{f:"2026-11-15",c:"V",r:"Sagrado Corazón"},
       {f:"2026-11-22",c:"L",r:"Estrella de Boedo"}
+    ], tabla:[
+      [1,"Círculo de Villa Devoto",18,6,6,0,0,204,118],
+      [2,"Polvorines",18,6,6,0,0,198,156],
+      [3,"Sagrado Corazón",16,6,5,0,1,206,164],
+      [4,"Cedem Caseros",16,6,5,0,1,178,144],
+      [5,"Banfield",14,6,4,0,2,146,137],
+      [6,"Villa Modelo",14,6,4,0,2,142,143],
+      [7,"Hurlingham",12,6,3,0,3,140,128],
+      [8,"Colegio Ward",12,6,3,0,3,174,171],
+      [9,"Boca Juniors",12,6,3,0,3,147,150],
+      [10,"Independiente",12,6,3,0,3,157,170],
+      [11,"La Patriada",10,6,2,0,4,138,137],
+      [12,"Vélez Sarsfield",10,6,2,0,4,143,161],
+      [13,"Ateneo Don Bosco",8,6,1,0,5,122,161],
+      [14,"C.I.D. Moreno",8,6,1,0,5,123,164],
+      [15,"Muñiz",6,6,0,0,6,101,155],
+      [16,"Estrella de Boedo",6,6,0,0,6,156,216]
     ] },
     { id:"juniors", nombre:"Juniors", dia:"Domingos", hora:"16:00",
       jugadoras:[
@@ -135,6 +239,23 @@ const DATOS = {
       {f:"2026-10-04",c:"V",r:"Hurlingham"},{f:"2026-10-11",c:"L",r:"La Patriada"},{f:"2026-10-25",c:"V",r:"Muñiz"},
       {f:"2026-11-01",c:"L",r:"Polvorines"},{f:"2026-11-08",c:"V",r:"C.I.D. Moreno"},{f:"2026-11-15",c:"V",r:"Sagrado Corazón"},
       {f:"2026-11-22",c:"L",r:"Estrella de Boedo"}
+    ], tabla:[
+      [1,"Villa Modelo",18,6,6,0,0,203,148],
+      [2,"Círculo de Villa Devoto",18,6,6,0,0,177,134],
+      [3,"Vélez Sarsfield",16,6,5,0,1,160,115],
+      [4,"Boca Juniors",14,6,4,0,2,183,144],
+      [5,"Estrella de Boedo",14,6,4,0,2,198,160],
+      [6,"Cedem Caseros",14,6,4,0,2,160,135],
+      [7,"Sagrado Corazón",14,6,4,0,2,177,158],
+      [8,"C.I.D. Moreno",12,6,3,0,3,160,137],
+      [9,"Ateneo Don Bosco",12,6,3,0,3,179,180],
+      [10,"Muñiz",12,6,3,0,3,133,150],
+      [11,"Polvorines",11,6,2,1,3,138,160],
+      [12,"La Patriada",10,6,2,0,4,141,185],
+      [13,"Banfield",8,6,1,0,5,112,169],
+      [14,"Colegio Ward",7,6,0,1,5,151,176],
+      [15,"Hurlingham",6,6,0,0,6,126,163],
+      [16,"Independiente",6,6,0,0,6,126,210]
     ] },
     { id:"masculino", nombre:"Mayores caballeros", dia:"Domingos", hora:"18:00", sponsor:"Ladran Sancho", jugadoras:[
       "Lionel Benitez", "Patricio Britez", "Maximiliano Burakoski", "Valentin Carriego", "Martin Casco",
@@ -149,6 +270,21 @@ const DATOS = {
       {f:"2026-09-20",c:"libre"},{f:"2026-09-27",c:"libre"},{f:"2026-10-04",c:"V",r:"Defensores de Glew"},{f:"2026-10-11",c:"L",r:"Talleres"},
       {f:"2026-10-25",c:"V",r:"Ducilo"},{f:"2026-11-01",c:"L",r:"San Telmo"},{f:"2026-11-08",c:"V",r:"El Portugués"},
       {f:"2026-11-15",c:"V",r:"Círculo General Belgrano"},{f:"2026-11-22",c:"L",r:"Escobar"}
+    ], tabla:[
+      [1,"Almirante Brown",17,6,5,1,0,207,139],
+      [2,"Defensores de Glew",16,6,5,0,1,126,100],
+      [3,"Ferrocarril Mitre",16,6,5,0,1,187,164],
+      [4,"El Portugués",16,7,4,1,2,161,161],
+      [5,"Escobar",15,6,4,1,1,148,138],
+      [6,"General Las Heras",14,6,4,0,2,185,167],
+      [7,"Talleres",14,6,4,0,2,97,94],
+      [8,"Ducilo",14,6,4,0,2,109,111],
+      [9,"Federal Juniors",12,6,3,0,3,159,164],
+      [10,"San Telmo",12,6,3,0,3,100,108],
+      [11,"Ateneo Don Bosco",11,7,2,0,5,128,159],
+      [12,"Dep. Laferrere",10,6,2,0,4,130,151],
+      [13,"Dorrego",9,6,1,1,4,135,144],
+      [14,"Círculo General Belgrano",5,6,1,0,4,84,132]
     ]},
     // ⚠️ Maxihandball: falta cargar su fixture (fechas, rivales, día y hora).
     { id:"maxi", nombre:"Maxihandball", dia:"Domingos", hora:"11:00", jugadoras:[

@@ -79,7 +79,7 @@ pertenencia. Los textos hablan de la tribuna, de las familias y del barrio, no d
 
 ## Cosas que todavía faltan
 
-- El fixture, los horarios y los resultados salen de FeMeBal (femebal.com/tournament-tracker,
+- El fixture, los horarios, los resultados y las tablas de posiciones salen de FeMeBal (femebal.com/tournament-tracker,
   Torneo Metropolitano Clausura: Mayores 1º y 3º división femenino, división C de Infantiles
   a Junior, 4º división masculino). Para actualizarlo, ver "Sincronizar con FeMeBal" en
   recetas.md. Maxihandball no está en FeMeBal: su fixture se carga a mano.

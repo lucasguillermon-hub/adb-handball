@@ -170,6 +170,22 @@ header{position:sticky;top:0;z-index:60;background:rgba(10,20,40,.92);backdrop-f
 .pf.local.ganado{background:var(--rosa-vivo);color:#fff}
 .pf.local.ganado .res{color:#fff}
 .pf.empatado .res,.pf.perdido .res{opacity:.7}
+.posiciones{margin-top:34px}
+.posiciones h3{font-family:var(--display);font-size:22px;font-weight:400;margin:0 0 4px}
+.posiciones .nota{font-size:13.5px;color:rgba(10,20,40,.62);margin:0 0 14px}
+.tabla-pos{width:100%;border-collapse:collapse;font-size:14px;background:#fff;border:1px solid var(--linea-oscura);border-radius:12px;overflow:hidden}
+.tabla-pos th,.tabla-pos td{padding:8px 10px;text-align:right;border-top:1px solid var(--linea-oscura);white-space:nowrap}
+.tabla-pos th{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:rgba(10,20,40,.55);font-weight:700;border-top:0;background:var(--hueso)}
+.tabla-pos th:nth-child(2),.tabla-pos td:nth-child(2){text-align:left;width:100%;white-space:normal}
+.tabla-pos td:first-child{font-family:var(--display);font-size:16px;color:rgba(10,20,40,.55);width:34px}
+.tabla-pos td.pts{font-family:var(--display);font-size:17px}
+.tabla-pos tr.bosco td{background:var(--rosa);color:var(--tinta);font-weight:700}
+.tabla-pos tr.bosco td:first-child{color:var(--tinta)}
+.tabla-pos .esc{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;background:#fff;border:1px solid var(--linea-oscura);vertical-align:middle;margin-right:8px;overflow:hidden;font-family:var(--display);font-size:12px;color:var(--tinta);position:relative}
+.tabla-pos .esc img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:3px}
+.tabla-pos .esc.bosco img{padding:2px}
+.tabla-pos-envoltorio{overflow-x:auto}
+@media(max-width:640px){.tabla-pos th.sec,.tabla-pos td.sec{display:none}}
 .leyenda{display:flex;gap:18px;flex-wrap:wrap;font-size:13.5px;color:rgba(10,20,40,.62);margin-top:16px;align-items:center}
 .punto{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:6px;vertical-align:-1px}
 .fixture-sponsor{margin-top:26px;border:1px dashed rgba(10,20,40,.3);border-radius:14px;padding:18px 22px;display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;background:rgba(255,255,255,.6)}
@@ -447,6 +463,8 @@ footer a:hover{color:var(--rosa)}
       <span><i class="punto" style="background:var(--tinta)"></i>Visitante</span>
       <span id="leyenda-dia"></span>
     </div>
+
+    <div class="posiciones" id="posiciones"></div>
 
     <div class="fixture-sponsor">
       <p>
@@ -868,8 +886,26 @@ function pintarFixture(i){
       + '<span class="pie"><span class="cond">'+(p.c==="L"?"LOCAL":"VISITANTE")+'</span><span>'+DIA_MES(p.f)+(p.h ? " · "+p.h : "")+'</span></span></div>';
   }).join("") : '<p class="pf-vacio">Todavía no está cargado el fixture de '+pl.nombre+'. Apenas lo tengamos, aparece acá.</p>';
   $("#leyenda-dia").textContent = pl.partidos.length ? pl.dia+", "+pl.hora+" hs (salvo que la tarjeta diga otra hora)" : "";
+  pintarPosiciones(pl);
 }
 pintarFixture(0);
+
+/* ============================ tabla de posiciones ============================
+   Una fila por equipo: [puesto, equipo, puntos, jugados, ganados, empatados, perdidos,
+   goles a favor, en contra]. Viene de FeMeBal, en datos.js (planteles[].tabla). */
+function pintarPosiciones(pl){
+  const t = pl.tabla || [], caja = $("#posiciones");
+  if (!t.length){ caja.innerHTML = ""; return; }
+  const escudo = e => e === "Ateneo Don Bosco"
+    ? '<span class="esc bosco"><img src="iconos/escudo.svg" alt=""></span>'
+    : '<span class="esc">' + escudoRival(e) + '</span>';
+  caja.innerHTML = '<h3>Tabla de posiciones · ' + DATOS.torneo + '</h3>'
+    + '<p class="nota">' + pl.nombre + ' · ' + t.length + ' equipos · PTS puntos, PJ jugados, PG ganados, PE empatados, PP perdidos, GF/GC goles a favor y en contra.</p>'
+    + '<div class="tabla-pos-envoltorio"><table class="tabla-pos"><thead><tr><th>#</th><th>Equipo</th><th>PTS</th><th class="sec">PJ</th><th class="sec">PG</th><th class="sec">PE</th><th class="sec">PP</th><th class="sec">GF</th><th class="sec">GC</th><th>DIF</th></tr></thead><tbody>'
+    + t.map(f => '<tr' + (f[1] === "Ateneo Don Bosco" ? ' class="bosco"' : '') + '><td>' + f[0] + '</td><td>' + escudo(f[1]) + f[1] + '</td><td class="pts">' + f[2] + '</td>'
+      + '<td class="sec">' + f[3] + '</td><td class="sec">' + f[4] + '</td><td class="sec">' + f[5] + '</td><td class="sec">' + f[6] + '</td><td class="sec">' + f[7] + '</td><td class="sec">' + f[8] + '</td><td>' + (f[7] - f[8] > 0 ? "+" : "") + (f[7] - f[8]) + '</td></tr>').join("")
+    + '</tbody></table></div>';
+}
 
 /* ============================ votación MVP ============================
    Una votación por plantel, sobre el último partido jugado de ese plantel.
