@@ -161,6 +161,13 @@ header{position:sticky;top:0;z-index:60;background:rgba(10,20,40,.92);backdrop-f
 .pf .riv{font-family:var(--display);font-size:15px;line-height:1.05}
 .pf .pie{display:flex;justify-content:space-between;align-items:baseline;font-size:12px;font-weight:700;letter-spacing:.06em;margin-top:10px}
 .pf .cond{opacity:.72}
+.pf .res{display:flex;align-items:baseline;gap:8px;margin-top:8px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.85}
+.pf .res b{font-family:var(--display);font-size:20px;font-weight:400;letter-spacing:.02em;line-height:1}
+.pf.ganado .res{color:var(--rosa-vivo)}
+.pf.local.ganado .res{color:var(--tinta)}
+.pf.local.ganado{background:var(--rosa-vivo);color:#fff}
+.pf.local.ganado .res{color:#fff}
+.pf.empatado .res,.pf.perdido .res{opacity:.7}
 .leyenda{display:flex;gap:18px;flex-wrap:wrap;font-size:13.5px;color:rgba(10,20,40,.62);margin-top:16px;align-items:center}
 .punto{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:6px;vertical-align:-1px}
 .fixture-sponsor{margin-top:26px;border:1px dashed rgba(10,20,40,.3);border-radius:14px;padding:18px 22px;display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;background:rgba(255,255,255,.6)}
@@ -755,7 +762,12 @@ function sponsorDelProde(pl, p){
 }
 
 /* ============================ próximo partido ============================ */
-function cuando(p, plantel){ return new Date(p.f+"T"+plantel.hora+":00"); }
+function horaDe(p, plantel){ return p.h || plantel.hora; }                       // un partido puede tener hora propia
+function cuando(p, plantel){ return new Date(p.f+"T"+horaDe(p, plantel)+":00"); }
+const DIAS_SEM = ["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"];
+const DIA_SEM = f => DIAS_SEM[new Date(f+"T12:00:00").getDay()];
+// Resultado de un partido jugado: "28-24" es nuestros-de ellos.
+function resultado(p){ if (!p.g) return null; const [a, b] = p.g.split("-").map(Number); return { a, b, txt: a + " – " + b, clase: a > b ? "ganado" : a === b ? "empatado" : "perdido", palabra: a > b ? "Ganamos" : a === b ? "Empate" : "Perdimos" }; }
 
 /* Escudo del rival: se busca en fotos/rivales/<nombre-en-minusculas>.png. Si no
    existe, queda la inicial del rival. */
@@ -782,7 +794,7 @@ const prox = proximoPartido();
 if (prox){
   const nro = prox.pl.partidos.indexOf(prox.p)+1;
   $("#tab-torneo").textContent = DATOS.torneo+" · Fecha "+nro;
-  $("#tab-fecha").textContent = prox.pl.dia.slice(0,-1)+" "+DIA_MES(prox.p.f)+" · "+prox.pl.hora+" hs";
+  $("#tab-fecha").textContent = DIA_SEM(prox.p.f)+" "+DIA_MES(prox.p.f)+" · "+horaDe(prox.p, prox.pl)+" hs";
   $("#tab-plantel").textContent = prox.pl.nombre;
   $("#tab-rival").textContent = prox.p.r;
   $("#tab-inicial").innerHTML = escudoRival(prox.p.r);
@@ -802,7 +814,7 @@ if (prox){
     .sort((a, b) => cuando(a.p, a.pl) - cuando(b.p, b.pl));
   $("#proximas").innerHTML = '<h4>La próxima fecha de cada plantel</h4>' + proximas.map(({ pl, p }) =>
     '<div class="prox' + (p.c === "L" ? " local" : "") + '"><div class="rival-inicial">' + escudoRival(p.r) + '</div>'
-    + '<div><b>' + pl.nombre + '</b><span>' + pl.dia.slice(0, -1) + ' ' + DIA_MES(p.f) + ' · ' + pl.hora + ' hs · vs ' + p.r
+    + '<div><b>' + pl.nombre + '</b><span>' + DIA_SEM(p.f) + ' ' + DIA_MES(p.f) + ' · ' + horaDe(p, pl) + ' hs · vs ' + p.r
     + '<br><em>' + (p.c === "L" ? "En Don Bosco 116" : "De visitante") + '</em></span></div></div>').join("");
 }
 
@@ -839,12 +851,14 @@ function pintarFixture(i){
   const hoy = new Date();
   grilla.innerHTML = pl.partidos.length ? pl.partidos.map((p,n)=>{
     if (p.c==="libre") return '<div class="pf libre">Fecha libre<span style="display:block;font-weight:400;font-size:12px;margin-top:6px">'+DIA_MES(p.f)+'</span></div>';
-    const pasado = cuando(p,pl) < hoy ? " pasado" : "";
-    return '<div class="pf '+(p.c==="L"?"local":"")+pasado+'">'
+    const r = resultado(p);
+    const pasado = !r && cuando(p,pl) < hoy ? " pasado" : "";
+    return '<div class="pf '+(p.c==="L"?"local":"")+pasado+(r ? " "+r.clase : "")+'">'
       + '<span class="riv">'+p.r+'</span>'
-      + '<span class="pie"><span class="cond">'+(p.c==="L"?"LOCAL":"VISITANTE")+'</span><span>'+DIA_MES(p.f)+'</span></span></div>';
+      + (r ? '<span class="res"><b>'+r.txt+'</b>'+r.palabra+'</span>' : '')
+      + '<span class="pie"><span class="cond">'+(p.c==="L"?"LOCAL":"VISITANTE")+'</span><span>'+DIA_MES(p.f)+(p.h ? " · "+p.h : "")+'</span></span></div>';
   }).join("") : '<p class="pf-vacio">Todavía no está cargado el fixture de '+pl.nombre+'. Apenas lo tengamos, aparece acá.</p>';
-  $("#leyenda-dia").textContent = pl.partidos.length ? pl.dia+", desde las "+pl.hora+" hs" : "";
+  $("#leyenda-dia").textContent = pl.partidos.length ? pl.dia+", "+pl.hora+" hs (salvo que la tarjeta diga otra hora)" : "";
 }
 pintarFixture(0);
 
@@ -898,7 +912,8 @@ function pintarMvp(pl){
     listaMvp.innerHTML = ""; $("#mvp-estado").textContent = ""; return;
   }
   const nro = pl.partidos.indexOf(p) + 1;
-  $("#mvp-contexto").textContent = pl.nombre + " · Fecha " + nro + " · " + pl.dia.slice(0, -1) + " " + DIA_MES(p.f) + " vs " + p.r;
+  const r = resultado(p);
+  $("#mvp-contexto").textContent = pl.nombre + " · Fecha " + nro + " · " + DIA_SEM(p.f) + " " + DIA_MES(p.f) + " vs " + p.r + (r ? " · " + r.txt + " (" + r.palabra.toLowerCase() + ")" : "");
   $("#sponsor-mvp").textContent = sponsorDeLaMvp(pl, p);
 
   const e = estadoMvp[pl.id] || { conteo: {}, total: 0, miVoto: null, cerrada: false };
@@ -976,7 +991,7 @@ function pintarProde(pl){
   const p = proximoDe(pl);
   $("#sponsor-prode").textContent = sponsorDelProde(pl, p);
   $("#prode-partido").innerHTML = '<div class="rival-inicial">' + escudoRival(p.r) + '</div>'
-    + '<div><b>' + pl.nombre + ' vs ' + p.r + '</b>' + pl.dia.slice(0, -1) + ' ' + DIA_MES(p.f) + ' · ' + pl.hora + ' hs · ' + (p.c === "L" ? "En Don Bosco 116" : "De visitante") + '</div>';
+    + '<div><b>' + pl.nombre + ' vs ' + p.r + '</b>' + DIA_SEM(p.f) + ' ' + DIA_MES(p.f) + ' · ' + horaDe(p, pl) + ' hs · ' + (p.c === "L" ? "En Don Bosco 116" : "De visitante") + '</div>';
   $("#prode-rival").textContent = p.r;
 
   const e = estadoProde[pl.id] || { total: 0, mio: null, cerrado: false };

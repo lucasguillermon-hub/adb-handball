@@ -320,29 +320,32 @@ function escudoRival(r){   // escudo en fotos/rivales/<nombre>.png; si no existe
   const inicial = r.replace(/[^A-Za-zÁÉÍÓÚÑ]/g,"").charAt(0).toUpperCase();
   return '<img src="fotos/rivales/' + slugRival(r) + '.png" alt="" loading="lazy" onerror="this.remove()"><span>' + inicial + '</span>';
 }
+const DIAS_SEM = ["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"];
+const DIA_SEM = f => DIAS_SEM[new Date(f + "T12:00:00").getDay()];
+const horaDe = (p, pl) => p.h || pl.hora;   // un partido puede tener hora propia
 (function(){
   const ahora = new Date(); let mejor = null;
   DATOS.planteles.forEach(pl => pl.partidos.forEach(p => {
     if (p.c === "libre") return;
-    const d = new Date(p.f + "T" + pl.hora + ":00");
+    const d = new Date(p.f + "T" + horaDe(p, pl) + ":00");
     if (d > ahora && (!mejor || d < mejor.d)) mejor = { d, p, pl };
   }));
   if (!mejor){ $("#partido").remove(); return; }
   const parte = mejor.p.f.split("-");
   $("#p-torneo").textContent = DATOS.torneo + " · Fecha " + (mejor.pl.partidos.indexOf(mejor.p) + 1);
-  $("#p-cuando").textContent = mejor.pl.dia.slice(0,-1) + " " + parte[2] + "/" + parte[1] + " · " + mejor.pl.hora + " hs";
+  $("#p-cuando").textContent = DIA_SEM(mejor.p.f) + " " + parte[2] + "/" + parte[1] + " · " + horaDe(mejor.p, mejor.pl) + " hs";
   $("#p-plantel").textContent = mejor.pl.nombre;
   $("#p-rival").textContent = mejor.p.r;
   $("#p-cond").textContent = mejor.p.c === "L" ? "En Don Bosco 116" : "De visitante";
   $("#p-escudo").innerHTML = escudoRival(mejor.p.r);
 
   // La próxima fecha de cada plantel, en orden de horario.
-  const proximas = DATOS.planteles.map(pl => ({ pl, p: pl.partidos.find(p => p.c !== "libre" && new Date(p.f + "T" + pl.hora + ":00") > ahora) }))
-    .filter(x => x.p).sort((a, b) => new Date(a.p.f + "T" + a.pl.hora) - new Date(b.p.f + "T" + b.pl.hora));
+  const proximas = DATOS.planteles.map(pl => ({ pl, p: pl.partidos.find(p => p.c !== "libre" && new Date(p.f + "T" + horaDe(p, pl) + ":00") > ahora) }))
+    .filter(x => x.p).sort((a, b) => new Date(a.p.f + "T" + horaDe(a.p, a.pl)) - new Date(b.p.f + "T" + horaDe(b.p, b.pl)));
   $("#proximas").innerHTML = '<h4>La próxima fecha de cada plantel</h4>' + proximas.map(({ pl, p }) => {
     const d = p.f.split("-");
     return '<div class="prox' + (p.c === "L" ? " local" : "") + '"><div class="rival-esc">' + escudoRival(p.r) + '</div>'
-      + '<div><b>' + pl.nombre + '</b><span>' + pl.dia.slice(0, -1) + ' ' + d[2] + '/' + d[1] + ' · ' + pl.hora + ' hs · vs ' + p.r
+      + '<div><b>' + pl.nombre + '</b><span>' + DIA_SEM(p.f) + ' ' + d[2] + '/' + d[1] + ' · ' + horaDe(p, pl) + ' hs · vs ' + p.r
       + '<br><em>' + (p.c === "L" ? "En Don Bosco 116" : "De visitante") + '</em></span></div></div>';
   }).join("");
 })();

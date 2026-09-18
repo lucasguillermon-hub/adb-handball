@@ -33,21 +33,22 @@ const DATOS = {
     comunidad: "https://chat.whatsapp.com/"      // ⚠️ pegar el link real de la comunidad
   },
 
-  // ⚠️ Horarios de inicio estimados. Cambialos cuando salga la programación.
+  // Fixture sincronizado con FeMeBal (femebal.com/tournament-tracker) el 18/09/2026.
   // jugadoras: el plantel que se vota como figura de la fecha (de LISTAS PRESENTISMO 2026).
   // Minis e Infantiles son formativas: van con jugadoras:[] y no entran en nada que sea por nombre.
   // nombresCortos: true muestra "Nombre A." en vez del nombre completo (para menores de edad).
   planteles: [
-    { id:"mayores-a", nombre:"Mayores A", dia:"Sábados", hora:"20:00", sponsor:"Franco Liontix", jugadoras:[
+    { id:"mayores-a", nombre:"Mayores A", dia:"Sábados", hora:"18:00", sponsor:"Franco Liontix", jugadoras:[
       "Luz Agüero", "Noelia Alcala", "Millaray Cocha", "Daniela Cristaldo", "Katia Cuomo", "Guadalupe Fernandez",
       "Julieta Gimenez", "Mora Lionti", "Carla Martinez", "Thayssa Montaly", "Barbara Ramirez",
       "Micaela Ramirez", "Valeria Trelles", "Justine Vargas", "Emilia Zarantonello"
     ], partidos:[
-      {f:"2026-08-08",c:"V",r:"C.A.T."},{f:"2026-08-15",c:"L",r:"San Fernando"},{f:"2026-08-22",c:"V",r:"Dorrego"},
-      {f:"2026-08-29",c:"L",r:"Lapte"},{f:"2026-09-05",c:"V",r:"AFALP"},{f:"2026-09-12",c:"L",r:"C.F.L."},
-      {f:"2026-09-19",c:"V",r:"Polvorines"},{f:"2026-09-26",c:"L",r:"Sagrado Corazón"},{f:"2026-10-03",c:"V",r:"All Boys"},
-      {f:"2026-10-17",c:"L",r:"Vilo"},{f:"2026-10-24",c:"V",r:"C.A.T."},{f:"2026-10-31",c:"V",r:"V.J.B."},
-      {f:"2026-11-07",c:"L",r:"Argentinos Jrs."},{f:"2026-11-14",c:"V",r:"Secla"},{f:"2026-11-21",c:"L",r:"C.S.C.D.M."}
+      {f:"2026-08-08",c:"V",r:"Talleres",h:"19:45",g:"18-30"},{f:"2026-08-15",c:"L",r:"San Fernando",g:"30-25"},
+      {f:"2026-08-22",c:"V",r:"Dorrego",h:"16:15",g:"21-21"},{f:"2026-08-29",c:"L",r:"Dep. Laferrere",h:"19:45",g:"36-26"},
+      {f:"2026-09-05",c:"V",r:"AFALP",g:"34-21"},{f:"2026-09-12",c:"L",r:"Ferro Carril Oeste",h:"19:45",g:"28-24"},
+      {f:"2026-09-19",c:"V",r:"Polvorines"},{f:"2026-09-25",c:"L",r:"Sagrado Corazón",h:"20:00"},{f:"2026-10-03",c:"V",r:"All Boys"},
+      {f:"2026-10-17",c:"L",r:"Vicente López"},{f:"2026-10-24",c:"V",r:"Temperley"},{f:"2026-10-31",c:"V",r:"Villa Ballester"},
+      {f:"2026-11-07",c:"L",r:"Argentinos Juniors"},{f:"2026-11-14",c:"V",r:"Secla"},{f:"2026-11-21",c:"L",r:"Muñiz"}
     ]},
     { id:"mayores-b", nombre:"Mayores B", dia:"Sábados", hora:"18:00", sponsor:"Supermercado Magdalena", jugadoras:[
       "Ariana Acosta", "Jazmin Alarcon", "Paula Ayala", "Mia Badaracco", "Marina Chazarreta", "Ariana Cuervo Diaz",
@@ -55,60 +56,99 @@ const DATOS = {
       "Patricia Marsicovetere", "Sofia Marsicovetere", "Julieta Mercado", "Zoe Rodriguez", "Ariana Veiga",
       "Brenda Velozo"
     ], partidos:[
-      {f:"2026-08-08",c:"V",r:"C.B.C."},{f:"2026-08-15",c:"L",r:"Bernal B."},{f:"2026-08-22",c:"V",r:"Boca Juniors"},
-      {f:"2026-08-29",c:"L",r:"AFALP"},{f:"2026-09-05",c:"V",r:"Argentinos Jrs."},{f:"2026-09-12",c:"L",r:"D.B.H."},
-      {f:"2026-09-19",c:"V",r:"Independiente"},{f:"2026-09-26",c:"L",r:"Querandí"},{f:"2026-10-03",c:"V",r:"C.A.D.M."},
-      {f:"2026-10-17",c:"L",r:"M.A. Handball"},{f:"2026-10-24",c:"V",r:"San Telmo"},{f:"2026-10-31",c:"V",r:"C.A.N.CH."},
-      {f:"2026-11-07",c:"L",r:"Secla"},{f:"2026-11-14",c:"V",r:"Colegio del Parque"},{f:"2026-11-21",c:"L",r:"Ceder Caseros"}
+      {f:"2026-08-08",c:"V",r:"Campana Boat Club",g:"24-25"},{f:"2026-08-17",c:"L",r:"Almirante Brown",g:"19-25"},
+      {f:"2026-08-22",c:"V",r:"Boca Juniors",h:"19:45",g:"18-21"},{f:"2026-08-29",c:"L",r:"AFALP",g:"25-32"},
+      {f:"2026-09-05",c:"V",r:"Argentinos Juniors",h:"19:45",g:"15-14"},{f:"2026-09-12",c:"L",r:"Huracán de San Justo",g:"24-22"},
+      {f:"2026-09-19",c:"V",r:"Independiente"},{f:"2026-09-26",c:"L",r:"Querandí"},{f:"2026-10-03",c:"V",r:"Defensores de Moreno"},
+      {f:"2026-10-17",c:"L",r:"Mariano Acosta"},{f:"2026-09-24",c:"V",r:"San Telmo",h:"21:15"},{f:"2026-10-31",c:"V",r:"Nueva Chicago"},
+      {f:"2026-11-07",c:"L",r:"Secla"},{f:"2026-11-14",c:"V",r:"Colegio del Parque"},{f:"2026-11-21",c:"L",r:"Cedem Caseros"}
     ]},
     // Inferiores damas es una tira: Minis, Infantiles, Menores, Cadetas, Juveniles y Juniors
-    // juegan el mismo día en el mismo lugar, todas de local o todas de visitante. El fixture
-    // se carga una vez (en Minis) y las demás lo comparten con mismoFixtureQue. Lo propio de
-    // cada una es el horario y el plantel. Sin "sponsor", el marcador no muestra presentador.
-    { id:"minis", nombre:"Minis", dia:"Domingos", hora:"11:00",   // ⚠️ confirmar horario
+    // juegan el mismo día en el mismo lugar, todas de local o todas de visitante, cada una
+    // a su hora. Fixture, horarios y resultados vienen de FeMeBal (división C); Minis no
+    // compite en FeMeBal y copia las fechas. Sin "sponsor", el marcador no muestra presentador.
+    // Campos de cada partido: f fecha · c L/V/libre · r rival · h hora (si difiere de la del
+    // plantel) · g resultado "nuestros-de ellos" cuando ya se jugó.
+    { id:"minis", nombre:"Minis", dia:"Domingos", hora:"10:30",   // ⚠️ confirmar horario de Minis (no está en FeMeBal)
       nombresCortos:true, jugadoras:[], partidos:[
-      {f:"2026-08-09",c:"V",r:"C.V.D."},{f:"2026-08-16",c:"L",r:"Independiente"},{f:"2026-08-23",c:"V",r:"Colegio Ward"},
-      {f:"2026-08-30",c:"L",r:"Boca Juniors"},{f:"2026-09-06",c:"V",r:"C.A.B."},{f:"2026-09-13",c:"L",r:"Villa Modelo"},
-      {f:"2026-09-20",c:"V",r:"Vélez Sarsfield"},{f:"2026-09-27",c:"L",r:"Ceder Caseros"},{f:"2026-10-04",c:"V",r:"Ciudad Jardín"},
-      {f:"2026-10-11",c:"L",r:"La Patriada"},{f:"2026-10-25",c:"V",r:"C.S.C.D.M."},{f:"2026-11-01",c:"L",r:"Polvorines"},
-      {f:"2026-11-08",c:"V",r:"Handball C.I.D."},{f:"2026-11-15",c:"V",r:"Sagrado Corazón"},{f:"2026-11-22",c:"L",r:"C.E.B."}
+      {f:"2026-08-09",c:"V",r:"Círculo de Villa Devoto"},{f:"2026-08-16",c:"L",r:"Independiente"},{f:"2026-08-23",c:"V",r:"Colegio Ward"},
+      {f:"2026-08-30",c:"L",r:"Boca Juniors"},{f:"2026-09-06",c:"V",r:"Banfield"},{f:"2026-09-13",c:"L",r:"Villa Modelo"},
+      {f:"2026-09-20",c:"V",r:"Vélez Sarsfield"},{f:"2026-09-27",c:"L",r:"Cedem Caseros"},{f:"2026-10-04",c:"V",r:"Hurlingham"},
+      {f:"2026-10-11",c:"L",r:"La Patriada"},{f:"2026-10-25",c:"V",r:"Muñiz"},{f:"2026-11-01",c:"L",r:"Polvorines"},
+      {f:"2026-11-08",c:"V",r:"C.I.D. Moreno"},{f:"2026-11-15",c:"V",r:"Sagrado Corazón"},{f:"2026-11-22",c:"L",r:"Estrella de Boedo"}
     ]},
-    { id:"infantiles", nombre:"Infantiles", dia:"Domingos", hora:"11:00",   // ⚠️ confirmar horario
-      nombresCortos:true, jugadoras:[], mismoFixtureQue:"minis" },
-    { id:"menores", nombre:"Menores", dia:"Domingos", hora:"11:00",   // ⚠️ confirmar horario
+    { id:"infantiles", nombre:"Infantiles", dia:"Domingos", hora:"10:30",
+      nombresCortos:true, jugadoras:[], partidos:[
+      {f:"2026-08-09",c:"V",r:"Círculo de Villa Devoto",g:"35-15"},{f:"2026-08-16",c:"L",r:"Independiente",g:"27-7"},
+      {f:"2026-08-23",c:"V",r:"Colegio Ward",g:"15-21"},{f:"2026-08-30",c:"L",r:"Boca Juniors",g:"21-12"},{f:"2026-09-06",c:"V",r:"Banfield",g:"27-20"},
+      {f:"2026-09-13",c:"L",r:"Villa Modelo",g:"32-13"},{f:"2026-09-20",c:"V",r:"Vélez Sarsfield"},{f:"2026-09-27",c:"L",r:"Cedem Caseros"},
+      {f:"2026-10-04",c:"V",r:"Hurlingham"},{f:"2026-10-11",c:"L",r:"La Patriada"},{f:"2026-10-25",c:"V",r:"Muñiz"},
+      {f:"2026-11-01",c:"L",r:"Polvorines"},{f:"2026-11-08",c:"V",r:"C.I.D. Moreno"},{f:"2026-11-15",c:"V",r:"Sagrado Corazón"},
+      {f:"2026-11-22",c:"L",r:"Estrella de Boedo"}
+    ] },
+    { id:"menores", nombre:"Menores", dia:"Domingos", hora:"11:30",
       nombresCortos:true, jugadoras:[
       "Martina Antero", "Sofia Ballares", "Matilda Barrera", "Victoria Bassi", "Celeste Bello",
       "Pilar Bustamante", "Mia Calo", "Macarena De León", "Guillemina Fortunato", "Emilia Greco",
       "Celina Kronemberg", "Victoria Kyanco", "Valentina Manchi", "Luana Martinez", "Helena Paz",
       "Martina Rosales", "Lupe Sosa", "Nina Stambullian", "Isabella Stoll", "Agustina Villa", "Julieta Villa",
       "Serena Zabatta"
-    ], mismoFixtureQue:"minis" },
-    { id:"cadetas", nombre:"Cadetas", dia:"Domingos", hora:"11:00",   // ⚠️ confirmar horario
+    ], partidos:[
+      {f:"2026-08-09",c:"V",r:"Círculo de Villa Devoto",g:"25-19"},{f:"2026-08-16",c:"L",r:"Independiente",g:"23-29"},
+      {f:"2026-08-23",c:"V",r:"Colegio Ward",g:"22-37"},{f:"2026-08-30",c:"L",r:"Boca Juniors",g:"26-23"},{f:"2026-09-06",c:"V",r:"Banfield",g:"31-19"},
+      {f:"2026-09-13",c:"L",r:"Villa Modelo",g:"43-23"},{f:"2026-09-20",c:"V",r:"Vélez Sarsfield"},{f:"2026-09-27",c:"L",r:"Cedem Caseros"},
+      {f:"2026-10-04",c:"V",r:"Hurlingham"},{f:"2026-10-11",c:"L",r:"La Patriada"},{f:"2026-10-25",c:"V",r:"Muñiz"},
+      {f:"2026-11-01",c:"L",r:"Polvorines"},{f:"2026-11-08",c:"V",r:"C.I.D. Moreno"},{f:"2026-11-15",c:"V",r:"Sagrado Corazón"},
+      {f:"2026-11-22",c:"L",r:"Estrella de Boedo"}
+    ] },
+    { id:"cadetas", nombre:"Cadetas", dia:"Domingos", hora:"13:00",
       nombresCortos:true, jugadoras:[
       "Luciana Chiesa", "Abril Coria", "Isabella Greco", "Elilia Juarez Leikam", "Ema Rosello", "Maria Eugenia Rotta"
-    ], mismoFixtureQue:"minis" },
-    { id:"juveniles", nombre:"Juveniles", dia:"Domingos", hora:"11:00",   // ⚠️ confirmar horario
+    ], partidos:[
+      {f:"2026-08-09",c:"V",r:"Círculo de Villa Devoto",g:"21-19"},{f:"2026-08-16",c:"L",r:"Independiente",g:"17-30"},
+      {f:"2026-08-23",c:"V",r:"Colegio Ward",g:"17-25"},{f:"2026-08-30",c:"L",r:"Boca Juniors",g:"20-24"},{f:"2026-09-06",c:"V",r:"Banfield",g:"16-19"},
+      {f:"2026-09-13",c:"L",r:"Villa Modelo",g:"26-31"},{f:"2026-09-20",c:"V",r:"Vélez Sarsfield"},{f:"2026-09-27",c:"L",r:"Cedem Caseros"},
+      {f:"2026-10-04",c:"V",r:"Hurlingham"},{f:"2026-10-11",c:"L",r:"La Patriada"},{f:"2026-10-25",c:"V",r:"Muñiz"},
+      {f:"2026-11-01",c:"L",r:"Polvorines"},{f:"2026-11-08",c:"V",r:"C.I.D. Moreno"},{f:"2026-11-15",c:"V",r:"Sagrado Corazón"},
+      {f:"2026-11-22",c:"L",r:"Estrella de Boedo"}
+    ] },
+    { id:"juveniles", nombre:"Juveniles", dia:"Domingos", hora:"14:30",
       nombresCortos:true, jugadoras:[
       "Julieta Antero", "Valentina Antero", "Camila Dib", "Antonella Durzo", "Uma Estanga", "Angela Farias",
       "Renata Giachello", "Martina Gomez", "Isabella Scarfo", "Luciana Toledo"
-    ], mismoFixtureQue:"minis" },
-    { id:"juniors", nombre:"Juniors", dia:"Domingos", hora:"11:00",   // ⚠️ confirmar horario
+    ], partidos:[
+      {f:"2026-08-09",c:"V",r:"Círculo de Villa Devoto",g:"17-34"},{f:"2026-08-16",c:"L",r:"Independiente",g:"20-29"},
+      {f:"2026-08-23",c:"V",r:"Colegio Ward",g:"24-28"},{f:"2026-08-30",c:"L",r:"Boca Juniors",g:"21-17"},{f:"2026-09-06",c:"V",r:"Banfield",g:"19-28"},
+      {f:"2026-09-13",c:"L",r:"Villa Modelo",g:"21-25"},{f:"2026-09-20",c:"V",r:"Vélez Sarsfield"},{f:"2026-09-27",c:"L",r:"Cedem Caseros"},
+      {f:"2026-10-04",c:"V",r:"Hurlingham"},{f:"2026-10-11",c:"L",r:"La Patriada"},{f:"2026-10-25",c:"V",r:"Muñiz"},
+      {f:"2026-11-01",c:"L",r:"Polvorines"},{f:"2026-11-08",c:"V",r:"C.I.D. Moreno"},{f:"2026-11-15",c:"V",r:"Sagrado Corazón"},
+      {f:"2026-11-22",c:"L",r:"Estrella de Boedo"}
+    ] },
+    { id:"juniors", nombre:"Juniors", dia:"Domingos", hora:"16:00",
       jugadoras:[
       "Jazmin Alarcon", "Mia Badaracco", "Katia Cuomo", "Julia Damario", "Camila Gomez", "Patricia Marsico",
       "Sofia Marsico", "Thayssa Montali", "Milagros Mosqueda", "Catalina Ravazzano", "Emilia Zarantonello"
-    ], mismoFixtureQue:"minis" },
-    { id:"masculino", nombre:"Mayores caballeros", dia:"Domingos", hora:"16:00", sponsor:"Ladran Sancho", jugadoras:[
+    ], partidos:[
+      {f:"2026-08-09",c:"V",r:"Círculo de Villa Devoto",g:"23-34"},{f:"2026-08-16",c:"L",r:"Independiente",g:"36-31"},
+      {f:"2026-08-23",c:"V",r:"Colegio Ward",g:"35-32"},{f:"2026-08-30",c:"L",r:"Boca Juniors",g:"30-31"},{f:"2026-09-06",c:"V",r:"Banfield",g:"29-16"},
+      {f:"2026-09-13",c:"L",r:"Villa Modelo",g:"26-36"},{f:"2026-09-20",c:"V",r:"Vélez Sarsfield"},{f:"2026-09-27",c:"L",r:"Cedem Caseros"},
+      {f:"2026-10-04",c:"V",r:"Hurlingham"},{f:"2026-10-11",c:"L",r:"La Patriada"},{f:"2026-10-25",c:"V",r:"Muñiz"},
+      {f:"2026-11-01",c:"L",r:"Polvorines"},{f:"2026-11-08",c:"V",r:"C.I.D. Moreno"},{f:"2026-11-15",c:"V",r:"Sagrado Corazón"},
+      {f:"2026-11-22",c:"L",r:"Estrella de Boedo"}
+    ] },
+    { id:"masculino", nombre:"Mayores caballeros", dia:"Domingos", hora:"18:00", sponsor:"Ladran Sancho", jugadoras:[
       "Lionel Benitez", "Patricio Britez", "Maximiliano Burakoski", "Valentin Carriego", "Martin Casco",
       "Guillermo Corbelli", "Agustin Fernandez", "Fabian Franco", "Gabriel Franco", "Enzo Golnner",
       "Maximiliano Gomez", "Lucas Guillermon", "Agustin Iacuzzi", "Leonel Legal", "Leandro Maggi",
       "Julian Ponce", "Leandro Salvetti", "Marcelo Sanchez", "Matias Solis", "Matias Vallejos",
       "Martin Vega", "Mariano Magnani"
     ], partidos:[
-      {f:"2026-08-09",c:"V",r:"Bernal B."},{f:"2026-08-16",c:"L",r:"Dep. Laferrere"},{f:"2026-08-23",c:"V",r:"Juniors"},
-      {f:"2026-08-30",c:"L",r:"General Las Heras"},{f:"2026-09-06",c:"V",r:"Dorrego"},{f:"2026-09-13",c:"L",r:"Ferrocarril Mitre"},
-      {f:"2026-09-20",c:"libre"},{f:"2026-09-27",c:"libre"},{f:"2026-10-04",c:"V",r:"C.A.D.G."},
-      {f:"2026-10-11",c:"L",r:"C.A.T."},{f:"2026-10-25",c:"V",r:"H.M.B."},{f:"2026-11-01",c:"L",r:"San Telmo"},
-      {f:"2026-11-08",c:"V",r:"El Portugués"},{f:"2026-11-15",c:"V",r:"Círculo Gral. Belgrano"},{f:"2026-11-22",c:"L",r:"Handball Escobar"}
+      {f:"2026-08-09",c:"V",r:"Almirante Brown",g:"13-28"},{f:"2026-08-16",c:"L",r:"Dep. Laferrere",g:"18-19"},
+      {f:"2026-08-23",c:"V",r:"Federal Juniors",g:"21-23"},{f:"2026-08-30",c:"L",r:"General Las Heras",g:"19-25"},
+      {f:"2026-09-06",c:"V",r:"Dorrego",h:"20:15",g:"28-27"},{f:"2026-09-13",c:"L",r:"Ferrocarril Mitre",g:"27-37"},
+      {f:"2026-09-20",c:"libre"},{f:"2026-09-27",c:"libre"},{f:"2026-10-04",c:"V",r:"Defensores de Glew"},{f:"2026-10-11",c:"L",r:"Talleres"},
+      {f:"2026-10-25",c:"V",r:"Ducilo"},{f:"2026-11-01",c:"L",r:"San Telmo"},{f:"2026-11-08",c:"V",r:"El Portugués"},
+      {f:"2026-11-15",c:"V",r:"Círculo General Belgrano"},{f:"2026-11-22",c:"L",r:"Escobar"}
     ]},
     // ⚠️ Maxihandball: falta cargar su fixture (fechas, rivales, día y hora).
     { id:"maxi", nombre:"Maxihandball", dia:"Domingos", hora:"11:00", jugadoras:[

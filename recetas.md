@@ -135,6 +135,20 @@ Marcá la baja en la base de contactos para [mail] con la fecha de hoy. No lo bo
 
 ---
 
+## Sincronizar con FeMeBal (fixture, horarios, resultados y escudos)
+
+Lo que la CM hacía a mano. Una vez por semana, después de la fecha:
+
+```
+Sincronizá el fixture con FeMeBal: entrá a femebal.com/tournament-tracker, Torneo
+Metropolitano Clausura (Mayores 1º y 3º división femenino, división C de Infantiles a
+Junior, 4º división masculino), sacá los partidos del Ateneo Don Bosco de cada torneo con
+fecha, hora, rival y resultado, y actualizá datos.js. Si aparece un rival nuevo, bajá su
+escudo a fotos/rivales/ con el nombre en minúsculas. Decime qué cambió y subilo.
+```
+
+---
+
 ## Ver cómo va la votación de la figura
 
 ```

@@ -79,9 +79,11 @@ pertenencia. Los textos hablan de la tribuna, de las familias y del barrio, no d
 
 ## Cosas que todavía faltan
 
-- Confirmar nombres de algunos rivales del fixture (Lapte, C.F.L., el rival del 04/10
-  de Cadetas/Juveniles, el "B" con flor de lis, M.A. Handball).
-- Horarios reales de partido por categoría. Confirmar si Iniciación sigue como grupo aparte (no está en
+- El fixture, los horarios y los resultados salen de FeMeBal (femebal.com/tournament-tracker,
+  Torneo Metropolitano Clausura: Mayores 1º y 3º división femenino, división C de Infantiles
+  a Junior, 4º división masculino). Para actualizarlo, ver "Sincronizar con FeMeBal" en
+  recetas.md. Maxihandball no está en FeMeBal: su fixture se carga a mano.
+- Confirmar si Iniciación sigue como grupo aparte (no está en
   la lista de DT ni en las listas de presentismo del club).
 - Logos: los 39 de la temporada 2026 ya están en `fotos/sponsors/` (exportados de los PDF
   de la carpeta de diseño `6. SPONSORS 2026/`, que está ignorada en git y no se publica).
@@ -97,10 +99,12 @@ pertenencia. Los textos hablan de la tribuna, de las familias y del barrio, no d
   git). Minis e Infantiles son formativas: `jugadoras: []`, no entran en nada que sea por
   nombre. Menores, Cadetas y Juveniles muestran nombres cortos (`nombresCortos: true`).
 - Planteles: Minis, Infantiles, Menores, Cadetas, Juveniles y Juniors son la tira de
-  inferiores: comparten el fixture (cargado en Minis, las demás con `mismoFixtureQue`) y
-  solo tienen horario propio. Faltan: el horario de cada una (hoy todas 11:00), el fixture
-  de Maxihandball (hoy vacío) y decidir qué sponsor presenta cada plantel nuevo (sin
+  inferiores (mismas fechas y lugar, cada una a su hora). Cada partido puede llevar `h`
+  (hora propia) y `g` (resultado "nuestros-de ellos"). Faltan: el fixture de Maxihandball
+  (hoy vacío), el horario de Minis, y decidir qué sponsor presenta cada plantel nuevo (sin
   `sponsor`, el marcador no muestra presentador).
+- Escudos de rivales en `fotos/rivales/<nombre-del-rival-en-minusculas>.png` (44 de FeMeBal
+  y 13 de Maxi). Un rival nuevo se ve con su inicial hasta que se cargue el archivo.
 - Galería: un álbum por categoría, todos vacíos hasta que se carguen fotos en `datos.js`.
   El álbum por fecha con sponsor queda para el plan 2027.
 - Los sponsors del muro son acuerdos 2026, anteriores al plan; el plan de niveles
