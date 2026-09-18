@@ -297,6 +297,7 @@ footer a:hover{color:var(--rosa)}
 .foto .agua{position:absolute;right:9px;bottom:9px;background:rgba(10,20,40,.72);color:#fff;font-family:var(--display);font-size:11px;letter-spacing:.08em;padding:4px 8px;border-radius:5px;line-height:1.3;text-align:right}
 .foto.sin-img{aspect-ratio:4/3;display:grid;place-items:center;background:linear-gradient(135deg,var(--azul),var(--tinta));border:1px dashed var(--linea);cursor:default}
 .foto.sin-img img{display:none}
+.pf-vacio{grid-column:1/-1;margin:0;padding:30px 20px;border:1px dashed var(--linea-oscura);border-radius:12px;text-align:center;color:rgba(10,20,40,.6);font-size:15px}
 .album-vacio{column-span:all;margin:0;padding:34px 20px;border:1px dashed var(--linea);border-radius:12px;text-align:center;color:rgba(255,255,255,.62);font-size:15px}
 .foto.sin-img::after{content:attr(data-hueco);font-family:var(--display);font-size:13px;color:rgba(242,183,207,.6);letter-spacing:.1em;padding:0 18px;text-align:center;line-height:1.5}
 .foto.alto{aspect-ratio:3/4}
@@ -409,7 +410,7 @@ footer a:hover{color:var(--rosa)}
     <div class="cabeza">
       <div>
         <h2 class="h2">Clausura 2026,<br>fecha por fecha</h2>
-        <p class="bajada">Quince fechas por plantel. Los sábados juegan Mayores A y B; los domingos, Cadetas, Juveniles y Caballeros. Guardate la página: se actualiza con cada resultado.</p>
+        <p class="bajada">Quince fechas por plantel. Los sábados juegan Mayores A y B; los domingos, las inferiores y Caballeros. Guardate la página: se actualiza con cada resultado.</p>
       </div>
       <a class="btn oscuro" href="#comunidad" data-track="fixture-recordatorio">Quiero el aviso por WhatsApp</a>
     </div>
@@ -719,7 +720,7 @@ $("#ig-link").href = DATOS.contacto.ig;
 $("#wsp-comunidad").href = DATOS.contacto.comunidad;
 $("#pie-tel").textContent = DATOS.contacto.tel;
 
-const EN_LETRAS = ["", "Un", "Dos", "Tres", "Cuatro", "Cinco", "Seis", "Siete", "Ocho", "Nueve"];
+const EN_LETRAS = ["", "Un", "Dos", "Tres", "Cuatro", "Cinco", "Seis", "Siete", "Ocho", "Nueve", "Diez", "Once", "Doce"];
 $("#hero-planteles").textContent = EN_LETRAS[DATOS.planteles.length] || DATOS.planteles.length;
 
 /* Una marca puede estar en varias categorías del muro: esto la devuelve una sola vez. */
@@ -769,7 +770,7 @@ if (prox){
   $("#tab-rival").textContent = prox.p.r;
   $("#tab-inicial").innerHTML = escudoRival(prox.p.r);
   $("#tab-cond").textContent = prox.p.c==="L" ? "En Don Bosco 116" : "De visitante";
-  $("#tab-sponsor").textContent = prox.pl.sponsor;
+  if (prox.pl.sponsor) $("#tab-sponsor").textContent = prox.pl.sponsor; else $(".presenta").remove();
   $("#prode-contexto").textContent = prox.pl.nombre+" · "+prox.pl.dia.slice(0,-1)+" "+DIA_MES(prox.p.f)+" vs "+prox.p.r;
   $("#prode-rival").textContent = prox.p.r;
   $("#sponsor-prode").textContent = sponsorDelProde(prox.pl, prox.p);
@@ -822,14 +823,14 @@ function pintarFixture(i){
   const pl = DATOS.planteles[i];
   $$(".tab",tabs).forEach((t,j)=>t.setAttribute("aria-selected", j===i));
   const hoy = new Date();
-  grilla.innerHTML = pl.partidos.map((p,n)=>{
+  grilla.innerHTML = pl.partidos.length ? pl.partidos.map((p,n)=>{
     if (p.c==="libre") return '<div class="pf libre">Fecha libre<span style="display:block;font-weight:400;font-size:12px;margin-top:6px">'+DIA_MES(p.f)+'</span></div>';
     const pasado = cuando(p,pl) < hoy ? " pasado" : "";
     return '<div class="pf '+(p.c==="L"?"local":"")+pasado+'">'
       + '<span class="riv">'+p.r+'</span>'
       + '<span class="pie"><span class="cond">'+(p.c==="L"?"LOCAL":"VISITANTE")+'</span><span>'+DIA_MES(p.f)+'</span></span></div>';
-  }).join("");
-  $("#leyenda-dia").textContent = pl.dia+", desde las "+pl.hora+" hs";
+  }).join("") : '<p class="pf-vacio">Todavía no está cargado el fixture de '+pl.nombre+'. Apenas lo tengamos, aparece acá.</p>';
+  $("#leyenda-dia").textContent = pl.partidos.length ? pl.dia+", desde las "+pl.hora+" hs" : "";
 }
 pintarFixture(0);
 

@@ -60,12 +60,16 @@ const DATOS = {
       {f:"2026-10-17",c:"L",r:"M.A. Handball"},{f:"2026-10-24",c:"V",r:"San Telmo"},{f:"2026-10-31",c:"V",r:"C.A.N.CH."},
       {f:"2026-11-07",c:"L",r:"Secla"},{f:"2026-11-14",c:"V",r:"Colegio del Parque"},{f:"2026-11-21",c:"L",r:"Ceder Caseros"}
     ]},
-    // Cadetas y Juveniles son una tira: juegan el mismo día en el mismo lugar, siempre las
-    // dos de local o las dos de visitante. El fixture se carga una vez en Cadetas y
-    // Juveniles lo comparte (mismoFixtureQue). Lo único propio de cada una es el horario.
-    { id:"cadetas", nombre:"Cadetas", dia:"Domingos", hora:"11:00",   // ⚠️ confirmar horario
-      sponsor:"Administración Palmieri", nombresCortos:true, jugadoras:[
-      "Luciana Chiesa", "Abril Coria", "Isabella Greco", "Elilia Juarez Leikam", "Ema Rosello", "Maria Eugenia Rotta"
+    // Inferiores damas es una tira: Minis, Infantiles, Menores, Cadetas, Juveniles y Juniors
+    // juegan el mismo día en el mismo lugar, todas de local o todas de visitante. El fixture
+    // se carga una vez (en Minis) y las demás lo comparten con mismoFixtureQue. Lo propio de
+    // cada una es el horario y el plantel. Sin "sponsor", el marcador no muestra presentador.
+    { id:"minis", nombre:"Minis", dia:"Domingos", hora:"11:00",   // ⚠️ confirmar horario
+      nombresCortos:true, jugadoras:[
+      "Juliana Avila", "Sofia Bermolen", "Antonia Bobadilla", "Valentina Calo", "Delfina Canesa",
+      "Catalina Casco", "Justina Centurion", "Juana Chimento", "Milagros Ferrari", "Helena Ferreyra",
+      "Martina Flores", "Catalina Livramento", "Catalina Lopez", "Olivia Magnani", "Guadalupe Miletti",
+      "Maria Emilia Mina", "Cora Montalbano", "Paz Olivares", "Victoria Pizarro", "Maria Emilia Riba"
     ], partidos:[
       {f:"2026-08-09",c:"V",r:"C.V.D."},{f:"2026-08-16",c:"L",r:"Independiente"},{f:"2026-08-23",c:"V",r:"Colegio Ward"},
       {f:"2026-08-30",c:"L",r:"Boca Juniors"},{f:"2026-09-06",c:"V",r:"C.A.B."},{f:"2026-09-13",c:"L",r:"Villa Modelo"},
@@ -73,11 +77,36 @@ const DATOS = {
       {f:"2026-10-11",c:"L",r:"La Patriada"},{f:"2026-10-25",c:"V",r:"C.S.C.D.M."},{f:"2026-11-01",c:"L",r:"Polvorines"},
       {f:"2026-11-08",c:"V",r:"Handball C.I.D."},{f:"2026-11-15",c:"V",r:"Sagrado Corazón"},{f:"2026-11-22",c:"L",r:"C.E.B."}
     ]},
-    { id:"juveniles", nombre:"Juveniles", dia:"Domingos", hora:"12:30",   // ⚠️ confirmar horario
-      sponsor:"Administración Palmieri", nombresCortos:true, jugadoras:[
+    { id:"infantiles", nombre:"Infantiles", dia:"Domingos", hora:"11:00",   // ⚠️ confirmar horario
+      nombresCortos:true, jugadoras:[
+      "Emilia Baez", "Sofia Brau", "Isabella Buono", "Helena Cabibbo", "Victoria Cabral", "Valentina Calo",
+      "Amanda Durzo", "Agostina Ferrarotti", "Bianca Godoy", "Melanie Gomez", "Victoria Ibero",
+      "Amelie Luna", "Paz Maldonado", "Martina Manchi", "Emilia Mañas", "Sofia Mendez", "Isabella Michalko",
+      "Emma Natalucci", "Catalina Palumbo", "Ana Paz", "Indira Randone", "Julia Recupero", "Carmela Rey",
+      "Pilar Sempe Kreisk", "Paz Torres Maldonado", "Lujan Vitale"
+    ], mismoFixtureQue:"minis" },
+    { id:"menores", nombre:"Menores", dia:"Domingos", hora:"11:00",   // ⚠️ confirmar horario
+      nombresCortos:true, jugadoras:[
+      "Martina Antero", "Sofia Ballares", "Matilda Barrera", "Victoria Bassi", "Celeste Bello",
+      "Pilar Bustamante", "Mia Calo", "Macarena De León", "Guillemina Fortunato", "Emilia Greco",
+      "Celina Kronemberg", "Victoria Kyanco", "Valentina Manchi", "Luana Martinez", "Helena Paz",
+      "Martina Rosales", "Lupe Sosa", "Nina Stambullian", "Isabella Stoll", "Agustina Villa", "Julieta Villa",
+      "Serena Zabatta"
+    ], mismoFixtureQue:"minis" },
+    { id:"cadetas", nombre:"Cadetas", dia:"Domingos", hora:"11:00",   // ⚠️ confirmar horario
+      nombresCortos:true, jugadoras:[
+      "Luciana Chiesa", "Abril Coria", "Isabella Greco", "Elilia Juarez Leikam", "Ema Rosello", "Maria Eugenia Rotta"
+    ], mismoFixtureQue:"minis" },
+    { id:"juveniles", nombre:"Juveniles", dia:"Domingos", hora:"11:00",   // ⚠️ confirmar horario
+      nombresCortos:true, jugadoras:[
       "Julieta Antero", "Valentina Antero", "Camila Dib", "Antonella Durzo", "Uma Estanga", "Angela Farias",
       "Renata Giachello", "Martina Gomez", "Isabella Scarfo", "Luciana Toledo"
-    ], mismoFixtureQue:"cadetas" },
+    ], mismoFixtureQue:"minis" },
+    { id:"juniors", nombre:"Juniors", dia:"Domingos", hora:"11:00",   // ⚠️ confirmar horario
+      jugadoras:[
+      "Jazmin Alarcon", "Mia Badaracco", "Katia Cuomo", "Julia Damario", "Camila Gomez", "Patricia Marsico",
+      "Sofia Marsico", "Thayssa Montali", "Milagros Mosqueda", "Catalina Ravazzano", "Emilia Zarantonello"
+    ], mismoFixtureQue:"minis" },
     { id:"masculino", nombre:"Mayores caballeros", dia:"Domingos", hora:"16:00", sponsor:"Ladran Sancho", jugadoras:[
       "Lionel Benitez", "Patricio Britez", "Valentin Burakoski", "Valentin Carriego", "Martin Casco",
       "Guillermo Corbelli", "Agustin Fernandez", "Fabian Franco", "Gabriel Franco", "Enzo Golnner",
@@ -90,7 +119,15 @@ const DATOS = {
       {f:"2026-09-20",c:"libre"},{f:"2026-09-27",c:"libre"},{f:"2026-10-04",c:"V",r:"C.A.D.G."},
       {f:"2026-10-11",c:"L",r:"C.A.T."},{f:"2026-10-25",c:"V",r:"H.M.B."},{f:"2026-11-01",c:"L",r:"San Telmo"},
       {f:"2026-11-08",c:"V",r:"El Portugués"},{f:"2026-11-15",c:"V",r:"Círculo Gral. Belgrano"},{f:"2026-11-22",c:"L",r:"Handball Escobar"}
-    ]}
+    ]},
+    // ⚠️ Maxihandball: falta cargar su fixture (fechas, rivales, día y hora).
+    { id:"maxi", nombre:"Maxihandball", dia:"Domingos", hora:"11:00", jugadoras:[
+      "Nahir Alvarez", "Ariadna Aristizabal", "Agustina Bajko", "Valentina Bajko", "Mariana Benitez",
+      "Jimena Berutti", "Julieta Biazzo", "Mayra Borrely", "Camila Lalin", "Gisela Loffler", "Agustina Michl",
+      "Julieta Milanesi", "Martina Panetta", "Maru Pereyras", "Magali Prisco", "Marcela Rodriguez",
+      "Florencia Rossaro", "Camila Seguin", "Paula Subiza", "Gianella Turquia", "Belen Varela",
+      "Julieta Zarate"
+    ], partidos:[] }
   ],
 
   // La votación de la figura usa `jugadoras` de cada plantel y el último partido jugado.

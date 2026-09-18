@@ -285,7 +285,7 @@ if (DATOS.oferta) $("#oferta").textContent = DATOS.oferta; else $("#oferta").rem
 /* El Club de Beneficios se muestra solo cuando está listo (DATOS.mostrarBeneficios). */
 if (!DATOS.mostrarBeneficios) document.querySelectorAll("[data-beneficios]").forEach(el => el.remove());
 $("#n-cosas").textContent = ["", "Una", "Dos", "Tres", "Cuatro", "Cinco"][document.querySelectorAll(".adelanto .tarjeta").length] || "";
-$("#n-planteles").textContent = "los " + (["", "", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho"][DATOS.planteles.length] || DATOS.planteles.length);
+$("#n-planteles").textContent = "los " + (["", "", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve", "diez", "once", "doce"][DATOS.planteles.length] || DATOS.planteles.length);
 
 /* rótulo y cuenta regresiva */
 const apertura = new Date(DATOS.lanzamiento);
