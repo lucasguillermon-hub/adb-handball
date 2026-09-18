@@ -89,6 +89,24 @@ section{padding:64px 0;border-top:1px solid rgba(255,255,255,.08)}
 .prox span{display:block;font-size:12.5px;color:rgba(255,255,255,.66);line-height:1.4}
 .prox.local span em{font-style:normal;color:var(--rosa)}
 
+/* cómo venimos */
+.venimos{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px;margin-top:28px}
+.ven{border:1px solid var(--linea);border-radius:14px;padding:16px 18px;background:rgba(255,255,255,.04)}
+.ven b{display:block;font-family:var(--display);font-size:18px;font-weight:400;letter-spacing:.02em}
+.ven .res{display:flex;align-items:baseline;gap:10px;margin-top:8px}
+.ven .res strong{font-family:var(--display);font-size:26px;font-weight:400;line-height:1}
+.ven .res span{font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:rgba(255,255,255,.6)}
+.ven.ganado .res span{color:var(--rosa-vivo)}
+.ven .riv{font-size:14px;color:rgba(255,255,255,.72);margin-top:4px}
+.ven .pos{font-size:13px;color:var(--rosa);margin-top:10px;font-weight:600}
+.ven.sin{color:rgba(255,255,255,.55);font-size:14px}
+.h3-chico{font-family:var(--display);font-size:20px;font-weight:400;margin:36px 0 14px;letter-spacing:.02em}
+.cats{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px}
+.cat{border:1px solid var(--linea);border-radius:12px;padding:12px 14px;background:rgba(255,255,255,.04)}
+.cat b{display:block;font-family:var(--display);font-size:17px;font-weight:400}
+.cat .edad{font-size:12.5px;color:var(--rosa);font-weight:600}
+.cat .hor{font-size:13.5px;color:rgba(255,255,255,.78);margin-top:6px}
+
 /* llamadas */
 .puertas{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:32px}
 @media(max-width:720px){.puertas{grid-template-columns:1fr}}
@@ -161,7 +179,7 @@ footer h4{font-family:var(--display);font-size:13px;font-weight:400;letter-spaci
     <div class="adelanto">
       <article class="tarjeta">
         <h3>Ver el fixture completo</h3>
-        <p>Las quince fechas del Clausura de cada plantel, con día, rival y si jugamos en casa. Nunca más buscar la placa perdida en Instagram.</p>
+        <p>Las quince fechas del Clausura de cada plantel, con día, hora, rival, resultado y la tabla de posiciones. Nunca más buscar la placa perdida en Instagram.</p>
       </article>
       <article class="tarjeta">
         <h3>Buscar tu foto</h3>
@@ -174,6 +192,10 @@ footer h4{font-family:var(--display);font-size:13px;font-weight:400;letter-spaci
       <article class="tarjeta">
         <h3>Votar la figura de la fecha</h3>
         <p>La MVP la elige la tribuna. Se vota acá cada semana y el resultado sale en las historias del club.</p>
+      </article>
+      <article class="tarjeta">
+        <h3>Jugar el prode</h3>
+        <p>Antes de cada partido decís cómo termina. Quien clave el resultado se lleva el premio del sponsor de la semana.</p>
       </article>
     </div>
   </div>
@@ -201,12 +223,21 @@ footer h4{font-family:var(--display);font-size:13px;font-weight:400;letter-spaci
 
 <section>
   <div class="wrap">
+    <p class="rotulo-sec">Cómo venimos</p>
+    <h2 class="h2">La última fecha, plantel por plantel</h2>
+    <p class="bajada">Resultado del último partido jugado y el puesto en la tabla del Clausura. Se actualiza con cada fecha.</p>
+    <div class="venimos" id="venimos"></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
     <p class="rotulo-sec">No hace falta esperar</p>
     <h2 class="h2">Dos cosas que sí podés hacer hoy</h2>
     <div class="puertas">
       <article class="puerta">
         <h3>Vení a jugar</h3>
-        <p>Desde los 6 años hasta maxi, damas y caballeros. No hace falta saber jugar ni traer nada: venís, probás dos entrenamientos y después vemos. Escribinos y te contamos horarios.</p>
+        <p>Desde los 6 años hasta maxi, damas y caballeros. No hace falta saber jugar ni traer nada: venís, probás dos entrenamientos y después vemos. Los horarios están acá abajo.</p>
         <a class="btn" id="cta-jugar" href="#">Escribir por WhatsApp</a>
       </article>
       <article class="puerta destacada">
@@ -216,6 +247,8 @@ footer h4{font-family:var(--display);font-size:13px;font-weight:400;letter-spaci
         <a class="btn" id="cta-sponsor" href="#">Quiero saber más</a>
       </article>
     </div>
+    <h3 class="h3-chico">Categorías y horarios de entrenamiento</h3>
+    <div class="cats" id="cats"></div>
   </div>
 </section>
 
@@ -349,6 +382,25 @@ const horaDe = (p, pl) => p.h || pl.hora;   // un partido puede tener hora propi
       + '<br><em>' + (p.c === "L" ? "En Don Bosco 116" : "De visitante") + '</em></span></div></div>';
   }).join("");
 })();
+
+/* cómo venimos: último partido jugado y puesto en la tabla de cada plantel */
+$("#venimos").innerHTML = DATOS.planteles.filter(pl => pl.partidos.some(p => p.g) || (pl.tabla && pl.tabla.length)).map(pl => {
+  const jugados = pl.partidos.filter(p => p.g);
+  const u = jugados[jugados.length - 1];
+  const fila = (pl.tabla || []).find(f => f[1] === "Ateneo Don Bosco");
+  const pos = fila ? fila[0] + "º de " + pl.tabla.length + " · " + fila[2] + " pts" : "";
+  if (!u) return '<article class="ven sin"><b>' + pl.nombre + '</b>' + (pos ? '<div class="pos">' + pos + '</div>' : 'Todavía sin resultados.') + '</article>';
+  const [a, b] = u.g.split("-").map(Number);
+  const clase = a > b ? "ganado" : a === b ? "empatado" : "perdido", palabra = a > b ? "Ganamos" : a === b ? "Empate" : "Perdimos";
+  return '<article class="ven ' + clase + '"><b>' + pl.nombre + '</b>'
+    + '<div class="res"><strong>' + a + ' – ' + b + '</strong><span>' + palabra + '</span></div>'
+    + '<div class="riv">vs ' + u.r + ' · ' + (u.c === "L" ? "de local" : "de visitante") + ' · ' + u.f.split("-").reverse().slice(0, 2).join("/") + '</div>'
+    + (pos ? '<div class="pos">' + pos + '</div>' : '') + '</article>';
+}).join("");
+
+/* categorías y horarios de entrenamiento */
+$("#cats").innerHTML = DATOS.categorias.map(c =>
+  '<div class="cat"><b>' + c.n + '</b><span class="edad">' + c.e + '</span><div class="hor">' + c.h + '</div></div>').join("");
 
 /* marcas que acompañan: logo si lo hay, si no el nombre. Si el logo no carga,
    vuelve al nombre. Con url, la ficha abre el sitio del sponsor en pestaña nueva. */
