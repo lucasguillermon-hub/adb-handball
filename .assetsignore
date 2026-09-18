@@ -23,3 +23,5 @@ migraciones
 # Listas y archivos sueltos: no se publican
 *.xlsx
 *.exe
+
+placas-fixture

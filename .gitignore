@@ -10,3 +10,6 @@ node_modules/
 # Listas del club y archivos sueltos que no son del sitio
 *.xlsx
 *.exe
+
+# Placas del fixture (para recortar los escudos de los rivales): no van al repo
+placas-fixture/

@@ -107,7 +107,16 @@ header{position:sticky;top:0;z-index:60;background:rgba(10,20,40,.92);backdrop-f
 .equipo .nom{font-family:var(--display);font-size:clamp(19px,2.6vw,30px);line-height:1}
 .equipo .rol{font-size:11.5px;letter-spacing:.2em;color:rgba(255,255,255,.55);text-transform:uppercase}
 .escudo-chico{width:70px;height:auto}
-.rival-inicial{width:70px;height:70px;border-radius:50%;border:2px solid var(--linea);display:grid;place-items:center;font-family:var(--display);font-size:26px;color:var(--rosa)}
+.rival-inicial{width:70px;height:70px;border-radius:50%;border:2px solid var(--linea);display:grid;place-items:center;font-family:var(--display);font-size:26px;color:var(--rosa);position:relative;overflow:hidden}
+.rival-inicial img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#fff;padding:6px;border-radius:50%}
+.proximas{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;padding:16px 22px;border-top:1px solid var(--linea)}
+.proximas h4{grid-column:1/-1;margin:0 0 2px;font-family:var(--display);font-size:12px;font-weight:400;letter-spacing:.2em;color:var(--rosa);text-transform:uppercase}
+.prox{display:flex;align-items:center;gap:12px;padding:10px 12px;border:1px solid var(--linea);border-radius:12px;background:rgba(0,0,0,.22)}
+.prox .rival-inicial{width:44px;height:44px;font-size:17px;flex:0 0 auto}
+.prox .rival-inicial img{padding:4px}
+.prox b{display:block;font-family:var(--display);font-size:16px;font-weight:400;letter-spacing:.02em}
+.prox span{display:block;font-size:12.5px;color:rgba(255,255,255,.66);line-height:1.4}
+.prox.local span em{font-style:normal;color:var(--rosa)}
 .reloj{display:flex;gap:8px}
 .reloj div{min-width:66px;text-align:center;background:rgba(0,0,0,.34);border:1px solid var(--linea);border-radius:12px;padding:10px 6px}
 .reloj b{display:block;font-family:var(--display);font-size:clamp(26px,4vw,40px);line-height:1;font-variant-numeric:tabular-nums}
@@ -382,6 +391,7 @@ footer a:hover{color:var(--rosa)}
           <span class="rol" id="tab-cond">—</span>
         </div>
       </div>
+      <div class="proximas" id="proximas"></div>
       <div class="tablero-pie">
         <div class="presenta">Esta fecha la presenta <strong id="tab-sponsor">—</strong></div>
         <a class="btn linea" href="#fixture" data-track="tablero-todas-las-fechas">Todas las fechas</a>
@@ -728,6 +738,18 @@ function sponsorDelProde(pl, p){
 
 /* ============================ próximo partido ============================ */
 function cuando(p, plantel){ return new Date(p.f+"T"+plantel.hora+":00"); }
+
+/* Escudo del rival: se busca en fotos/rivales/<nombre-en-minusculas>.png. Si no
+   existe, queda la inicial del rival. */
+const slugRival = r => r.normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
+function escudoRival(r){
+  const inicial = r.replace(/[^A-Za-zÁÉÍÓÚÑ]/g,"").charAt(0).toUpperCase();
+  return '<img src="fotos/rivales/'+slugRival(r)+'.png" alt="" loading="lazy" onerror="this.remove()"><span>'+inicial+'</span>';
+}
+function proximoDe(pl){
+  const ahora = new Date();
+  return pl.partidos.find(p => p.c !== "libre" && cuando(p, pl) > ahora) || null;
+}
 function proximoPartido(){
   const ahora = new Date(); let mejor = null;
   DATOS.planteles.forEach(pl=>pl.partidos.forEach(p=>{
@@ -745,7 +767,7 @@ if (prox){
   $("#tab-fecha").textContent = prox.pl.dia.slice(0,-1)+" "+DIA_MES(prox.p.f)+" · "+prox.pl.hora+" hs";
   $("#tab-plantel").textContent = prox.pl.nombre;
   $("#tab-rival").textContent = prox.p.r;
-  $("#tab-inicial").textContent = prox.p.r.replace(/[^A-Za-zÁÉÍÓÚÑ]/g,"").charAt(0).toUpperCase();
+  $("#tab-inicial").innerHTML = escudoRival(prox.p.r);
   $("#tab-cond").textContent = prox.p.c==="L" ? "En Don Bosco 116" : "De visitante";
   $("#tab-sponsor").textContent = prox.pl.sponsor;
   $("#prode-contexto").textContent = prox.pl.nombre+" · "+prox.pl.dia.slice(0,-1)+" "+DIA_MES(prox.p.f)+" vs "+prox.p.r;
@@ -759,6 +781,14 @@ if (prox){
     $("#r-d").textContent = d; $("#r-h").textContent = String(h).padStart(2,"0"); $("#r-m").textContent = String(m).padStart(2,"0");
   };
   tick(); setInterval(tick, 30000);
+
+  // La próxima fecha de cada plantel, en orden de horario.
+  const proximas = DATOS.planteles.map(pl => ({ pl, p: proximoDe(pl) })).filter(x => x.p)
+    .sort((a, b) => cuando(a.p, a.pl) - cuando(b.p, b.pl));
+  $("#proximas").innerHTML = '<h4>La próxima fecha de cada plantel</h4>' + proximas.map(({ pl, p }) =>
+    '<div class="prox' + (p.c === "L" ? " local" : "") + '"><div class="rival-inicial">' + escudoRival(p.r) + '</div>'
+    + '<div><b>' + pl.nombre + '</b><span>' + pl.dia.slice(0, -1) + ' ' + DIA_MES(p.f) + ' · ' + pl.hora + ' hs · vs ' + p.r
+    + '<br><em>' + (p.c === "L" ? "En Don Bosco 116" : "De visitante") + '</em></span></div></div>').join("");
 }
 
 /* ============================ franja de marcas ============================ */

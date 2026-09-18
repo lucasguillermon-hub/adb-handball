@@ -13,7 +13,8 @@ manifest.webmanifest  ← datos de la app instalable
 sw.js                 ← service worker (caché offline)
 iconos/               ← escudo.svg (el escudo oficial, se usa en las tres páginas) e
                         íconos de la app (192, 512 y 180 px, generados desde el SVG)
-fotos/                ← imágenes de la galería; fotos/sponsors/ los logos del muro
+fotos/                ← imágenes de la galería; fotos/sponsors/ los logos del muro;
+                        fotos/rivales/ los escudos de los rivales (<nombre-en-minusculas>.png)
 CLAUDE.md             ← este archivo
 worker.js             ← backend mínimo: mails de los formularios y votos de la MVP en la base D1
 migraciones/          ← esquema de la base (tablas `contactos` y `votos_mvp`)

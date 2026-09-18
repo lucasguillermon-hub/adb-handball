@@ -78,6 +78,16 @@ section{padding:64px 0;border-top:1px solid rgba(255,255,255,.08)}
 .partido-body .nom{font-family:var(--display);font-size:clamp(17px,2.6vw,26px);line-height:1.05}
 .partido-body .rol{display:block;font-size:11px;letter-spacing:.18em;color:rgba(255,255,255,.5);text-transform:uppercase;margin-top:8px}
 .vs{font-family:var(--display);font-size:15px;color:var(--rosa-vivo);letter-spacing:.1em}
+.rival-esc{display:grid;place-items:center;width:64px;height:64px;margin:0 auto 10px;border-radius:50%;border:2px solid var(--linea);font-family:var(--display);font-size:24px;color:var(--rosa);position:relative;overflow:hidden}
+.rival-esc img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#fff;padding:5px;border-radius:50%}
+.proximas{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;padding:16px 20px;border-top:1px solid var(--linea)}
+.proximas h4{grid-column:1/-1;margin:0 0 2px;font-family:var(--display);font-size:12px;font-weight:400;letter-spacing:.2em;color:var(--rosa);text-transform:uppercase}
+.prox{display:flex;align-items:center;gap:12px;padding:10px 12px;border:1px solid var(--linea);border-radius:12px;background:rgba(0,0,0,.22);text-align:left}
+.prox .rival-esc{width:44px;height:44px;font-size:17px;margin:0;flex:0 0 auto}
+.prox .rival-esc img{padding:4px}
+.prox b{display:block;font-family:var(--display);font-size:16px;font-weight:400;letter-spacing:.02em}
+.prox span{display:block;font-size:12.5px;color:rgba(255,255,255,.66);line-height:1.4}
+.prox.local span em{font-style:normal;color:var(--rosa)}
 
 /* llamadas */
 .puertas{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:32px}
@@ -182,8 +192,9 @@ footer h4{font-family:var(--display);font-size:13px;font-weight:400;letter-spaci
       <div class="partido-body">
         <div><span class="nom">Ateneo Don Bosco</span><span class="rol" id="p-plantel">—</span></div>
         <span class="vs">VS</span>
-        <div><span class="nom" id="p-rival">—</span><span class="rol" id="p-cond">—</span></div>
+        <div><span class="rival-esc" id="p-escudo"></span><span class="nom" id="p-rival">—</span><span class="rol" id="p-cond">—</span></div>
       </div>
+      <div class="proximas" id="proximas"></div>
     </div>
   </div>
 </section>
@@ -304,6 +315,11 @@ function tic(){
 tic(); setInterval(tic, 30000);
 
 /* próximo partido del club */
+const slugRival = r => r.normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
+function escudoRival(r){   // escudo en fotos/rivales/<nombre>.png; si no existe, la inicial
+  const inicial = r.replace(/[^A-Za-zÁÉÍÓÚÑ]/g,"").charAt(0).toUpperCase();
+  return '<img src="fotos/rivales/' + slugRival(r) + '.png" alt="" loading="lazy" onerror="this.remove()"><span>' + inicial + '</span>';
+}
 (function(){
   const ahora = new Date(); let mejor = null;
   DATOS.planteles.forEach(pl => pl.partidos.forEach(p => {
@@ -318,6 +334,17 @@ tic(); setInterval(tic, 30000);
   $("#p-plantel").textContent = mejor.pl.nombre;
   $("#p-rival").textContent = mejor.p.r;
   $("#p-cond").textContent = mejor.p.c === "L" ? "En Don Bosco 116" : "De visitante";
+  $("#p-escudo").innerHTML = escudoRival(mejor.p.r);
+
+  // La próxima fecha de cada plantel, en orden de horario.
+  const proximas = DATOS.planteles.map(pl => ({ pl, p: pl.partidos.find(p => p.c !== "libre" && new Date(p.f + "T" + pl.hora + ":00") > ahora) }))
+    .filter(x => x.p).sort((a, b) => new Date(a.p.f + "T" + a.pl.hora) - new Date(b.p.f + "T" + b.pl.hora));
+  $("#proximas").innerHTML = '<h4>La próxima fecha de cada plantel</h4>' + proximas.map(({ pl, p }) => {
+    const d = p.f.split("-");
+    return '<div class="prox' + (p.c === "L" ? " local" : "") + '"><div class="rival-esc">' + escudoRival(p.r) + '</div>'
+      + '<div><b>' + pl.nombre + '</b><span>' + pl.dia.slice(0, -1) + ' ' + d[2] + '/' + d[1] + ' · ' + pl.hora + ' hs · vs ' + p.r
+      + '<br><em>' + (p.c === "L" ? "En Don Bosco 116" : "De visitante") + '</em></span></div></div>';
+  }).join("");
 })();
 
 /* marcas que acompañan: logo si lo hay, si no el nombre. Si el logo no carga,
