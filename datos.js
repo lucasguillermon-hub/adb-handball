@@ -98,11 +98,11 @@ const DATOS = {
       "Sofia Marsico", "Thayssa Montali", "Milagros Mosqueda", "Catalina Ravazzano", "Emilia Zarantonello"
     ], mismoFixtureQue:"minis" },
     { id:"masculino", nombre:"Mayores caballeros", dia:"Domingos", hora:"16:00", sponsor:"Ladran Sancho", jugadoras:[
-      "Lionel Benitez", "Patricio Britez", "Valentin Burakoski", "Valentin Carriego", "Martin Casco",
+      "Lionel Benitez", "Patricio Britez", "Maximiliano Burakoski", "Valentin Carriego", "Martin Casco",
       "Guillermo Corbelli", "Agustin Fernandez", "Fabian Franco", "Gabriel Franco", "Enzo Golnner",
       "Maximiliano Gomez", "Lucas Guillermon", "Agustin Iacuzzi", "Leonel Legal", "Leandro Maggi",
       "Julian Ponce", "Leandro Salvetti", "Marcelo Sanchez", "Matias Solis", "Matias Vallejos",
-      "Martin Vega"
+      "Martin Vega", "Mariano Magnani"
     ], partidos:[
       {f:"2026-08-09",c:"V",r:"Bernal B."},{f:"2026-08-16",c:"L",r:"Dep. Laferrere"},{f:"2026-08-23",c:"V",r:"Juniors"},
       {f:"2026-08-30",c:"L",r:"General Las Heras"},{f:"2026-09-06",c:"V",r:"Dorrego"},{f:"2026-09-13",c:"L",r:"Ferrocarril Mitre"},
