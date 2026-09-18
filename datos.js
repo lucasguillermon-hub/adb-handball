@@ -243,8 +243,8 @@ const DATOS = {
     { n:"Minis", e:"9 y 10 años", dt:"Paula Glisciak", h:"Martes y jueves, 18:00" },
     { n:"Infantiles", e:"11 y 12 años", dt:"Cecilia Esquivel · Asist. Julieta Zárate", h:"Martes y jueves, 18:30" },
     { n:"Menores", e:"13 y 14 años", dt:"Iván Piscopo · Asist. Cecilia Esquivel · PF Agustín Valado", h:"Lunes, miércoles y viernes, 19:00" },
-    { n:"Cadetas", e:"15 y 16 años", dt:"Iván Piscopo · Asist. Cecilia Esquivel · PF Agustín Valado", h:"A confirmar" },   // ⚠️ horario
-    { n:"Juveniles", e:"17 y 18 años", dt:"Iván Piscopo · PF Facundo Fariña", h:"A confirmar" },   // ⚠️ horario
+    { n:"Cadetas", e:"15 y 16 años", dt:"Iván Piscopo · Asist. Cecilia Esquivel · PF Agustín Valado", h:"Martes y jueves, 18:30 a 21:00 · Viernes, 19:00 a 20:00" },
+    { n:"Juveniles", e:"17 y 18 años", dt:"Iván Piscopo · PF Agustín Valado", h:"Martes y jueves, 18:30 a 21:00 · Viernes, 19:00 a 20:00" },
     { n:"Juniors", e:"Sub-21, hasta 21 años", dt:"Joel Szczur · PF Facundo Fariña", h:"Lunes, miércoles y viernes, 20:00" },
     { n:"Mayores A", e:"Primera damas", dt:"Christian Gull · PF Facundo Fariña", h:"Lunes, miércoles y viernes, 21:00" },
     { n:"Mayores B", e:"Tercera damas", dt:"María José Daneri · PF Facundo Fariña", h:"Lunes, miércoles y viernes, 21:00" },
@@ -262,8 +262,8 @@ const DATOS = {
     { n:"Cecilia Esquivel", r:"DT infantiles · asistente de menores y cadetas" },
     { n:"Paula Glisciak", r:"DT minis" },
     { n:"Julieta Zárate", r:"Asistente de infantiles" },
-    { n:"Facundo Fariña", r:"PF de juveniles, juniors y mayores" },
-    { n:"Agustín Valado", r:"PF de menores y cadetas" },
+    { n:"Facundo Fariña", r:"PF de juniors y mayores" },
+    { n:"Agustín Valado", r:"PF de menores, cadetas y juveniles" },
     { n:"Nicolás Lizarraga", r:"Entrenador de arqueras" }
   ],
 
