@@ -80,6 +80,8 @@ section{padding:64px 0;border-top:1px solid rgba(255,255,255,.08)}
 .vs{font-family:var(--display);font-size:15px;color:var(--rosa-vivo);letter-spacing:.1em}
 .rival-esc{display:grid;place-items:center;width:64px;height:64px;margin:0 auto 10px;border-radius:50%;border:2px solid var(--linea);font-family:var(--display);font-size:24px;color:var(--rosa);position:relative;overflow:hidden}
 .rival-esc img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#fff;padding:5px;border-radius:50%}
+.rival-esc.nuestro{border-color:var(--rosa)}
+.rival-esc.nuestro img{background:transparent;padding:3px}
 .proximas{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;padding:16px 20px;border-top:1px solid var(--linea)}
 .proximas h4{grid-column:1/-1;margin:0 0 2px;font-family:var(--display);font-size:12px;font-weight:400;letter-spacing:.2em;color:var(--rosa);text-transform:uppercase}
 .prox{display:flex;align-items:center;gap:12px;padding:10px 12px;border:1px solid var(--linea);border-radius:12px;background:rgba(0,0,0,.22);text-align:left}
@@ -212,7 +214,7 @@ footer h4{font-family:var(--display);font-size:13px;font-weight:400;letter-spaci
         <span id="p-cuando">—</span>
       </div>
       <div class="partido-body">
-        <div><span class="nom">Ateneo Don Bosco</span><span class="rol" id="p-plantel">—</span></div>
+        <div><span class="rival-esc nuestro"><img src="iconos/escudo.svg" alt="Escudo del Ateneo Don Bosco"></span><span class="nom">Ateneo Don Bosco</span><span class="rol" id="p-plantel">—</span></div>
         <span class="vs">VS</span>
         <div><span class="rival-esc" id="p-escudo"></span><span class="nom" id="p-rival">—</span><span class="rol" id="p-cond">—</span></div>
       </div>
