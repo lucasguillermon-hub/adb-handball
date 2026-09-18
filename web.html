@@ -124,6 +124,8 @@ header{position:sticky;top:0;z-index:60;background:rgba(10,20,40,.92);backdrop-f
 .tablero-pie{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding:14px 22px;border-top:1px solid var(--linea);background:rgba(0,0,0,.24)}
 .presenta{display:flex;align-items:center;gap:12px;font-size:13px;color:rgba(255,255,255,.62)}
 .presenta strong{font-family:var(--display);font-size:19px;color:#fff;letter-spacing:.02em}
+.presenta .logo{display:inline-flex;align-items:center;height:44px;padding:6px 14px;border-radius:9px;background:#fff}
+.presenta .logo img{display:block;height:100%;width:auto;max-width:160px;object-fit:contain}
 @media(max-width:720px){
   .tablero-body{grid-template-columns:1fr 1fr;gap:16px 8px}
   .reloj{grid-column:1/-1;order:3;justify-content:center;flex-wrap:wrap}
@@ -799,7 +801,14 @@ if (prox){
   $("#tab-rival").textContent = prox.p.r;
   $("#tab-inicial").innerHTML = escudoRival(prox.p.r);
   $("#tab-cond").textContent = prox.p.c==="L" ? "En Don Bosco 116" : "De visitante";
-  if (prox.pl.sponsor) $("#tab-sponsor").textContent = prox.pl.sponsor; else $(".presenta").remove();
+  // El presentador se muestra con su logo del muro; si no tiene o no carga, con el nombre.
+  window.sinLogoPresentador = img => { const s = document.createElement("strong"); s.id = "tab-sponsor"; s.textContent = img.alt; img.parentNode.replaceWith(s); };
+  if (prox.pl.sponsor){
+    const marca = DATOS.tiers.flatMap(t=>t.marcas).find(m=>m.n === prox.pl.sponsor);
+    $("#tab-sponsor").outerHTML = marca && marca.logo
+      ? '<span class="logo" id="tab-sponsor"><img src="'+marca.logo+'" alt="'+marca.n+'" onerror="sinLogoPresentador(this)"></span>'
+      : '<strong id="tab-sponsor">'+prox.pl.sponsor+'</strong>';
+  } else $(".presenta").remove();
 
   const tick = ()=>{
     const dif = prox.fecha - new Date();
