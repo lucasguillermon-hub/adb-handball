@@ -306,7 +306,7 @@ const DATOS = {
       "Naming de la copa de pretemporada del club",
       "Presentás el marcador de la web todo el año",
       "Presencia en todas las comunicaciones del club"
-    ], cta:"Hablemos de la temporada" }
+    ], cta:"Hablemos de Sensus" }
   ]
 };
 
