@@ -1,0 +1,134 @@
+## mayores-a
+1|S.A.G. Polvorines|21|7|7|0|0|213|186
+2|Ateneo Don Bosco|15|6|4|1|1|167|147
+3|S.E.C.L.A.|15|6|4|1|1|142|129
+4|A.A. Argentinos Juniors B|15|7|4|0|3|177|184
+5|C.A. Talleres|14|6|4|0|2|170|132
+6|Municipalidad de Vicente López B|14|6|4|0|2|168|150
+7|S.A.G. Villa Ballester B|14|6|4|0|2|133|137
+8|Dorrego Handball B|12|6|2|2|2|147|127
+9|Ferro Carril Oeste C|12|6|3|0|3|178|161
+10|Sagrado Corazón|12|6|3|0|3|184|172
+11|Muñiz Handball|12|6|3|0|3|136|135
+12|C. A. All Boys|12|6|3|0|3|160|171
+13|San Fernando Handball|8|6|1|0|5|131|153
+14|C.A. Temperley|8|6|1|0|5|137|183
+15|A.F.A.L.P.|6|6|0|0|6|150|175
+16|C.S. y C. Deportivo Laferrere|6|6|0|0|6|163|214
+## mayores-b
+1|Campana Boat Club|17|6|5|1|0|165|156
+2|Mariano Acosta Handball C|16|6|5|0|1|159|126
+3|Municipalidad de Almirante Brown|16|6|5|0|1|192|166
+4|C.A. San Telmo B|16|6|5|0|1|164|147
+5|C.A. Nueva Chicago|15|6|4|1|1|161|134
+6|Colegio del Parque|14|6|4|0|2|182|159
+7|S.F.C. y D. Querandí|14|6|4|0|2|176|156
+8|S.E.C.L.A. B|12|6|3|0|3|136|128
+9|C.A. Boca Juniors B|10|6|2|0|4|129|134
+10|A.A. Argentinos Juniors C|10|6|2|0|4|113|125
+11|Ateneo Don Bosco B|10|6|2|0|4|125|139
+12|A.F.A.L.P. B|10|6|2|0|4|151|179
+13|Municipalidad de Tres de Febrero B|8|6|1|0|5|143|163
+14|C.A. Defensores de Moreno|8|6|1|0|5|134|158
+15|C.A. Independiente|8|6|1|0|5|134|161
+16|DB Handball Huracán de San Justo B|8|6|1|0|5|115|148
+## infantiles
+1|Sagrado Corazón|18|6|6|0|0|158|63
+2|Handball La Patriada|18|6|6|0|0|176|102
+3|C.I.D. Moreno|18|6|6|0|0|137|94
+4|Ateneo Don Bosco|16|6|5|0|1|157|88
+5|Muñiz Handball|16|6|5|0|1|167|120
+6|S.A.G. Polvorines|16|6|5|0|1|102|84
+7|Colegio Ward|15|6|4|1|1|127|101
+8|Municipalidad de Hurlingham|12|6|3|0|3|120|109
+9|Estrella de Boedo|12|6|2|2|2|135|132
+10|C.A. Independiente|8|6|1|0|5|91|117
+11|C.A. Vélez Sarsfield B|8|6|1|0|5|93|134
+12|C.A. Banfield|8|6|1|0|5|114|158
+13|C.A.D. Villa Modelo|8|6|1|0|5|103|160
+14|C.A. Boca Juniors|7|6|0|1|5|81|135
+15|Municipalidad de Tres de Febrero|6|6|0|0|6|85|154
+16|Circulo de Villa Devoto|6|6|0|0|6|110|205
+## menores
+1|Colegio Ward|18|6|6|0|0|198|100
+2|Handball La Patriada|18|6|6|0|0|217|123
+3|C.A. Independiente|18|6|6|0|0|188|106
+4|C.I.D. Moreno|15|6|4|1|1|145|123
+5|Sagrado Corazón|14|6|4|0|2|155|110
+6|Ateneo Don Bosco|14|6|4|0|2|170|150
+7|C.A. Vélez Sarsfield B|14|6|4|0|2|140|127
+8|Municipalidad de Hurlingham|12|6|2|2|2|147|154
+9|S.A.G. Polvorines|11|6|2|1|3|100|108
+10|Municipalidad de Tres de Febrero|11|6|2|1|3|121|131
+11|C.A. Boca Juniors|10|6|1|2|3|120|139
+12|Estrella de Boedo|9|6|1|1|4|132|168
+13|C.A. Banfield|8|6|1|0|5|114|177
+14|C.A.D. Villa Modelo|8|6|1|0|5|119|192
+15|Muñiz Handball|6|6|0|0|6|112|166
+16|Circulo de Villa Devoto|6|6|0|0|6|92|196
+## cadetas
+1|C.A. Banfield|18|6|6|0|0|131|103
+2|C.A. Vélez Sarsfield B|17|6|5|1|0|116|102
+3|C.A. Independiente|16|6|5|0|1|149|126
+4|C.A.D. Villa Modelo|14|6|4|0|2|137|128
+5|Colegio Ward|14|6|3|2|1|135|130
+6|Municipalidad de Tres de Febrero|13|6|3|1|2|137|123
+7|Sagrado Corazón|13|6|3|1|2|143|141
+8|S.A.G. Polvorines|12|6|2|2|2|124|118
+9|C.I.D. Moreno|12|6|3|0|3|124|123
+10|Muñiz Handball|10|6|2|0|4|103|106
+11|Estrella de Boedo|10|6|2|0|4|133|137
+12|Handball La Patriada|10|6|2|0|4|109|123
+13|Municipalidad de Hurlingham|9|6|1|1|4|106|112
+14|C.A. Boca Juniors|8|6|1|0|5|91|111
+15|Circulo de Villa Devoto|8|6|1|0|5|135|159
+16|Ateneo Don Bosco|8|6|1|0|5|117|148
+## juveniles
+1|Circulo de Villa Devoto|18|6|6|0|0|204|118
+2|S.A.G. Polvorines|18|6|6|0|0|198|156
+3|Sagrado Corazón|16|6|5|0|1|206|164
+4|Municipalidad de Tres de Febrero|16|6|5|0|1|178|144
+5|C.A. Banfield|14|6|4|0|2|146|137
+6|C.A.D. Villa Modelo|14|6|4|0|2|142|143
+7|Municipalidad de Hurlingham|12|6|3|0|3|140|128
+8|Colegio Ward|12|6|3|0|3|174|171
+9|C.A. Boca Juniors|12|6|3|0|3|147|150
+10|C.A. Independiente|12|6|3|0|3|157|170
+11|Handball La Patriada|10|6|2|0|4|138|137
+12|C.A. Vélez Sarsfield B|10|6|2|0|4|143|161
+13|Ateneo Don Bosco|8|6|1|0|5|122|161
+14|C.I.D. Moreno|8|6|1|0|5|123|164
+15|Muñiz Handball|6|6|0|0|6|101|155
+16|Estrella de Boedo|6|6|0|0|6|156|216
+## juniors
+1|C.A.D. Villa Modelo|18|6|6|0|0|203|148
+2|Circulo de Villa Devoto|18|6|6|0|0|177|134
+3|C.A. Vélez Sarsfield B|16|6|5|0|1|160|115
+4|C.A. Boca Juniors|14|6|4|0|2|183|144
+5|Estrella de Boedo|14|6|4|0|2|198|160
+6|Municipalidad de Tres de Febrero|14|6|4|0|2|160|135
+7|Sagrado Corazón|14|6|4|0|2|177|158
+8|C.I.D. Moreno|12|6|3|0|3|160|137
+9|Ateneo Don Bosco|12|6|3|0|3|179|180
+10|Muñiz Handball|12|6|3|0|3|133|150
+11|S.A.G. Polvorines|11|6|2|1|3|138|160
+12|Handball La Patriada|10|6|2|0|4|141|185
+13|C.A. Banfield|8|6|1|0|5|112|169
+14|Colegio Ward|7|6|0|1|5|151|176
+15|Municipalidad de Hurlingham|6|6|0|0|6|126|163
+16|C.A. Independiente|6|6|0|0|6|126|210
+## masculino
+1|Municipalidad de Almirante Brown B|17|6|5|1|0|207|139
+2|C.A. Defensores de Glew|16|6|5|0|1|126|100
+3|Club Ferrocarril Mitre C|16|6|5|0|1|187|164
+4|El Portugués|16|7|4|1|2|161|161
+5|Municipalidad de Escobar B|15|6|4|1|1|148|138
+6|Municipalidad de General Las Heras|14|6|4|0|2|185|167
+7|C.A. Talleres|14|6|4|0|2|97|94
+8|Club Municipal Ducilo|14|6|4|0|2|109|111
+9|C.S. y D. Federal Juniors|12|6|3|0|3|159|164
+10|C.A. San Telmo C|12|6|3|0|3|100|108
+11|Ateneo Don Bosco|11|7|2|0|5|128|159
+12|C.S. y C. Deportivo Laferrere B|10|6|2|0|4|130|151
+13|Dorrego Handball D|9|6|1|1|4|135|144
+14|Circulo General Belgrano|5|6|1|0|4|84|132

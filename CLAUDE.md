@@ -21,6 +21,8 @@ migraciones/          ← esquema de la base (tablas `contactos`, `votos_mvp` y 
 wrangler.jsonc        ← configuración de Cloudflare (Worker + base D1 `adb-contactos`)
 plan-sponsoreo.html   ← plan de sponsoreo 2027, sin enlazar ni indexar (lee datos.js)
 recetas.md            ← pedidos tipo para Claude Code
+herramientas/         ← scripts de mantenimiento (sincronizar FeMeBal, planteles, logos,
+                        íconos) y cómo correr el entorno local. Ver su README. No se publica.
 ```
 
 **Mientras dure el lanzamiento:** `index.html` es la página de espera con la cuenta
@@ -77,6 +79,22 @@ signos de exclamación en cadena. El lema del club es *sensus pertinendi*: senti
 pertenencia. Los textos hablan de la tribuna, de las familias y del barrio, no de
 "experiencias" ni de "soluciones".
 
+## Decisiones tomadas (no volver a preguntar)
+
+- La fecha de lanzamiento queda el 4/10/2026; ese día se hace el cambio de `index.html`
+  por `web.html` (receta en recetas.md). Mientras tanto la portada muestra todo lo vivo:
+  próxima fecha de cada plantel, última fecha con resultado y puesto, categorías y horarios.
+- Los sponsors del muro son acuerdos 2026 agrupados por categoría; el plan de niveles es
+  para 2027. Los 15 sponsors sin beneficio y los rubros repetidos quedan como legado 2026.
+- La promo "diez comercios sin cargo" se sacó. No hay cantidad fija de fechas de local:
+  se cuentan desde el fixture.
+- El fixture por plantel se queda (entró al plan como acción a la carta). Prode y MVP por
+  plantel, con el sponsor rotando entre las marcas del muro.
+- Nombres de planteles como los usa el club (Primera damas, Tercera damas, Cuarta
+  caballeros, Cadetas, Juniors); `division` guarda el nombre de FeMeBal.
+- Grafías del cuerpo técnico según las listas del club: Szczur, Christian Gull.
+- Minis e Infantiles no entran en nada por nombre (formativas).
+
 ## Cosas que todavía faltan
 
 - El fixture, los horarios, los resultados y las tablas de posiciones salen de FeMeBal (femebal.com/tournament-tracker,
@@ -112,7 +130,14 @@ pertenencia. Los textos hablan de la tribuna, de las familias y del barrio, no d
 - Los sponsors del muro son acuerdos 2026, anteriores al plan; el plan de niveles
   arranca en 2027. Hasta entonces el muro sigue agrupado por categoría.
 - Elegir la herramienta para mandar los mails (Brevo, MailerLite o similar) e importarle
-  el CSV de contactos. Hasta entonces la lista solo se acumula en D1.
+  el CSV de contactos. Hasta entonces la lista solo se acumula en D1. Al 18/09/2026 la
+  base tenía 0 contactos reales (el flujo está probado en producción): falta difundir el
+  formulario; una opción es pedir el mail al votar en la MVP o el prode.
+- Sponsors que presentan cada plantel: solo Primera damas (Franco Liontix), Tercera damas
+  (Supermercado Magdalena) y Cuarta caballeros (Ladran Sancho) tienen; los demás no muestran
+  presentador. Svencen Propiedades no tiene url.
+- Las cuatro placas del fixture (Instagram) nunca llegaron como archivo; ya no hacen falta
+  porque los escudos salieron de FeMeBal.
 
 ## Antes de dar por terminado un cambio
 

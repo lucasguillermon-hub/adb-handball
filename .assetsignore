@@ -25,3 +25,6 @@ migraciones
 *.exe
 
 placas-fixture
+
+# Scripts de mantenimiento: versionados pero no publicados
+herramientas
