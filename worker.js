@@ -4,7 +4,10 @@
      Para bajar la lista, ver "Exportar los contactos" en recetas.md.
    - GET/POST /api/mvp lee y guarda los votos de la figura de la fecha (tabla
      "votos_mvp"). Una persona = una cookie anónima; solo vive la fecha vigente
-     de cada plantel y la votación cierra el viernes a las 20 (hora argentina). */
+     de cada plantel y la votación cierra el viernes a las 20 (hora argentina).
+   - GET/POST /api/prode lee y guarda los pronósticos del próximo partido de cada
+     plantel (tabla "prode"), con la misma cookie. Cierra cuando empieza el partido
+     (la web manda la hora); solo vive el partido vigente de cada plantel. */
 
 const ORIGENES = ["aviso-apertura", "newsletter", "quiero-jugar"];
 const MAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
@@ -14,6 +17,7 @@ export default {
     const url = new URL(req.url);
     if (url.pathname === "/api/suscribir") return suscribir(req, env);
     if (url.pathname === "/api/mvp") return mvp(req, env, url);
+    if (url.pathname === "/api/prode") return prode(req, env, url);
     if (url.pathname.startsWith("/api/")) return json({ error: "No existe" }, 404);
     return env.ASSETS.fetch(req);
   }
@@ -67,6 +71,15 @@ function votante(req){
   const m = (req.headers.get("Cookie") || "").match(new RegExp("(?:^|;\\s*)" + COOKIE + "=([a-f0-9]{32})"));
   return m ? m[1] : null;
 }
+// Id anónimo de la persona: viene en la cookie o se crea uno y se manda a guardar.
+function identidad(req, url){
+  let id = votante(req), cookie = null;
+  if (!id){
+    id = [...crypto.getRandomValues(new Uint8Array(16))].map(b => b.toString(16).padStart(2, "0")).join("");
+    cookie = COOKIE + "=" + id + "; Path=/api/; Max-Age=31536000; SameSite=Lax; HttpOnly" + (url.protocol === "https:" ? "; Secure" : "");
+  }
+  return { id, cookie };
+}
 
 async function mvp(req, env, url){
   const origin = req.headers.get("Origin");
@@ -80,11 +93,7 @@ async function mvp(req, env, url){
   } else return json({ error: "Método no permitido" }, 405);
   if (!PLANTEL_RE.test(plantel || "") || !FECHA_RE.test(fecha || "")) return json({ error: "Plantel o fecha inválidos" }, 400);
 
-  let id = votante(req), cookie = null;
-  if (!id){
-    id = [...crypto.getRandomValues(new Uint8Array(16))].map(b => b.toString(16).padStart(2, "0")).join("");
-    cookie = COOKIE + "=" + id + "; Path=/api/mvp; Max-Age=31536000; SameSite=Lax; HttpOnly" + (url.protocol === "https:" ? "; Secure" : "");
-  }
+  const { id, cookie } = identidad(req, url);
   const cerrada = Date.now() > cierre(fecha).getTime();
 
   if (req.method === "POST"){
@@ -105,6 +114,52 @@ async function mvp(req, env, url){
   for (const r of results){ conteo[r.jugadora] = r.n; total += r.n; if (r.mio) miVoto = r.jugadora; }
 
   const res = json({ ok: true, plantel, fecha, total, conteo, miVoto, cerrada, cierra: cierre(fecha).toISOString() });
+  if (cookie) res.headers.append("Set-Cookie", cookie);
+  return res;
+}
+
+/* ============================ prode ============================ */
+async function prode(req, env, url){
+  const origin = req.headers.get("Origin");
+  if (origin && new URL(origin).host !== url.host) return json({ error: "Origen no permitido" }, 403);
+
+  let plantel, fecha, inicio, local, visita;
+  if (req.method === "GET"){ plantel = url.searchParams.get("plantel"); fecha = url.searchParams.get("fecha"); inicio = url.searchParams.get("inicio"); }
+  else if (req.method === "POST"){
+    let d; try { d = await req.json(); } catch { return json({ error: "Cuerpo inválido" }, 400); }
+    plantel = d.plantel; fecha = d.fecha; inicio = d.inicio; local = Number(d.local); visita = Number(d.visita);
+  } else return json({ error: "Método no permitido" }, 405);
+  if (!PLANTEL_RE.test(plantel || "") || !FECHA_RE.test(fecha || "")) return json({ error: "Plantel o fecha inválidos" }, 400);
+
+  const { id, cookie } = identidad(req, url);
+  // "inicio" es la hora del partido en ISO; el prode cierra cuando empieza.
+  const t = Date.parse(inicio || "");
+  const cerrado = !isNaN(t) && Date.now() > t;
+
+  if (req.method === "POST"){
+    if (!Number.isInteger(local) || !Number.isInteger(visita) || local < 0 || visita < 0 || local > 99 || visita > 99) return json({ error: "Marcador inválido" }, 400);
+    if (cerrado) return json({ error: "El partido ya empezó" }, 409);
+    await env.DB.batch([
+      env.DB.prepare("DELETE FROM prode WHERE plantel = ?1 AND fecha < ?2").bind(plantel, fecha),
+      env.DB.prepare("INSERT OR IGNORE INTO prode (plantel, fecha, votante, local, visita, creado) VALUES (?1, ?2, ?3, ?4, ?5, ?6)")
+        .bind(plantel, fecha, id, local, visita, new Date().toISOString())
+    ]);
+  }
+
+  const { results } = await env.DB.prepare(
+    "SELECT local, visita, COUNT(*) AS n, MAX(votante = ?3) AS mio FROM prode WHERE plantel = ?1 AND fecha = ?2 GROUP BY local, visita ORDER BY n DESC"
+  ).bind(plantel, fecha, id).all();
+  let total = 0, gana = 0, empata = 0, pierde = 0, sumaL = 0, sumaV = 0, mio = null, masVotado = null;
+  for (const r of results){
+    total += r.n; sumaL += r.local * r.n; sumaV += r.visita * r.n;
+    if (r.local > r.visita) gana += r.n; else if (r.local === r.visita) empata += r.n; else pierde += r.n;
+    if (r.mio) mio = { local: r.local, visita: r.visita };
+    if (!masVotado) masVotado = { local: r.local, visita: r.visita, n: r.n };
+  }
+  const pct = n => total ? Math.round(n / total * 100) : 0;
+  const res = json({ ok: true, plantel, fecha, total, gana: pct(gana), empata: pct(empata), pierde: pct(pierde),
+    promedio: total ? { local: Math.round(sumaL / total), visita: Math.round(sumaV / total) } : null,
+    masVotado, mio, cerrado });
   if (cookie) res.headers.append("Set-Cookie", cookie);
   return res;
 }

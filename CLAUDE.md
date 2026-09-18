@@ -16,8 +16,8 @@ iconos/               ← escudo.svg (el escudo oficial, se usa en las tres pág
 fotos/                ← imágenes de la galería; fotos/sponsors/ los logos del muro;
                         fotos/rivales/ los escudos de los rivales (<nombre-en-minusculas>.png)
 CLAUDE.md             ← este archivo
-worker.js             ← backend mínimo: mails de los formularios y votos de la MVP en la base D1
-migraciones/          ← esquema de la base (tablas `contactos` y `votos_mvp`)
+worker.js             ← backend mínimo: mails, votos de la MVP y prode en la base D1
+migraciones/          ← esquema de la base (tablas `contactos`, `votos_mvp` y `prode`)
 wrangler.jsonc        ← configuración de Cloudflare (Worker + base D1 `adb-contactos`)
 plan-sponsoreo.html   ← plan de sponsoreo 2027, sin enlazar ni indexar (lee datos.js)
 recetas.md            ← pedidos tipo para Claude Code
@@ -92,11 +92,11 @@ pertenencia. Los textos hablan de la tribuna, de las familias y del barrio, no d
   menú, pie y tarjeta de la portada). Acordar cada beneficio con su comercio y pasarlo a true.
 - Números reales del media kit (jugadores, familias, fechas de local).
 - Link de la comunidad de WhatsApp.
-- Prode: los pronósticos viven en memoria (no se guardan). La MVP sí se guarda en D1
-  (`GET/POST /api/mvp`): una cookie anónima por persona, solo la fecha vigente de cada
-  plantel, cierra el viernes a las 20. Se votan los diez planteles (`planteles[].jugadoras`,
-  de LISTAS PRESENTISMO 2026.xlsx, ignorado en git). Las categorías con menores muestran
-  nombres cortos (`nombresCortos: true`).
+- MVP y prode se guardan en D1 (`GET/POST /api/mvp` y `/api/prode`): una cookie anónima
+  por persona, solo la fecha vigente de cada plantel. La MVP cierra el viernes a las 20; el
+  prode, cuando empieza el partido. Planteles de LISTAS PRESENTISMO 2026.xlsx (ignorado en
+  git). Minis e Infantiles son formativas: `jugadoras: []`, no entran en nada que sea por
+  nombre. Menores, Cadetas y Juveniles muestran nombres cortos (`nombresCortos: true`).
 - Planteles: Minis, Infantiles, Menores, Cadetas, Juveniles y Juniors son la tira de
   inferiores: comparten el fixture (cargado en Minis, las demás con `mismoFixtureQue`) y
   solo tienen horario propio. Faltan: el horario de cada una (hoy todas 11:00), el fixture

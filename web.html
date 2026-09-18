@@ -195,6 +195,21 @@ header{position:sticky;top:0;z-index:60;background:rgba(10,20,40,.92);backdrop-f
 .prode-fila{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:center;margin-top:18px}
 .prode-fila .lbl{font-weight:600;font-size:14.5px}
 .prode-fila input{width:72px;padding:11px;border-radius:10px;border:1px solid var(--linea-oscura);background:#fff;color:var(--tinta);font-family:var(--display);font-size:22px;text-align:center}
+.prode-partido{display:flex;align-items:center;gap:12px;margin-top:14px;font-size:14px;color:rgba(255,255,255,.72)}
+.prode-partido .rival-inicial{width:44px;height:44px;font-size:17px;flex:0 0 auto}
+.prode-partido .rival-inicial img{padding:4px}
+.prode-partido b{display:block;color:#fff;font-weight:600;font-size:15px}
+.tribuna{margin-top:18px;display:none}
+.tribuna.visible{display:block}
+.tribuna h4{font-family:var(--display);font-size:12px;font-weight:400;letter-spacing:.2em;color:var(--rosa);text-transform:uppercase;margin:0 0 10px}
+.tribuna .fila{display:grid;grid-template-columns:78px 1fr 44px;align-items:center;gap:10px;font-size:13.5px;margin-top:7px}
+.tribuna .fila .b{height:10px;border-radius:5px;background:rgba(255,255,255,.08);overflow:hidden}
+.tribuna .fila .b i{display:block;height:100%;background:var(--rosa-vivo);transition:width .5s ease}
+.tribuna .fila.mio .b i{background:var(--rosa)}
+.tribuna .fila em{font-style:normal;text-align:right;font-family:var(--display);font-size:15px}
+.tribuna .datos{display:flex;gap:18px;flex-wrap:wrap;margin-top:14px}
+.tribuna .datos div{font-size:12.5px;color:rgba(255,255,255,.6)}
+.tribuna .datos b{display:block;font-family:var(--display);font-size:22px;color:#fff;font-weight:400;line-height:1.1}
 .prode-res{margin-top:18px;padding:14px 16px;border-radius:12px;background:rgba(228,86,143,.12);border:1px solid rgba(228,86,143,.35);font-size:14.5px;display:none}
 .prode-res.visible{display:block}
 
@@ -456,7 +471,8 @@ footer a:hover{color:var(--rosa)}
       <div class="panel">
         <p class="patro">El prode del Bosco, con <span id="sponsor-prode">—</span></p>
         <h3 class="h3">¿Cómo termina el próximo?</h3>
-        <p class="aviso" id="prode-contexto">—</p>
+        <div class="tabs mvp-tabs" role="tablist" id="prode-tabs" aria-label="Plantel"></div>
+        <div class="prode-partido" id="prode-partido"></div>
         <div class="prode-fila">
           <span class="lbl">Ateneo Don Bosco</span>
           <span></span>
@@ -469,7 +485,8 @@ footer a:hover{color:var(--rosa)}
         </div>
         <div style="margin-top:18px"><button class="btn" id="prode-enviar" data-track="prode-enviar">Jugar mi pronóstico</button></div>
         <div class="prode-res" id="prode-res" role="status"></div>
-        <p class="aviso">Quien clave el resultado se lleva el premio del sponsor de la semana y sale en las historias del club.</p>
+        <div class="tribuna" id="prode-tribuna"></div>
+        <p class="aviso" id="prode-aviso">Un pronóstico por persona y por partido, hasta que empiece. Quien clave el resultado se lleva el premio del sponsor de la semana y sale en las historias del club.</p>
       </div>
     </div>
   </div>
@@ -771,9 +788,6 @@ if (prox){
   $("#tab-inicial").innerHTML = escudoRival(prox.p.r);
   $("#tab-cond").textContent = prox.p.c==="L" ? "En Don Bosco 116" : "De visitante";
   if (prox.pl.sponsor) $("#tab-sponsor").textContent = prox.pl.sponsor; else $(".presenta").remove();
-  $("#prode-contexto").textContent = prox.pl.nombre+" · "+prox.pl.dia.slice(0,-1)+" "+DIA_MES(prox.p.f)+" vs "+prox.p.r;
-  $("#prode-rival").textContent = prox.p.r;
-  $("#sponsor-prode").textContent = sponsorDelProde(prox.pl, prox.p);
 
   const tick = ()=>{
     const dif = prox.fecha - new Date();
@@ -932,15 +946,87 @@ pintarMvp(plantelesConVoto.slice().sort((a, b) => {
   return (pb ? cuando(pb, b) : 0) - (pa ? cuando(pa, a) : 0);
 })[0] || plantelesConVoto[0]);
 
-/* ============================ prode ============================ */
-$("#prode-enviar").addEventListener("click", e=>{
-  e.preventDefault();
-  const a = $("#prode-local").value, b = $("#prode-visita").value, res = $("#prode-res");
-  if (a==="" || b===""){ res.textContent = "Faltan los dos marcadores para poder jugar."; res.classList.add("visible"); return; }
-  res.innerHTML = "Jugaste <b>"+a+" a "+b+"</b>. Si acertás, te llevás el premio de "+$("#sponsor-prode").textContent+" — te avisamos por Instagram.";
-  res.classList.add("visible");
-  track("prode-jugado",{marcador:a+"-"+b});
+/* ============================ prode ============================
+   Un pronóstico por plantel sobre su próximo partido. Se guarda en el backend
+   (GET/POST /api/prode) con la misma cookie anónima que la MVP; cierra cuando
+   empieza el partido. Después de jugar se ve "lo que dice la tribuna". */
+const estadoProde = {};     // por plantel: respuesta del servidor
+let plantelProde = null, jugando = false;
+
+async function traerProde(pl, p, cuerpo){
+  const inicio = cuando(p, pl).toISOString();
+  const r = await fetch("/api/prode" + (cuerpo ? "" : "?plantel=" + pl.id + "&fecha=" + p.f + "&inicio=" + encodeURIComponent(inicio)), cuerpo
+    ? { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(Object.assign({ plantel: pl.id, fecha: p.f, inicio }, cuerpo)) }
+    : {});
+  if (!r.ok) throw new Error(r.status);
+  return r.json();
+}
+
+const plantelesConProde = DATOS.planteles.filter(pl => proximoDe(pl));
+plantelesConProde.forEach(pl => {
+  const b = document.createElement("button");
+  b.className = "tab"; b.textContent = pl.nombre; b.setAttribute("role", "tab");
+  b.addEventListener("click", () => { pintarProde(pl); track("prode-plantel", { plantel: pl.id }); });
+  $("#prode-tabs").appendChild(b);
 });
+
+function pintarProde(pl){
+  plantelProde = pl;
+  $$("#prode-tabs .tab").forEach((t, j) => t.setAttribute("aria-selected", plantelesConProde[j] === pl));
+  const p = proximoDe(pl);
+  $("#sponsor-prode").textContent = sponsorDelProde(pl, p);
+  $("#prode-partido").innerHTML = '<div class="rival-inicial">' + escudoRival(p.r) + '</div>'
+    + '<div><b>' + pl.nombre + ' vs ' + p.r + '</b>' + pl.dia.slice(0, -1) + ' ' + DIA_MES(p.f) + ' · ' + pl.hora + ' hs · ' + (p.c === "L" ? "En Don Bosco 116" : "De visitante") + '</div>';
+  $("#prode-rival").textContent = p.r;
+
+  const e = estadoProde[pl.id] || { total: 0, mio: null, cerrado: false };
+  const listo = e.mio || e.cerrado;
+  $("#prode-local").value = e.mio ? e.mio.local : ""; $("#prode-visita").value = e.mio ? e.mio.visita : "";
+  $("#prode-local").disabled = $("#prode-visita").disabled = $("#prode-enviar").disabled = !!listo;
+  $("#prode-enviar").textContent = e.cerrado ? "El partido ya empezó" : e.mio ? "Pronóstico jugado" : "Jugar mi pronóstico";
+  $("#prode-res").classList.remove("visible");
+
+  const t = $("#prode-tribuna");
+  if (listo && e.total){
+    const fila = (txt, pct, mio) => '<div class="fila' + (mio ? " mio" : "") + '"><span>' + txt + '</span><div class="b"><i style="width:' + pct + '%"></i></div><em>' + pct + '%</em></div>';
+    const mioRes = e.mio ? (e.mio.local > e.mio.visita ? "gana" : e.mio.local === e.mio.visita ? "empata" : "pierde") : "";
+    t.innerHTML = '<h4>Lo que dice la tribuna</h4>'
+      + fila("Ganamos", e.gana, mioRes === "gana") + fila("Empate", e.empata, mioRes === "empata") + fila("Perdemos", e.pierde, mioRes === "pierde")
+      + '<div class="datos"><div><b>' + e.total + '</b>pronóstico' + (e.total === 1 ? "" : "s") + '</div>'
+      + (e.masVotado && e.masVotado.n > 1 ? '<div><b>' + e.masVotado.local + ' – ' + e.masVotado.visita + '</b>el más jugado</div>' : '')
+      + (e.promedio ? '<div><b>' + e.promedio.local + ' – ' + e.promedio.visita + '</b>promedio</div>' : '')
+      + (e.mio ? '<div><b>' + e.mio.local + ' – ' + e.mio.visita + '</b>el tuyo</div>' : '') + '</div>';
+    t.classList.add("visible");
+  } else t.classList.remove("visible");
+
+  if (!e.pedido){
+    e.pedido = true; estadoProde[pl.id] = e;
+    traerProde(pl, p).then(r => { estadoProde[pl.id] = Object.assign(e, r); if (plantelProde === pl) pintarProde(pl); }).catch(() => {});
+  }
+}
+
+$("#prode-enviar").addEventListener("click", async e => {
+  e.preventDefault();
+  if (!plantelProde || jugando) return;
+  const pl = plantelProde, p = proximoDe(pl), res = $("#prode-res");
+  const a = $("#prode-local").value, b = $("#prode-visita").value;
+  if (a === "" || b === ""){ res.textContent = "Faltan los dos marcadores para poder jugar."; res.classList.add("visible"); return; }
+  jugando = true;
+  const est = estadoProde[pl.id] || (estadoProde[pl.id] = { total: 0, mio: null, cerrado: false, pedido: true });
+  try {
+    Object.assign(est, await traerProde(pl, p, { local: +a, visita: +b }));
+  } catch {
+    est.mio = { local: +a, visita: +b }; est.total = (est.total || 0) + 1;   // sin servidor: queda en esta pantalla
+  }
+  jugando = false;
+  if (plantelProde === pl) pintarProde(pl);
+  res.innerHTML = "Jugaste <b>" + a + " a " + b + "</b>. Si acertás, te llevás el premio de " + $("#sponsor-prode").textContent + " — te avisamos por Instagram.";
+  res.classList.add("visible");
+  track("prode-jugado", { plantel: pl.id });
+});
+
+if (plantelesConProde.length) pintarProde(plantelesConProde.slice().sort((x, y) => cuando(proximoDe(x), x) - cuando(proximoDe(y), y))[0]);
+else $("#prode-partido").textContent = "No hay partidos programados por ahora.";
 
 /* ============================ beneficios ============================
    Con DATOS.mostrarBeneficios en false, la sección y sus links no existen. */

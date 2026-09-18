@@ -35,6 +35,7 @@ const DATOS = {
 
   // ⚠️ Horarios de inicio estimados. Cambialos cuando salga la programación.
   // jugadoras: el plantel que se vota como figura de la fecha (de LISTAS PRESENTISMO 2026).
+  // Minis e Infantiles son formativas: van con jugadoras:[] y no entran en nada que sea por nombre.
   // nombresCortos: true muestra "Nombre A." en vez del nombre completo (para menores de edad).
   planteles: [
     { id:"mayores-a", nombre:"Mayores A", dia:"Sábados", hora:"20:00", sponsor:"Franco Liontix", jugadoras:[
@@ -65,12 +66,7 @@ const DATOS = {
     // se carga una vez (en Minis) y las demás lo comparten con mismoFixtureQue. Lo propio de
     // cada una es el horario y el plantel. Sin "sponsor", el marcador no muestra presentador.
     { id:"minis", nombre:"Minis", dia:"Domingos", hora:"11:00",   // ⚠️ confirmar horario
-      nombresCortos:true, jugadoras:[
-      "Juliana Avila", "Sofia Bermolen", "Antonia Bobadilla", "Valentina Calo", "Delfina Canesa",
-      "Catalina Casco", "Justina Centurion", "Juana Chimento", "Milagros Ferrari", "Helena Ferreyra",
-      "Martina Flores", "Catalina Livramento", "Catalina Lopez", "Olivia Magnani", "Guadalupe Miletti",
-      "Maria Emilia Mina", "Cora Montalbano", "Paz Olivares", "Victoria Pizarro", "Maria Emilia Riba"
-    ], partidos:[
+      nombresCortos:true, jugadoras:[], partidos:[
       {f:"2026-08-09",c:"V",r:"C.V.D."},{f:"2026-08-16",c:"L",r:"Independiente"},{f:"2026-08-23",c:"V",r:"Colegio Ward"},
       {f:"2026-08-30",c:"L",r:"Boca Juniors"},{f:"2026-09-06",c:"V",r:"C.A.B."},{f:"2026-09-13",c:"L",r:"Villa Modelo"},
       {f:"2026-09-20",c:"V",r:"Vélez Sarsfield"},{f:"2026-09-27",c:"L",r:"Ceder Caseros"},{f:"2026-10-04",c:"V",r:"Ciudad Jardín"},
@@ -78,13 +74,7 @@ const DATOS = {
       {f:"2026-11-08",c:"V",r:"Handball C.I.D."},{f:"2026-11-15",c:"V",r:"Sagrado Corazón"},{f:"2026-11-22",c:"L",r:"C.E.B."}
     ]},
     { id:"infantiles", nombre:"Infantiles", dia:"Domingos", hora:"11:00",   // ⚠️ confirmar horario
-      nombresCortos:true, jugadoras:[
-      "Emilia Baez", "Sofia Brau", "Isabella Buono", "Helena Cabibbo", "Victoria Cabral", "Valentina Calo",
-      "Amanda Durzo", "Agostina Ferrarotti", "Bianca Godoy", "Melanie Gomez", "Victoria Ibero",
-      "Amelie Luna", "Paz Maldonado", "Martina Manchi", "Emilia Mañas", "Sofia Mendez", "Isabella Michalko",
-      "Emma Natalucci", "Catalina Palumbo", "Ana Paz", "Indira Randone", "Julia Recupero", "Carmela Rey",
-      "Pilar Sempe Kreisk", "Paz Torres Maldonado", "Lujan Vitale"
-    ], mismoFixtureQue:"minis" },
+      nombresCortos:true, jugadoras:[], mismoFixtureQue:"minis" },
     { id:"menores", nombre:"Menores", dia:"Domingos", hora:"11:00",   // ⚠️ confirmar horario
       nombresCortos:true, jugadoras:[
       "Martina Antero", "Sofia Ballares", "Matilda Barrera", "Victoria Bassi", "Celeste Bello",
