@@ -94,11 +94,14 @@ pertenencia. Los textos hablan de la tribuna, de las familias y del barrio, no d
 - Link de la comunidad de WhatsApp.
 - Prode: los pronósticos viven en memoria (no se guardan). La MVP sí se guarda en D1
   (`GET/POST /api/mvp`): una cookie anónima por persona, solo la fecha vigente de cada
-  plantel, cierra el viernes a las 20. Los planteles que se votan son los cuatro con
-  fixture (`planteles[].jugadoras`, de LISTAS PRESENTISMO 2026.xlsx, ignorado en git).
-  Cadetas y Juveniles muestran nombres cortos (`nombresCortos: true`) por ser menores de edad.
-  Son una tira: Juveniles comparte el fixture de Cadetas (`mismoFixtureQue`) y solo tiene su
-  horario; falta confirmar el horario de cada una.
+  plantel, cierra el viernes a las 20. Se votan los diez planteles (`planteles[].jugadoras`,
+  de LISTAS PRESENTISMO 2026.xlsx, ignorado en git). Las categorías con menores muestran
+  nombres cortos (`nombresCortos: true`).
+- Planteles: Minis, Infantiles, Menores, Cadetas, Juveniles y Juniors son la tira de
+  inferiores: comparten el fixture (cargado en Minis, las demás con `mismoFixtureQue`) y
+  solo tienen horario propio. Faltan: el horario de cada una (hoy todas 11:00), el fixture
+  de Maxihandball (hoy vacío) y decidir qué sponsor presenta cada plantel nuevo (sin
+  `sponsor`, el marcador no muestra presentador).
 - Galería: un álbum por categoría, todos vacíos hasta que se carguen fotos en `datos.js`.
   El álbum por fecha con sponsor queda para el plan 2027.
 - Los sponsors del muro son acuerdos 2026, anteriores al plan; el plan de niveles
