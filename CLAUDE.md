@@ -79,7 +79,7 @@ pertenencia. Los textos hablan de la tribuna, de las familias y del barrio, no d
 ## Cosas que todavía faltan
 
 - Confirmar nombres de algunos rivales del fixture (Lapte, C.F.L., el rival del 04/10
-  de inferiores, el "B" con flor de lis, M.A. Handball).
+  de Cadetas/Juveniles, el "B" con flor de lis, M.A. Handball).
 - Horarios reales de partido y de entrenamiento por categoría. Cadetas y Juveniles
   todavía no tienen horario. Confirmar si Iniciación sigue como grupo aparte (no está en
   la lista de DT ni en las listas de presentismo del club).
@@ -95,7 +95,8 @@ pertenencia. Los textos hablan de la tribuna, de las familias y del barrio, no d
   (`GET/POST /api/mvp`): una cookie anónima por persona, solo la fecha vigente de cada
   plantel, cierra el viernes a las 20. Los planteles que se votan son los cuatro con
   fixture (`planteles[].jugadoras`, de LISTAS PRESENTISMO 2026.xlsx, ignorado en git).
-  Inferiores muestra nombres cortos (`nombresCortos: true`) porque son menores de edad.
+  Cadetas y Juveniles muestran nombres cortos (`nombresCortos: true`) por ser menores de edad;
+  su fixture está copiado del que venía como "Inferiores damas" hasta tener el real de cada una.
 - Galería: un álbum por categoría, todos vacíos hasta que se carguen fotos en `datos.js`.
   El álbum por fecha con sponsor queda para el plan 2027.
 - Los sponsors del muro son acuerdos 2026, anteriores al plan; el plan de niveles
@@ -106,5 +107,5 @@ pertenencia. Los textos hablan de la tribuna, de las familias y del barrio, no d
 ## Antes de dar por terminado un cambio
 
 Abrir el `index.html` en el navegador y verificar que el marcador de la portada calcula
-bien el próximo partido, que las cuatro pestañas del fixture pintan sus 15 fechas y que
+bien el próximo partido, que cada pestaña del fixture pinta sus 15 fechas y que
 el visor de fotos abre y cierra con Escape.

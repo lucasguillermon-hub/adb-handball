@@ -60,10 +60,20 @@ const DATOS = {
       {f:"2026-10-17",c:"L",r:"M.A. Handball"},{f:"2026-10-24",c:"V",r:"San Telmo"},{f:"2026-10-31",c:"V",r:"C.A.N.CH."},
       {f:"2026-11-07",c:"L",r:"Secla"},{f:"2026-11-14",c:"V",r:"Colegio del Parque"},{f:"2026-11-21",c:"L",r:"Ceder Caseros"}
     ]},
-    { id:"inferiores", nombre:"Inferiores damas", dia:"Domingos", hora:"11:00", sponsor:"Administración Palmieri", nombresCortos:true, jugadoras:[
-      "Luciana Chiesa", "Abril Coria", "Isabella Greco", "Elilia Juarez Leikam", "Ema Rosello",
-      "Maria Eugenia Rotta", "Julieta Antero", "Valentina Antero", "Camila Dib", "Antonella Durzo",
-      "Uma Estanga", "Angela Farias", "Renata Giachello", "Martina Gomez", "Isabella Scarfo", "Luciana Toledo"
+    // ⚠️ Cadetas y Juveniles: fixture copiado del que estaba cargado como "Inferiores damas".
+    // Confirmar rivales, fechas y horario de cada una con la coordinación.
+    { id:"cadetas", nombre:"Cadetas", dia:"Domingos", hora:"11:00", sponsor:"Administración Palmieri", nombresCortos:true, jugadoras:[
+      "Luciana Chiesa", "Abril Coria", "Isabella Greco", "Elilia Juarez Leikam", "Ema Rosello", "Maria Eugenia Rotta"
+    ], partidos:[
+      {f:"2026-08-09",c:"V",r:"C.V.D."},{f:"2026-08-16",c:"L",r:"Independiente"},{f:"2026-08-23",c:"V",r:"Colegio Ward"},
+      {f:"2026-08-30",c:"L",r:"Boca Juniors"},{f:"2026-09-06",c:"V",r:"C.A.B."},{f:"2026-09-13",c:"L",r:"Villa Modelo"},
+      {f:"2026-09-20",c:"V",r:"Vélez Sarsfield"},{f:"2026-09-27",c:"L",r:"Ceder Caseros"},{f:"2026-10-04",c:"V",r:"Ciudad Jardín"},
+      {f:"2026-10-11",c:"L",r:"La Patriada"},{f:"2026-10-25",c:"V",r:"C.S.C.D.M."},{f:"2026-11-01",c:"L",r:"Polvorines"},
+      {f:"2026-11-08",c:"V",r:"Handball C.I.D."},{f:"2026-11-15",c:"V",r:"Sagrado Corazón"},{f:"2026-11-22",c:"L",r:"C.E.B."}
+    ]},
+    { id:"juveniles", nombre:"Juveniles", dia:"Domingos", hora:"12:30", sponsor:"Administración Palmieri", nombresCortos:true, jugadoras:[
+      "Julieta Antero", "Valentina Antero", "Camila Dib", "Antonella Durzo", "Uma Estanga", "Angela Farias",
+      "Renata Giachello", "Martina Gomez", "Isabella Scarfo", "Luciana Toledo"
     ], partidos:[
       {f:"2026-08-09",c:"V",r:"C.V.D."},{f:"2026-08-16",c:"L",r:"Independiente"},{f:"2026-08-23",c:"V",r:"Colegio Ward"},
       {f:"2026-08-30",c:"L",r:"Boca Juniors"},{f:"2026-09-06",c:"V",r:"C.A.B."},{f:"2026-09-13",c:"L",r:"Villa Modelo"},
