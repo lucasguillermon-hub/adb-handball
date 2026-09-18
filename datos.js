@@ -21,6 +21,10 @@ const DATOS = {
   /* --------- DATOS GENERALES DEL CLUB --------- */
   torneo: "Clausura 2026",
 
+  // El Club de Beneficios queda escondido hasta que los cupones estén acordados con cada
+  // comercio. Ponelo en true y aparece la sección, el link del menú y el del pie.
+  mostrarBeneficios: false,
+
   contacto: {
     wsp: "5491151128153",                       // ⚠️ verificar
     tel: "11 5112 8153",                        // el mismo número, como se muestra en pantalla
@@ -30,29 +34,50 @@ const DATOS = {
   },
 
   // ⚠️ Horarios de inicio estimados. Cambialos cuando salga la programación.
+  // jugadoras: el plantel que se vota como figura de la fecha (de LISTAS PRESENTISMO 2026).
+  // nombresCortos: true muestra "Nombre A." en vez del nombre completo (para menores de edad).
   planteles: [
-    { id:"mayores-a", nombre:"Mayores A", dia:"Sábados", hora:"20:00", sponsor:"Franco Liontix", partidos:[
+    { id:"mayores-a", nombre:"Mayores A", dia:"Sábados", hora:"20:00", sponsor:"Franco Liontix", jugadoras:[
+      "Luz Agüero", "Noelia Alcala", "Millaray Cocha", "Daniela Cristaldo", "Katia Cuomo", "Guadalupe Fernandez",
+      "Julieta Gimenez", "Mora Lionti", "Carla Martinez", "Thayssa Montaly", "Barbara Ramirez",
+      "Micaela Ramirez", "Valeria Trelles", "Justine Vargas", "Emilia Zarantonello"
+    ], partidos:[
       {f:"2026-08-08",c:"V",r:"C.A.T."},{f:"2026-08-15",c:"L",r:"San Fernando"},{f:"2026-08-22",c:"V",r:"Dorrego"},
       {f:"2026-08-29",c:"L",r:"Lapte"},{f:"2026-09-05",c:"V",r:"AFALP"},{f:"2026-09-12",c:"L",r:"C.F.L."},
       {f:"2026-09-19",c:"V",r:"Polvorines"},{f:"2026-09-26",c:"L",r:"Sagrado Corazón"},{f:"2026-10-03",c:"V",r:"All Boys"},
       {f:"2026-10-17",c:"L",r:"Vilo"},{f:"2026-10-24",c:"V",r:"C.A.T."},{f:"2026-10-31",c:"V",r:"V.J.B."},
       {f:"2026-11-07",c:"L",r:"Argentinos Jrs."},{f:"2026-11-14",c:"V",r:"Secla"},{f:"2026-11-21",c:"L",r:"C.S.C.D.M."}
     ]},
-    { id:"mayores-b", nombre:"Mayores B", dia:"Sábados", hora:"18:00", sponsor:"Supermercado Magdalena", partidos:[
+    { id:"mayores-b", nombre:"Mayores B", dia:"Sábados", hora:"18:00", sponsor:"Supermercado Magdalena", jugadoras:[
+      "Ariana Acosta", "Jazmin Alarcon", "Paula Ayala", "Mia Badaracco", "Marina Chazarreta", "Ariana Cuervo Diaz",
+      "Sofia Dekker", "Julieta Di Bona", "Cecilia Esquivel", "Paula Glisciak", "Camila Gomez", "Camila Hermosid",
+      "Patricia Marsicovetere", "Sofia Marsicovetere", "Julieta Mercado", "Zoe Rodriguez", "Ariana Veiga",
+      "Brenda Velozo"
+    ], partidos:[
       {f:"2026-08-08",c:"V",r:"C.B.C."},{f:"2026-08-15",c:"L",r:"Bernal B."},{f:"2026-08-22",c:"V",r:"Boca Juniors"},
       {f:"2026-08-29",c:"L",r:"AFALP"},{f:"2026-09-05",c:"V",r:"Argentinos Jrs."},{f:"2026-09-12",c:"L",r:"D.B.H."},
       {f:"2026-09-19",c:"V",r:"Independiente"},{f:"2026-09-26",c:"L",r:"Querandí"},{f:"2026-10-03",c:"V",r:"C.A.D.M."},
       {f:"2026-10-17",c:"L",r:"M.A. Handball"},{f:"2026-10-24",c:"V",r:"San Telmo"},{f:"2026-10-31",c:"V",r:"C.A.N.CH."},
       {f:"2026-11-07",c:"L",r:"Secla"},{f:"2026-11-14",c:"V",r:"Colegio del Parque"},{f:"2026-11-21",c:"L",r:"Ceder Caseros"}
     ]},
-    { id:"inferiores", nombre:"Inferiores damas", dia:"Domingos", hora:"11:00", sponsor:"Administración Palmieri", partidos:[
+    { id:"inferiores", nombre:"Inferiores damas", dia:"Domingos", hora:"11:00", sponsor:"Administración Palmieri", nombresCortos:true, jugadoras:[
+      "Luciana Chiesa", "Abril Coria", "Isabella Greco", "Elilia Juarez Leikam", "Ema Rosello",
+      "Maria Eugenia Rotta", "Julieta Antero", "Valentina Antero", "Camila Dib", "Antonella Durzo",
+      "Uma Estanga", "Angela Farias", "Renata Giachello", "Martina Gomez", "Isabella Scarfo", "Luciana Toledo"
+    ], partidos:[
       {f:"2026-08-09",c:"V",r:"C.V.D."},{f:"2026-08-16",c:"L",r:"Independiente"},{f:"2026-08-23",c:"V",r:"Colegio Ward"},
       {f:"2026-08-30",c:"L",r:"Boca Juniors"},{f:"2026-09-06",c:"V",r:"C.A.B."},{f:"2026-09-13",c:"L",r:"Villa Modelo"},
       {f:"2026-09-20",c:"V",r:"Vélez Sarsfield"},{f:"2026-09-27",c:"L",r:"Ceder Caseros"},{f:"2026-10-04",c:"V",r:"Ciudad Jardín"},
       {f:"2026-10-11",c:"L",r:"La Patriada"},{f:"2026-10-25",c:"V",r:"C.S.C.D.M."},{f:"2026-11-01",c:"L",r:"Polvorines"},
       {f:"2026-11-08",c:"V",r:"Handball C.I.D."},{f:"2026-11-15",c:"V",r:"Sagrado Corazón"},{f:"2026-11-22",c:"L",r:"C.E.B."}
     ]},
-    { id:"masculino", nombre:"Mayores caballeros", dia:"Domingos", hora:"16:00", sponsor:"Ladran Sancho", partidos:[
+    { id:"masculino", nombre:"Mayores caballeros", dia:"Domingos", hora:"16:00", sponsor:"Ladran Sancho", jugadoras:[
+      "Lionel Benitez", "Patricio Britez", "Valentin Burakoski", "Valentin Carriego", "Martin Casco",
+      "Guillermo Corbelli", "Agustin Fernandez", "Fabian Franco", "Gabriel Franco", "Enzo Golnner",
+      "Maximiliano Gomez", "Lucas Guillermon", "Agustin Iacuzzi", "Leonel Legal", "Leandro Maggi",
+      "Julian Ponce", "Leandro Salvetti", "Marcelo Sanchez", "Matias Solis", "Matias Vallejos",
+      "Martin Vega"
+    ], partidos:[
       {f:"2026-08-09",c:"V",r:"Bernal B."},{f:"2026-08-16",c:"L",r:"Dep. Laferrere"},{f:"2026-08-23",c:"V",r:"Juniors"},
       {f:"2026-08-30",c:"L",r:"General Las Heras"},{f:"2026-09-06",c:"V",r:"Dorrego"},{f:"2026-09-13",c:"L",r:"Ferrocarril Mitre"},
       {f:"2026-09-20",c:"libre"},{f:"2026-09-27",c:"libre"},{f:"2026-10-04",c:"V",r:"C.A.D.G."},
@@ -61,47 +86,28 @@ const DATOS = {
     ]}
   ],
 
-  // Votación de la figura. ⚠️ Cargá los nombres reales del plantel.
-  mvp: {
-    sponsor: "Delicias Doradas",
-    contexto: "Fecha 5 · Ateneo Don Bosco 24 – 21 AFALP",
-    opciones: [
-      { d:"7",  nom:"Jugadora #7",  pos:"Lateral izquierda", votos:41 },
-      { d:"10", nom:"Jugadora #10", pos:"Central",           votos:63 },
-      { d:"1",  nom:"Arquera #1",   pos:"Arco",              votos:52 },
-      { d:"14", nom:"Jugadora #14", pos:"Pivote",            votos:28 },
-      { d:"20", nom:"Jugadora #20", pos:"Extremo derecho",   votos:19 }
-    ]
-  },
+  // La votación de la figura usa `jugadoras` de cada plantel y el último partido jugado.
   // El prode no tiene sponsor fijo: cada partido lo presenta una marca distinta del
   // muro, elegida de forma pareja y estable (todos ven la misma para ese partido).
 
   // ============ GALERÍA ============
-  // Poné las fotos en una carpeta /fotos junto a este archivo.
-  // Exportalas a 1600 px de ancho, JPG calidad 80 o WebP (unos 200 KB cada una).
-  // La versión en alta guardala aparte: acá va la liviana.
+  // Un álbum por categoría. Poné las fotos en /fotos con el nombre que quieras y cargalas
+  // acá: { src:"fotos/mayores-a-01.jpg", alt:"qué se ve, en castellano", alto:true si es vertical }.
+  // Exportalas a 1600 px de ancho, JPG calidad 80 o WebP, bajo 300 KB cada una.
+  // Un álbum con fotos:[] muestra "todavía no hay fotos" en vez de huecos.
   galeria: {
     fotografa: { nombre:"María Fotografía", ig:"https://instagram.com/" },   // ⚠️ nombre y link reales
     albumes: [
-      { titulo:"Fecha 5 · vs AFALP", sponsor:"Delicias Doradas", fotos:[
-        { src:"fotos/f5-01.jpg", alt:"Contraataque de Mayores A", alto:false },
-        { src:"fotos/f5-02.jpg", alt:"Atajada de la arquera", alto:true },
-        { src:"fotos/f5-03.jpg", alt:"Festejo del equipo", alto:false },
-        { src:"fotos/f5-04.jpg", alt:"Lanzamiento desde nueve metros", alto:true },
-        { src:"fotos/f5-05.jpg", alt:"La tribuna del Bosco", alto:false },
-        { src:"fotos/f5-06.jpg", alt:"Charla técnica en el minuto", alto:false }
-      ]},
-      { titulo:"Fecha 4 · vs Lapte", sponsor:"Agua Tronador", fotos:[
-        { src:"fotos/f4-01.jpg", alt:"Salida del equipo a la cancha", alto:false },
-        { src:"fotos/f4-02.jpg", alt:"Defensa cerrada", alto:true },
-        { src:"fotos/f4-03.jpg", alt:"Gol de pivote", alto:false },
-        { src:"fotos/f4-04.jpg", alt:"Abrazo tras el partido", alto:false }
-      ]},
-      { titulo:"Primera fecha del masculino", sponsor:"Ladran Sancho", fotos:[
-        { src:"fotos/masc-01.jpg", alt:"Plantel de mayores caballeros", alto:false },
-        { src:"fotos/masc-02.jpg", alt:"Lanzamiento en suspensión", alto:true },
-        { src:"fotos/masc-03.jpg", alt:"Banco de suplentes", alto:false }
-      ]}
+      { titulo:"Minis", fotos:[] },
+      { titulo:"Infantiles", fotos:[] },
+      { titulo:"Menores", fotos:[] },
+      { titulo:"Cadetas", fotos:[] },
+      { titulo:"Juveniles", fotos:[] },
+      { titulo:"Juniors", fotos:[] },
+      { titulo:"Mayores A", fotos:[] },
+      { titulo:"Mayores B", fotos:[] },
+      { titulo:"Mayores caballeros", fotos:[] },
+      { titulo:"Maxihandball", fotos:[] }
     ]
   },
 
@@ -199,26 +205,26 @@ const DATOS = {
   // ⚠️ Horarios: confirmá con la coordinación.
   // Las que tienen especial:true no cuentan en el total de categorías que muestra el sitio.
   categorias: [
-    { n:"Iniciación", e:"6 a 8 años", dt:"Joel Szcsur", h:"Martes y jueves, 17:30" },   // ⚠️ no figura en la lista de DT del club: confirmar si sigue
+    { n:"Iniciación", e:"6 a 8 años", dt:"Joel Szczur", h:"Martes y jueves, 17:30" },   // ⚠️ no figura en la lista de DT del club: confirmar si sigue
     { n:"Minis", e:"9 y 10 años", dt:"Paula Glisciak", h:"Martes y jueves, 18:00" },
     { n:"Infantiles", e:"11 y 12 años", dt:"Cecilia Esquivel · Asist. Julieta Zárate", h:"Martes y jueves, 18:30" },
     { n:"Menores", e:"13 y 14 años", dt:"Iván Piscopo · Asist. Cecilia Esquivel · PF Agustín Valado", h:"Lunes, miércoles y viernes, 19:00" },
     { n:"Cadetas", e:"15 y 16 años", dt:"Iván Piscopo · Asist. Cecilia Esquivel · PF Agustín Valado", h:"A confirmar" },   // ⚠️ horario
     { n:"Juveniles", e:"17 y 18 años", dt:"Iván Piscopo · PF Facundo Fariña", h:"A confirmar" },   // ⚠️ horario
-    { n:"Juniors", e:"Sub-21, hasta 21 años", dt:"Joel Szcsur · PF Facundo Fariña", h:"Lunes, miércoles y viernes, 20:00" },
-    { n:"Mayores A", e:"Primera damas", dt:"Cristian Gull · PF Facundo Fariña", h:"Lunes, miércoles y viernes, 21:00" },
+    { n:"Juniors", e:"Sub-21, hasta 21 años", dt:"Joel Szczur · PF Facundo Fariña", h:"Lunes, miércoles y viernes, 20:00" },
+    { n:"Mayores A", e:"Primera damas", dt:"Christian Gull · PF Facundo Fariña", h:"Lunes, miércoles y viernes, 21:00" },
     { n:"Mayores B", e:"Tercera damas", dt:"María José Daneri · PF Facundo Fariña", h:"Lunes, miércoles y viernes, 21:00" },
-    { n:"Mayores caballeros", e:"Cuarta caballeros", dt:"Joel Szcsur", h:"Martes y jueves, 21:00" },
-    { n:"Maxihandball", e:"Femenino, +30", dt:"Iván Piscopo · PF Joel Szcsur", h:"Miércoles, 21:00" },
+    { n:"Mayores caballeros", e:"Cuarta caballeros", dt:"Joel Szczur", h:"Martes y jueves, 21:00" },
+    { n:"Maxihandball", e:"Femenino, +30", dt:"Iván Piscopo · PF Joel Szczur", h:"Miércoles, 21:00" },
     { n:"Arqueras", e:"Entrenamiento específico", dt:"Nicolás Lizarraga", h:"A coordinar con cada categoría", especial:true }   // no cuenta como categoría
   ],
 
   staff: [
     { n:"Jimmy Righi", r:"Coordinador" },
     { n:"Iván Piscopo", r:"Coordinador · DT menores, cadetas, juveniles y maxi" },
-    { n:"Cristian Gull", r:"DT Mayores A" },
+    { n:"Christian Gull", r:"DT Mayores A" },
     { n:"María José Daneri", r:"DT Mayores B" },
-    { n:"Joel Szcsur", r:"DT juniors y caballeros · PF maxi" },
+    { n:"Joel Szczur", r:"DT juniors y caballeros · PF maxi" },
     { n:"Cecilia Esquivel", r:"DT infantiles · asistente de menores y cadetas" },
     { n:"Paula Glisciak", r:"DT minis" },
     { n:"Julieta Zárate", r:"Asistente de infantiles" },

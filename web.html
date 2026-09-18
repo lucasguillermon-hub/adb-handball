@@ -164,7 +164,11 @@ header{position:sticky;top:0;z-index:60;background:rgba(10,20,40,.92);backdrop-f
 .panel{background:rgba(255,255,255,.05);border:1px solid var(--linea);border-radius:18px;padding:28px}
 .claro .panel{background:#fff;border-color:var(--linea-oscura);box-shadow:0 1px 0 rgba(10,20,40,.06)}
 .panel .patro{font-size:12px;letter-spacing:.14em;color:var(--rosa-vivo);font-weight:700;text-transform:uppercase;margin:0 0 8px}
-.opciones{display:flex;flex-direction:column;gap:9px;margin:20px 0 0;padding:0;list-style:none}
+.mvp-tabs{margin:14px 0 4px;gap:6px}
+.mvp-tabs .tab{border-color:var(--linea);color:#fff;padding:7px 13px;font-size:13px}
+.mvp-tabs .tab[aria-selected="true"]{background:var(--rosa);border-color:var(--rosa);color:var(--tinta)}
+.opciones{display:flex;flex-direction:column;gap:9px;margin:20px 0 0;padding:0;list-style:none;max-height:420px;overflow:auto;padding-right:4px}
+.opcion .dorsal{min-width:26px;font-size:15px;color:rgba(255,255,255,.45)}
 .opcion{display:flex;align-items:center;gap:12px;width:100%;text-align:left;background:rgba(255,255,255,.04);border:1px solid var(--linea);color:inherit;border-radius:11px;padding:12px 14px;cursor:pointer;position:relative;overflow:hidden}
 .claro .opcion{background:var(--hueso);border-color:var(--linea-oscura)}
 .opcion:hover{border-color:var(--rosa-vivo)}
@@ -196,11 +200,11 @@ header{position:sticky;top:0;z-index:60;background:rgba(10,20,40,.92);backdrop-f
 
 /* ---------- categorías y staff ---------- */
 .cats{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px}
-.cat{border:1px solid var(--linea);border-radius:14px;padding:20px;background:rgba(255,255,255,.04)}
+.cat{border:1px solid var(--linea-oscura);border-radius:14px;padding:20px;background:#fff;box-shadow:0 1px 0 rgba(10,20,40,.06)}
 .cat h4{font-family:var(--display);font-size:20px;margin:0 0 4px;font-weight:400}
-.cat .edad{font-size:13px;color:var(--rosa);font-weight:600}
-.cat .dt{font-size:14px;color:rgba(255,255,255,.68);margin:10px 0 0}
-.cat .horario{font-size:14px;margin:6px 0 0;color:rgba(255,255,255,.8)}
+.cat .edad{font-size:13px;color:var(--rosa-vivo);font-weight:600}
+.cat .dt{font-size:14px;color:rgba(10,20,40,.62);margin:10px 0 0}
+.cat .horario{font-size:14px;margin:6px 0 0;color:var(--tinta);font-weight:500}
 .staff{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin-top:18px}
 .persona{border-left:3px solid var(--rosa-vivo);padding:6px 0 6px 14px}
 .persona b{display:block;font-family:var(--display);font-size:17px;font-weight:400;letter-spacing:.01em}
@@ -214,7 +218,7 @@ header{position:sticky;top:0;z-index:60;background:rgba(10,20,40,.92);backdrop-f
 .logo-b:hover{border-color:var(--rosa-vivo)}
 .logo-b img{display:block;width:100%;height:100%;object-fit:contain}
 .logo-b.oscuro{background:var(--azul);border-color:var(--azul);color:#fff}
-.logo-b.principal{grid-column:span 2;height:124px;font-size:26px;background:var(--tinta);color:#fff;border-color:var(--tinta)}
+.logo-b.principal{grid-column:span 2;height:124px;font-size:26px}
 @media(max-width:520px){.logo-b.principal{grid-column:span 1;font-size:20px}}
 
 /* ---------- media kit ---------- */
@@ -281,6 +285,7 @@ footer a:hover{color:var(--rosa)}
 .foto .agua{position:absolute;right:9px;bottom:9px;background:rgba(10,20,40,.72);color:#fff;font-family:var(--display);font-size:11px;letter-spacing:.08em;padding:4px 8px;border-radius:5px;line-height:1.3;text-align:right}
 .foto.sin-img{aspect-ratio:4/3;display:grid;place-items:center;background:linear-gradient(135deg,var(--azul),var(--tinta));border:1px dashed var(--linea);cursor:default}
 .foto.sin-img img{display:none}
+.album-vacio{column-span:all;margin:0;padding:34px 20px;border:1px dashed var(--linea);border-radius:12px;text-align:center;color:rgba(255,255,255,.62);font-size:15px}
 .foto.sin-img::after{content:attr(data-hueco);font-family:var(--display);font-size:13px;color:rgba(242,183,207,.6);letter-spacing:.1em;padding:0 18px;text-align:center;line-height:1.5}
 .foto.alto{aspect-ratio:3/4}
 
@@ -331,7 +336,7 @@ footer a:hover{color:var(--rosa)}
       <a href="#fixture">Fixture</a>
       <a href="#votacion">Votá la MVP</a>
       <a href="#fotos">Fotos</a>
-      <a href="#beneficios">Beneficios</a>
+      <a href="#beneficios" data-beneficios>Beneficios</a>
       <a href="#sumate">Sumate a jugar</a>
       <a href="#club">El club</a>
       <a href="#sponsors">Sponsors</a>
@@ -428,9 +433,10 @@ footer a:hover{color:var(--rosa)}
       <div class="panel">
         <p class="patro">La MVP la elige la tribuna, con <span id="sponsor-mvp">—</span></p>
         <h3 class="h3">Votá la figura de la fecha</h3>
+        <div class="tabs mvp-tabs" role="tablist" id="mvp-tabs" aria-label="Plantel"></div>
         <p class="aviso" id="mvp-contexto">—</p>
         <ul class="opciones" id="mvp"></ul>
-        <p class="aviso" id="mvp-estado">Un voto por persona. Cierra el viernes a las 20.</p>
+        <p class="aviso" id="mvp-estado">Un voto por persona y por plantel. Cierra el viernes a las 20.</p>
       </div>
 
       <div class="panel">
@@ -459,8 +465,8 @@ footer a:hover{color:var(--rosa)}
   <div class="wrap">
     <div class="cabeza">
       <div>
-        <h2 class="h2">El álbum<br>de la fecha</h2>
-        <p class="bajada">Las fotos de cada partido importante, en alta y para descargar. Buscá la tuya, guardala y subila donde quieras — solo dejá el crédito de quien la sacó.</p>
+        <h2 class="h2">El álbum<br>de cada categoría</h2>
+        <p class="bajada">Las fotos de cada plantel, en alta y para descargar. Buscá la tuya, guardala y subila donde quieras — solo dejá el crédito de quien la sacó.</p>
       </div>
       <a class="btn linea" id="pedir-foto" href="#" data-track="pedir-foto-alta">Pedir una foto en alta</a>
     </div>
@@ -643,7 +649,7 @@ footer a:hover{color:var(--rosa)}
         <a href="#fixture">Fixture</a>
         <a href="#sumate">Sumate a jugar</a>
         <a href="#club">Cuerpo técnico</a>
-        <a href="#beneficios">Club de beneficios</a>
+        <a href="#beneficios" data-beneficios>Club de beneficios</a>
       </div>
       <div>
         <h5>Marcas</h5>
@@ -739,7 +745,6 @@ if (prox){
   $("#tab-inicial").textContent = prox.p.r.replace(/[^A-Za-zÁÉÍÓÚÑ]/g,"").charAt(0).toUpperCase();
   $("#tab-cond").textContent = prox.p.c==="L" ? "En Don Bosco 116" : "De visitante";
   $("#tab-sponsor").textContent = prox.pl.sponsor;
-  $("#mvp-contexto").textContent = DATOS.mvp.contexto;
   $("#prode-contexto").textContent = prox.pl.nombre+" · "+prox.pl.dia.slice(0,-1)+" "+DIA_MES(prox.p.f)+" vs "+prox.p.r;
   $("#prode-rival").textContent = prox.p.r;
   $("#sponsor-prode").textContent = sponsorDelProde(prox.pl, prox.p);
@@ -795,32 +800,81 @@ function pintarFixture(i){
 }
 pintarFixture(0);
 
-/* ============================ votación MVP ============================ */
-$("#sponsor-mvp").textContent = DATOS.mvp.sponsor;
-
+/* ============================ votación MVP ============================
+   Una votación por plantel, sobre el último partido jugado de ese plantel.
+   Las jugadoras salen de DATOS.planteles[].jugadoras. Los votos viven en
+   memoria (un voto por plantel por visita); para contarlos de verdad hay que
+   guardarlos en el backend. */
 const listaMvp = $("#mvp");
-let yaVoto = false;   // en producción: guardar el voto en tu backend o en una hoja de cálculo
-function pintarMvp(){
-  const total = DATOS.mvp.opciones.reduce((a,o)=>a+o.votos,0);
-  listaMvp.innerHTML = DATOS.mvp.opciones.map((o,i)=>{
-    const pct = total ? Math.round(o.votos/total*100) : 0;
-    return '<li><button class="opcion" data-i="'+i+'" aria-pressed="false">'
-      + (yaVoto ? '<span class="barra" style="width:'+pct+'%"></span>' : '')
-      + '<span class="dorsal">'+o.d+'</span>'
-      + '<span><span class="nom">'+o.nom+'</span><br><span class="pos">'+o.pos+'</span></span>'
-      + (yaVoto ? '<span class="pct">'+pct+'%</span>' : '')
+const votos = {};        // { idPlantel: { nombre: cantidad } }
+const yaVoto = {};       // { idPlantel: nombre votado }
+let plantelMvp = null;
+
+function ultimoPartido(pl){
+  const ahora = new Date();
+  return pl.partidos.filter(p => p.c !== "libre" && cuando(p, pl) <= ahora).pop() || null;
+}
+function nombreMostrado(pl, n){
+  if (!pl.nombresCortos) return n;
+  const w = n.split(" ");                       // "Nombre Apellido" → "Nombre A."
+  return w.length > 1 ? w[0] + " " + w[w.length - 1].charAt(0) + "." : n;
+}
+function sponsorDeLaMvp(pl, p){                  // otra marca que la del prode, misma rotación
+  const marcas = marcasUnicas().map(m => m.n);
+  const nro = DATOS.planteles.indexOf(pl) + pl.partidos.indexOf(p) * DATOS.planteles.length;
+  return marcas[(nro + 7) % marcas.length];
+}
+
+const plantelesConVoto = DATOS.planteles.filter(pl => pl.jugadoras && pl.jugadoras.length);
+plantelesConVoto.forEach((pl, i) => {
+  const b = document.createElement("button");
+  b.className = "tab"; b.textContent = pl.nombre; b.setAttribute("role", "tab");
+  b.addEventListener("click", () => { pintarMvp(pl); track("mvp-plantel", { plantel: pl.id }); });
+  $("#mvp-tabs").appendChild(b);
+});
+
+function pintarMvp(pl){
+  plantelMvp = pl;
+  $$("#mvp-tabs .tab").forEach((t, j) => t.setAttribute("aria-selected", plantelesConVoto[j] === pl));
+  const p = ultimoPartido(pl);
+  if (!p){
+    $("#mvp-contexto").textContent = pl.nombre + " · todavía no jugó ninguna fecha.";
+    $("#sponsor-mvp").textContent = "el Bosco";
+    listaMvp.innerHTML = ""; return;
+  }
+  const nro = pl.partidos.indexOf(p) + 1;
+  $("#mvp-contexto").textContent = pl.nombre + " · Fecha " + nro + " · " + pl.dia.slice(0, -1) + " " + DIA_MES(p.f) + " vs " + p.r;
+  $("#sponsor-mvp").textContent = sponsorDeLaMvp(pl, p);
+  const v = votos[pl.id] || {}, total = Object.values(v).reduce((a, b) => a + b, 0), votado = yaVoto[pl.id];
+  listaMvp.innerHTML = pl.jugadoras.map((n, i) => {
+    const pct = total ? Math.round((v[n] || 0) / total * 100) : 0;
+    return '<li><button class="opcion" data-i="' + i + '" aria-pressed="' + (votado === n) + '">'
+      + (votado ? '<span class="barra" style="width:' + pct + '%"></span>' : '')
+      + '<span class="dorsal">' + (i + 1) + '</span>'
+      + '<span><span class="nom">' + nombreMostrado(pl, n) + '</span></span>'
+      + (votado ? '<span class="pct">' + pct + '%</span>' : '')
       + '</button></li>';
   }).join("");
+  $("#mvp-estado").textContent = votado
+    ? "Listo, tu voto quedó. El resultado se publica el viernes en Instagram junto a " + $("#sponsor-mvp").textContent + "."
+    : "Un voto por persona y por plantel. Cierra el viernes a las 20.";
 }
-pintarMvp();
-listaMvp.addEventListener("click", e=>{
-  const b = e.target.closest(".opcion"); if(!b || yaVoto) return;
-  const i = +b.dataset.i;
-  DATOS.mvp.opciones[i].votos++; yaVoto = true; pintarMvp();
-  $$(".opcion",listaMvp)[i].setAttribute("aria-pressed","true");
-  $("#mvp-estado").textContent = "Listo, tu voto quedó. El resultado se publica el viernes en Instagram junto a "+DATOS.mvp.sponsor+".";
-  track("voto-mvp",{opcion:DATOS.mvp.opciones[i].nom});
+
+listaMvp.addEventListener("click", e => {
+  const b = e.target.closest(".opcion"); if (!b || !plantelMvp || yaVoto[plantelMvp.id]) return;
+  const n = plantelMvp.jugadoras[+b.dataset.i];
+  votos[plantelMvp.id] = votos[plantelMvp.id] || {};
+  votos[plantelMvp.id][n] = (votos[plantelMvp.id][n] || 0) + 1;
+  yaVoto[plantelMvp.id] = n;
+  pintarMvp(plantelMvp);
+  track("voto-mvp", { plantel: plantelMvp.id });
 });
+
+// Arranca en el plantel que jugó más recientemente.
+pintarMvp(plantelesConVoto.slice().sort((a, b) => {
+  const pa = ultimoPartido(a), pb = ultimoPartido(b);
+  return (pb ? cuando(pb, b) : 0) - (pa ? cuando(pa, a) : 0);
+})[0] || plantelesConVoto[0]);
 
 /* ============================ prode ============================ */
 $("#prode-enviar").addEventListener("click", e=>{
@@ -832,26 +886,32 @@ $("#prode-enviar").addEventListener("click", e=>{
   track("prode-jugado",{marcador:a+"-"+b});
 });
 
-/* ============================ beneficios ============================ */
-$("#cupones").innerHTML = DATOS.beneficios.map((b,i)=>
-  '<article class="cupon">'
-  + '<span class="rubro">'+b.rubro+'</span>'
-  + '<h4 class="marca-n">'+b.marca+'</h4>'
-  + '<p class="oferta" style="margin:0">'+b.oferta+'</p>'
-  + '<p class="letra">'+b.letra+'</p>'
-  + '<div class="codigo"><button class="btn" data-cupon="'+i+'">Ver mi código</button><b id="cod-'+i+'">'+b.codigo+'</b></div>'
-  + '</article>').join("")
-  + '<article class="cupon vacante"><span class="rubro">Espacio libre</span><h4 class="marca-n">Tu comercio, acá</h4>'
-  + '<p class="letra" style="margin:8px 0 14px">Ofrecé un beneficio a las familias del club y te mandamos los clientes.</p>'
-  + '<a class="btn" href="#ser-sponsor" data-track="cupon-vacante">Sumarme</a></article>';
-
-$("#cupones").addEventListener("click", e=>{
-  const b = e.target.closest("[data-cupon]"); if(!b) return;
-  const i = b.dataset.cupon;
-  $("#cod-"+i).classList.add("visible");
-  b.remove();
-  track("cupon-abierto",{marca:DATOS.beneficios[i].marca});
-});
+/* ============================ beneficios ============================
+   Con DATOS.mostrarBeneficios en false, la sección y sus links no existen. */
+if (!DATOS.mostrarBeneficios){
+  $("#beneficios").remove();
+  $$("[data-beneficios]").forEach(a=>a.remove());
+} else {
+  $("#cupones").innerHTML = DATOS.beneficios.map((b,i)=>
+    '<article class="cupon">'
+    + '<span class="rubro">'+b.rubro+'</span>'
+    + '<h4 class="marca-n">'+b.marca+'</h4>'
+    + '<p class="oferta" style="margin:0">'+b.oferta+'</p>'
+    + '<p class="letra">'+b.letra+'</p>'
+    + '<div class="codigo"><button class="btn" data-cupon="'+i+'">Ver mi código</button><b id="cod-'+i+'">'+b.codigo+'</b></div>'
+    + '</article>').join("")
+    + '<article class="cupon vacante"><span class="rubro">Espacio libre</span><h4 class="marca-n">Tu comercio, acá</h4>'
+    + '<p class="letra" style="margin:8px 0 14px">Ofrecé un beneficio a las familias del club y te mandamos los clientes.</p>'
+    + '<a class="btn" href="#ser-sponsor" data-track="cupon-vacante">Sumarme</a></article>';
+  
+  $("#cupones").addEventListener("click", e=>{
+    const b = e.target.closest("[data-cupon]"); if(!b) return;
+    const i = b.dataset.cupon;
+    $("#cod-"+i).classList.add("visible");
+    b.remove();
+    track("cupon-abierto",{marca:DATOS.beneficios[i].marca});
+  });
+}
 
 /* ============================ categorías, staff, sponsors ============================ */
 $("#cats").innerHTML = DATOS.categorias.map(c=>
@@ -867,7 +927,7 @@ $("#staff").innerHTML = DATOS.staff.map(s=>
    vuelve al nombre en texto. Con url abre el sitio del sponsor en pestaña nueva. */
 function tarjetaSponsor(m){
   const clase = "logo-b" + (m.destacado ? " principal" : "") + (m.logo && m.fondoOscuro ? " oscuro" : "");
-  const destino = m.url ? ' href="'+m.url+'" target="_blank" rel="noopener"' : ' href="#beneficios"';
+  const destino = m.url ? ' href="'+m.url+'" target="_blank" rel="noopener"' : (DATOS.mostrarBeneficios ? ' href="#beneficios"' : '');
   const dentro = m.logo
     ? '<img src="'+m.logo+'" alt="'+m.n+'" loading="lazy" onerror="this.parentNode.classList.remove(\'oscuro\');this.parentNode.textContent=this.alt">'
     : m.n;
@@ -916,12 +976,13 @@ function pintarAlbum(i){
   const al = G.albumes[i];
   $$("#album-nav .tab").forEach((t,j)=>t.setAttribute("aria-selected", j===i));
   $("#credito").innerHTML = 'Fotos de <a href="'+G.fotografa.ig+'" target="_blank" rel="noopener" data-track="click-fotografa">'
-    + G.fotografa.nombre + '</a><span class="sep">·</span>Álbum presentado por <strong style="color:#fff">'+al.sponsor+'</strong>'
-    + '<span class="sep">·</span>'+al.fotos.length+' fotos';
-  $("#mosaico").innerHTML = al.fotos.map((f,n)=>
+    + G.fotografa.nombre + '</a><span class="sep">·</span>'+al.titulo
+    + '<span class="sep">·</span>'+(al.fotos.length ? al.fotos.length+' fotos' : 'todavía sin fotos');
+  $("#mosaico").innerHTML = al.fotos.length ? al.fotos.map((f,n)=>
     '<button class="foto'+(f.alto?" alto":"")+'" data-n="'+n+'" data-hueco="'+f.alt+'">'
     + '<img src="'+f.src+'" alt="'+f.alt+'" loading="lazy" onerror="this.closest(\'.foto\').classList.add(\'sin-img\')">'
-    + '<span class="agua">ADB HANDBALL<br>'+al.sponsor+'</span></button>').join("");
+    + '<span class="agua">ADB HANDBALL<br>'+al.titulo+'</span></button>').join("")
+    : '<p class="album-vacio">Todavía no subimos fotos de '+al.titulo+'. Cuando haya, aparecen acá.</p>';
 }
 pintarAlbum(0);
 

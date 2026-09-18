@@ -147,7 +147,7 @@ footer h4{font-family:var(--display);font-size:13px;font-weight:400;letter-spaci
 <section>
   <div class="wrap">
     <p class="rotulo-sec">Lo que se viene</p>
-    <h2 class="h2">Cuatro cosas que vas a poder hacer</h2>
+    <h2 class="h2"><span id="n-cosas">Cuatro</span> cosas que vas a poder hacer</h2>
     <div class="adelanto">
       <article class="tarjeta">
         <h3>Ver el fixture completo</h3>
@@ -155,9 +155,9 @@ footer h4{font-family:var(--display);font-size:13px;font-weight:400;letter-spaci
       </article>
       <article class="tarjeta">
         <h3>Buscar tu foto</h3>
-        <p>El álbum de cada partido importante, en alta y para descargar. Fotos de verdad, sacadas por una fotógrafa, no capturas de celular.</p>
+        <p>El álbum de cada categoría, en alta y para descargar. Fotos de verdad, sacadas por una fotógrafa, no capturas de celular.</p>
       </article>
-      <article class="tarjeta">
+      <article class="tarjeta" data-beneficios>
         <h3>Usar el Club de Beneficios</h3>
         <p>Los comercios que auspician al club le van a hacer precio a la familia del Bosco. Mostrás el código y listo.</p>
       </article>
@@ -270,6 +270,10 @@ $("#cta-jugar").addEventListener("click", ()=>track("cta-jugar"));
 $("#cta-sponsor").addEventListener("click", ()=>track("cta-sponsor"));
 
 if (DATOS.oferta) $("#oferta").textContent = DATOS.oferta; else $("#oferta").remove();
+
+/* El Club de Beneficios se muestra solo cuando está listo (DATOS.mostrarBeneficios). */
+if (!DATOS.mostrarBeneficios) document.querySelectorAll("[data-beneficios]").forEach(el => el.remove());
+$("#n-cosas").textContent = ["", "Una", "Dos", "Tres", "Cuatro", "Cinco"][document.querySelectorAll(".adelanto .tarjeta").length] || "";
 
 /* rótulo y cuenta regresiva */
 const apertura = new Date(DATOS.lanzamiento);

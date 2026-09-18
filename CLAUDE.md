@@ -82,16 +82,22 @@ pertenencia. Los textos hablan de la tribuna, de las familias y del barrio, no d
   de inferiores, el "B" con flor de lis, M.A. Handball).
 - Horarios reales de partido y de entrenamiento por categoría. Cadetas y Juveniles
   todavía no tienen horario. Confirmar si Iniciación sigue como grupo aparte (no está en
-  la lista de DT del club) y la grafía del apellido Szcsur (antes figuraba Szczur).
+  la lista de DT ni en las listas de presentismo del club).
 - Logos: los 39 de la temporada 2026 ya están en `fotos/sponsors/` (exportados de los PDF
   de la carpeta de diseño `6. SPONSORS 2026/`, que está ignorada en git y no se publica).
   Si llega un logo nuevo, va ahí en PNG transparente, azul sobre fondo claro, y se
   carga en `logo` dentro de `tiers`.
-- Acordar cada beneficio del Club de Beneficios con su comercio antes de publicarlo.
+- Club de Beneficios: está escondido con `mostrarBeneficios: false` en `datos.js` (sección,
+  menú, pie y tarjeta de la portada). Acordar cada beneficio con su comercio y pasarlo a true.
 - Números reales del media kit (jugadores, familias, fechas de local).
 - Link de la comunidad de WhatsApp.
-- Votación de la MVP por plantel y por fecha, como el prode (hoy hay una sola votación
-  con jugadoras de ejemplo). Necesita el plantel de cada categoría en `datos.js`.
+- Votación de la MVP y prode: los votos viven en memoria (se pierden al recargar y no se
+  suman entre personas). Para contarlos de verdad hay que guardarlos en D1 vía `worker.js`.
+  Los planteles que se votan son los cuatro con fixture (`planteles[].jugadoras`, sacados
+  de LISTAS PRESENTISMO 2026.xlsx, que está ignorado en git). Inferiores muestra nombres
+  cortos (`nombresCortos: true`) porque son menores de edad.
+- Galería: un álbum por categoría, todos vacíos hasta que se carguen fotos en `datos.js`.
+  El álbum por fecha con sponsor queda para el plan 2027.
 - Los sponsors del muro son acuerdos 2026, anteriores al plan; el plan de niveles
   arranca en 2027. Hasta entonces el muro sigue agrupado por categoría.
 - Elegir la herramienta para mandar los mails (Brevo, MailerLite o similar) e importarle
