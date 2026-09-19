@@ -13,3 +13,9 @@ node_modules/
 
 # Placas del fixture (para recortar los escudos de los rivales): no van al repo
 placas-fixture/
+
+# Material del club que sirve de fuente (planillas de horarios, etc.): no se publica
+material-club/
+
+# Configuración local de Claude Code (dev server para la vista previa)
+.claude/
