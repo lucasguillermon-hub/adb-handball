@@ -51,3 +51,10 @@ formativa: copia las fechas de la tira sin resultados.
   base D1 es `adb-contactos`, id en `wrangler.jsonc`.
 - Al probar en el navegador de Claude, la página puede quedar cacheada: navegar a
   `/web?nocache=N` en vez de `/web.html`.
+
+## Placas de lanzamiento
+
+`lanzamiento/` tiene las dos placas para WhatsApp (familias y sponsors) en HTML, con los
+colores y tipografías del sitio, y los textos que las acompañan en `mensajes.md`.
+`node herramientas/lanzamiento/render.js` las pasa a PNG (1080 × 1350) con el Chrome
+instalado y las deja en `material-club/lanzamiento/` (ignorada en git).

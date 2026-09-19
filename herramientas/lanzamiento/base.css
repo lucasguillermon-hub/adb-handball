@@ -1,0 +1,49 @@
+/* Placas de lanzamiento para WhatsApp e Instagram (1080 × 1350). Mismos colores y
+   tipografías que el sitio. Se renderizan a PNG con render.js. */
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700&display=swap');
+
+:root{
+  --tinta:#0A1428; --azul:#152A54; --rosa:#F2B7CF; --rosa-vivo:#E4568F; --hueso:#F5F2ED;
+  --display:'Anton',Impact,sans-serif; --texto:'Archivo',Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1350px;overflow:hidden}
+body{
+  font-family:var(--texto);color:var(--hueso);
+  background:var(--tinta);
+  background-image:
+    radial-gradient(900px 700px at 85% -10%, rgba(21,42,84,.9), transparent 65%),
+    radial-gradient(700px 600px at -10% 110%, rgba(228,86,143,.18), transparent 60%);
+}
+.placa{position:relative;width:1080px;height:1350px;padding:72px 84px 64px;display:flex;flex-direction:column}
+.placa::before{content:"";position:absolute;left:84px;right:84px;top:0;height:10px;background:var(--rosa-vivo)}
+
+.cabecera{display:flex;align-items:center;gap:22px}
+.cabecera img{width:96px;height:128px}
+.cabecera .club{font-family:var(--display);font-size:30px;line-height:1.05;letter-spacing:.02em;text-transform:uppercase}
+.cabecera .club small{display:block;font-family:var(--texto);font-weight:700;font-size:15px;letter-spacing:.28em;color:var(--rosa);margin-top:8px}
+
+.rotulo{font-family:var(--display);font-size:20px;letter-spacing:.3em;text-transform:uppercase;color:var(--rosa-vivo);margin-top:44px}
+h1{font-family:var(--display);font-weight:400;font-size:84px;line-height:.98;letter-spacing:.005em;margin-top:14px}
+h1 em{font-style:normal;color:var(--rosa)}
+.bajada{font-size:27px;line-height:1.4;color:rgba(245,242,237,.85);margin-top:22px;max-width:880px}
+.bajada b{color:#fff}
+
+.fecha{display:inline-flex;align-items:center;gap:16px;margin-top:26px;padding:12px 24px;border-radius:999px;background:var(--rosa-vivo);color:#fff;align-self:flex-start}
+.fecha span{font-family:var(--display);font-size:28px;letter-spacing:.06em;text-transform:uppercase}
+
+ul{list-style:none;margin-top:36px;display:grid;gap:16px}
+li{position:relative;padding-left:44px;font-size:28px;line-height:1.3}
+li::before{content:"";position:absolute;left:0;top:14px;width:16px;height:16px;border-radius:3px;background:var(--rosa-vivo)}
+li b{color:#fff;font-weight:700}
+
+.numeros{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:34px}
+.numeros div{border:1px solid rgba(242,183,207,.28);border-radius:16px;padding:16px 16px;background:rgba(255,255,255,.04)}
+.numeros b{display:block;font-family:var(--display);font-size:50px;font-weight:400;line-height:1;color:var(--rosa)}
+.numeros span{display:block;font-size:16px;line-height:1.3;margin-top:8px;color:rgba(245,242,237,.8)}
+
+.pie{margin-top:auto;padding-top:28px;border-top:1px solid rgba(242,183,207,.28);display:flex;justify-content:space-between;align-items:flex-end;gap:30px}
+.pie .url{font-family:var(--display);font-size:60px;line-height:1;color:#fff;letter-spacing:.01em}
+.pie .url small{display:block;font-family:var(--texto);font-weight:600;font-size:20px;letter-spacing:.02em;color:var(--rosa);margin-bottom:10px}
+.pie .lado{text-align:right;font-size:22px;line-height:1.45;color:rgba(245,242,237,.85);flex-shrink:0}
+.pie .lado b{display:block;color:#fff;font-size:26px}

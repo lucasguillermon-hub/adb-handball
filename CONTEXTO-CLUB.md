@@ -60,7 +60,7 @@ Nombres como los usa el club; entre paréntesis el de FeMeBal.
 - Repo `lucasguillermon-hub/adb-handball`, Cloudflare Workers + D1, publica con push a `main`.
   Sin framework ni build. **`datos.js` es la única fuente de contenido**: fixture, resultados,
   tablas, planteles, staff, categorías, sponsors, galería, contacto.
-- Páginas: `index.html` (portada con cuenta regresiva al 4/10/2026, ya con todo lo vivo),
+- Páginas: `index.html` (portada con cuenta regresiva al 20/9/2026, ya con todo lo vivo),
   `web.html` (la definitiva, sin indexar hasta el lanzamiento), `plan-sponsoreo.html`.
 - Funciones: fixture con resultados y tabla de posiciones por plantel · marcador con la
   próxima fecha de cada plantel y escudos de rivales · votación de la figura (MVP) por plantel
@@ -74,7 +74,7 @@ Nombres como los usa el club; entre paréntesis el de FeMeBal.
 
 ## Decisiones ya tomadas (no volver a discutir)
 
-Ver "Decisiones tomadas" en `CLAUDE.md`. Las más importantes: lanzamiento el 4/10; sponsors
+Ver "Decisiones tomadas" en `CLAUDE.md`. Las más importantes: lanzamiento el 20/9; sponsors
 2026 como legado y plan de niveles para 2027; nombres de planteles del club con la división
 de FeMeBal guardada aparte; nada por nombre para Minis e Infantiles.
 

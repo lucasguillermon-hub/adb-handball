@@ -81,7 +81,7 @@ pertenencia. Los textos hablan de la tribuna, de las familias y del barrio, no d
 
 ## Decisiones tomadas (no volver a preguntar)
 
-- La fecha de lanzamiento queda el 4/10/2026; ese día se hace el cambio de `index.html`
+- La fecha de lanzamiento queda el 20/9/2026; ese día se hace el cambio de `index.html`
   por `web.html` (receta en recetas.md). Mientras tanto la portada muestra todo lo vivo:
   próxima fecha de cada plantel, última fecha con resultado y puesto, categorías y horarios.
 - Los sponsors del muro son acuerdos 2026 agrupados por categoría; el plan de niveles es

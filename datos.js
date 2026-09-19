@@ -13,7 +13,7 @@ const DATOS = {
   /* --------- PORTADA DE LANZAMIENTO (index.html) --------- */
 
   // Día y hora en que abre la web completa.
-  lanzamiento: "2026-10-04T10:00:00",
+  lanzamiento: "2026-09-20T10:00:00",
 
   // Promoción de apertura. Dejalo en "" para que no se muestre.
   oferta: "",
