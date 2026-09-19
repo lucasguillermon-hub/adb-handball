@@ -160,16 +160,12 @@ header{position:sticky;top:0;z-index:60;background:rgba(10,20,40,.92);backdrop-f
 .pf.local{background:var(--rosa);color:var(--tinta)}
 .pf.libre{background:transparent;border:1px dashed var(--linea-oscura);color:rgba(10,20,40,.45);align-items:center;justify-content:center;text-align:center;font-weight:600}
 .pf.pasado{opacity:.42}
+.pf.pasado.ganado,.pf.pasado.empatado,.pf.pasado.perdido{opacity:.55}
 .pf .riv{font-family:var(--display);font-size:15px;line-height:1.05}
 .pf .pie{display:flex;justify-content:space-between;align-items:baseline;font-size:12px;font-weight:700;letter-spacing:.06em;margin-top:10px}
 .pf .cond{opacity:.72}
 .pf .res{display:flex;align-items:baseline;gap:8px;margin-top:8px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.85}
 .pf .res b{font-family:var(--display);font-size:20px;font-weight:400;letter-spacing:.02em;line-height:1}
-.pf.ganado .res{color:var(--rosa-vivo)}
-.pf.local.ganado .res{color:var(--tinta)}
-.pf.local.ganado{background:var(--rosa-vivo);color:#fff}
-.pf.local.ganado .res{color:#fff}
-.pf.empatado .res,.pf.perdido .res{opacity:.7}
 .posiciones{margin-top:34px}
 .posiciones h3{font-family:var(--display);font-size:22px;font-weight:400;margin:0 0 4px}
 .posiciones .nota{font-size:13.5px;color:rgba(10,20,40,.62);margin:0 0 14px}
@@ -879,7 +875,7 @@ function pintarFixture(i){
   grilla.innerHTML = pl.partidos.length ? pl.partidos.map((p,n)=>{
     if (p.c==="libre") return '<div class="pf libre">Fecha libre<span style="display:block;font-weight:400;font-size:12px;margin-top:6px">'+DIA_MES(p.f)+'</span></div>';
     const r = resultado(p);
-    const pasado = !r && cuando(p,pl) < hoy ? " pasado" : "";
+    const pasado = cuando(p,pl) < hoy ? " pasado" : "";
     return '<div class="pf '+(p.c==="L"?"local":"")+pasado+(r ? " "+r.clase : "")+'">'
       + '<span class="riv">'+p.r+'</span>'
       + (r ? '<span class="res"><b>'+r.txt+'</b>'+r.palabra+'</span>' : '')

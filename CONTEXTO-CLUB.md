@@ -22,7 +22,7 @@ Nombres como los usa el club; entre paréntesis el de FeMeBal.
 
 | Plantel | División FeMeBal | Jugadoras/es | DT y staff |
 |---|---|---|---|
-| Iniciación (6 a 8) | no compite | — | Joel Szczur (⚠️ confirmar si sigue como grupo) |
+| Iniciación (grupos de 11-13, 14-15 y 16-17, para quienes arrancan) | no compite | — | Joel Szczur · Julieta Zárate |
 | Minis (9 y 10) | formativa, sin resultados | 20 | Paula Glisciak |
 | Infantiles (11 y 12) | Infantiles C | 26 | Cecilia Esquivel · Asist. Julieta Zárate |
 | Menores (13 y 14) | Menores C | 22 | Iván Piscopo · Asist. Cecilia Esquivel · PF Agustín Valado |

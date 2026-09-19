@@ -101,8 +101,9 @@ pertenencia. Los textos hablan de la tribuna, de las familias y del barrio, no d
   Torneo Metropolitano Clausura: Mayores 1º y 3º división femenino, división C de Infantiles
   a Junior, 4º división masculino). Para actualizarlo, ver "Sincronizar con FeMeBal" en
   recetas.md. Maxihandball no está en FeMeBal: su fixture se carga a mano.
-- Confirmar si Iniciación sigue como grupo aparte (no está en
-  la lista de DT ni en las listas de presentismo del club).
+- Iniciación son grupos para quienes arrancan (11-13, 14-15 y 16-17 años), lunes y miércoles;
+  no compiten. Horarios de entrenamiento según la planilla "Temporada 2026" (Horarios.jpeg,
+  septiembre 2026).
 - Logos: los 39 de la temporada 2026 ya están en `fotos/sponsors/` (exportados de los PDF
   de la carpeta de diseño `6. SPONSORS 2026/`, que está ignorada en git y no se publica).
   Si llega un logo nuevo, va ahí en PNG transparente, azul sobre fondo claro, y se

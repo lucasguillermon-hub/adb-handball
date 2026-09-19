@@ -417,21 +417,21 @@ const DATOS = {
 
   // Edades según las categorías del handball: Minis hasta 9-10, Infantiles 11-12, Menores 13-14,
   // Cadetas 15-16, Juveniles 17-18, Juniors (Sub-21) hasta 21, Mayores desde 19, Maxi +30.
-  // ⚠️ Horarios: confirmá con la coordinación.
+  // Horarios según la planilla "Temporada 2026" del club (septiembre 2026).
   // Las que tienen especial:true no cuentan en el total de categorías que muestra el sitio.
   categorias: [
-    { n:"Iniciación", e:"6 a 8 años", dt:"Joel Szczur", h:"Martes y jueves, 17:30" },   // ⚠️ no figura en la lista de DT del club: confirmar si sigue
-    { n:"Minis", e:"9 y 10 años", dt:"Paula Glisciak", h:"Martes y jueves, 18:00" },
-    { n:"Infantiles", e:"11 y 12 años", dt:"Cecilia Esquivel · Asist. Julieta Zárate", h:"Martes y jueves, 18:30" },
-    { n:"Menores", e:"13 y 14 años", dt:"Iván Piscopo · Asist. Cecilia Esquivel · PF Agustín Valado", h:"Lunes, miércoles y viernes, 19:00" },
-    { n:"Cadetas", e:"15 y 16 años", dt:"Iván Piscopo · Asist. Cecilia Esquivel · PF Agustín Valado", h:"Martes y jueves, 18:30 · Viernes, 19:00" },
-    { n:"Juveniles", e:"17 y 18 años", dt:"Iván Piscopo · PF Agustín Valado", h:"Martes y jueves, 18:30 · Viernes, 19:00" },
-    { n:"Juniors", e:"Sub-21, hasta 21 años", dt:"Joel Szczur · PF Facundo Fariña", h:"Lunes, miércoles y viernes, 20:00" },
-    { n:"Primera damas", e:"Mayores · 1º División", dt:"Christian Gull · PF Facundo Fariña", h:"Lunes, miércoles y viernes, 21:00" },
-    { n:"Tercera damas", e:"Mayores · 3º División", dt:"María José Daneri · PF Facundo Fariña", h:"Lunes, miércoles y viernes, 21:00" },
-    { n:"Cuarta caballeros", e:"Mayores · 4º División", dt:"Joel Szczur", h:"Martes y jueves, 21:00" },
-    { n:"Maxihandball", e:"Femenino, +30", dt:"Iván Piscopo · PF Joel Szczur", h:"Miércoles, 21:00" },
-    { n:"Arqueras", e:"Entrenamiento específico", dt:"Nicolás Lizarraga", h:"A coordinar con cada categoría", especial:true }   // no cuenta como categoría
+    { n:"Iniciación", e:"Para arrancar, de 11 a 17 años", dt:"Joel Szczur · Julieta Zárate", h:"Lunes y miércoles, 17:30 a 18:30 y 18:30 a 19:30 (por edad: 11-13, 14-15 y 16-17)" },
+    { n:"Minis", e:"9 y 10 años", dt:"Paula Glisciak", h:"Martes y jueves, 17:30 a 18:30" },
+    { n:"Infantiles", e:"11 y 12 años", dt:"Cecilia Esquivel · Asist. Julieta Zárate", h:"Martes, jueves y viernes, 17:30 a 19:00" },
+    { n:"Menores", e:"13 y 14 años", dt:"Iván Piscopo · Asist. Cecilia Esquivel · PF Agustín Valado", h:"Martes y jueves, 17:30 a 20:00 (físico 17:30 a 18:30) · Viernes, 17:30 a 19:00" },
+    { n:"Cadetas", e:"15 y 16 años", dt:"Iván Piscopo · Asist. Cecilia Esquivel · PF Agustín Valado", h:"Martes y jueves, 18:30 a 20:30 (físico 18:30 a 19:30) · Viernes, 18:30 a 20:00" },
+    { n:"Juveniles", e:"17 y 18 años", dt:"Iván Piscopo · PF Agustín Valado", h:"Martes y jueves, 18:30 a 20:30 (físico 18:30 a 19:30) · Viernes, 18:30 a 20:00" },
+    { n:"Juniors", e:"Sub-21, hasta 21 años", dt:"Joel Szczur · PF Facundo Fariña", h:"Entrenan con Juveniles · Viernes, 21:00 a 21:45, solo Juniors" },
+    { n:"Primera damas", e:"Mayores · 1º División", dt:"Christian Gull · PF Facundo Fariña", h:"Martes y jueves, 20:30 a 23:00 (físico 20:30 a 21:30) · Viernes, 20:00 a 21:00" },
+    { n:"Tercera damas", e:"Mayores · 3º División", dt:"María José Daneri · PF Facundo Fariña", h:"Martes y jueves, 19:30 a 22:00 (físico 19:30 a 20:30) · Viernes, 21:45 a 23:00" },
+    { n:"Cuarta caballeros", e:"Mayores · 4º División", dt:"Joel Szczur", h:"Lunes y miércoles, 21:30 a 23:00" },
+    { n:"Maxihandball", e:"Femenino, +30", dt:"Iván Piscopo · PF Joel Szczur", h:"Lunes y miércoles, 19:30 a 21:30 (físico 19:30 a 20:00)" },
+    { n:"Arqueras", e:"Entrenamiento específico", dt:"Nicolás Lizarraga", h:"Martes y jueves, en dos bloques: 19:30 a 20:00 y 20:00 a 20:30", especial:true }   // no cuenta como categoría
   ],
 
   staff: [
