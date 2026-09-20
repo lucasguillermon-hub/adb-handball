@@ -310,6 +310,7 @@ const DATOS = {
   // Cada foto: { src, alt (qué se ve, en castellano), alto:true si es vertical }.
   galeria: {
     fotografos: {
+      "Maxy Canteros": "https://instagram.com/maxyyft",
       "JZ Audiovisuales": ""    // ⚠️ pegar el Instagram real
     },
     albumes: [
@@ -319,7 +320,29 @@ const DATOS = {
       { titulo:"Cadetas", fechas:[] },
       { titulo:"Juveniles", fechas:[] },
       { titulo:"Juniors", fechas:[] },
-      { titulo:"Primera damas", fechas:[] },
+      { titulo:"Primera damas", fechas:[
+        { f:"2026-08-15", rival:"San Fernando", c:"L", fotografo:"JZ Audiovisuales", fotos:[
+          { src:"fotos/primera-damas/2026-08-15-01.jpg", alt:"Primera damas contra San Fernando, 15/08 de local (foto 1)" },
+          { src:"fotos/primera-damas/2026-08-15-02.jpg", alt:"Primera damas contra San Fernando, 15/08 de local (foto 2)" },
+          { src:"fotos/primera-damas/2026-08-15-03.jpg", alt:"Primera damas contra San Fernando, 15/08 de local (foto 3)", alto:true },
+          { src:"fotos/primera-damas/2026-08-15-04.jpg", alt:"Primera damas contra San Fernando, 15/08 de local (foto 4)", alto:true },
+          { src:"fotos/primera-damas/2026-08-15-05.jpg", alt:"Primera damas contra San Fernando, 15/08 de local (foto 5)", alto:true },
+          { src:"fotos/primera-damas/2026-08-15-06.jpg", alt:"Primera damas contra San Fernando, 15/08 de local (foto 6)", alto:true },
+          { src:"fotos/primera-damas/2026-08-15-07.jpg", alt:"Primera damas contra San Fernando, 15/08 de local (foto 7)", alto:true },
+          { src:"fotos/primera-damas/2026-08-15-08.jpg", alt:"Primera damas contra San Fernando, 15/08 de local (foto 8)" },
+          { src:"fotos/primera-damas/2026-08-15-09.jpg", alt:"Primera damas contra San Fernando, 15/08 de local (foto 9)" }
+        ]},
+        { f:"2026-08-08", rival:"Talleres", c:"V", fotografo:"Maxy Canteros", fotos:[
+          { src:"fotos/primera-damas/2026-08-08-01.jpg", alt:"Primera damas contra Talleres, 08/08 de visitante (foto 1)" },
+          { src:"fotos/primera-damas/2026-08-08-02.jpg", alt:"Primera damas contra Talleres, 08/08 de visitante (foto 2)" },
+          { src:"fotos/primera-damas/2026-08-08-03.jpg", alt:"Primera damas contra Talleres, 08/08 de visitante (foto 3)", alto:true },
+          { src:"fotos/primera-damas/2026-08-08-04.jpg", alt:"Primera damas contra Talleres, 08/08 de visitante (foto 4)", alto:true },
+          { src:"fotos/primera-damas/2026-08-08-05.jpg", alt:"Primera damas contra Talleres, 08/08 de visitante (foto 5)", alto:true },
+          { src:"fotos/primera-damas/2026-08-08-06.jpg", alt:"Primera damas contra Talleres, 08/08 de visitante (foto 6)", alto:true },
+          { src:"fotos/primera-damas/2026-08-08-07.jpg", alt:"Primera damas contra Talleres, 08/08 de visitante (foto 7)", alto:true },
+          { src:"fotos/primera-damas/2026-08-08-08.jpg", alt:"Primera damas contra Talleres, 08/08 de visitante (foto 8)", alto:true }
+        ]}
+      ] },
       { titulo:"Tercera damas", fechas:[] },
       { titulo:"Cuarta caballeros", fechas:[
         { f:"2026-08-16", rival:"Dep. Laferrere", c:"L", fotografo:"JZ Audiovisuales", fotos:[
