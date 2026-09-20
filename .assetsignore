@@ -28,3 +28,6 @@ placas-fixture
 
 # Scripts de mantenimiento: versionados pero no publicados
 herramientas
+
+# Originales de las fotos: no se publican, la galería usa las exportadas
+fotos/Partidos

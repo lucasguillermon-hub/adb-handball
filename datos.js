@@ -307,7 +307,7 @@ const DATOS = {
   // Exportalas a 1600 px de ancho, JPG calidad 80 o WebP, bajo 300 KB cada una.
   // Un álbum con fotos:[] muestra "todavía no hay fotos" en vez de huecos.
   galeria: {
-    fotografa: { nombre:"María Fotografía", ig:"https://instagram.com/" },   // ⚠️ nombre y link reales
+    fotografa: { nombre:"JZ Audiovisuales", ig:"https://instagram.com/" },   // ⚠️ pegar el Instagram real de JZ Audiovisuales
     albumes: [
       { titulo:"Minis", fotos:[] },
       { titulo:"Infantiles", fotos:[] },
@@ -317,7 +317,16 @@ const DATOS = {
       { titulo:"Juniors", fotos:[] },
       { titulo:"Primera damas", fotos:[] },
       { titulo:"Tercera damas", fotos:[] },
-      { titulo:"Cuarta caballeros", fotos:[] },
+      { titulo:"Cuarta caballeros", fotos:[
+        { src:"fotos/cuarta-caballeros/dep-laferrere-01.jpg", alt:"Cuarta caballeros contra Dep. Laferrere, 16/08 de local (foto 1)" },
+        { src:"fotos/cuarta-caballeros/dep-laferrere-02.jpg", alt:"Cuarta caballeros contra Dep. Laferrere, 16/08 de local (foto 2)" },
+        { src:"fotos/cuarta-caballeros/dep-laferrere-03.jpg", alt:"Cuarta caballeros contra Dep. Laferrere, 16/08 de local (foto 3)" },
+        { src:"fotos/cuarta-caballeros/dep-laferrere-04.jpg", alt:"Cuarta caballeros contra Dep. Laferrere, 16/08 de local (foto 4)" },
+        { src:"fotos/cuarta-caballeros/dep-laferrere-05.jpg", alt:"Cuarta caballeros contra Dep. Laferrere, 16/08 de local (foto 5)" },
+        { src:"fotos/cuarta-caballeros/dep-laferrere-06.jpg", alt:"Cuarta caballeros contra Dep. Laferrere, 16/08 de local (foto 6)" },
+        { src:"fotos/cuarta-caballeros/dep-laferrere-07.jpg", alt:"Cuarta caballeros contra Dep. Laferrere, 16/08 de local (foto 7)" },
+        { src:"fotos/cuarta-caballeros/dep-laferrere-08.jpg", alt:"Cuarta caballeros contra Dep. Laferrere, 16/08 de local (foto 8)" }
+      ] },
       { titulo:"Maxihandball", fotos:[] }
     ]
   },

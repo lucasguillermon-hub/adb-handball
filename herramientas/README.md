@@ -46,6 +46,16 @@ como "Cedem Caseros" (así lo conoce el club).
 Maxihandball no está en FeMeBal: su fixture se carga a mano en `datos.js`. Minis es
 formativa: copia las fechas de la tira sin resultados.
 
+## Fotos de partidos
+
+**`fotos-galeria.js`** — `node herramientas/fotos-galeria.js "fotos/Partidos/<Plantel>/<vs Rival>" [fecha]`.
+Las originales van a `fotos/Partidos/<Plantel>/<vs Rival>/` (ignorada en git y sin publicar; el
+plantel con el nombre del club, el rival como quieras). El script las exporta a
+`fotos/<plantel>/<rival>-<nn>.jpg` a 1600 px y menos de 300 KB, y las suma al álbum del plantel
+en `datos.js` con el alt armado desde el fixture (rival, fecha, local o visitante). Si el rival
+no se reconoce o hay dos partidos contra el mismo, pasale la fecha. Necesita `sharp` en
+`%TEMP%\adb-node`.
+
 ## Otros
 
 - **`planteles-excel.js`** — planteles desde `LISTAS PRESENTISMO 2026.xlsx` (raíz del repo,

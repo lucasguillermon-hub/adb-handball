@@ -19,3 +19,6 @@ material-club/
 
 # Configuración local de Claude Code (dev server para la vista previa)
 .claude/
+
+# Originales de las fotos de partidos (buzón para fotos-galeria.js): pesan demasiado para el repo
+fotos/Partidos/
