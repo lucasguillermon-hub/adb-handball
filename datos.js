@@ -310,7 +310,7 @@ const DATOS = {
   // Cada foto: { src, alt (qué se ve, en castellano), alto:true si es vertical }.
   galeria: {
     fotografos: {
-      "Melanie Weber": "",    // ⚠️ pegar el Instagram
+      "Melanie Weber": "https://instagram.com/melweber.ph",
       "Maxy Canteros": "https://instagram.com/maxyyft",
       "JZ Audiovisuales": "https://instagram.com/jz_audiovisuales"
     },
