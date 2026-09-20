@@ -320,7 +320,32 @@ const DATOS = {
       { titulo:"Infantiles", fechas:[] },
       { titulo:"Menores", fechas:[] },
       { titulo:"Cadetas", fechas:[] },
-      { titulo:"Juveniles", fechas:[] },
+      { titulo:"Juveniles", fechas:[
+        { f:"2026-08-09", rival:"Círculo de Villa Devoto", c:"V", fotografo:"Dulce Méndez Terres", fotos:[
+          { src:"fotos/juveniles/2026-08-09-01.jpg", alt:"Juveniles contra Círculo de Villa Devoto, 09/08 de visitante (foto 1)" },
+          { src:"fotos/juveniles/2026-08-09-02.jpg", alt:"Juveniles contra Círculo de Villa Devoto, 09/08 de visitante (foto 2)" },
+          { src:"fotos/juveniles/2026-08-09-03.jpg", alt:"Juveniles contra Círculo de Villa Devoto, 09/08 de visitante (foto 3)" },
+          { src:"fotos/juveniles/2026-08-09-04.jpg", alt:"Juveniles contra Círculo de Villa Devoto, 09/08 de visitante (foto 4)" },
+          { src:"fotos/juveniles/2026-08-09-05.jpg", alt:"Juveniles contra Círculo de Villa Devoto, 09/08 de visitante (foto 5)" },
+          { src:"fotos/juveniles/2026-08-09-06.jpg", alt:"Juveniles contra Círculo de Villa Devoto, 09/08 de visitante (foto 6)" },
+          { src:"fotos/juveniles/2026-08-09-07.jpg", alt:"Juveniles contra Círculo de Villa Devoto, 09/08 de visitante (foto 7)" },
+          { src:"fotos/juveniles/2026-08-09-08.jpg", alt:"Juveniles contra Círculo de Villa Devoto, 09/08 de visitante (foto 8)" },
+          { src:"fotos/juveniles/2026-08-09-09.jpg", alt:"Juveniles contra Círculo de Villa Devoto, 09/08 de visitante (foto 9)" },
+          { src:"fotos/juveniles/2026-08-09-10.jpg", alt:"Juveniles contra Círculo de Villa Devoto, 09/08 de visitante (foto 10)" },
+          { src:"fotos/juveniles/2026-08-09-11.jpg", alt:"Juveniles contra Círculo de Villa Devoto, 09/08 de visitante (foto 11)" },
+          { src:"fotos/juveniles/2026-08-09-12.jpg", alt:"Juveniles contra Círculo de Villa Devoto, 09/08 de visitante (foto 12)" },
+          { src:"fotos/juveniles/2026-08-09-13.jpg", alt:"Juveniles contra Círculo de Villa Devoto, 09/08 de visitante (foto 13)" },
+          { src:"fotos/juveniles/2026-08-09-14.jpg", alt:"Juveniles contra Círculo de Villa Devoto, 09/08 de visitante (foto 14)" },
+          { src:"fotos/juveniles/2026-08-09-15.jpg", alt:"Juveniles contra Círculo de Villa Devoto, 09/08 de visitante (foto 15)" },
+          { src:"fotos/juveniles/2026-08-09-16.jpg", alt:"Juveniles contra Círculo de Villa Devoto, 09/08 de visitante (foto 16)" },
+          { src:"fotos/juveniles/2026-08-09-17.jpg", alt:"Juveniles contra Círculo de Villa Devoto, 09/08 de visitante (foto 17)" },
+          { src:"fotos/juveniles/2026-08-09-18.jpg", alt:"Juveniles contra Círculo de Villa Devoto, 09/08 de visitante (foto 18)" },
+          { src:"fotos/juveniles/2026-08-09-19.jpg", alt:"Juveniles contra Círculo de Villa Devoto, 09/08 de visitante (foto 19)" },
+          { src:"fotos/juveniles/2026-08-09-20.jpg", alt:"Juveniles contra Círculo de Villa Devoto, 09/08 de visitante (foto 20)", alto:true },
+          { src:"fotos/juveniles/2026-08-09-21.jpg", alt:"Juveniles contra Círculo de Villa Devoto, 09/08 de visitante (foto 21)" },
+          { src:"fotos/juveniles/2026-08-09-22.jpg", alt:"Juveniles contra Círculo de Villa Devoto, 09/08 de visitante (foto 22)" }
+        ]}
+      ] },
       { titulo:"Juniors", fechas:[
         { f:"2026-08-09", rival:"Círculo de Villa Devoto", c:"V", fotografo:"Dulce Méndez Terres", fotos:[
           { src:"fotos/juniors/2026-08-09-01.jpg", alt:"Juniors contra Círculo de Villa Devoto, 09/08 de visitante (foto 1)" },
