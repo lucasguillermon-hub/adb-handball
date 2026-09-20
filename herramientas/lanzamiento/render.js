@@ -15,7 +15,7 @@ const aqui = __dirname;
 const salida = path.resolve(aqui, "../../material-club/lanzamiento");
 fs.mkdirSync(salida, { recursive: true });
 
-for (const nombre of ["padres", "sponsors"]) {
+for (const nombre of ["padres", "sponsors", "abierta"]) {
   const html = "file:///" + path.join(aqui, nombre + ".html").replace(/\\/g, "/");
   const png = path.join(salida, "lanzamiento-" + nombre + ".png");
   execFileSync(CHROME, [
