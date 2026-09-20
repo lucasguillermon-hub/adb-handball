@@ -310,6 +310,7 @@ const DATOS = {
   // Cada foto: { src, alt (qué se ve, en castellano), alto:true si es vertical }.
   galeria: {
     fotografos: {
+      "Melanie Weber": "",    // ⚠️ pegar el Instagram
       "Maxy Canteros": "https://instagram.com/maxyyft",
       "JZ Audiovisuales": "https://instagram.com/jz_audiovisuales"
     },
@@ -321,6 +322,29 @@ const DATOS = {
       { titulo:"Juveniles", fechas:[] },
       { titulo:"Juniors", fechas:[] },
       { titulo:"Primera damas", fechas:[
+        { f:"2026-08-22", rival:"Dorrego", c:"V", fotografo:"Melanie Weber", fotos:[
+          { src:"fotos/primera-damas/2026-08-22-01.jpg", alt:"Primera damas contra Dorrego, 22/08 de visitante (foto 1)", alto:true },
+          { src:"fotos/primera-damas/2026-08-22-02.jpg", alt:"Primera damas contra Dorrego, 22/08 de visitante (foto 2)" },
+          { src:"fotos/primera-damas/2026-08-22-03.jpg", alt:"Primera damas contra Dorrego, 22/08 de visitante (foto 3)", alto:true },
+          { src:"fotos/primera-damas/2026-08-22-04.jpg", alt:"Primera damas contra Dorrego, 22/08 de visitante (foto 4)", alto:true },
+          { src:"fotos/primera-damas/2026-08-22-05.jpg", alt:"Primera damas contra Dorrego, 22/08 de visitante (foto 5)", alto:true },
+          { src:"fotos/primera-damas/2026-08-22-06.jpg", alt:"Primera damas contra Dorrego, 22/08 de visitante (foto 6)", alto:true },
+          { src:"fotos/primera-damas/2026-08-22-07.jpg", alt:"Primera damas contra Dorrego, 22/08 de visitante (foto 7)", alto:true },
+          { src:"fotos/primera-damas/2026-08-22-08.jpg", alt:"Primera damas contra Dorrego, 22/08 de visitante (foto 8)", alto:true },
+          { src:"fotos/primera-damas/2026-08-22-09.jpg", alt:"Primera damas contra Dorrego, 22/08 de visitante (foto 9)" },
+          { src:"fotos/primera-damas/2026-08-22-10.jpg", alt:"Primera damas contra Dorrego, 22/08 de visitante (foto 10)", alto:true },
+          { src:"fotos/primera-damas/2026-08-22-11.jpg", alt:"Primera damas contra Dorrego, 22/08 de visitante (foto 11)", alto:true },
+          { src:"fotos/primera-damas/2026-08-22-12.jpg", alt:"Primera damas contra Dorrego, 22/08 de visitante (foto 12)", alto:true },
+          { src:"fotos/primera-damas/2026-08-22-13.jpg", alt:"Primera damas contra Dorrego, 22/08 de visitante (foto 13)", alto:true },
+          { src:"fotos/primera-damas/2026-08-22-14.jpg", alt:"Primera damas contra Dorrego, 22/08 de visitante (foto 14)", alto:true },
+          { src:"fotos/primera-damas/2026-08-22-15.jpg", alt:"Primera damas contra Dorrego, 22/08 de visitante (foto 15)", alto:true },
+          { src:"fotos/primera-damas/2026-08-22-16.jpg", alt:"Primera damas contra Dorrego, 22/08 de visitante (foto 16)", alto:true },
+          { src:"fotos/primera-damas/2026-08-22-17.jpg", alt:"Primera damas contra Dorrego, 22/08 de visitante (foto 17)", alto:true },
+          { src:"fotos/primera-damas/2026-08-22-18.jpg", alt:"Primera damas contra Dorrego, 22/08 de visitante (foto 18)", alto:true },
+          { src:"fotos/primera-damas/2026-08-22-19.jpg", alt:"Primera damas contra Dorrego, 22/08 de visitante (foto 19)" },
+          { src:"fotos/primera-damas/2026-08-22-20.jpg", alt:"Primera damas contra Dorrego, 22/08 de visitante (foto 20)" },
+          { src:"fotos/primera-damas/2026-08-22-21.jpg", alt:"Primera damas contra Dorrego, 22/08 de visitante (foto 21)" }
+        ]},
         { f:"2026-08-15", rival:"San Fernando", c:"L", fotografo:"JZ Audiovisuales", fotos:[
           { src:"fotos/primera-damas/2026-08-15-01.jpg", alt:"Primera damas contra San Fernando, 15/08 de local (foto 1)" },
           { src:"fotos/primera-damas/2026-08-15-02.jpg", alt:"Primera damas contra San Fernando, 15/08 de local (foto 2)" },
