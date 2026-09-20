@@ -956,6 +956,10 @@ function ultimoPartido(pl){
   const ahora = new Date();
   return pl.partidos.filter(p => p.c !== "libre" && cuando(p, pl) <= ahora).pop() || null;
 }
+// Dorsal de una jugadora (de las planillas de FeMeBal); sin dato, un guion.
+const dorsal = (pl, n) => (pl.dorsales && pl.dorsales[n]) || "";
+// Lista para votar: por número de camiseta; las que no tienen número, al final por nombre.
+const jugadorasOrdenadas = pl => pl.jugadoras.slice().sort((a, b) => (dorsal(pl, a) || 999) - (dorsal(pl, b) || 999) || a.localeCompare(b));
 function nombreMostrado(pl, n){
   if (!pl.nombresCortos) return n;
   const w = n.split(" ");                       // "Nombre Apellido" → "Nombre A."
@@ -1001,11 +1005,11 @@ function pintarMvp(pl){
 
   const e = estadoMvp[pl.id] || { conteo: {}, total: 0, miVoto: null, cerrada: false };
   const mostrar = e.miVoto || e.cerrada;      // los resultados se ven después de votar o al cierre
-  listaMvp.innerHTML = pl.jugadoras.map((n, i) => {
+  listaMvp.innerHTML = jugadorasOrdenadas(pl).map(n => {
     const pct = e.total ? Math.round((e.conteo[n] || 0) / e.total * 100) : 0;
-    return '<li><button class="opcion" data-i="' + i + '" aria-pressed="' + (e.miVoto === n) + '"' + (mostrar ? ' disabled' : '') + '>'
+    return '<li><button class="opcion" data-i="' + pl.jugadoras.indexOf(n) + '" aria-pressed="' + (e.miVoto === n) + '"' + (mostrar ? ' disabled' : '') + '>'
       + (mostrar ? '<span class="barra" style="width:' + pct + '%"></span>' : '')
-      + '<span class="dorsal">' + (i + 1) + '</span>'
+      + '<span class="dorsal">' + (dorsal(pl, n) || "–") + '</span>'
       + '<span><span class="nom">' + nombreMostrado(pl, n) + '</span></span>'
       + (mostrar ? '<span class="pct">' + pct + '%</span>' : '')
       + '</button></li>';

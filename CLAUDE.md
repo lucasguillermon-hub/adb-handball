@@ -108,8 +108,11 @@ pertenencia. Los textos hablan de la tribuna, de las familias y del barrio, no d
 - MVP y prode se guardan en D1 (`GET/POST /api/mvp` y `/api/prode`): una cookie anónima
   por persona, solo la fecha vigente de cada plantel. La MVP cierra el viernes a las 20; el
   prode, cuando empieza el partido. Planteles de LISTAS PRESENTISMO 2026.xlsx (ignorado en
-  git). Minis e Infantiles son formativas: `jugadoras: []`, no entran en nada que sea por
-  nombre. Menores, Cadetas y Juveniles muestran nombres cortos (`nombresCortos: true`).
+  git) más quienes jugaron dos o más partidos según las planillas de FeMeBal. `dorsales` y
+  `goles` por jugadora salen de esas planillas (`herramientas/femebal-dorsales.js`); la lista
+  de la MVP se ordena por dorsal. Minis e Infantiles son formativas: `jugadoras: []`, no entran
+  en nada que sea por nombre. Menores, Cadetas y Juveniles muestran nombres cortos
+  (`nombresCortos: true`).
 - Planteles: los nombres son los del club (Primera damas, Tercera damas, Cuarta caballeros) y
   cada uno lleva `division`, el nombre de FeMeBal, que se muestra en la tabla de posiciones.
   Minis, Infantiles, Menores, Cadetas, Juveniles y Juniors son la tira de

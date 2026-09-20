@@ -19,7 +19,13 @@ Cada semana, después de la fecha:
    Minis copia las fechas de Infantiles. Imprime los resultados nuevos y el puesto de cada uno.
    Si aparece un rival nuevo, corta: agregarlo a `corto` en `femebal-datos-2026-09-18.json` y
    bajar su escudo con `femebal-escudos.js`.
-3. Verificar en el navegador y hacer push. `datos.js` se pide primero a la red desde el service
+3. Dorsales y goles: en el navegador correr `__hojas` para los ocho torneos, guardar
+   `JSON.stringify(__planillas)` en `herramientas/femebal-planillas-<fecha>.json` y correr
+   `node herramientas/femebal-dorsales.js`. Baja las planillas de partido (PDF) a
+   `material-club/planillas/`, lee número, nombre y goles de cada jugadora del Bosco y escribe
+   `dorsales` y `goles` en cada plantel de `datos.js`. Quien jugó dos o más partidos y no estaba en
+   la lista del club se suma a `jugadoras`; los refuerzos de un partido no. Necesita `pdf-parse`.
+4. Verificar en el navegador y hacer push. `datos.js` se pide primero a la red desde el service
    worker, así que no hace falta subir la versión de `sw.js` por un cambio de resultados.
 
 Los scripts de abajo son los de la carga inicial (18/09/2026); quedan por si hay que rehacerla.

@@ -82,3 +82,29 @@ window.__tabla = async function(rama, categoria, idx){
   window.__tablas[titulo] = filas.filter(x => !/Fe\.Me\.Bal/.test(x.equipo));   // "Fe.Me.Bal Libre" son fechas libres, no equipos
   return { titulo, n: window.__tablas[titulo].length };
 };
+
+// Abre un torneo y, en cada fecha jugada, toma la URL del PDF "Ver planilla" del partido del Bosco
+// (la app lo abre con window.open; acá se intercepta). Sirve para femebal-dorsales.js.
+// Después: JSON.stringify(__planillas) → herramientas/femebal-planillas-<fecha>.json
+window.__planillas = window.__planillas || {};
+window.__hojas = async function(rama, categoria, idx){
+  const esperar = ms => new Promise(r => setTimeout(r, ms));
+  const clickTexto = (sel, re) => { const e = [...document.querySelectorAll(sel)].find(x => re.test(x.textContent.trim())); if (e) e.click(); return !!e; };
+  if (clickTexto('button', /Volver al menú/)) await esperar(1800);
+  let combos = [...document.querySelectorAll('[role=combobox]')];
+  if (!new RegExp('^' + rama).test(combos[0].textContent)) { combos[0].click(); await esperar(400); clickTexto('[role=option]', new RegExp('^' + rama)); await esperar(1800); combos = [...document.querySelectorAll('[role=combobox]')]; }
+  if (!combos[1] || !new RegExp('^' + categoria).test(combos[1].textContent)) { combos[1].click(); await esperar(400); clickTexto('[role=option]', new RegExp('^' + categoria)); await esperar(2200); }
+  [...document.querySelectorAll('div.bg-white-h100')][idx].click(); await esperar(3000);
+  const titulo = (document.body.innerText.split('\n').find(l => /\|/.test(l)) || '').trim();
+  const out = []; const orig = window.open;
+  for (let f = 1; f <= 15; f++){
+    const b = [...document.querySelectorAll('button')].find(x => x.textContent.trim() === String(f)); if (!b) break; b.click(); await esperar(900);
+    const fila = [...document.querySelectorAll('.ms-Grid-col.ms-sm12.mt-1')].find(x => /Ateneo Don Bosco/.test(x.textContent)); if (!fila) continue;
+    const jugado = /\d+\s+\d+/.test(fila.innerText.replace(/\s+/g, ' ').replace(/^\S+ \d\d \S+ \d\d:\d\d/, '')); if (!jugado) continue;
+    const bp = [...fila.querySelectorAll('button')].find(x => x.title === 'Ver planilla'); if (!bp) continue;
+    let url = null; window.open = u => { url = u; return null; }; bp.click(); await esperar(400); window.open = orig;
+    if (url) out.push({ f, url });
+  }
+  window.open = orig; window.__planillas[titulo] = out;
+  return { titulo, n: out.length };
+};
