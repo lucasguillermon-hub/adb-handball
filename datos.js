@@ -320,7 +320,29 @@ const DATOS = {
       { titulo:"Menores", fechas:[] },
       { titulo:"Cadetas", fechas:[] },
       { titulo:"Juveniles", fechas:[] },
-      { titulo:"Juniors", fechas:[] },
+      { titulo:"Juniors", fechas:[
+        { f:"2026-08-09", rival:"Círculo de Villa Devoto", c:"V", fotografo:"", fotos:[
+          { src:"fotos/juniors/2026-08-09-01.jpg", alt:"Juniors contra Círculo de Villa Devoto, 09/08 de visitante (foto 1)" },
+          { src:"fotos/juniors/2026-08-09-02.jpg", alt:"Juniors contra Círculo de Villa Devoto, 09/08 de visitante (foto 2)" },
+          { src:"fotos/juniors/2026-08-09-03.jpg", alt:"Juniors contra Círculo de Villa Devoto, 09/08 de visitante (foto 3)" },
+          { src:"fotos/juniors/2026-08-09-04.jpg", alt:"Juniors contra Círculo de Villa Devoto, 09/08 de visitante (foto 4)", alto:true },
+          { src:"fotos/juniors/2026-08-09-05.jpg", alt:"Juniors contra Círculo de Villa Devoto, 09/08 de visitante (foto 5)" },
+          { src:"fotos/juniors/2026-08-09-06.jpg", alt:"Juniors contra Círculo de Villa Devoto, 09/08 de visitante (foto 6)" },
+          { src:"fotos/juniors/2026-08-09-07.jpg", alt:"Juniors contra Círculo de Villa Devoto, 09/08 de visitante (foto 7)" },
+          { src:"fotos/juniors/2026-08-09-08.jpg", alt:"Juniors contra Círculo de Villa Devoto, 09/08 de visitante (foto 8)" },
+          { src:"fotos/juniors/2026-08-09-09.jpg", alt:"Juniors contra Círculo de Villa Devoto, 09/08 de visitante (foto 9)" },
+          { src:"fotos/juniors/2026-08-09-10.jpg", alt:"Juniors contra Círculo de Villa Devoto, 09/08 de visitante (foto 10)" },
+          { src:"fotos/juniors/2026-08-09-11.jpg", alt:"Juniors contra Círculo de Villa Devoto, 09/08 de visitante (foto 11)" },
+          { src:"fotos/juniors/2026-08-09-12.jpg", alt:"Juniors contra Círculo de Villa Devoto, 09/08 de visitante (foto 12)" },
+          { src:"fotos/juniors/2026-08-09-13.jpg", alt:"Juniors contra Círculo de Villa Devoto, 09/08 de visitante (foto 13)" },
+          { src:"fotos/juniors/2026-08-09-14.jpg", alt:"Juniors contra Círculo de Villa Devoto, 09/08 de visitante (foto 14)" },
+          { src:"fotos/juniors/2026-08-09-15.jpg", alt:"Juniors contra Círculo de Villa Devoto, 09/08 de visitante (foto 15)" },
+          { src:"fotos/juniors/2026-08-09-16.jpg", alt:"Juniors contra Círculo de Villa Devoto, 09/08 de visitante (foto 16)" },
+          { src:"fotos/juniors/2026-08-09-17.jpg", alt:"Juniors contra Círculo de Villa Devoto, 09/08 de visitante (foto 17)" },
+          { src:"fotos/juniors/2026-08-09-18.jpg", alt:"Juniors contra Círculo de Villa Devoto, 09/08 de visitante (foto 18)" },
+          { src:"fotos/juniors/2026-08-09-19.jpg", alt:"Juniors contra Círculo de Villa Devoto, 09/08 de visitante (foto 19)" }
+        ]}
+      ] },
       { titulo:"Primera damas", fechas:[
         { f:"2026-08-22", rival:"Dorrego", c:"V", fotografo:"Melanie Weber", fotos:[
           { src:"fotos/primera-damas/2026-08-22-01.jpg", alt:"Primera damas contra Dorrego, 22/08 de visitante (foto 1)", alto:true },

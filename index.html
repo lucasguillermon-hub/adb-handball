@@ -1252,7 +1252,7 @@ function pintarAlbum(i){
     + '<span><h3>'+al.titulo+' <span>vs '+fe.rival+'</span></h3>'
     + '<p class="meta">'+DIA_SEM(fe.f)+' '+DIA_MES(fe.f)+' · '+(fe.c==="L" ? "En Don Bosco 116" : "De visitante")+' · '+fe.fotos.length+' fotos</p></span>'
     + '<span class="chev" aria-hidden="true"></span></button>'
-    + '<p class="credito">Fotos de '+credito(fe)+'</p></div>'
+    + (fe.fotografo ? '<p class="credito">Fotos de '+credito(fe)+'</p>' : '')+'</div>'
     + '<div class="fecha-cuerpo" id="fecha-'+i+'-'+k+'"'+(abierta?"":" hidden")+'><div class="mosaico">'+fe.fotos.map((f,n)=>
       '<button class="foto'+(f.alto?" alto":"")+'" data-k="'+k+'" data-n="'+n+'" data-hueco="'+f.alt+'">'
       + '<img src="'+f.src+'" alt="'+f.alt+'" loading="lazy" onerror="this.closest(\'.foto\').classList.add(\'sin-img\')">'
@@ -1279,7 +1279,7 @@ function abrirVisor(n, k){
   img.onerror = ()=>{ img.hidden = true; hueco.hidden = false; hueco.textContent = "Acá va: "+f.alt; };
   img.src = f.src; img.alt = f.alt;
   $("#visor-contador").textContent = (n+1)+" de "+fe.fotos.length;
-  $("#visor-pie").innerHTML = f.alt+'<br><strong>'+al.titulo+' vs '+fe.rival+'</strong> · '+DIA_SEM(fe.f)+' '+DIA_MES(fe.f)+' · foto de '+credito(fe);
+  $("#visor-pie").innerHTML = f.alt+'<br><strong>'+al.titulo+' vs '+fe.rival+'</strong> · '+DIA_SEM(fe.f)+' '+DIA_MES(fe.f)+(fe.fotografo ? ' · foto de '+credito(fe) : '');
   $("#visor-descargar").dataset.src = f.src;
   visor.classList.add("abierto");
   document.body.style.overflow = "hidden";

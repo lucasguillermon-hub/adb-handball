@@ -4,7 +4,8 @@
    Ejemplo: node herramientas/fotos-galeria.js "fotos/Partidos/Cuarta caballeros/2026-08-16 JZ Audiovisuales"
 
    - La carpeta del plantel se llama como en el club (Primera damas, Cuarta caballeros...).
-   - La carpeta del partido empieza con la fecha; lo que sigue es quién sacó las fotos. Con la
+   - La carpeta del partido empieza con la fecha; lo que sigue es quién sacó las fotos (si no se
+     sabe, la carpeta lleva solo la fecha y esa fecha sale sin crédito). Con la
      fecha se busca el partido en el fixture del plantel: de ahí salen rival y local/visitante.
    - Las fotos se exportan a fotos/<plantel>/<fecha>-<nn>.jpg, 1600 px de ancho, JPG, bajo
      300 KB (regla 7), y se suman a esa fecha del álbum en datos.js con un alt en castellano.
@@ -20,8 +21,8 @@ const carpeta = process.argv[2];
 if (!carpeta) { console.error("Falta la carpeta del partido."); process.exit(1); }
 const origen = path.resolve(REPO, carpeta);
 const [, plantelCarpeta, partidoCarpeta] = carpeta.replace(/\\/g, "/").match(/Partidos\/([^/]+)\/([^/]+)/) || [];
-const [, fecha, fotografo] = (partidoCarpeta || "").match(/^(\d{4}-\d{2}-\d{2})\s+(.+)$/) || [];
-if (!fecha) { console.error("La carpeta tiene que ser fotos/Partidos/<Plantel>/<AAAA-MM-DD> <Fotógrafo>."); process.exit(1); }
+const [, fecha, fotografo = ""] = (partidoCarpeta || "").match(/^(\d{4}-\d{2}-\d{2})(?:\s+(.+))?$/) || [];
+if (!fecha) { console.error("La carpeta tiene que ser fotos/Partidos/<Plantel>/<AAAA-MM-DD> <Fotógrafo> (el fotógrafo puede faltar)."); process.exit(1); }
 
 const slug = s => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 let s = fs.readFileSync(path.join(REPO, "datos.js"), "utf8");
@@ -74,12 +75,12 @@ if (!archivos.length) { console.error("No hay fotos en " + origen); process.exit
     s = vacio ? s.slice(0, a) + "\n" + bloque + "\n      " + s.slice(a).replace(/^\s*/, "")
               : s.slice(0, a) + "\n" + bloque + "," + s.slice(a);
   }
-  if (!D.galeria.fotografos.hasOwnProperty(fotografo)) {
+  if (fotografo && !D.galeria.fotografos.hasOwnProperty(fotografo)) {
     const a = s.indexOf("fotografos: {") + "fotografos: {".length;
     s = s.slice(0, a) + `\n      "${fotografo}": "",    // ⚠️ pegar el Instagram` + s.slice(a);
     console.log(`\nFotógrafo nuevo: "${fotografo}". Pegale el Instagram en galeria.fotografos de datos.js.`);
   }
   fs.writeFileSync(path.join(REPO, "datos.js"), s);
   new Function(s + ";return DATOS")();   // datos.js tiene que seguir siendo válido
-  console.log(`\n${nuevas.length} fotos de ${album.titulo} vs ${partido.r} (${fechaTxt}), fotos de ${fotografo}.`);
+  console.log(`\n${nuevas.length} fotos de ${album.titulo} vs ${partido.r} (${fechaTxt})${fotografo ? ", fotos de " + fotografo : ", sin fotógrafo"}.`);
 })();
