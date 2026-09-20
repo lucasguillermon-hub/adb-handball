@@ -1,7 +1,7 @@
 /* Service worker del Ateneo Don Bosco Handball.
    Guarda la web en el teléfono para que abra al instante y funcione sin señal
    (los gimnasios suelen no tener datos). Subí la versión cuando cambies el sitio. */
-const VERSION = "adb-v22";
+const VERSION = "adb-v23";
 const BASE = [
   "./",
   "./index.html",
@@ -27,14 +27,16 @@ self.addEventListener("fetch", e=>{
   const req = e.request;
   if (req.method !== "GET" || !req.url.startsWith(self.location.origin)) return;
 
-  // La página siempre se pide primero a la red, así el fixture nunca queda viejo.
-  if (req.mode === "navigate" || req.destination === "document"){
+  // La página y datos.js (fixture, resultados, tablas) se piden primero a la red, así lo
+  // que se sincroniza cada semana nunca queda viejo en los teléfonos.
+  const esDatos = new URL(req.url).pathname.endsWith("/datos.js");
+  if (req.mode === "navigate" || req.destination === "document" || esDatos){
     e.respondWith(
       fetch(req).then(r=>{
         const copia = r.clone();
         caches.open(VERSION).then(c=>c.put(req, copia));
         return r;
-      }).catch(()=>caches.match(req).then(r=>r || caches.match("./index.html")))
+      }).catch(()=>caches.match(req).then(r=>r || (esDatos ? undefined : caches.match("./index.html"))))
     );
     return;
   }

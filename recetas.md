@@ -126,7 +126,8 @@ Marcá la baja en la base de contactos para [mail] con la fecha de hoy. No lo bo
 
 ## Sincronizar con FeMeBal (fixture, horarios, resultados, tablas y escudos)
 
-Lo que la CM hacía a mano. Una vez por semana, después de la fecha:
+Lo que la CM hacía a mano. Una vez por semana, después de la fecha (el paso a paso está en
+herramientas/README.md: scraper en el navegador + `node herramientas/femebal-actualizar.js`):
 
 ```
 Sincronizá el fixture con FeMeBal: entrá a femebal.com/tournament-tracker, Torneo

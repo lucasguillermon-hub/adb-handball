@@ -33,7 +33,7 @@ const DATOS = {
     comunidad: "https://chat.whatsapp.com/"      // ⚠️ pegar el link real de la comunidad
   },
 
-  // Fixture sincronizado con FeMeBal (femebal.com/tournament-tracker) el 18/09/2026.
+  // Fixture sincronizado con FeMeBal (femebal.com/tournament-tracker) el 20/09/2026.
   // nombre: como lo llama el club · division: como lo llama FeMeBal (se muestra en la tabla).
   // jugadoras: el plantel que se vota como figura de la fecha (de LISTAS PRESENTISMO 2026).
   // Minis e Infantiles son formativas: van con jugadoras:[] y no entran en nada que sea por nombre.
@@ -47,26 +47,26 @@ const DATOS = {
       {f:"2026-08-08",c:"V",r:"Talleres",h:"19:45",g:"18-30"},{f:"2026-08-15",c:"L",r:"San Fernando",g:"30-25"},
       {f:"2026-08-22",c:"V",r:"Dorrego",h:"16:15",g:"21-21"},{f:"2026-08-29",c:"L",r:"Dep. Laferrere",h:"19:45",g:"36-26"},
       {f:"2026-09-05",c:"V",r:"AFALP",g:"34-21"},{f:"2026-09-12",c:"L",r:"Ferro Carril Oeste",h:"19:45",g:"28-24"},
-      {f:"2026-09-19",c:"V",r:"Polvorines"},{f:"2026-09-25",c:"L",r:"Sagrado Corazón",h:"20:00"},{f:"2026-10-03",c:"V",r:"All Boys"},
+      {f:"2026-09-19",c:"V",r:"Polvorines",g:"33-26"},{f:"2026-09-25",c:"L",r:"Sagrado Corazón",h:"20:00"},{f:"2026-10-03",c:"V",r:"All Boys"},
       {f:"2026-10-17",c:"L",r:"Vicente López"},{f:"2026-10-24",c:"V",r:"Temperley"},{f:"2026-10-31",c:"V",r:"Villa Ballester"},
       {f:"2026-11-07",c:"L",r:"Argentinos Juniors"},{f:"2026-11-14",c:"V",r:"Secla"},{f:"2026-11-21",c:"L",r:"Muñiz"}
     ], tabla:[
-      [1,"Polvorines",21,7,7,0,0,213,186],
-      [2,"Ateneo Don Bosco",15,6,4,1,1,167,147],
-      [3,"Secla",15,6,4,1,1,142,129],
-      [4,"Argentinos Juniors",15,7,4,0,3,177,184],
-      [5,"Talleres",14,6,4,0,2,170,132],
-      [6,"Vicente López",14,6,4,0,2,168,150],
-      [7,"Villa Ballester",14,6,4,0,2,133,137],
-      [8,"Dorrego",12,6,2,2,2,147,127],
-      [9,"Ferro Carril Oeste",12,6,3,0,3,178,161],
-      [10,"Sagrado Corazón",12,6,3,0,3,184,172],
-      [11,"Muñiz",12,6,3,0,3,136,135],
-      [12,"All Boys",12,6,3,0,3,160,171],
-      [13,"San Fernando",8,6,1,0,5,131,153],
-      [14,"Temperley",8,6,1,0,5,137,183],
-      [15,"AFALP",6,6,0,0,6,150,175],
-      [16,"Dep. Laferrere",6,6,0,0,6,163,214]
+      [1,"Polvorines",22,8,7,0,1,239,219],
+      [2,"Ateneo Don Bosco",18,7,5,1,1,200,173],
+      [3,"Talleres",17,7,5,0,2,194,152],
+      [4,"Vicente López",17,7,5,0,2,197,178],
+      [5,"Secla",17,7,4,2,1,172,159],
+      [6,"Argentinos Juniors",16,8,4,0,4,204,216],
+      [7,"Dorrego",15,7,3,2,2,178,147],
+      [8,"Ferro Carril Oeste",15,7,4,0,3,198,180],
+      [9,"All Boys",15,7,4,0,3,192,197],
+      [10,"Villa Ballester",15,7,4,0,3,152,157],
+      [11,"Sagrado Corazón",13,7,3,0,4,212,201],
+      [12,"Muñiz",13,7,3,0,4,156,166],
+      [13,"AFALP",9,7,1,0,6,182,202],
+      [14,"San Fernando",9,7,1,0,6,151,177],
+      [15,"Temperley",9,7,1,0,6,163,215],
+      [16,"Dep. Laferrere",8,7,0,1,6,193,244]
     ]},
     { id:"mayores-b", nombre:"Tercera damas", division:"Mayores · 3º División", dia:"Sábados", hora:"18:00", sponsor:"Supermercado Magdalena", jugadoras:[
       "Ariana Acosta", "Jazmin Alarcon", "Paula Ayala", "Mia Badaracco", "Marina Chazarreta", "Ariana Cuervo Diaz",
@@ -77,26 +77,26 @@ const DATOS = {
       {f:"2026-08-08",c:"V",r:"Campana Boat Club",g:"24-25"},{f:"2026-08-17",c:"L",r:"Almirante Brown",g:"19-25"},
       {f:"2026-08-22",c:"V",r:"Boca Juniors",h:"19:45",g:"18-21"},{f:"2026-08-29",c:"L",r:"AFALP",g:"25-32"},
       {f:"2026-09-05",c:"V",r:"Argentinos Juniors",h:"19:45",g:"15-14"},{f:"2026-09-12",c:"L",r:"Huracán de San Justo",g:"24-22"},
-      {f:"2026-09-19",c:"V",r:"Independiente"},{f:"2026-09-26",c:"L",r:"Querandí"},{f:"2026-10-03",c:"V",r:"Defensores de Moreno"},
+      {f:"2026-09-19",c:"V",r:"Independiente",g:"36-20"},{f:"2026-09-26",c:"L",r:"Querandí"},{f:"2026-10-03",c:"V",r:"Defensores de Moreno"},
       {f:"2026-10-17",c:"L",r:"Mariano Acosta"},{f:"2026-09-24",c:"V",r:"San Telmo",h:"21:15"},{f:"2026-10-31",c:"V",r:"Nueva Chicago"},
       {f:"2026-11-07",c:"L",r:"Secla"},{f:"2026-11-14",c:"V",r:"Colegio del Parque"},{f:"2026-11-21",c:"L",r:"Cedem Caseros"}
     ], tabla:[
-      [1,"Campana Boat Club",17,6,5,1,0,165,156],
-      [2,"Mariano Acosta",16,6,5,0,1,159,126],
-      [3,"Almirante Brown",16,6,5,0,1,192,166],
-      [4,"San Telmo",16,6,5,0,1,164,147],
-      [5,"Nueva Chicago",15,6,4,1,1,161,134],
-      [6,"Colegio del Parque",14,6,4,0,2,182,159],
-      [7,"Querandí",14,6,4,0,2,176,156],
-      [8,"Secla",12,6,3,0,3,136,128],
-      [9,"Boca Juniors",10,6,2,0,4,129,134],
-      [10,"Argentinos Juniors",10,6,2,0,4,113,125],
-      [11,"Ateneo Don Bosco",10,6,2,0,4,125,139],
+      [1,"Campana Boat Club",20,7,6,1,0,196,177],
+      [2,"Mariano Acosta",19,7,6,0,1,185,145],
+      [3,"Nueva Chicago",18,7,5,1,1,188,160],
+      [4,"Colegio del Parque",17,7,5,0,2,206,174],
+      [5,"Almirante Brown",17,7,5,0,2,218,193],
+      [6,"Querandí",17,7,5,0,2,203,182],
+      [7,"San Telmo",17,7,5,0,2,190,174],
+      [8,"Secla",15,7,4,0,3,154,145],
+      [9,"Ateneo Don Bosco",13,7,3,0,4,161,159],
+      [10,"Boca Juniors",11,7,2,0,5,150,165],
+      [11,"Argentinos Juniors",11,7,2,0,5,128,149],
       [12,"AFALP",10,6,2,0,4,151,179],
-      [13,"Cedem Caseros",8,6,1,0,5,143,163],
-      [14,"Defensores de Moreno",8,6,1,0,5,134,158],
-      [15,"Independiente",8,6,1,0,5,134,161],
-      [16,"Huracán de San Justo",8,6,1,0,5,115,148]
+      [13,"Defensores de Moreno",9,7,1,0,6,153,184],
+      [14,"Huracán de San Justo",9,7,1,0,6,132,166],
+      [15,"Independiente",9,7,1,0,6,154,197],
+      [16,"Cedem Caseros",8,6,1,0,5,143,163]
     ]},
     // Inferiores damas es una tira: Minis, Infantiles, Menores, Cadetas, Juveniles y Juniors
     // juegan el mismo día en el mismo lugar, todas de local o todas de visitante, cada una
@@ -118,26 +118,26 @@ const DATOS = {
       nombresCortos:true, jugadoras:[], partidos:[
       {f:"2026-08-09",c:"V",r:"Círculo de Villa Devoto",g:"35-15"},{f:"2026-08-16",c:"L",r:"Independiente",g:"27-7"},
       {f:"2026-08-23",c:"V",r:"Colegio Ward",g:"15-21"},{f:"2026-08-30",c:"L",r:"Boca Juniors",g:"21-12"},{f:"2026-09-06",c:"V",r:"Banfield",g:"27-20"},
-      {f:"2026-09-13",c:"L",r:"Villa Modelo",g:"32-13"},{f:"2026-09-20",c:"V",r:"Vélez Sarsfield"},{f:"2026-09-27",c:"L",r:"Cedem Caseros"},
-      {f:"2026-10-04",c:"V",r:"Hurlingham"},{f:"2026-10-11",c:"L",r:"La Patriada"},{f:"2026-10-25",c:"V",r:"Muñiz"},
-      {f:"2026-11-01",c:"L",r:"Polvorines"},{f:"2026-11-08",c:"V",r:"C.I.D. Moreno"},{f:"2026-11-15",c:"V",r:"Sagrado Corazón"},
-      {f:"2026-11-22",c:"L",r:"Estrella de Boedo"}
+      {f:"2026-09-13",c:"L",r:"Villa Modelo",g:"32-13"},{f:"2026-09-20",c:"V",r:"Vélez Sarsfield",g:"23-8"},
+      {f:"2026-09-27",c:"L",r:"Cedem Caseros"},{f:"2026-10-04",c:"V",r:"Hurlingham"},{f:"2026-10-11",c:"L",r:"La Patriada"},
+      {f:"2026-10-25",c:"V",r:"Muñiz"},{f:"2026-11-01",c:"L",r:"Polvorines"},{f:"2026-11-08",c:"V",r:"C.I.D. Moreno"},
+      {f:"2026-11-15",c:"V",r:"Sagrado Corazón"},{f:"2026-11-22",c:"L",r:"Estrella de Boedo"}
     ], tabla:[
-      [1,"Sagrado Corazón",18,6,6,0,0,158,63],
-      [2,"La Patriada",18,6,6,0,0,176,102],
-      [3,"C.I.D. Moreno",18,6,6,0,0,137,94],
-      [4,"Ateneo Don Bosco",16,6,5,0,1,157,88],
-      [5,"Muñiz",16,6,5,0,1,167,120],
-      [6,"Polvorines",16,6,5,0,1,102,84],
+      [1,"C.I.D. Moreno",21,7,7,0,0,155,110],
+      [2,"Ateneo Don Bosco",19,7,6,0,1,180,96],
+      [3,"La Patriada",19,7,6,0,1,192,120],
+      [4,"Polvorines",19,7,6,0,1,121,95],
+      [5,"Sagrado Corazón",18,6,6,0,0,158,63],
+      [6,"Muñiz",16,6,5,0,1,167,120],
       [7,"Colegio Ward",15,6,4,1,1,127,101],
-      [8,"Hurlingham",12,6,3,0,3,120,109],
-      [9,"Estrella de Boedo",12,6,2,2,2,135,132],
-      [10,"Independiente",8,6,1,0,5,91,117],
-      [11,"Vélez Sarsfield",8,6,1,0,5,93,134],
-      [12,"Banfield",8,6,1,0,5,114,158],
+      [8,"Estrella de Boedo",13,7,2,2,3,157,158],
+      [9,"Hurlingham",12,6,3,0,3,120,109],
+      [10,"Banfield",11,7,2,0,5,140,180],
+      [11,"Vélez Sarsfield",9,7,1,0,6,101,157],
+      [12,"Independiente",8,6,1,0,5,91,117],
       [13,"Villa Modelo",8,6,1,0,5,103,160],
       [14,"Boca Juniors",7,6,0,1,5,81,135],
-      [15,"Cedem Caseros",6,6,0,0,6,85,154],
+      [15,"Cedem Caseros",7,7,0,0,7,96,173],
       [16,"Círculo de Villa Devoto",6,6,0,0,6,110,205]
     ] },
     { id:"menores", nombre:"Menores", division:"Menores · División C", dia:"Domingos", hora:"11:30",
@@ -150,10 +150,10 @@ const DATOS = {
     ], partidos:[
       {f:"2026-08-09",c:"V",r:"Círculo de Villa Devoto",g:"25-19"},{f:"2026-08-16",c:"L",r:"Independiente",g:"23-29"},
       {f:"2026-08-23",c:"V",r:"Colegio Ward",g:"22-37"},{f:"2026-08-30",c:"L",r:"Boca Juniors",g:"26-23"},{f:"2026-09-06",c:"V",r:"Banfield",g:"31-19"},
-      {f:"2026-09-13",c:"L",r:"Villa Modelo",g:"43-23"},{f:"2026-09-20",c:"V",r:"Vélez Sarsfield"},{f:"2026-09-27",c:"L",r:"Cedem Caseros"},
-      {f:"2026-10-04",c:"V",r:"Hurlingham"},{f:"2026-10-11",c:"L",r:"La Patriada"},{f:"2026-10-25",c:"V",r:"Muñiz"},
-      {f:"2026-11-01",c:"L",r:"Polvorines"},{f:"2026-11-08",c:"V",r:"C.I.D. Moreno"},{f:"2026-11-15",c:"V",r:"Sagrado Corazón"},
-      {f:"2026-11-22",c:"L",r:"Estrella de Boedo"}
+      {f:"2026-09-13",c:"L",r:"Villa Modelo",g:"43-23"},{f:"2026-09-20",c:"V",r:"Vélez Sarsfield",g:"25-24"},
+      {f:"2026-09-27",c:"L",r:"Cedem Caseros"},{f:"2026-10-04",c:"V",r:"Hurlingham"},{f:"2026-10-11",c:"L",r:"La Patriada"},
+      {f:"2026-10-25",c:"V",r:"Muñiz"},{f:"2026-11-01",c:"L",r:"Polvorines"},{f:"2026-11-08",c:"V",r:"C.I.D. Moreno"},
+      {f:"2026-11-15",c:"V",r:"Sagrado Corazón"},{f:"2026-11-22",c:"L",r:"Estrella de Boedo"}
     ], tabla:[
       [1,"Colegio Ward",18,6,6,0,0,198,100],
       [2,"La Patriada",18,6,6,0,0,217,123],
@@ -162,9 +162,9 @@ const DATOS = {
       [5,"Sagrado Corazón",14,6,4,0,2,155,110],
       [6,"Ateneo Don Bosco",14,6,4,0,2,170,150],
       [7,"Vélez Sarsfield",14,6,4,0,2,140,127],
-      [8,"Hurlingham",12,6,2,2,2,147,154],
-      [9,"Polvorines",11,6,2,1,3,100,108],
-      [10,"Cedem Caseros",11,6,2,1,3,121,131],
+      [8,"Cedem Caseros",14,7,3,1,3,136,138],
+      [9,"Hurlingham",12,6,2,2,2,147,154],
+      [10,"Polvorines",12,7,2,1,4,107,123],
       [11,"Boca Juniors",10,6,1,2,3,120,139],
       [12,"Estrella de Boedo",9,6,1,1,4,132,168],
       [13,"Banfield",8,6,1,0,5,114,177],

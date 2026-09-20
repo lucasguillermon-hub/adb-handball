@@ -8,6 +8,22 @@ repo (regla 2: sin `node_modules` en el sitio).
 
 ## Sincronización semanal con FeMeBal
 
+Cada semana, después de la fecha:
+
+1. En el navegador, sobre `https://www.femebal.com/tournament-tracker/`, pegar
+   `femebal-scraper.browser.js` y correr `__todas` y `__tabla` para los ocho torneos del Bosco
+   (índices en el encabezado del script). Guardar `JSON.stringify({fix: __fix, tablas: __tablas})`
+   en `herramientas/femebal-crudo-<fecha>.json`.
+2. `node herramientas/femebal-actualizar.js`: toma el crudo más nuevo y reemplaza en `datos.js`
+   los partidos (fecha, condición, rival, hora propia, resultado) y las tablas de cada plantel.
+   Minis copia las fechas de Infantiles. Imprime los resultados nuevos y el puesto de cada uno.
+   Si aparece un rival nuevo, corta: agregarlo a `corto` en `femebal-datos-2026-09-18.json` y
+   bajar su escudo con `femebal-escudos.js`.
+3. Verificar en el navegador y hacer push. `datos.js` se pide primero a la red desde el service
+   worker, así que no hace falta subir la versión de `sw.js` por un cambio de resultados.
+
+Los scripts de abajo son los de la carga inicial (18/09/2026); quedan por si hay que rehacerla.
+
 1. **`femebal-scraper.browser.js`** — se ejecuta en el navegador sobre
    `https://www.femebal.com/tournament-tracker/`. Define `__paso`, `__todas` y `__tabla`
    (documentadas adentro, con los índices de los ocho torneos del Bosco). Devuelve
