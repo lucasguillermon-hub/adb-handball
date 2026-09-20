@@ -319,10 +319,15 @@ footer a:hover{color:var(--rosa)}
 .album-nav{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px}
 .album-nav .tab{border-color:var(--linea);color:#fff}
 .album-nav .tab[aria-selected="true"]{background:var(--rosa);border-color:var(--rosa);color:var(--tinta)}
-.credito{display:flex;align-items:center;gap:14px;flex-wrap:wrap;font-size:14px;color:rgba(255,255,255,.65);margin:18px 0 24px;padding-bottom:18px;border-bottom:1px solid var(--linea)}
+.fecha-fotos{margin-top:26px}
+.fecha-fotos+.fecha-fotos{margin-top:38px}
+.fecha-cab{display:flex;justify-content:space-between;align-items:flex-end;gap:14px;flex-wrap:wrap;margin:0 0 14px;padding-bottom:12px;border-bottom:1px solid var(--linea)}
+.fecha-cab h3{font-family:var(--display);font-size:22px;font-weight:400;letter-spacing:.01em;margin:0;line-height:1.1}
+.fecha-cab h3 span{color:var(--rosa)}
+.fecha-cab .meta{font-size:13.5px;color:rgba(255,255,255,.65);margin:6px 0 0}
+.credito{font-size:14px;color:rgba(255,255,255,.65);margin:0}
 .credito a{color:var(--rosa);text-decoration:none;font-weight:600}
 .credito a:hover{text-decoration:underline}
-.credito .sep{opacity:.35}
 .mosaico{columns:3;column-gap:12px}
 @media(max-width:900px){.mosaico{columns:2}}
 @media(max-width:520px){.mosaico{columns:1}}
@@ -333,7 +338,7 @@ footer a:hover{color:var(--rosa)}
 .foto.sin-img{aspect-ratio:4/3;display:grid;place-items:center;background:linear-gradient(135deg,var(--azul),var(--tinta));border:1px dashed var(--linea);cursor:default}
 .foto.sin-img img{display:none}
 .pf-vacio{grid-column:1/-1;margin:0;padding:30px 20px;border:1px dashed var(--linea-oscura);border-radius:12px;text-align:center;color:rgba(10,20,40,.6);font-size:15px}
-.album-vacio{column-span:all;margin:0;padding:34px 20px;border:1px dashed var(--linea);border-radius:12px;text-align:center;color:rgba(255,255,255,.62);font-size:15px}
+.album-vacio{margin:26px 0 0;padding:34px 20px;border:1px dashed var(--linea);border-radius:12px;text-align:center;color:rgba(255,255,255,.62);font-size:15px}
 .foto.sin-img::after{content:attr(data-hueco);font-family:var(--display);font-size:13px;color:rgba(242,183,207,.6);letter-spacing:.1em;padding:0 18px;text-align:center;line-height:1.5}
 .foto.alto{aspect-ratio:3/4}
 
@@ -519,14 +524,13 @@ footer a:hover{color:var(--rosa)}
     <div class="cabeza">
       <div>
         <h2 class="h2">El álbum<br>de cada categoría</h2>
-        <p class="bajada">Las fotos de cada plantel, en alta y para descargar. Buscá la tuya, guardala y subila donde quieras — solo dejá el crédito de quien la sacó.</p>
+        <p class="bajada">Las fotos de cada plantel, fecha por fecha, en alta y para descargar. Buscá la tuya, guardala y subila donde quieras — solo dejá el crédito de quien la sacó.</p>
       </div>
       <a class="btn linea" id="pedir-foto" href="#" data-track="pedir-foto-alta">Pedir una foto en alta</a>
     </div>
 
     <div class="album-nav" id="album-nav" role="tablist"></div>
-    <p class="credito" id="credito"></p>
-    <div class="mosaico" id="mosaico" role="tabpanel"></div>
+    <div id="album" role="tabpanel"></div>
   </div>
 </section>
 
@@ -1178,7 +1182,11 @@ $("#s-paq").innerHTML = DATOS.paquetes.map(p=>'<option>Nivel '+p.t+'</option>').
    hueco marcado. Apenas subís la foto con ese nombre, aparece sola.
    ================================================================= */
 const G = DATOS.galeria;
-let albumActivo = 0, fotoActiva = 0;
+let albumActivo = 0, fechaActiva = 0, fotoActiva = 0;
+// Crédito de una fecha: nombre del fotógrafo, con link a su Instagram si lo tiene
+const credito = fe => { const ig = G.fotografos[fe.fotografo]; return ig
+  ? '<a href="'+ig+'" target="_blank" rel="noopener" data-track="click-fotografo">'+fe.fotografo+'</a>' : fe.fotografo; };
+const fechasDe = al => al.fechas.slice().sort((a,b)=>b.f.localeCompare(a.f));   // la más nueva arriba
 
 $("#pedir-foto").href = wspBase+encodeURIComponent("Hola! Vi una foto en la web del club y la quiero en alta.");
 
@@ -1192,29 +1200,33 @@ G.albumes.forEach((al,i)=>{
 
 function pintarAlbum(i){
   albumActivo = i;
-  const al = G.albumes[i];
+  const al = G.albumes[i], fechas = fechasDe(al);
   $$("#album-nav .tab").forEach((t,j)=>t.setAttribute("aria-selected", j===i));
-  $("#credito").innerHTML = 'Fotos de <a href="'+G.fotografa.ig+'" target="_blank" rel="noopener" data-track="click-fotografa">'
-    + G.fotografa.nombre + '</a><span class="sep">·</span>'+al.titulo
-    + '<span class="sep">·</span>'+(al.fotos.length ? al.fotos.length+' fotos' : 'todavía sin fotos');
-  $("#mosaico").innerHTML = al.fotos.length ? al.fotos.map((f,n)=>
-    '<button class="foto'+(f.alto?" alto":"")+'" data-n="'+n+'" data-hueco="'+f.alt+'">'
-    + '<img src="'+f.src+'" alt="'+f.alt+'" loading="lazy" onerror="this.closest(\'.foto\').classList.add(\'sin-img\')">'
-    + '<span class="agua">ADB HANDBALL<br>'+al.titulo+'</span></button>').join("")
+  $("#album").innerHTML = fechas.length ? fechas.map((fe,k)=>
+    '<section class="fecha-fotos">'
+    + '<div class="fecha-cab"><div><h3>'+al.titulo+' <span>vs '+fe.rival+'</span></h3>'
+    + '<p class="meta">'+DIA_SEM(fe.f)+' '+DIA_MES(fe.f)+' · '+(fe.c==="L" ? "En Don Bosco 116" : "De visitante")+' · '+fe.fotos.length+' fotos</p></div>'
+    + '<p class="credito">Fotos de '+credito(fe)+'</p></div>'
+    + '<div class="mosaico">'+fe.fotos.map((f,n)=>
+      '<button class="foto'+(f.alto?" alto":"")+'" data-k="'+k+'" data-n="'+n+'" data-hueco="'+f.alt+'">'
+      + '<img src="'+f.src+'" alt="'+f.alt+'" loading="lazy" onerror="this.closest(\'.foto\').classList.add(\'sin-img\')">'
+      + '<span class="agua">ADB HANDBALL<br>'+DIA_MES(fe.f)+'</span></button>').join("")
+    + '</div></section>').join("")
     : '<p class="album-vacio">Todavía no subimos fotos de '+al.titulo+'. Cuando haya, aparecen acá.</p>';
 }
 pintarAlbum(0);
 
 const visor = $("#visor");
-function abrirVisor(n){
+function abrirVisor(n, k){
+  if (k !== undefined) fechaActiva = k;
   fotoActiva = n;
-  const al = G.albumes[albumActivo], f = al.fotos[n];
+  const al = G.albumes[albumActivo], fe = fechasDe(al)[fechaActiva], f = fe.fotos[n];
   const img = $("#visor-img"), hueco = $("#visor-hueco");
   img.hidden = false; hueco.hidden = true;
   img.onerror = ()=>{ img.hidden = true; hueco.hidden = false; hueco.textContent = "Acá va: "+f.alt; };
   img.src = f.src; img.alt = f.alt;
-  $("#visor-contador").textContent = (n+1)+" de "+al.fotos.length;
-  $("#visor-pie").innerHTML = f.alt+'<br><strong>'+al.titulo+'</strong> · foto de '+G.fotografa.nombre;
+  $("#visor-contador").textContent = (n+1)+" de "+fe.fotos.length;
+  $("#visor-pie").innerHTML = f.alt+'<br><strong>'+al.titulo+' vs '+fe.rival+'</strong> · '+DIA_SEM(fe.f)+' '+DIA_MES(fe.f)+' · foto de '+credito(fe);
   $("#visor-descargar").dataset.src = f.src;
   visor.classList.add("abierto");
   document.body.style.overflow = "hidden";
@@ -1222,13 +1234,13 @@ function abrirVisor(n){
 }
 function cerrarVisor(){ visor.classList.remove("abierto"); document.body.style.overflow = ""; }
 function mover(paso){
-  const total = G.albumes[albumActivo].fotos.length;
+  const total = fechasDe(G.albumes[albumActivo])[fechaActiva].fotos.length;
   abrirVisor((fotoActiva + paso + total) % total);
 }
-$("#mosaico").addEventListener("click", e=>{
+$("#album").addEventListener("click", e=>{
   const b = e.target.closest(".foto");
   if (!b || b.classList.contains("sin-img")) return;
-  abrirVisor(+b.dataset.n);
+  abrirVisor(+b.dataset.n, +b.dataset.k);
   track("foto-ampliada",{album:G.albumes[albumActivo].titulo});
 });
 $("#visor-cerrar").addEventListener("click", cerrarVisor);

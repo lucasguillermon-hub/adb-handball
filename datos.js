@@ -302,32 +302,38 @@ const DATOS = {
   // muro, elegida de forma pareja y estable (todos ven la misma para ese partido).
 
   // ============ GALERÍA ============
-  // Un álbum por categoría. Poné las fotos en /fotos con el nombre que quieras y cargalas
-  // acá: { src:"fotos/mayores-a-01.jpg", alt:"qué se ve, en castellano", alto:true si es vertical }.
-  // Exportalas a 1600 px de ancho, JPG calidad 80 o WebP, bajo 300 KB cada una.
-  // Un álbum con fotos:[] muestra "todavía no hay fotos" en vez de huecos.
+  // Un álbum por categoría, y adentro una entrada por fecha (partido): rival, condición,
+  // quién sacó las fotos y las fotos. No siempre es el mismo fotógrafo, por eso el crédito
+  // va por fecha. Las fotos entran con herramientas/fotos-galeria.js desde fotos/Partidos/
+  // (originales, ignoradas): las exporta a 1600 px, bajo 300 KB, y arma esta lista.
+  // fotografos: nombre → Instagram (o "" si no tiene). El crédito linkea ahí.
+  // Cada foto: { src, alt (qué se ve, en castellano), alto:true si es vertical }.
   galeria: {
-    fotografa: { nombre:"JZ Audiovisuales", ig:"https://instagram.com/" },   // ⚠️ pegar el Instagram real de JZ Audiovisuales
+    fotografos: {
+      "JZ Audiovisuales": ""    // ⚠️ pegar el Instagram real
+    },
     albumes: [
-      { titulo:"Minis", fotos:[] },
-      { titulo:"Infantiles", fotos:[] },
-      { titulo:"Menores", fotos:[] },
-      { titulo:"Cadetas", fotos:[] },
-      { titulo:"Juveniles", fotos:[] },
-      { titulo:"Juniors", fotos:[] },
-      { titulo:"Primera damas", fotos:[] },
-      { titulo:"Tercera damas", fotos:[] },
-      { titulo:"Cuarta caballeros", fotos:[
-        { src:"fotos/cuarta-caballeros/dep-laferrere-01.jpg", alt:"Cuarta caballeros contra Dep. Laferrere, 16/08 de local (foto 1)" },
-        { src:"fotos/cuarta-caballeros/dep-laferrere-02.jpg", alt:"Cuarta caballeros contra Dep. Laferrere, 16/08 de local (foto 2)" },
-        { src:"fotos/cuarta-caballeros/dep-laferrere-03.jpg", alt:"Cuarta caballeros contra Dep. Laferrere, 16/08 de local (foto 3)" },
-        { src:"fotos/cuarta-caballeros/dep-laferrere-04.jpg", alt:"Cuarta caballeros contra Dep. Laferrere, 16/08 de local (foto 4)" },
-        { src:"fotos/cuarta-caballeros/dep-laferrere-05.jpg", alt:"Cuarta caballeros contra Dep. Laferrere, 16/08 de local (foto 5)" },
-        { src:"fotos/cuarta-caballeros/dep-laferrere-06.jpg", alt:"Cuarta caballeros contra Dep. Laferrere, 16/08 de local (foto 6)" },
-        { src:"fotos/cuarta-caballeros/dep-laferrere-07.jpg", alt:"Cuarta caballeros contra Dep. Laferrere, 16/08 de local (foto 7)" },
-        { src:"fotos/cuarta-caballeros/dep-laferrere-08.jpg", alt:"Cuarta caballeros contra Dep. Laferrere, 16/08 de local (foto 8)" }
-      ] },
-      { titulo:"Maxihandball", fotos:[] }
+      { titulo:"Minis", fechas:[] },
+      { titulo:"Infantiles", fechas:[] },
+      { titulo:"Menores", fechas:[] },
+      { titulo:"Cadetas", fechas:[] },
+      { titulo:"Juveniles", fechas:[] },
+      { titulo:"Juniors", fechas:[] },
+      { titulo:"Primera damas", fechas:[] },
+      { titulo:"Tercera damas", fechas:[] },
+      { titulo:"Cuarta caballeros", fechas:[
+        { f:"2026-08-16", rival:"Dep. Laferrere", c:"L", fotografo:"JZ Audiovisuales", fotos:[
+          { src:"fotos/cuarta-caballeros/2026-08-16-01.jpg", alt:"Cuarta caballeros contra Dep. Laferrere, 16/08 de local (foto 1)" },
+          { src:"fotos/cuarta-caballeros/2026-08-16-02.jpg", alt:"Cuarta caballeros contra Dep. Laferrere, 16/08 de local (foto 2)", alto:true },
+          { src:"fotos/cuarta-caballeros/2026-08-16-03.jpg", alt:"Cuarta caballeros contra Dep. Laferrere, 16/08 de local (foto 3)" },
+          { src:"fotos/cuarta-caballeros/2026-08-16-04.jpg", alt:"Cuarta caballeros contra Dep. Laferrere, 16/08 de local (foto 4)" },
+          { src:"fotos/cuarta-caballeros/2026-08-16-05.jpg", alt:"Cuarta caballeros contra Dep. Laferrere, 16/08 de local (foto 5)" },
+          { src:"fotos/cuarta-caballeros/2026-08-16-06.jpg", alt:"Cuarta caballeros contra Dep. Laferrere, 16/08 de local (foto 6)" },
+          { src:"fotos/cuarta-caballeros/2026-08-16-07.jpg", alt:"Cuarta caballeros contra Dep. Laferrere, 16/08 de local (foto 7)" },
+          { src:"fotos/cuarta-caballeros/2026-08-16-08.jpg", alt:"Cuarta caballeros contra Dep. Laferrere, 16/08 de local (foto 8)", alto:true }
+        ]}
+      ]},
+      { titulo:"Maxihandball", fechas:[] }
     ]
   },
 

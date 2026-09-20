@@ -48,13 +48,13 @@ formativa: copia las fechas de la tira sin resultados.
 
 ## Fotos de partidos
 
-**`fotos-galeria.js`** — `node herramientas/fotos-galeria.js "fotos/Partidos/<Plantel>/<vs Rival>" [fecha]`.
-Las originales van a `fotos/Partidos/<Plantel>/<vs Rival>/` (ignorada en git y sin publicar; el
-plantel con el nombre del club, el rival como quieras). El script las exporta a
-`fotos/<plantel>/<rival>-<nn>.jpg` a 1600 px y menos de 300 KB, y las suma al álbum del plantel
-en `datos.js` con el alt armado desde el fixture (rival, fecha, local o visitante). Si el rival
-no se reconoce o hay dos partidos contra el mismo, pasale la fecha. Necesita `sharp` en
-`%TEMP%\adb-node`.
+**`fotos-galeria.js`** — `node herramientas/fotos-galeria.js "fotos/Partidos/<Plantel>/<AAAA-MM-DD> <Fotógrafo>"`.
+Las originales van a `fotos/Partidos/<Plantel>/<fecha> <fotógrafo>/` (ignorada en git y sin publicar;
+el plantel con el nombre del club). Con la fecha busca el partido en el fixture, y de ahí saca rival y
+local/visitante. Exporta a `fotos/<plantel>/<fecha>-<nn>.jpg` a 1600 px y menos de 300 KB, marca las
+verticales con `alto:true` y suma la fecha al álbum del plantel en `datos.js`, con el crédito del
+fotógrafo de esa fecha. Un fotógrafo nuevo queda en `galeria.fotografos` sin Instagram: pegarlo a mano.
+Necesita `sharp` en `%TEMP%\adb-node`.
 
 ## Otros
 

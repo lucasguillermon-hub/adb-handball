@@ -119,9 +119,11 @@ pertenencia. Los textos hablan de la tribuna, de las familias y del barrio, no d
   `sponsor`, el marcador no muestra presentador).
 - Escudos de rivales en `fotos/rivales/<nombre-del-rival-en-minusculas>.png` (44 de FeMeBal
   y 13 de Maxi). Un rival nuevo se ve con su inicial hasta que se cargue el archivo.
-- Galería: un álbum por categoría. Las fotos entran con `herramientas/fotos-galeria.js` desde
-  `fotos/Partidos/` (originales, ignoradas). Fotógrafo: JZ Audiovisuales; falta su Instagram
-  en `galeria.fotografa.ig`. El álbum por fecha con sponsor queda para el plan 2027.
+- Galería: un álbum por categoría y adentro una entrada por fecha (rival, condición, fotógrafo,
+  fotos), porque no siempre saca fotos la misma persona. Entran con `herramientas/fotos-galeria.js`
+  desde `fotos/Partidos/<Plantel>/<fecha> <fotógrafo>/` (originales, ignoradas). Los Instagram de
+  los fotógrafos van en `galeria.fotografos` (falta el de JZ Audiovisuales). El álbum por fecha
+  con sponsor queda para el plan 2027.
 - Los sponsors del muro son acuerdos 2026, anteriores al plan; el plan de niveles
   arranca en 2027. Hasta entonces el muro sigue agrupado por categoría.
 - Elegir la herramienta para mandar los mails (Brevo, MailerLite o similar) e importarle
