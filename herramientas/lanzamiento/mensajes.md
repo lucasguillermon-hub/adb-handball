@@ -48,3 +48,28 @@ Placa: `lanzamiento-sponsors.png`. Va uno por uno, con el nombre del comercio.
 >
 > Si querés que revisemos tu logo o tu link antes de la apertura, o conocer la propuesta
 > 2027, escribinos por acá. Gracias por bancar al Bosco.
+
+## Mail de aviso de apertura
+
+Para quienes dejaron el mail en "Avisame". Se manda el domingo 20/9 desde Gmail, con
+todas las direcciones en **CCO** (el recordatorio del domingo deja la lista en el
+escritorio, en `mails-aviso-apertura.txt`). Es un solo mail, como se prometió en la web.
+
+**Asunto:** Ya está la web del Bosco
+
+> Hola,
+>
+> Nos pediste que te avisáramos, y acá estamos: la web del Ateneo Don Bosco Handball
+> ya está abierta en adbhandball.com.
+>
+> Ahí tenés el fixture de los diez planteles con día, hora, rival, resultado y tabla,
+> las fotos de cada categoría para descargar, la votación de la figura de la fecha, el
+> prode y los horarios de entrenamiento. Si la abrís desde el celular, podés guardarla
+> como una app.
+>
+> Este es el único mail que te mandamos por el lanzamiento. Si querés seguir recibiendo
+> la previa de cada fecha los jueves, anotate en la web. Si no, no hace falta que hagas
+> nada.
+>
+> Nos vemos en la tribuna.
+> Ateneo Don Bosco Handball · Bernal
