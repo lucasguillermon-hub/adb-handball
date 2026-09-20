@@ -311,7 +311,7 @@ const DATOS = {
   galeria: {
     fotografos: {
       "Maxy Canteros": "https://instagram.com/maxyyft",
-      "JZ Audiovisuales": ""    // ⚠️ pegar el Instagram real
+      "JZ Audiovisuales": "https://instagram.com/jz_audiovisuales"
     },
     albumes: [
       { titulo:"Minis", fechas:[] },

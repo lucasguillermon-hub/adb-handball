@@ -122,7 +122,7 @@ pertenencia. Los textos hablan de la tribuna, de las familias y del barrio, no d
 - Galería: un álbum por categoría y adentro una entrada por fecha (rival, condición, fotógrafo,
   fotos), porque no siempre saca fotos la misma persona. Entran con `herramientas/fotos-galeria.js`
   desde `fotos/Partidos/<Plantel>/<fecha> <fotógrafo>/` (originales, ignoradas). Los Instagram de
-  los fotógrafos van en `galeria.fotografos` (falta el de JZ Audiovisuales). El álbum por fecha
+  los fotógrafos van en `galeria.fotografos`. El álbum por fecha
   con sponsor queda para el plan 2027.
 - Los sponsors del muro son acuerdos 2026, anteriores al plan; el plan de niveles
   arranca en 2027. Hasta entonces el muro sigue agrupado por categoría.
