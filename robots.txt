@@ -1,6 +1,5 @@
 User-agent: *
 Allow: /
-Disallow: /web.html
 Disallow: /plan-sponsoreo.html
 
 Sitemap: https://adbhandball.com/sitemap.xml

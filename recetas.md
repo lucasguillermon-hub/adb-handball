@@ -25,7 +25,7 @@ La primera vez el sitio todavía no muestra resultados, así que hay que crear l
 ```
 Quiero mostrar los resultados de los partidos ya jugados. Agregá un campo opcional
 de resultado a cada partido en datos.js, con los goles nuestros y los del rival.
-En el fixture de web.html, los partidos que tengan resultado tienen que mostrarlo
+En el fixture de index.html, los partidos que tengan resultado tienen que mostrarlo
 en lugar de la fecha, y distinguirse visualmente entre ganado, empatado y perdido.
 Los que no tengan resultado siguen como están. Cargá de ejemplo el partido de
 [plantel] contra [rival]: [goles nuestros] a [goles de ellos].
@@ -94,21 +94,10 @@ Los números del media kit reales son [X] jugadores y [Y] familias. Subilo.
 ## Conectar Google Analytics
 
 ```
-Pegá este código de Google Analytics en el head de index.html y de web.html:
+Pegá este código de Google Analytics en el head de index.html y de plan-sponsoreo.html:
 [pegar acá el fragmento que te da Google]
 Verificá que la función track() que ya existe le esté reportando los eventos.
 Subilo.
-```
-
----
-
-## Publicar la web completa (el día del lanzamiento)
-
-```
-Llegó el día del lanzamiento. Reemplazá el contenido de index.html por el de
-web.html, sacá la etiqueta noindex, borrá web.html, actualizá el robots.txt para
-que no la excluya, ajustá el sitemap y subí la versión del service worker.
-Antes de subir nada, mostrame qué vas a cambiar.
 ```
 
 ---

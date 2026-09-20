@@ -7,8 +7,7 @@ sin dependencias. Se publica solo con hacer push a `main` (Cloudflare Workers).
 
 ```
 datos.js              ← TODO el contenido editable: el único archivo a tocar
-index.html            ← página de lanzamiento (la que ve el público)
-web.html              ← la web completa, todavía sin linkear ni indexar
+index.html            ← la web completa (publicada el 20/9/2026)
 manifest.webmanifest  ← datos de la app instalable
 sw.js                 ← service worker (caché offline)
 iconos/               ← escudo.svg (el escudo oficial, se usa en las tres páginas) e
@@ -25,16 +24,11 @@ herramientas/         ← scripts de mantenimiento (sincronizar FeMeBal, plantel
                         íconos) y cómo correr el entorno local. Ver su README. No se publica.
 ```
 
-**Mientras dure el lanzamiento:** `index.html` es la página de espera con la cuenta
-regresiva. La web completa vive en `web.html`, con `noindex` para que Google no la
-levante a medio llenar. El día de la apertura se reemplaza el contenido de `index.html`
-por el de `web.html`, se borra la etiqueta `noindex` y se sube la versión del `sw.js`.
-
 ## Reglas al editar
 
 1. **Todo el contenido variable vive en `datos.js`.** Fixture, staff, categorías,
-   sponsors, beneficios, álbumes de fotos, números del media kit, contacto y fecha de
-   lanzamiento. Lo comparten las tres páginas (`plan-sponsoreo.html` toma de ahí el
+   sponsors, beneficios, álbumes de fotos, números del media kit y contacto.
+   Lo comparten las dos páginas (`plan-sponsoreo.html` toma de ahí el
    contacto y las cifras), así que un cambio ahí impacta en todas. El teléfono se
    muestra desde `contacto.tel`: no escribirlo a mano en el HTML.
    Si el cambio es de contenido, se toca `datos.js` y ningún otro archivo.
@@ -81,9 +75,8 @@ pertenencia. Los textos hablan de la tribuna, de las familias y del barrio, no d
 
 ## Decisiones tomadas (no volver a preguntar)
 
-- La fecha de lanzamiento queda el 20/9/2026; ese día se hace el cambio de `index.html`
-  por `web.html` (receta en recetas.md). Mientras tanto la portada muestra todo lo vivo:
-  próxima fecha de cada plantel, última fecha con resultado y puesto, categorías y horarios.
+- La web completa se publicó el 20/9/2026 (antes `index.html` era una página de espera con
+  cuenta regresiva y la web vivía en `web.html`, ya borrado).
 - Los sponsors del muro son acuerdos 2026 agrupados por categoría; el plan de niveles es
   para 2027. Los 15 sponsors sin beneficio y los rubros repetidos quedan como legado 2026.
 - La promo "diez comercios sin cargo" se sacó. No hay cantidad fija de fechas de local:

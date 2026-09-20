@@ -2,8 +2,8 @@
    PARÁMETROS DEL CLUB — Ateneo Don Bosco Handball
 
    Este es el ÚNICO archivo que hay que tocar para cambiar contenido.
-   Lo usan las dos páginas: index.html (portada de lanzamiento) y web.html
-   (la web completa). Si cambiás el WhatsApp acá, cambia en las dos.
+   Lo usan las dos páginas: index.html (la web) y plan-sponsoreo.html
+   (el plan 2027). Si cambiás el WhatsApp acá, cambia en las dos.
 
    Lo marcado con ⚠️ está pendiente de confirmar.
    ============================================================================= */
@@ -449,7 +449,7 @@ const DATOS = {
   ],
 
   // ⚠️ Poné tus números reales antes de mostrarle esto a un sponsor.
-  // Los usan web.html y plan-sponsoreo.html. El de partidos de local se calcula
+  // Los usan index.html y plan-sponsoreo.html. El de partidos de local se calcula
   // solo desde el fixture: la cantidad cambia cada torneo.
   numeros: [
     { b:"2.717", l:"seguidores en Instagram, casi todos de Quilmes y Bernal" },
