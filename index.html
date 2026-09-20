@@ -318,6 +318,7 @@ footer a:hover{color:var(--rosa)}
 /* ---------- galería ---------- */
 .album-nav{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px}
 .album-nav .tab{border-color:var(--linea);color:#fff}
+.album-nav .tab.vacio{color:rgba(255,255,255,.5);border-style:dashed}
 .album-nav .tab[aria-selected="true"]{background:var(--rosa);border-color:var(--rosa);color:var(--tinta)}
 .fecha-fotos{margin-top:26px}
 .fecha-fotos+.fecha-fotos{margin-top:38px}
@@ -1190,10 +1191,14 @@ const fechasDe = al => al.fechas.slice().sort((a,b)=>b.f.localeCompare(a.f));   
 
 $("#pedir-foto").href = wspBase+encodeURIComponent("Hola! Vi una foto en la web del club y la quiero en alta.");
 
+// Los álbumes con más fotos van primero; los vacíos quedan al final, en el orden de datos.js.
+const cuenta = al => al.fechas.reduce((t,fe)=>t+fe.fotos.length, 0);
+G.albumes.sort((a,b)=>cuenta(b)-cuenta(a));
 G.albumes.forEach((al,i)=>{
   const b = document.createElement("button");
   b.className = "tab"; b.textContent = al.titulo; b.setAttribute("role","tab");
   b.setAttribute("aria-selected", i===0);
+  if (!cuenta(al)) b.classList.add("vacio");
   b.addEventListener("click", ()=>{ pintarAlbum(i); track("album-abierto",{album:al.titulo}); });
   $("#album-nav").appendChild(b);
 });
