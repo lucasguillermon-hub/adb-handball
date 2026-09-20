@@ -73,3 +73,26 @@ escritorio, en `mails-aviso-apertura.txt`). Es un solo mail, como se prometió e
 >
 > Nos vemos en la tribuna.
 > Ateneo Don Bosco Handball · Bernal
+
+## WhatsApp del día de apertura (20/9)
+
+Para todos los grupos, ya con la web publicada.
+
+> Hola familia del Bosco 👋
+>
+> Ya está la web oficial del club: **adbhandball.com**
+>
+> Entrá y guardala en el celular como una app (en Chrome o Safari, "Agregar a pantalla de
+> inicio"). Ahí tenés:
+>
+> • El fixture de los diez planteles, con día, hora, rival, resultado y tabla de posiciones.
+> Se actualiza después de cada fecha.
+> • Las fotos de cada categoría, en alta y para descargar. Ya están las de Cuarta caballeros
+> contra Laferrere; se van sumando.
+> • La figura de la fecha: se vota desde el celular hasta el viernes a las 20.
+> • El prode: decís cómo termina el partido antes de que empiece.
+> • Horarios de entrenamiento de todas las categorías y el WhatsApp del club.
+>
+> Es la casa del Bosco en internet. Compartila con quien quiera seguir al club.
+>
+> Nos vemos en la tribuna. Sensus pertinendi.
