@@ -958,7 +958,7 @@ function pintarPosiciones(pl){
 
 // Goleadoras del torneo (de las planillas de FeMeBal): las cinco con más goles del plantel
 function pintarGoleadoras(pl){
-  const caja = $("#goleadoras"), g = pl.goles || {};
+  const caja = $("#goleadoras"), g = conCompetencia(pl) ? (pl.goles || {}) : {};
   const top = Object.keys(g).filter(n => g[n] > 0).sort((a, b) => g[b] - g[a]).slice(0, 5);
   if (!top.length){ caja.innerHTML = ""; return; }
   const max = g[top[0]];
@@ -1007,7 +1007,9 @@ async function traerVotos(pl, p, cuerpo){
   return r.json();
 }
 
-const plantelesConVoto = DATOS.planteles.filter(pl => pl.jugadoras && pl.jugadoras.length);
+// De Cadetas para abajo no hay competencia entre jugadoras (decisión del coordinador): sin MVP, prode ni goleadoras.
+function conCompetencia(pl){ return pl.competencia !== false; }
+const plantelesConVoto = DATOS.planteles.filter(pl => conCompetencia(pl) && pl.jugadoras && pl.jugadoras.length);
 plantelesConVoto.forEach(pl => {
   const b = document.createElement("button");
   b.className = "tab"; b.textContent = pl.nombre; b.setAttribute("role", "tab");
@@ -1100,7 +1102,7 @@ async function traerProde(pl, p, cuerpo){
   return r.json();
 }
 
-const plantelesConProde = DATOS.planteles.filter(pl => proximoDe(pl));
+const plantelesConProde = DATOS.planteles.filter(pl => conCompetencia(pl) && proximoDe(pl));
 plantelesConProde.forEach(pl => {
   const b = document.createElement("button");
   b.className = "tab"; b.textContent = pl.nombre; b.setAttribute("role", "tab");

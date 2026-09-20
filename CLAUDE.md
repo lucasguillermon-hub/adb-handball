@@ -87,6 +87,10 @@ pertenencia. Los textos hablan de la tribuna, de las familias y del barrio, no d
   caballeros, Cadetas, Juniors); `division` guarda el nombre de FeMeBal.
 - Grafías del cuerpo técnico según las listas del club: Szczur, Christian Gull.
 - Minis e Infantiles no entran en nada por nombre (formativas).
+- De Cadetas para abajo (Minis, Infantiles, Menores, Cadetas) no hay competencia entre jugadoras,
+  por decisión del coordinador: `competencia:false` en `datos.js` saca al plantel de la votación
+  de la figura, del prode y de las goleadoras. MVP, prode y goleadoras van de Juveniles en
+  adelante.
 
 ## Cosas que todavía faltan
 

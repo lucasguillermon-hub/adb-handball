@@ -105,6 +105,8 @@ const DATOS = {
       [15,"Independiente",9,7,1,0,6,154,197],
       [16,"Cedem Caseros",8,6,1,0,5,143,163]
     ]},
+    // competencia:false (de Cadetas para abajo, decisión del coordinador): sin votación de la
+    // figura, sin prode y sin goleadoras. Los dorsales quedan igual, son datos del plantel.
     // Inferiores damas es una tira: Minis, Infantiles, Menores, Cadetas, Juveniles y Juniors
     // juegan el mismo día en el mismo lugar, todas de local o todas de visitante, cada una
     // a su hora. Fixture, horarios y resultados vienen de FeMeBal (división C); Minis no
@@ -113,7 +115,7 @@ const DATOS = {
     // plantel) · g resultado "nuestros-de ellos" cuando ya se jugó.
     // tabla: posiciones del torneo, una fila por equipo:
     // [puesto, equipo, puntos, jugados, ganados, empatados, perdidos, goles a favor, en contra].
-    { id:"minis", nombre:"Minis", dia:"Domingos", hora:"10:30",   // ⚠️ confirmar horario de Minis (no está en FeMeBal)
+    { id:"minis", competencia:false, nombre:"Minis", dia:"Domingos", hora:"10:30",   // ⚠️ confirmar horario de Minis (no está en FeMeBal)
       nombresCortos:true, jugadoras:[], partidos:[
       {f:"2026-08-09",c:"V",r:"Círculo de Villa Devoto"},{f:"2026-08-16",c:"L",r:"Independiente"},{f:"2026-08-23",c:"V",r:"Colegio Ward"},
       {f:"2026-08-30",c:"L",r:"Boca Juniors"},{f:"2026-09-06",c:"V",r:"Banfield"},{f:"2026-09-13",c:"L",r:"Villa Modelo"},
@@ -121,7 +123,7 @@ const DATOS = {
       {f:"2026-10-11",c:"L",r:"La Patriada"},{f:"2026-10-25",c:"V",r:"Muñiz"},{f:"2026-11-01",c:"L",r:"Polvorines"},
       {f:"2026-11-08",c:"V",r:"C.I.D. Moreno"},{f:"2026-11-15",c:"V",r:"Sagrado Corazón"},{f:"2026-11-22",c:"L",r:"Estrella de Boedo"}
     ]},
-    { id:"infantiles", nombre:"Infantiles", division:"Infantiles · División C", dia:"Domingos", hora:"10:30",
+    { id:"infantiles", competencia:false, nombre:"Infantiles", division:"Infantiles · División C", dia:"Domingos", hora:"10:30",
       nombresCortos:true, jugadoras:[], partidos:[
       {f:"2026-08-09",c:"V",r:"Círculo de Villa Devoto",g:"35-15"},{f:"2026-08-16",c:"L",r:"Independiente",g:"27-7"},
       {f:"2026-08-23",c:"V",r:"Colegio Ward",g:"15-21"},{f:"2026-08-30",c:"L",r:"Boca Juniors",g:"21-12"},{f:"2026-09-06",c:"V",r:"Banfield",g:"27-20"},
@@ -147,7 +149,7 @@ const DATOS = {
       [15,"Cedem Caseros",7,7,0,0,7,96,173],
       [16,"Círculo de Villa Devoto",6,6,0,0,6,110,205]
     ] },
-    { id:"menores", nombre:"Menores", division:"Menores · División C", dia:"Domingos", hora:"11:30",
+    { id:"menores", competencia:false, nombre:"Menores", division:"Menores · División C", dia:"Domingos", hora:"11:30",
       nombresCortos:true, jugadoras:[
       "Martina Antero", "Sofia Ballares", "Matilda Barrera", "Victoria Bassi", "Celeste Bello",
       "Pilar Bustamante", "Mia Calo", "Macarena De León", "Guillemina Fortunato", "Emilia Greco",
@@ -183,7 +185,7 @@ const DATOS = {
       [15,"Muñiz",6,6,0,0,6,112,166],
       [16,"Círculo de Villa Devoto",6,6,0,0,6,92,196]
     ] },
-    { id:"cadetas", nombre:"Cadetas", division:"Cadetes · División C", dia:"Domingos", hora:"13:00",
+    { id:"cadetas", competencia:false, nombre:"Cadetas", division:"Cadetes · División C", dia:"Domingos", hora:"13:00",
       nombresCortos:true, jugadoras:[
       "Luciana Chiesa", "Abril Coria", "Isabella Greco", "Emilia Juarez Leikam", "Ema Rosello", "Maria Eugenia Rotta",
       "Victoria Kyanko", "Emilia Greco", "Guillermina Fortunato", "Serena Zabatta", "Mia Calo"   // según las planillas de FeMeBal
