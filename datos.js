@@ -310,6 +310,7 @@ const DATOS = {
   // Cada foto: { src, alt (qué se ve, en castellano), alto:true si es vertical }.
   galeria: {
     fotografos: {
+      "Dulce Méndez Terres": "https://instagram.com/dulcephfotografia",
       "Melanie Weber": "https://instagram.com/melweber.ph",
       "Maxy Canteros": "https://instagram.com/maxyyft",
       "JZ Audiovisuales": "https://instagram.com/jz_audiovisuales"
@@ -321,7 +322,7 @@ const DATOS = {
       { titulo:"Cadetas", fechas:[] },
       { titulo:"Juveniles", fechas:[] },
       { titulo:"Juniors", fechas:[
-        { f:"2026-08-09", rival:"Círculo de Villa Devoto", c:"V", fotografo:"", fotos:[
+        { f:"2026-08-09", rival:"Círculo de Villa Devoto", c:"V", fotografo:"Dulce Méndez Terres", fotos:[
           { src:"fotos/juniors/2026-08-09-01.jpg", alt:"Juniors contra Círculo de Villa Devoto, 09/08 de visitante (foto 1)" },
           { src:"fotos/juniors/2026-08-09-02.jpg", alt:"Juniors contra Círculo de Villa Devoto, 09/08 de visitante (foto 2)" },
           { src:"fotos/juniors/2026-08-09-03.jpg", alt:"Juniors contra Círculo de Villa Devoto, 09/08 de visitante (foto 3)" },
