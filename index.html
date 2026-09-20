@@ -168,6 +168,18 @@ header{position:sticky;top:0;z-index:60;background:rgba(10,20,40,.92);backdrop-f
 .posiciones{margin-top:34px}
 .posiciones h3{font-family:var(--display);font-size:22px;font-weight:400;margin:0 0 4px}
 .posiciones .nota{font-size:13.5px;color:rgba(10,20,40,.62);margin:0 0 14px}
+/* Goleadoras del Bosco en el torneo: las cinco con más goles, con barra proporcional */
+.goleadoras{margin-top:30px}
+.goleadoras h3{font-family:var(--display);font-size:22px;font-weight:400;margin:0 0 4px}
+.goleadoras .nota{font-size:13.5px;color:rgba(10,20,40,.62);margin:0 0 14px}
+.goleadoras ol{list-style:none;margin:0;padding:0;display:grid;gap:8px;max-width:620px}
+.goleadoras li{display:grid;grid-template-columns:38px 1fr auto;align-items:center;gap:12px;background:#fff;border:1px solid var(--linea-oscura);border-radius:10px;padding:8px 14px;position:relative;overflow:hidden}
+.goleadoras li::before{content:"";position:absolute;left:0;top:0;bottom:0;width:var(--w);background:var(--rosa);opacity:.35}
+.goleadoras li>*{position:relative}
+.goleadoras .dorsal{font-family:var(--display);font-size:18px;color:var(--rosa-vivo)}
+.goleadoras .nom{font-weight:600;font-size:14.5px}
+.goleadoras .g{font-family:var(--display);font-size:18px}
+.goleadoras .g small{font-family:var(--texto);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:rgba(10,20,40,.55);margin-left:4px}
 .tabla-pos{width:100%;border-collapse:collapse;font-size:14px;background:#fff;border:1px solid var(--linea-oscura);border-radius:12px;overflow:hidden}
 .tabla-pos th,.tabla-pos td{padding:8px 10px;text-align:right;border-top:1px solid var(--linea-oscura);white-space:nowrap}
 .tabla-pos th{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:rgba(10,20,40,.55);font-weight:700;border-top:0;background:var(--hueso)}
@@ -486,6 +498,7 @@ footer a:hover{color:var(--rosa)}
     </div>
 
     <div class="posiciones" id="posiciones"></div>
+    <div class="goleadoras" id="goleadoras"></div>
 
     <div class="fixture-sponsor">
       <p>
@@ -907,6 +920,7 @@ function pintarFixture(i){
   }).join("") : '<p class="pf-vacio">Todavía no está cargado el fixture de '+pl.nombre+'. Apenas lo tengamos, aparece acá.</p>';
   $("#leyenda-dia").textContent = pl.partidos.length ? pl.dia+", "+pl.hora+" hs (salvo que la tarjeta diga otra hora)" : "";
   pintarPosiciones(pl);
+  pintarGoleadoras(pl);
 }
 pintarFixture(0);
 
@@ -942,6 +956,18 @@ function pintarPosiciones(pl){
   });
 }
 
+// Goleadoras del torneo (de las planillas de FeMeBal): las cinco con más goles del plantel
+function pintarGoleadoras(pl){
+  const caja = $("#goleadoras"), g = pl.goles || {};
+  const top = Object.keys(g).filter(n => g[n] > 0).sort((a, b) => g[b] - g[a]).slice(0, 5);
+  if (!top.length){ caja.innerHTML = ""; return; }
+  const max = g[top[0]];
+  caja.innerHTML = '<h3>' + (pl.id === "masculino" ? "Goleadores" : "Goleadoras") + ' del ' + DATOS.torneo + '</h3>'
+    + '<p class="nota">' + pl.nombre + ' · según las planillas de partido de FeMeBal.</p>'
+    + '<ol>' + top.map(n => '<li style="--w:' + Math.round(g[n] / max * 100) + '%"><span class="dorsal">' + (dorsal(pl, n) || '–') + '</span>'
+      + '<span class="nom">' + nombreMostrado(pl, n) + '</span><span class="g">' + g[n] + '<small>goles</small></span></li>').join("") + '</ol>';
+}
+
 /* ============================ votación MVP ============================
    Una votación por plantel, sobre el último partido jugado de ese plantel.
    Las jugadoras salen de DATOS.planteles[].jugadoras. Los votos se guardan en
@@ -957,7 +983,7 @@ function ultimoPartido(pl){
   return pl.partidos.filter(p => p.c !== "libre" && cuando(p, pl) <= ahora).pop() || null;
 }
 // Dorsal de una jugadora (de las planillas de FeMeBal); sin dato, un guion.
-const dorsal = (pl, n) => (pl.dorsales && pl.dorsales[n]) || "";
+function dorsal(pl, n){ return (pl.dorsales && pl.dorsales[n]) || ""; }
 // Lista para votar: por número de camiseta; las que no tienen número, al final por nombre.
 const jugadorasOrdenadas = pl => pl.jugadoras.slice().sort((a, b) => (dorsal(pl, a) || 999) - (dorsal(pl, b) || 999) || a.localeCompare(b));
 function nombreMostrado(pl, n){
