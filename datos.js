@@ -59,7 +59,7 @@ const DATOS = {
       {f:"2026-08-08",c:"V",r:"Talleres",h:"19:45",g:"18-30"},{f:"2026-08-15",c:"L",r:"San Fernando",g:"30-25"},
       {f:"2026-08-22",c:"V",r:"Dorrego",h:"16:15",g:"21-21"},{f:"2026-08-29",c:"L",r:"Dep. Laferrere",h:"19:45",g:"36-26"},
       {f:"2026-09-05",c:"V",r:"AFALP",g:"34-21"},{f:"2026-09-12",c:"L",r:"Ferro Carril Oeste",h:"19:45",g:"28-24"},
-      {f:"2026-09-19",c:"V",r:"Polvorines",g:"33-26"},{f:"2026-09-25",c:"L",r:"Sagrado Corazón",h:"20:00"},{f:"2026-10-03",c:"V",r:"All Boys"},
+      {f:"2026-09-19",c:"V",r:"Polvorines",g:"33-26"},{f:"2026-09-25",c:"L",r:"Sagrado Corazón",h:"20:00",sede:"la Casa del Handball"},{f:"2026-10-03",c:"V",r:"All Boys"},
       {f:"2026-10-17",c:"L",r:"Vicente López"},{f:"2026-10-24",c:"V",r:"Temperley"},{f:"2026-10-31",c:"V",r:"Villa Ballester"},
       {f:"2026-11-07",c:"L",r:"Argentinos Juniors"},{f:"2026-11-14",c:"V",r:"Secla"},{f:"2026-11-21",c:"L",r:"Muñiz"}
     ], tabla:[
@@ -130,7 +130,8 @@ const DATOS = {
     // a su hora. Fixture, horarios y resultados vienen de FeMeBal (división C); Minis no
     // compite en FeMeBal y copia las fechas. Sin "sponsor", el marcador no muestra presentador.
     // Campos de cada partido: f fecha · c L/V/libre · r rival · h hora (si difiere de la del
-    // plantel) · g resultado "nuestros-de ellos" cuando ya se jugó.
+    // plantel) · g resultado "nuestros-de ellos" cuando ya se jugó · sede: dónde se juega si no es
+    // Don Bosco 116 siendo locales (la Casa del Handball de FeMeBal: cada categoría juega una fecha ahí).
     // tabla: posiciones del torneo, una fila por equipo:
     // [puesto, equipo, puntos, jugados, ganados, empatados, perdidos, goles a favor, en contra].
     { id:"minis", competencia:false, nombre:"Minis", dia:"Domingos", hora:"10:30",   // ⚠️ confirmar horario de Minis (no está en FeMeBal)

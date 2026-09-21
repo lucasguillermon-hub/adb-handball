@@ -181,6 +181,8 @@ header{position:sticky;top:0;z-index:60;background:rgba(10,20,40,.92);backdrop-f
 .pf .riv{font-family:var(--display);font-size:15px;line-height:1.05}
 .pf .pie{display:flex;justify-content:space-between;align-items:baseline;font-size:12px;font-weight:700;letter-spacing:.06em;margin-top:10px}
 .pf .cond{opacity:.72}
+.pf .sede{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--rosa-vivo);margin-top:6px}
+.pf.local .sede{color:var(--tinta);opacity:.8}
 .pf .res{display:flex;align-items:baseline;gap:8px;margin-top:8px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.85}
 .pf .res b{font-family:var(--display);font-size:20px;font-weight:400;letter-spacing:.02em;line-height:1}
 .posiciones{margin-top:34px}
@@ -516,7 +518,7 @@ footer a:hover{color:var(--rosa)}
     <div class="ficha" id="ficha" hidden></div>
 
     <div class="leyenda">
-      <span><i class="punto" style="background:var(--rosa)"></i>Jugamos en casa, Don Bosco 116</span>
+      <span><i class="punto" style="background:var(--rosa)"></i>Jugamos en casa, Don Bosco 116 (salvo que la tarjeta diga otra sede)</span>
       <span><i class="punto" style="background:var(--tinta)"></i>Visitante</span>
       <span id="leyenda-dia"></span>
     </div>
@@ -840,6 +842,9 @@ function sponsorDelProde(pl, p){
 
 /* ============================ próximo partido ============================ */
 function horaDe(p, plantel){ return p.h || plantel.hora; }                       // un partido puede tener hora propia
+// Dónde se juega: de local, en Don Bosco 116 salvo que el partido traiga una sede propia
+// (por ejemplo la Casa del Handball de FeMeBal, donde cada categoría juega una fecha).
+function dondeSeJuega(p){ return p.c === "L" ? "En " + (p.sede || "Don Bosco 116") : "De visitante"; }
 function cuando(p, plantel){ return new Date(p.f+"T"+horaDe(p, plantel)+":00"); }
 const DIAS_SEM = ["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"];
 const DIA_SEM = f => DIAS_SEM[new Date(f+"T12:00:00").getDay()];
@@ -878,7 +883,7 @@ if (prox){
   $("#tab-plantel").textContent = prox.pl.nombre;
   $("#tab-rival").textContent = prox.p.r;
   $("#tab-inicial").innerHTML = escudoRival(prox.p.r);
-  $("#tab-cond").textContent = prox.p.c==="L" ? "En Don Bosco 116" : "De visitante";
+  $("#tab-cond").textContent = dondeSeJuega(prox.p);
   // El presentador se muestra con su logo del muro; si no tiene o no carga, con el nombre.
   window.sinLogoPresentador = img => { const s = document.createElement("strong"); s.id = "tab-sponsor"; s.textContent = img.alt; img.parentNode.replaceWith(s); };
   if (prox.pl.sponsor){
@@ -902,7 +907,7 @@ if (prox){
   $("#proximas").innerHTML = '<h4>La próxima fecha de cada plantel</h4>' + proximas.map(({ pl, p }) =>
     '<div class="prox' + (p.c === "L" ? " local" : "") + '"><div class="rival-inicial">' + escudoRival(p.r) + '</div>'
     + '<div><b>' + pl.nombre + '</b><span>' + DIA_SEM(p.f) + ' ' + DIA_MES(p.f) + ' · ' + horaDe(p, pl) + ' hs · vs ' + p.r
-    + '<br><em>' + (p.c === "L" ? "En Don Bosco 116" : "De visitante") + '</em></span></div></div>').join("");
+    + '<br><em>' + dondeSeJuega(p) + '</em></span></div></div>').join("");
 }
 
 /* ============================ franja de marcas ============================ */
@@ -945,6 +950,7 @@ function pintarFixture(i){
     return '<'+tag+' class="pf '+(p.c==="L"?"local":"")+pasado+(r ? " "+r.clase : "")+(conFicha ? ' con-ficha" type="button" aria-expanded="false" data-f="'+p.f+'"' : '"')+'>'
       + '<span class="riv">'+p.r+'</span>'
       + (r ? '<span class="res"><b>'+r.txt+'</b>'+r.palabra+'</span>' : '')
+      + (p.sede ? '<span class="sede">'+p.sede+'</span>' : '')
       + '<span class="pie"><span class="cond">'+(p.c==="L"?"LOCAL":"VISITANTE")+'</span><span>'+DIA_MES(p.f)+(p.h ? " · "+p.h : "")+'</span></span></'+tag+'>';
   }).join("") : '<p class="pf-vacio">Todavía no está cargado el fixture de '+pl.nombre+'. Apenas lo tengamos, aparece acá.</p>';
   cerrarFicha();
@@ -1000,7 +1006,7 @@ function abrirFicha(pl, p){
   $$("#grilla .con-ficha").forEach(b => b.setAttribute("aria-expanded", b.dataset.f === p.f));
   caja.innerHTML = '<div class="marcador-ficha">' + r.txt + '<span>' + r.palabra + '</span></div>'
     + '<div><h4>' + pl.nombre + ' vs ' + p.r + '</h4>'
-    + '<p class="meta">' + DIA_SEM(p.f) + ' ' + DIA_MES(p.f) + ' · ' + horaDe(p, pl) + ' hs · ' + (p.c === "L" ? "En Don Bosco 116" : "De visitante") + ' · Fecha ' + (pl.partidos.indexOf(p) + 1) + '</p>'
+    + '<p class="meta">' + DIA_SEM(p.f) + ' ' + DIA_MES(p.f) + ' · ' + horaDe(p, pl) + ' hs · ' + dondeSeJuega(p) + ' · Fecha ' + (pl.partidos.indexOf(p) + 1) + '</p>'
     + listaGoles(pl, g) + '</div>'
     + '<button class="cerrar" type="button">Cerrar la ficha</button>';
   caja.hidden = false;
@@ -1178,7 +1184,7 @@ function pintarProde(pl){
   const p = proximoDe(pl);
   $("#sponsor-prode").textContent = sponsorDelProde(pl, p);
   $("#prode-partido").innerHTML = '<div class="rival-inicial">' + escudoRival(p.r) + '</div>'
-    + '<div><b>' + pl.nombre + ' vs ' + p.r + '</b>' + DIA_SEM(p.f) + ' ' + DIA_MES(p.f) + ' · ' + horaDe(p, pl) + ' hs · ' + (p.c === "L" ? "En Don Bosco 116" : "De visitante") + '</div>';
+    + '<div><b>' + pl.nombre + ' vs ' + p.r + '</b>' + DIA_SEM(p.f) + ' ' + DIA_MES(p.f) + ' · ' + horaDe(p, pl) + ' hs · ' + dondeSeJuega(p) + '</div>';
   $("#prode-rival").textContent = p.r;
 
   const e = estadoProde[pl.id] || { total: 0, mio: null, cerrado: false, gana: 0, empata: 0, pierde: 0 };

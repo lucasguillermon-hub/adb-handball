@@ -10,7 +10,7 @@
    esté en el mapa de nombres cortos (femebal-datos-2026-09-18.json, clave "corto") corta el
    script: hay que agregarlo ahí y bajar su escudo con femebal-escudos.js.
    femebal-correcciones.json: cambios confirmados por el club que FeMeBal no refleja (localía "c",
-   hora "h"); se aplican encima del crudo en cada corrida. Sacar la entrada cuando FeMeBal lo corrija. */
+   hora "h", sede "sede" cuando de local se juega fuera de Don Bosco 116); se aplican encima del crudo en cada corrida. Sacar la entrada cuando FeMeBal lo corrija. */
 const fs = require("fs");
 const path = require("path");
 const REPO = path.resolve(__dirname, "..");
@@ -74,7 +74,7 @@ for (const [titulo, filas] of Object.entries(crudo.fix)) {
   const id = idDe(titulo);
   const ps = filas.sort((a, b) => a.f - b.f).map(f => partido(f, horaPlantel(id)));
   // Correcciones del club que FeMeBal todavía no refleja (cambios de localía u hora): femebal-correcciones.json
-  for (const c of CORRECCIONES.filter(c => c.id === id)) { const p = ps.find(p => p.f === c.f); if (!p) continue; if (c.c) p.c = c.c; if (c.h) p.h = c.h; if (c.h === null) delete p.h; }
+  for (const c of CORRECCIONES.filter(c => c.id === id)) { const p = ps.find(p => p.f === c.f); if (!p) continue; if (c.c) p.c = c.c; if (c.h) p.h = c.h; if (c.h === null) delete p.h; if (c.sede) p.sede = c.sede; }
   const antes = D0.planteles.find(p => p.id === id).partidos;
   const nuevos = ps.filter(p => p.g && !antes.find(a => a.f === p.f && a.g));
   reemplazar(id, /partidos:\[[\s\S]*?\n    \]/, bloquePartidos(ps));

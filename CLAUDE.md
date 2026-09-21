@@ -137,6 +137,9 @@ pertenencia. Los textos hablan de la tribuna, de las familias y del barrio, no d
   el CSV de contactos. Hasta entonces la lista solo se acumula en D1. Al 18/09/2026 la
   base tenía 0 contactos reales (el flujo está probado en producción): falta difundir el
   formulario; una opción es pedir el mail al votar en la MVP o el prode.
+- Sede de un partido: cada categoría juega una fecha en la Casa del Handball (el estadio de
+  FeMeBal) siendo local. Va como `sede` en el partido y en `herramientas/femebal-correcciones.json`
+  (junto con cambios de localía u hora confirmados por el club) para que la sincronización no lo pise.
 - Sponsors que presentan cada plantel: solo Primera damas (Franco Liontix), Tercera damas
   (Supermercado Magdalena) y Cuarta caballeros (Ladran Sancho) tienen; los demás no muestran
   presentador. Svencen Propiedades no tiene url.
