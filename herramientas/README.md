@@ -90,3 +90,11 @@ Necesita `sharp` en `%TEMP%\adb-node`.
 colores y tipografías del sitio, y los textos que las acompañan en `mensajes.md`.
 `node herramientas/lanzamiento/render.js` las pasa a PNG (1080 × 1350) con el Chrome
 instalado y las deja en `material-club/lanzamiento/` (ignorada en git).
+
+## Newsletter mensual
+
+`newsletter/<AAAA-MM>.html` es el cuerpo del mail de cada mes, con estilos en línea y tablas
+(los clientes de mail no cargan CSS ni tipografías). Se pega como HTML en la herramienta de
+envío. Para el mes siguiente se copia el último y se cambian los textos; los datos salen de
+`datos.js` (resultados, tablas, goleadoras, próximas fechas). Primero va lo urgente (avisos del
+club), después cómo venimos, lo que se viene y las fotos.
