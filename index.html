@@ -234,7 +234,13 @@ header{position:sticky;top:0;z-index:60;background:rgba(10,20,40,.92);backdrop-f
 @media(max-width:900px){.duo{grid-template-columns:1fr}}
 .panel{background:rgba(255,255,255,.05);border:1px solid var(--linea);border-radius:18px;padding:28px}
 .claro .panel{background:#fff;border-color:var(--linea-oscura);box-shadow:0 1px 0 rgba(10,20,40,.06)}
-.panel .patro{font-size:12px;letter-spacing:.14em;color:var(--rosa-vivo);font-weight:700;text-transform:uppercase;margin:0 0 8px}
+.panel .patro{font-size:12px;letter-spacing:.14em;color:var(--rosa-vivo);font-weight:700;text-transform:uppercase;margin:0 0 8px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+/* Chip de marca: el logo del sponsor al lado de su nombre, cada vez que se lo menciona */
+.marca-chip{display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--tinta);border-radius:8px;padding:4px 10px 4px 6px;font-size:13px;font-weight:700;letter-spacing:0;text-transform:none;text-decoration:none;vertical-align:middle;line-height:1.2;white-space:nowrap}
+.marca-chip img{height:22px;width:auto;max-width:90px;display:block}
+.marca-chip.oscuro{background:var(--azul);color:#fff}
+a.marca-chip:hover{outline:2px solid var(--rosa-vivo);outline-offset:1px}
+.aviso .marca-chip,.prode-res .marca-chip{margin:0 2px}
 .mvp-tabs{margin:14px 0 4px;gap:6px}
 .mvp-tabs .tab{border-color:var(--linea);color:#fff;padding:7px 13px;font-size:13px}
 .mvp-tabs .tab[aria-selected="true"]{background:var(--rosa);border-color:var(--rosa);color:var(--tinta)}
@@ -834,6 +840,14 @@ function marcasUnicas(){
 /* Sponsor del prode: rota entre las marcas del muro, una distinta por partido.
    Se elige por posición del partido en el calendario, así todos ven la misma
    marca para ese partido y después se puede reportar. */
+// Chip con el logo de una marca del muro (si lo tiene) y su nombre; con url, es un link.
+function marcaChip(nombre, evento){
+  const m = marcasUnicas().find(x => x.n === nombre) || { n: nombre };
+  const dentro = (m.logo ? '<img src="' + m.logo + '" alt="" onerror="this.remove()">' : '') + m.n;
+  const clase = "marca-chip" + (m.fondoOscuro ? " oscuro" : "");
+  return m.url ? '<a class="' + clase + '" href="' + m.url + '" target="_blank" rel="noopener" data-track="' + evento + '">' + dentro + '</a>'
+               : '<span class="' + clase + '">' + dentro + '</span>';
+}
 function sponsorDelProde(pl, p){
   const marcas = marcasUnicas().map(m=>m.n);
   const nro = DATOS.planteles.indexOf(pl) + pl.partidos.indexOf(p) * DATOS.planteles.length;
@@ -1043,7 +1057,7 @@ function pintarGoleadoras(pl){
    queda solo en esta pantalla. */
 const listaMvp = $("#mvp");
 const estadoMvp = {};    // por plantel: { conteo, total, miVoto, cerrada }
-let plantelMvp = null, votando = false;
+let plantelMvp = null, votando = false, marcaMvp = "";
 
 function ultimoPartido(pl){
   const ahora = new Date();
@@ -1090,13 +1104,14 @@ function pintarMvp(pl){
   const p = ultimoPartido(pl);
   if (!p){
     $("#mvp-contexto").textContent = pl.nombre + " · todavía no jugó ninguna fecha.";
-    $("#sponsor-mvp").textContent = "el Bosco";
+    $("#sponsor-mvp").textContent = "el Bosco"; marcaMvp = "el Bosco";
     listaMvp.innerHTML = ""; $("#mvp-estado").textContent = ""; return;
   }
   const nro = pl.partidos.indexOf(p) + 1;
   const r = resultado(p);
   $("#mvp-contexto").textContent = pl.nombre + " · Fecha " + nro + " · " + DIA_SEM(p.f) + " " + DIA_MES(p.f) + " vs " + p.r + (r ? " · " + r.txt + " (" + r.palabra.toLowerCase() + ")" : "");
-  $("#sponsor-mvp").textContent = sponsorDeLaMvp(pl, p);
+  marcaMvp = sponsorDeLaMvp(pl, p);
+  $("#sponsor-mvp").innerHTML = marcaChip(marcaMvp, "sponsor-mvp");
 
   const e = estadoMvp[pl.id] || { conteo: {}, total: 0, miVoto: null, cerrada: false };
   const mostrar = e.miVoto || e.cerrada;      // los resultados se ven después de votar o al cierre
@@ -1110,10 +1125,10 @@ function pintarMvp(pl){
       + (mostrar ? '<span class="pct">' + pct + '%</span>' : '')
       + '</button></li>';
   }).join("");
-  $("#mvp-estado").textContent = e.cerrada
-    ? "La votación de esta fecha cerró con " + e.total + " voto" + (e.total === 1 ? "" : "s") + ". El resultado se publica en Instagram junto a " + $("#sponsor-mvp").textContent + "."
+  $("#mvp-estado").innerHTML = e.cerrada
+    ? "La votación de esta fecha cerró con " + e.total + " voto" + (e.total === 1 ? "" : "s") + ". El resultado se publica en Instagram junto a " + marcaChip(marcaMvp, "sponsor-mvp") + "."
     : e.miVoto
-      ? "Listo, tu voto quedó. Van " + e.total + " voto" + (e.total === 1 ? "" : "s") + ". El resultado se publica el viernes en Instagram junto a " + $("#sponsor-mvp").textContent + "."
+      ? "Listo, tu voto quedó. Van " + e.total + " voto" + (e.total === 1 ? "" : "s") + ". El resultado se publica el viernes en Instagram junto a " + marcaChip(marcaMvp, "sponsor-mvp") + "."
       : "Un voto por persona y por plantel. Cierra el viernes a las 20.";
 
   if (!e.pedido){
@@ -1156,7 +1171,7 @@ pintarMvp(plantelesConVoto.slice().sort((a, b) => {
    (GET/POST /api/prode) con la misma cookie anónima que la MVP; cierra cuando
    empieza el partido. Después de jugar se ve "lo que dice la tribuna". */
 const estadoProde = {};     // por plantel: respuesta del servidor
-let plantelProde = null, jugando = false;
+let plantelProde = null, jugando = false, marcaProde = "";
 
 async function traerProde(pl, p, cuerpo){
   const inicio = cuando(p, pl).toISOString();
@@ -1182,7 +1197,8 @@ function pintarProde(pl){
   plantelProde = pl;
   $$("#prode-tabs .tab").forEach((t, j) => t.setAttribute("aria-selected", plantelesConProde[j] === pl));
   const p = proximoDe(pl);
-  $("#sponsor-prode").textContent = sponsorDelProde(pl, p);
+  marcaProde = sponsorDelProde(pl, p);
+  $("#sponsor-prode").innerHTML = marcaChip(marcaProde, "sponsor-prode");
   $("#prode-partido").innerHTML = '<div class="rival-inicial">' + escudoRival(p.r) + '</div>'
     + '<div><b>' + pl.nombre + ' vs ' + p.r + '</b>' + DIA_SEM(p.f) + ' ' + DIA_MES(p.f) + ' · ' + horaDe(p, pl) + ' hs · ' + dondeSeJuega(p) + '</div>';
   $("#prode-rival").textContent = p.r;
@@ -1237,7 +1253,7 @@ $("#prode-enviar").addEventListener("click", async e => {
   }
   jugando = false;
   if (plantelProde === pl) pintarProde(pl);
-  res.innerHTML = "Jugaste <b>" + a + " a " + b + "</b>. Si acertás, te llevás el premio de " + $("#sponsor-prode").textContent + " — te avisamos por Instagram.";
+  res.innerHTML = "Jugaste <b>" + a + " a " + b + "</b>. Si acertás, te llevás el premio de " + marcaChip(marcaProde, "sponsor-prode") + " — te avisamos por Instagram.";
   res.classList.add("visible");
   track("prode-jugado", { plantel: pl.id });
 });
