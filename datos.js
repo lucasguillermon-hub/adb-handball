@@ -512,6 +512,24 @@ const DATOS = {
       ] },
       { titulo:"Tercera damas", fechas:[] },
       { titulo:"Cuarta caballeros", fechas:[
+        { f:"2026-09-13", rival:"Ferrocarril Mitre", c:"L", fotografo:"", fotos:[
+          { src:"fotos/cuarta-caballeros/2026-09-13-01.jpg", alt:"Cuarta caballeros contra Ferrocarril Mitre, 13/09 de local (foto 1)", alto:true },
+          { src:"fotos/cuarta-caballeros/2026-09-13-02.jpg", alt:"Cuarta caballeros contra Ferrocarril Mitre, 13/09 de local (foto 2)", alto:true },
+          { src:"fotos/cuarta-caballeros/2026-09-13-03.jpg", alt:"Cuarta caballeros contra Ferrocarril Mitre, 13/09 de local (foto 3)" },
+          { src:"fotos/cuarta-caballeros/2026-09-13-04.jpg", alt:"Cuarta caballeros contra Ferrocarril Mitre, 13/09 de local (foto 4)", alto:true },
+          { src:"fotos/cuarta-caballeros/2026-09-13-05.jpg", alt:"Cuarta caballeros contra Ferrocarril Mitre, 13/09 de local (foto 5)", alto:true },
+          { src:"fotos/cuarta-caballeros/2026-09-13-06.jpg", alt:"Cuarta caballeros contra Ferrocarril Mitre, 13/09 de local (foto 6)", alto:true },
+          { src:"fotos/cuarta-caballeros/2026-09-13-07.jpg", alt:"Cuarta caballeros contra Ferrocarril Mitre, 13/09 de local (foto 7)", alto:true },
+          { src:"fotos/cuarta-caballeros/2026-09-13-08.jpg", alt:"Cuarta caballeros contra Ferrocarril Mitre, 13/09 de local (foto 8)" },
+          { src:"fotos/cuarta-caballeros/2026-09-13-09.jpg", alt:"Cuarta caballeros contra Ferrocarril Mitre, 13/09 de local (foto 9)", alto:true },
+          { src:"fotos/cuarta-caballeros/2026-09-13-10.jpg", alt:"Cuarta caballeros contra Ferrocarril Mitre, 13/09 de local (foto 10)", alto:true },
+          { src:"fotos/cuarta-caballeros/2026-09-13-11.jpg", alt:"Cuarta caballeros contra Ferrocarril Mitre, 13/09 de local (foto 11)", alto:true },
+          { src:"fotos/cuarta-caballeros/2026-09-13-12.jpg", alt:"Cuarta caballeros contra Ferrocarril Mitre, 13/09 de local (foto 12)", alto:true },
+          { src:"fotos/cuarta-caballeros/2026-09-13-13.jpg", alt:"Cuarta caballeros contra Ferrocarril Mitre, 13/09 de local (foto 13)", alto:true },
+          { src:"fotos/cuarta-caballeros/2026-09-13-14.jpg", alt:"Cuarta caballeros contra Ferrocarril Mitre, 13/09 de local (foto 14)" },
+          { src:"fotos/cuarta-caballeros/2026-09-13-15.jpg", alt:"Cuarta caballeros contra Ferrocarril Mitre, 13/09 de local (foto 15)" },
+          { src:"fotos/cuarta-caballeros/2026-09-13-16.jpg", alt:"Cuarta caballeros contra Ferrocarril Mitre, 13/09 de local (foto 16)" }
+        ]},
         { f:"2026-08-16", rival:"Dep. Laferrere", c:"L", fotografo:"JZ Audiovisuales", fotos:[
           { src:"fotos/cuarta-caballeros/2026-08-16-01.jpg", alt:"Cuarta caballeros contra Dep. Laferrere, 16/08 de local (foto 1)" },
           { src:"fotos/cuarta-caballeros/2026-08-16-02.jpg", alt:"Cuarta caballeros contra Dep. Laferrere, 16/08 de local (foto 2)", alto:true },
