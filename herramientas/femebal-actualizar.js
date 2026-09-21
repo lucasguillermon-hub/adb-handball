@@ -8,13 +8,16 @@
    datos.js el bloque partidos:[...] (fecha, condición, rival, hora propia y resultado) y el
    bloque tabla:[...]. Minis copia las fechas de Infantiles sin resultados. Un rival que no
    esté en el mapa de nombres cortos (femebal-datos-2026-09-18.json, clave "corto") corta el
-   script: hay que agregarlo ahí y bajar su escudo con femebal-escudos.js. */
+   script: hay que agregarlo ahí y bajar su escudo con femebal-escudos.js.
+   femebal-correcciones.json: cambios confirmados por el club que FeMeBal no refleja (localía "c",
+   hora "h"); se aplican encima del crudo en cada corrida. Sacar la entrada cuando FeMeBal lo corrija. */
 const fs = require("fs");
 const path = require("path");
 const REPO = path.resolve(__dirname, "..");
 
 const archivo = process.argv[2] || fs.readdirSync(__dirname).filter(f => /^femebal-crudo-.*\.json$/.test(f)).sort().pop();
 if (!archivo) throw new Error("No hay ningún femebal-crudo-<fecha>.json en herramientas/");
+const CORRECCIONES = fs.existsSync(path.join(__dirname, "femebal-correcciones.json")) ? JSON.parse(fs.readFileSync(path.join(__dirname, "femebal-correcciones.json"), "utf8")) : [];
 const crudo = JSON.parse(fs.readFileSync(path.resolve(__dirname, archivo), "utf8"));
 const fechaSync = (archivo.match(/(\d{4})-(\d{2})-(\d{2})/) || []).slice(1).reverse().join("/");
 
@@ -70,6 +73,8 @@ const resumen = [];
 for (const [titulo, filas] of Object.entries(crudo.fix)) {
   const id = idDe(titulo);
   const ps = filas.sort((a, b) => a.f - b.f).map(f => partido(f, horaPlantel(id)));
+  // Correcciones del club que FeMeBal todavía no refleja (cambios de localía u hora): femebal-correcciones.json
+  for (const c of CORRECCIONES.filter(c => c.id === id)) { const p = ps.find(p => p.f === c.f); if (!p) continue; if (c.c) p.c = c.c; if (c.h) p.h = c.h; if (c.h === null) delete p.h; }
   const antes = D0.planteles.find(p => p.id === id).partidos;
   const nuevos = ps.filter(p => p.g && !antes.find(a => a.f === p.f && a.g));
   reemplazar(id, /partidos:\[[\s\S]*?\n    \]/, bloquePartidos(ps));

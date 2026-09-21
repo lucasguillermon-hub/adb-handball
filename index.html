@@ -829,9 +829,12 @@ function escudoRival(r){
   const inicial = r.replace(/[^A-Za-zÁÉÍÓÚÑ]/g,"").charAt(0).toUpperCase();
   return '<img src="fotos/rivales/'+slugRival(r)+'.png" alt="" loading="lazy" onerror="this.remove()"><span>'+inicial+'</span>';
 }
+// Los partidos van en orden de fecha del torneo, pero un partido adelantado o postergado
+// (como el de San Telmo, fecha 11 jugada en septiembre) cambia el orden en el calendario.
+const porCalendario = pl => pl.partidos.filter(p => p.c !== "libre").slice().sort((a, b) => cuando(a, pl) - cuando(b, pl));
 function proximoDe(pl){
   const ahora = new Date();
-  return pl.partidos.find(p => p.c !== "libre" && cuando(p, pl) > ahora) || null;
+  return porCalendario(pl).find(p => cuando(p, pl) > ahora) || null;
 }
 function proximoPartido(){
   const ahora = new Date(); let mejor = null;
@@ -980,7 +983,7 @@ let plantelMvp = null, votando = false;
 
 function ultimoPartido(pl){
   const ahora = new Date();
-  return pl.partidos.filter(p => p.c !== "libre" && cuando(p, pl) <= ahora).pop() || null;
+  return porCalendario(pl).filter(p => cuando(p, pl) <= ahora).pop() || null;
 }
 // Dorsal de una jugadora (de las planillas de FeMeBal); sin dato, un guion.
 function dorsal(pl, n){ return (pl.dorsales && pl.dorsales[n]) || ""; }

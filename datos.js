@@ -85,7 +85,7 @@ const DATOS = {
       {f:"2026-08-22",c:"V",r:"Boca Juniors",h:"19:45",g:"18-21"},{f:"2026-08-29",c:"L",r:"AFALP",g:"25-32"},
       {f:"2026-09-05",c:"V",r:"Argentinos Juniors",h:"19:45",g:"15-14"},{f:"2026-09-12",c:"L",r:"Huracán de San Justo",g:"24-22"},
       {f:"2026-09-19",c:"V",r:"Independiente",g:"36-20"},{f:"2026-09-26",c:"L",r:"Querandí"},{f:"2026-10-03",c:"V",r:"Defensores de Moreno"},
-      {f:"2026-10-17",c:"L",r:"Mariano Acosta"},{f:"2026-09-24",c:"V",r:"San Telmo",h:"21:15"},{f:"2026-10-31",c:"V",r:"Nueva Chicago"},
+      {f:"2026-10-17",c:"L",r:"Mariano Acosta"},{f:"2026-09-24",c:"L",r:"San Telmo",h:"21:15"},{f:"2026-10-31",c:"V",r:"Nueva Chicago"},
       {f:"2026-11-07",c:"L",r:"Secla"},{f:"2026-11-14",c:"V",r:"Colegio del Parque"},{f:"2026-11-21",c:"L",r:"Cedem Caseros"}
     ], tabla:[
       [1,"Campana Boat Club",20,7,6,1,0,196,177],
