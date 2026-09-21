@@ -96,14 +96,15 @@ function filasDelBosco(texto){
     const txt = "\n      // Dorsales y goles del Clausura según las planillas de FeMeBal (femebal-dorsales.js).\n      dorsales:{" + orden.map(n => JSON.stringify(n) + ":" + dorsales[n]).join(", ") + "},\n      goles:{" + orden.filter(n => goles[n]).map(n => JSON.stringify(n) + ":" + goles[n]).join(", ") + "}"
       + ",\n      golesFecha:{\n" + fechas.map(f => "        " + JSON.stringify(f) + ":{" + Object.keys(porFecha[f]).sort((a, b) => porFecha[f][b] - porFecha[f][a]).map(n => JSON.stringify(n) + ":" + porFecha[f][n]).join(", ") + "}").join(",\n") + "\n      }";
     const m = b.match(/jugadoras:\[[\s\S]*?\]/); if (!m) throw new Error("sin jugadoras: " + id);
-    const lista = nuevas.length ? m[0].replace(/\s*\]$/, ",\n      " + nuevas.map(n => JSON.stringify(n)).join(", ") + "   // según las planillas de FeMeBal\n    ]") : m[0];
+    // Las nuevas van al final de la lista; si la última línea ya tenía el comentario, se reemplaza
+    const lista = nuevas.length ? m[0].replace(/,?\s*(\/\/[^\n]*)?\s*\]$/, ",\n      " + nuevas.map(n => JSON.stringify(n)).join(", ") + "   // según las planillas de FeMeBal\n    ]") : m[0];
     b = b.replace(m[0], lista + "," + txt);
     s = s.slice(0, ini) + b + (finPl < 0 ? "" : s.slice(finPl));
     const top = Object.keys(goles).sort((a, b) => goles[b] - goles[a])[0];
     console.log(pl.nombre.padEnd(18), String(Object.keys(dorsales).length).padStart(2) + " con dorsal", "· goleadora: " + top + " (" + goles[top] + ")");
   }
+  new Function(s + ";return DATOS")();   // datos.js tiene que seguir siendo válido antes de escribirlo
   fs.writeFileSync(path.join(REPO, "datos.js"), s);
-  new Function(s + ";return DATOS")();
   if (agregadas.length) console.log("\nAgregadas a jugadoras (dos o más partidos, no estaban en la lista del club):\n  " + agregadas.join("\n  "));
   if (refuerzos.length) console.log("\nRefuerzos de un solo partido (no se agregan):\n  " + refuerzos.join("\n  "));
 })();
