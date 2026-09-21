@@ -31,7 +31,9 @@ const sinTilde = s => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().r
 const titulo = s => s.toLowerCase().replace(/(^|[\s'])\S/g, c => c.toUpperCase());
 // Distancia de edición, para perdonar una letra distinta entre la planilla y la lista del club
 const dist = (a, b) => { const m = []; for (let i = 0; i <= a.length; i++) { m[i] = [i]; for (let j = 1; j <= b.length; j++) m[i][j] = i ? Math.min(m[i-1][j] + 1, m[i][j-1] + 1, m[i-1][j-1] + (a[i-1] === b[j-1] ? 0 : 1)) : j; } return m[a.length][b.length]; };
-const parecidos = (a, b) => a === b || (a.length > 4 && b.length > 4 && dist(a, b) <= 1);
+// Iguales, a una letra de distancia, o uno es el principio del otro (la lista del club a veces
+// corta apellidos largos: "Marsico" por "Marsicovetere")
+const parecidos = (a, b) => a === b || (a.length > 4 && b.length > 4 && (dist(a, b) <= 1 || a.startsWith(b) || b.startsWith(a)));
 
 // Texto de una planilla → filas del Bosco: [{ n, apellido, nombre, goles }]
 function filasDelBosco(texto){
@@ -67,8 +69,9 @@ function filasDelBosco(texto){
       if (fechaPartido) porFecha[fechaPartido] = porFecha[fechaPartido] || {};
       for (const fila of filasDelBosco(texto)) {
         // Emparejar con la lista del club: apellido igual (o casi) y algún nombre en común
-        const aps = sinTilde(fila.apellido).split(" "), nom = sinTilde(fila.nombre).split(" ");
-        const nombreClub = pl.jugadoras.find(j => { const jj = sinTilde(j).split(" ");
+        // El apellido también se compara todo junto, por los apóstrofos ("D'Urzo" y "Durzo" son la misma)
+        const aps = sinTilde(fila.apellido).split(" "), nom = sinTilde(fila.nombre).split(" "); aps.push(aps.join(""));
+        const nombreClub = pl.jugadoras.find(j => { const jj = sinTilde(j).split(" "); jj.push(jj.slice(1).join(""));
           return aps.some(a => jj.some(x => parecidos(x, a))) && nom.some(a => jj.some(x => parecidos(x, a))); });
         const clave = nombreClub || titulo(fila.nombre.split(" ")[0] + " " + fila.apellido);
         usos[clave] = usos[clave] || {}; usos[clave][fila.n] = (usos[clave][fila.n] || 0) + 1;

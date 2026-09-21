@@ -37,7 +37,8 @@ const DATOS = {
   // nombre: como lo llama el club · division: como lo llama FeMeBal (se muestra en la tabla).
   // jugadoras: el plantel que se vota como figura de la fecha (de LISTAS PRESENTISMO 2026).
   // Minis e Infantiles son formativas: van con jugadoras:[] y no entran en nada que sea por nombre.
-  // nombresCortos: true muestra "Nombre A." en vez del nombre completo (para menores de edad).
+  // nombresCortos: true muestra "Nombre A." en vez del nombre completo (Menores y Cadetas, que
+  // igual no aparecen por nombre en ningún lado). De Juveniles para arriba, nombre y apellido.
   planteles: [
     { id:"mayores-a", nombre:"Primera damas", division:"Mayores · 1º División", dia:"Sábados", hora:"18:00", sponsor:"Franco Liontix", jugadoras:[
       "Luz Agüero", "Noelia Alcala", "Millaray Cocha", "Daniela Cristaldo", "Katia Cuomo", "Guadalupe Fernandez",
@@ -256,8 +257,8 @@ const DATOS = {
       [16,"Círculo de Villa Devoto",8,6,1,0,5,135,159]
     ] },
     { id:"juveniles", nombre:"Juveniles", division:"Juveniles · División C", dia:"Domingos", hora:"14:30",
-      nombresCortos:true, jugadoras:[
-      "Julieta Antero", "Valentina Antero", "Camila Dib", "Antonella Durzo", "Uma Estanga", "Angela Farias",
+      jugadoras:[
+      "Julieta Antero", "Valentina Antero", "Camila Dib", "Uma Estanga", "Angela Farias",
       "Renata Giachello", "Martina Gomez", "Isabella Scarfo", "Luciana Toledo",
       "Antonella D'Urzo", "Isabella Greco", "Luciana Chiesa Hornung", "Maria Rotta",
       "Ema Rosello"   // según las planillas de FeMeBal
@@ -300,21 +301,21 @@ const DATOS = {
     ] },
     { id:"juniors", nombre:"Juniors", division:"Junior · División C", dia:"Domingos", hora:"16:00",
       jugadoras:[
-      "Jazmin Alarcon", "Mia Badaracco", "Katia Cuomo", "Julia Damario", "Camila Gomez", "Patricia Marsico",
-      "Sofia Marsico", "Thayssa Montali", "Milagros Mosqueda", "Catalina Ravazzano", "Emilia Zarantonello",
+      "Jazmin Alarcon", "Mia Badaracco", "Katia Cuomo", "Julia Damario", "Camila Gomez", "Patricia Marsicovetere",
+      "Thayssa Montaly", "Milagros Mosqueda", "Catalina Ravazzano", "Emilia Zarantonello",
       "Julieta Antero", "Sofia Marsicovetere Palmieri", "Valentina Antero", "Luciana Toledo Rodriguez", "Martina Gomez", "Renata Giachello"   // según las planillas de FeMeBal
     ],
       // Dorsales y goles del Clausura según las planillas de FeMeBal (femebal-dorsales.js).
-      dorsales:{"Julieta Antero":1, "Sofia Marsicovetere Palmieri":3, "Jazmin Alarcon":4, "Valentina Antero":5, "Katia Cuomo":6, "Mia Badaracco":8, "Emilia Zarantonello":9, "Thayssa Montali":10, "Martina Gomez":11, "Camila Gomez":16, "Renata Giachello":17, "Luciana Toledo Rodriguez":21, "Milagros Mosqueda":22, "Julia Damario":25, "Catalina Ravazzano":33},
-      goles:{"Sofia Marsicovetere Palmieri":11, "Jazmin Alarcon":21, "Valentina Antero":10, "Katia Cuomo":40, "Mia Badaracco":17, "Emilia Zarantonello":48, "Thayssa Montali":16, "Martina Gomez":3, "Renata Giachello":5, "Luciana Toledo Rodriguez":3, "Milagros Mosqueda":5, "Julia Damario":9, "Catalina Ravazzano":17},
+      dorsales:{"Julieta Antero":1, "Sofia Marsicovetere Palmieri":3, "Jazmin Alarcon":4, "Valentina Antero":5, "Katia Cuomo":6, "Mia Badaracco":8, "Emilia Zarantonello":9, "Thayssa Montaly":10, "Martina Gomez":11, "Camila Gomez":16, "Renata Giachello":17, "Luciana Toledo Rodriguez":21, "Milagros Mosqueda":22, "Julia Damario":25, "Catalina Ravazzano":33},
+      goles:{"Sofia Marsicovetere Palmieri":11, "Jazmin Alarcon":21, "Valentina Antero":10, "Katia Cuomo":40, "Mia Badaracco":17, "Emilia Zarantonello":48, "Thayssa Montaly":16, "Martina Gomez":3, "Renata Giachello":5, "Luciana Toledo Rodriguez":3, "Milagros Mosqueda":5, "Julia Damario":9, "Catalina Ravazzano":17},
       golesFecha:{
-        "2026-08-09":{"Emilia Zarantonello":5, "Katia Cuomo":4, "Mia Badaracco":4, "Thayssa Montali":3, "Catalina Ravazzano":3, "Sofia Marsicovetere Palmieri":2, "Valentina Antero":2},
-        "2026-08-16":{"Katia Cuomo":13, "Jazmin Alarcon":5, "Julia Damario":4, "Catalina Ravazzano":4, "Mia Badaracco":3, "Sofia Marsicovetere Palmieri":2, "Emilia Zarantonello":2, "Milagros Mosqueda":2, "Thayssa Montali":1},
-        "2026-08-23":{"Emilia Zarantonello":9, "Katia Cuomo":7, "Catalina Ravazzano":4, "Sofia Marsicovetere Palmieri":3, "Jazmin Alarcon":3, "Thayssa Montali":3, "Renata Giachello":2, "Valentina Antero":1, "Mia Badaracco":1, "Martina Gomez":1, "Julia Damario":1},
-        "2026-08-30":{"Emilia Zarantonello":14, "Thayssa Montali":4, "Sofia Marsicovetere Palmieri":3, "Katia Cuomo":2, "Julia Damario":2, "Catalina Ravazzano":2, "Jazmin Alarcon":1, "Mia Badaracco":1, "Renata Giachello":1},
-        "2026-09-06":{"Emilia Zarantonello":7, "Katia Cuomo":6, "Jazmin Alarcon":5, "Mia Badaracco":4, "Martina Gomez":2, "Sofia Marsicovetere Palmieri":1, "Valentina Antero":1, "Thayssa Montali":1, "Milagros Mosqueda":1, "Julia Damario":1},
-        "2026-09-13":{"Jazmin Alarcon":7, "Valentina Antero":4, "Emilia Zarantonello":4, "Catalina Ravazzano":4, "Mia Badaracco":2, "Renata Giachello":2, "Katia Cuomo":1, "Thayssa Montali":1, "Milagros Mosqueda":1},
-        "2026-09-20":{"Katia Cuomo":7, "Emilia Zarantonello":7, "Thayssa Montali":3, "Luciana Toledo Rodriguez":3, "Valentina Antero":2, "Mia Badaracco":2, "Milagros Mosqueda":1, "Julia Damario":1}
+        "2026-08-09":{"Emilia Zarantonello":5, "Katia Cuomo":4, "Mia Badaracco":4, "Thayssa Montaly":3, "Catalina Ravazzano":3, "Sofia Marsicovetere Palmieri":2, "Valentina Antero":2},
+        "2026-08-16":{"Katia Cuomo":13, "Jazmin Alarcon":5, "Julia Damario":4, "Catalina Ravazzano":4, "Mia Badaracco":3, "Sofia Marsicovetere Palmieri":2, "Emilia Zarantonello":2, "Milagros Mosqueda":2, "Thayssa Montaly":1},
+        "2026-08-23":{"Emilia Zarantonello":9, "Katia Cuomo":7, "Catalina Ravazzano":4, "Sofia Marsicovetere Palmieri":3, "Jazmin Alarcon":3, "Thayssa Montaly":3, "Renata Giachello":2, "Valentina Antero":1, "Mia Badaracco":1, "Martina Gomez":1, "Julia Damario":1},
+        "2026-08-30":{"Emilia Zarantonello":14, "Thayssa Montaly":4, "Sofia Marsicovetere Palmieri":3, "Katia Cuomo":2, "Julia Damario":2, "Catalina Ravazzano":2, "Jazmin Alarcon":1, "Mia Badaracco":1, "Renata Giachello":1},
+        "2026-09-06":{"Emilia Zarantonello":7, "Katia Cuomo":6, "Jazmin Alarcon":5, "Mia Badaracco":4, "Martina Gomez":2, "Sofia Marsicovetere Palmieri":1, "Valentina Antero":1, "Thayssa Montaly":1, "Milagros Mosqueda":1, "Julia Damario":1},
+        "2026-09-13":{"Jazmin Alarcon":7, "Valentina Antero":4, "Emilia Zarantonello":4, "Catalina Ravazzano":4, "Mia Badaracco":2, "Renata Giachello":2, "Katia Cuomo":1, "Thayssa Montaly":1, "Milagros Mosqueda":1},
+        "2026-09-20":{"Katia Cuomo":7, "Emilia Zarantonello":7, "Thayssa Montaly":3, "Luciana Toledo Rodriguez":3, "Valentina Antero":2, "Mia Badaracco":2, "Milagros Mosqueda":1, "Julia Damario":1}
       }, partidos:[
       {f:"2026-08-09",c:"V",r:"Círculo de Villa Devoto",g:"23-34"},{f:"2026-08-16",c:"L",r:"Independiente",g:"36-31"},
       {f:"2026-08-23",c:"V",r:"Colegio Ward",g:"35-32"},{f:"2026-08-30",c:"L",r:"Boca Juniors",g:"30-31"},{f:"2026-09-06",c:"V",r:"Banfield",g:"29-16"},
