@@ -856,9 +856,11 @@ function sponsorDelProde(pl, p){
 
 /* ============================ próximo partido ============================ */
 function horaDe(p, plantel){ return p.h || plantel.hora; }                       // un partido puede tener hora propia
+// Hora para mostrar: "11:30 hs", o "hora a confirmar" cuando la liga todavía no la programó (sinHora)
+function horaTxt(p, plantel){ return p.sinHora ? "hora a confirmar" : horaDe(p, plantel) + " hs"; }
 // Dónde se juega: de local, en Don Bosco 116 salvo que el partido traiga una sede propia
 // (por ejemplo la Casa del Handball de FeMeBal, donde cada categoría juega una fecha).
-function dondeSeJuega(p){ return p.c === "L" ? "En " + (p.sede || "Don Bosco 116") : "De visitante"; }
+function dondeSeJuega(p){ return p.sede === "a confirmar" ? "Sede a confirmar" : p.sede ? "En " + p.sede : p.c === "L" ? "En Don Bosco 116" : "De visitante"; }
 function cuando(p, plantel){ return new Date(p.f+"T"+horaDe(p, plantel)+":00"); }
 const DIAS_SEM = ["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"];
 const DIA_SEM = f => DIAS_SEM[new Date(f+"T12:00:00").getDay()];
@@ -893,7 +895,7 @@ const prox = proximoPartido();
 if (prox){
   const nro = prox.pl.partidos.indexOf(prox.p)+1;
   $("#tab-torneo").textContent = DATOS.torneo+" · Fecha "+nro;
-  $("#tab-fecha").textContent = DIA_SEM(prox.p.f)+" "+DIA_MES(prox.p.f)+" · "+horaDe(prox.p, prox.pl)+" hs";
+  $("#tab-fecha").textContent = DIA_SEM(prox.p.f)+" "+DIA_MES(prox.p.f)+" · "+horaTxt(prox.p, prox.pl);
   $("#tab-plantel").textContent = prox.pl.nombre;
   $("#tab-rival").textContent = prox.p.r;
   $("#tab-inicial").innerHTML = escudoRival(prox.p.r);
@@ -920,7 +922,7 @@ if (prox){
     .sort((a, b) => cuando(a.p, a.pl) - cuando(b.p, b.pl));
   $("#proximas").innerHTML = '<h4>La próxima fecha de cada plantel</h4>' + proximas.map(({ pl, p }) =>
     '<div class="prox' + (p.c === "L" ? " local" : "") + '"><div class="rival-inicial">' + escudoRival(p.r) + '</div>'
-    + '<div><b>' + pl.nombre + '</b><span>' + DIA_SEM(p.f) + ' ' + DIA_MES(p.f) + ' · ' + horaDe(p, pl) + ' hs · vs ' + p.r
+    + '<div><b>' + pl.nombre + '</b><span>' + DIA_SEM(p.f) + ' ' + DIA_MES(p.f) + ' · ' + horaTxt(p, pl) + ' · vs ' + p.r
     + '<br><em>' + dondeSeJuega(p) + '</em></span></div></div>').join("");
 }
 
@@ -964,8 +966,8 @@ function pintarFixture(i){
     return '<'+tag+' class="pf '+(p.c==="L"?"local":"")+pasado+(r ? " "+r.clase : "")+(conFicha ? ' con-ficha" type="button" aria-expanded="false" data-f="'+p.f+'"' : '"')+'>'
       + '<span class="riv">'+p.r+'</span>'
       + (r ? '<span class="res"><b>'+r.txt+'</b>'+r.palabra+'</span>' : '')
-      + (p.sede ? '<span class="sede">'+p.sede+'</span>' : '')
-      + '<span class="pie"><span class="cond">'+(p.c==="L"?"LOCAL":"VISITANTE")+'</span><span>'+DIA_MES(p.f)+(p.h ? " · "+p.h : "")+'</span></span></'+tag+'>';
+      + (p.sede ? '<span class="sede">'+(p.sede === "a confirmar" ? "sede a confirmar" : p.sede)+'</span>' : '')
+      + '<span class="pie"><span class="cond">'+(p.c==="L"?"LOCAL":"VISITANTE")+'</span><span>'+DIA_MES(p.f)+(p.h ? " · "+p.h : p.sinHora ? " · hora a conf." : "")+'</span></span></'+tag+'>';
   }).join("") : '<p class="pf-vacio">Todavía no está cargado el fixture de '+pl.nombre+'. Apenas lo tengamos, aparece acá.</p>';
   cerrarFicha();
   $("#leyenda-dia").textContent = pl.partidos.length ? pl.dia+", "+pl.hora+" hs (salvo que la tarjeta diga otra hora)" : "";
@@ -1020,7 +1022,7 @@ function abrirFicha(pl, p){
   $$("#grilla .con-ficha").forEach(b => b.setAttribute("aria-expanded", b.dataset.f === p.f));
   caja.innerHTML = '<div class="marcador-ficha">' + r.txt + '<span>' + r.palabra + '</span></div>'
     + '<div><h4>' + pl.nombre + ' vs ' + p.r + '</h4>'
-    + '<p class="meta">' + DIA_SEM(p.f) + ' ' + DIA_MES(p.f) + ' · ' + horaDe(p, pl) + ' hs · ' + dondeSeJuega(p) + ' · Fecha ' + (pl.partidos.indexOf(p) + 1) + '</p>'
+    + '<p class="meta">' + DIA_SEM(p.f) + ' ' + DIA_MES(p.f) + ' · ' + horaTxt(p, pl) + ' · ' + dondeSeJuega(p) + ' · Fecha ' + (pl.partidos.indexOf(p) + 1) + '</p>'
     + listaGoles(pl, g) + '</div>'
     + '<button class="cerrar" type="button">Cerrar la ficha</button>';
   caja.hidden = false;
@@ -1200,7 +1202,7 @@ function pintarProde(pl){
   marcaProde = sponsorDelProde(pl, p);
   $("#sponsor-prode").innerHTML = marcaChip(marcaProde, "sponsor-prode");
   $("#prode-partido").innerHTML = '<div class="rival-inicial">' + escudoRival(p.r) + '</div>'
-    + '<div><b>' + pl.nombre + ' vs ' + p.r + '</b>' + DIA_SEM(p.f) + ' ' + DIA_MES(p.f) + ' · ' + horaDe(p, pl) + ' hs · ' + dondeSeJuega(p) + '</div>';
+    + '<div><b>' + pl.nombre + ' vs ' + p.r + '</b>' + DIA_SEM(p.f) + ' ' + DIA_MES(p.f) + ' · ' + horaTxt(p, pl) + ' · ' + dondeSeJuega(p) + '</div>';
   $("#prode-rival").textContent = p.r;
 
   const e = estadoProde[pl.id] || { total: 0, mio: null, cerrado: false, gana: 0, empata: 0, pierde: 0 };

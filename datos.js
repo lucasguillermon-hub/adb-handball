@@ -382,14 +382,34 @@ const DATOS = {
       [13,"Dorrego",10,7,1,1,5,156,180],
       [14,"Círculo General Belgrano",6,7,1,0,5,103,163]
     ]},
-    // ⚠️ Maxihandball: falta cargar su fixture (fechas, rivales, día y hora).
-    { id:"maxi", nombre:"Maxihandball", dia:"Domingos", hora:"11:00", jugadoras:[
+    // Maxihandball: fixture y tabla de la Liga Maxi Handball (timbo.futbol), con maxi-actualizar.js.
+    { id:"maxi", nombre:"Maxihandball", division:"Liga Maxi Handball · Clausura", dia:"Sábados", hora:"11:00", jugadoras:[
       "Nahir Alvarez", "Ariadna Aristizabal", "Agustina Bajko", "Valentina Bajko", "Mariana Benitez",
       "Jimena Berutti", "Julieta Biazzo", "Mayra Borrely", "Camila Lalin", "Gisela Loffler", "Agustina Michl",
       "Julieta Milanesi", "Martina Panetta", "Maru Pereyras", "Magali Prisco", "Marcela Rodriguez",
       "Florencia Rossaro", "Camila Seguin", "Paula Subiza", "Gianella Turquia", "Belen Varela",
       "Julieta Zarate"
-    ], partidos:[] }
+    ], partidos:[
+      {f:"2026-08-29",c:"L",r:"Manuel Belgrano",h:"09:15",g:"12-20"},{f:"2026-09-05",c:"V",r:"Instituto Manuel Belgrano",sede:"Polideportivo N. Kirchner (Ezeiza)",g:"18-19"},
+      {f:"2026-09-12",c:"V",r:"Team Ezeiza",h:"11:30",sede:"Polideportivo N. Kirchner (Ezeiza)",g:"15-14"},{f:"2026-09-26",c:"L",r:"Las 2P",sinHora:true,sede:"a confirmar"},
+      {f:"2026-10-10",c:"L",r:"Panteras Handball",sinHora:true,sede:"a confirmar"},{f:"2026-10-10",c:"L",r:"Golondrinas",sinHora:true,sede:"a confirmar"},
+      {f:"2026-10-31",c:"V",r:"Club Social",sinHora:true,sede:"a confirmar"},{f:"2026-10-31",c:"V",r:"Villa Vatteone",sinHora:true,sede:"a confirmar"},
+      {f:"2026-11-14",c:"V",r:"47 Handball Club",sinHora:true,sede:"a confirmar"},{f:"2026-11-14",c:"L",r:"La Patriada",sinHora:true,sede:"a confirmar"},
+      {f:"2026-11-28",c:"L",r:"CAQ Handball",sinHora:true,sede:"a confirmar"}
+    ], tabla:[
+      [1,"Manuel Belgrano",8,3,2,1,0,66,35],
+      [2,"Panteras Handball",8,3,2,1,0,59,42],
+      [3,"Team Ezeiza",7,3,2,0,1,47,33],
+      [4,"CAQ Handball",6,3,1,1,1,41,41],
+      [5,"Las 2P",6,3,1,1,1,65,53],
+      [6,"Instituto Manuel Belgrano",6,3,1,1,1,42,45],
+      [7,"Villa Vatteone",5,2,1,1,0,36,22],
+      [8,"Club Social",5,3,1,0,2,38,63],
+      [9,"Ateneo Don Bosco",5,3,1,0,2,45,53],
+      [10,"47 Handball Club",4,2,1,0,1,43,48],
+      [11,"La Patriada",3,3,0,0,3,26,61],
+      [12,"Golondrinas",1,1,0,0,1,11,23]
+    ] }
   ],
 
   // La votación de la figura usa `jugadoras` de cada plantel y el último partido jugado.

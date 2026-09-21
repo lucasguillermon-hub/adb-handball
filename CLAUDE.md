@@ -97,7 +97,8 @@ pertenencia. Los textos hablan de la tribuna, de las familias y del barrio, no d
 - El fixture, los horarios, los resultados y las tablas de posiciones salen de FeMeBal (femebal.com/tournament-tracker,
   Torneo Metropolitano Clausura: Mayores 1º y 3º división femenino, división C de Infantiles
   a Junior, 4º división masculino). Para actualizarlo, ver "Sincronizar con FeMeBal" en
-  recetas.md. Maxihandball no está en FeMeBal: su fixture se carga a mano.
+  recetas.md. Maxihandball no está en FeMeBal: juega la Liga Maxi Handball (timbo.futbol) y se
+  sincroniza con `herramientas/maxi-actualizar.js` (fixture con reprogramaciones, sede y tabla).
 - Iniciación son grupos para quienes arrancan (11-13, 14-15 y 16-17 años), lunes y miércoles;
   no compiten. Horarios de entrenamiento según la planilla "Temporada 2026" (Horarios.jpeg,
   septiembre 2026).
@@ -121,9 +122,9 @@ pertenencia. Los textos hablan de la tribuna, de las familias y del barrio, no d
   cada uno lleva `division`, el nombre de FeMeBal, que se muestra en la tabla de posiciones.
   Minis, Infantiles, Menores, Cadetas, Juveniles y Juniors son la tira de
   inferiores (mismas fechas y lugar, cada una a su hora). Cada partido puede llevar `h`
-  (hora propia) y `g` (resultado "nuestros-de ellos"). Faltan: el fixture de Maxihandball
-  (hoy vacío), el horario de Minis, y decidir qué sponsor presenta cada plantel nuevo (sin
-  `sponsor`, el marcador no muestra presentador).
+  (hora propia) y `g` (resultado "nuestros-de ellos"). Faltan: el horario de Minis, y decidir qué sponsor presenta cada plantel nuevo (sin
+  `sponsor`, el marcador no muestra presentador). Un partido puede llevar `sinHora:true` (la liga
+  no lo programó: se muestra "hora a confirmar") y `sede` ("a confirmar" o el nombre del lugar).
 - Escudos de rivales en `fotos/rivales/<nombre-del-rival-en-minusculas>.png` (44 de FeMeBal
   y 13 de Maxi). Un rival nuevo se ve con su inicial hasta que se cargue el archivo.
 - Galería: un álbum por categoría y adentro una entrada por fecha (rival, condición, fotógrafo,
