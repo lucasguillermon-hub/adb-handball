@@ -12,7 +12,9 @@
      dos o más partidos con el plantel y no está en la lista se agrega a jugadoras; quien jugó
      uno solo se toma como refuerzo de otra categoría y se informa nada más.
    - Minis e Infantiles (jugadoras:[]) no entran: son formativas.
-   - Escribe en datos.js `dorsales:{...}` y `goles:{...}` en cada plantel (reemplaza si existen).
+   - Escribe en datos.js `dorsales:{...}`, `goles:{...}` (total del torneo) y `golesFecha:{ fecha:{...} }`
+     (goles de cada partido, con la fecha del partido como clave) en cada plantel; reemplaza si
+     existen. golesFecha va aparte de partidos:[...] para que femebal-actualizar.js no lo pise.
 
    Necesita pdf-parse en %TEMP%\adb-node. */
 const fs = require("fs"); const path = require("path");
@@ -56,10 +58,13 @@ function filasDelBosco(texto){
     const id = idDe(tit); const pl = D.planteles.find(p => p.id === id);
     if (!pl.jugadoras || !pl.jugadoras.length) continue;   // formativas
     const usos = {}, goles = {}, partidos = {};   // por nombre: { numero → veces }, goles, partidos jugados
+    const porFecha = {};   // fecha del partido → { nombre → goles }
     for (const h of hojas) {
       const pdfPath = path.join(DIR, id + "-f" + h.f + ".pdf");
       if (!fs.existsSync(pdfPath)) fs.writeFileSync(pdfPath, Buffer.from(await (await fetch(h.url)).arrayBuffer()));
       const texto = (await pdf(fs.readFileSync(pdfPath))).text;
+      const fechaPartido = (texto.match(/Fecha:\s*\n?\s*(\d{4}-\d{2}-\d{2})/) || [])[1];
+      if (fechaPartido) porFecha[fechaPartido] = porFecha[fechaPartido] || {};
       for (const fila of filasDelBosco(texto)) {
         // Emparejar con la lista del club: apellido igual (o casi) y algún nombre en común
         const aps = sinTilde(fila.apellido).split(" "), nom = sinTilde(fila.nombre).split(" ");
@@ -69,6 +74,7 @@ function filasDelBosco(texto){
         usos[clave] = usos[clave] || {}; usos[clave][fila.n] = (usos[clave][fila.n] || 0) + 1;
         goles[clave] = (goles[clave] || 0) + fila.goles;
         partidos[clave] = (partidos[clave] || 0) + 1;
+        if (fechaPartido && fila.goles) porFecha[fechaPartido][clave] = fila.goles;
       }
     }
     // Quien no está en la lista del club: con dos o más partidos entra al plantel; con uno, es refuerzo
@@ -76,7 +82,7 @@ function filasDelBosco(texto){
     for (const nombre of Object.keys(usos)) {
       if (pl.jugadoras.includes(nombre)) continue;
       if (partidos[nombre] >= 2) { nuevas.push(nombre); agregadas.push(pl.nombre + ": " + nombre + " (" + partidos[nombre] + " partidos)"); }
-      else { refuerzos.push(pl.nombre + ": " + nombre); delete usos[nombre]; delete goles[nombre]; }
+      else { refuerzos.push(pl.nombre + ": " + nombre); delete usos[nombre]; delete goles[nombre]; for (const f of Object.values(porFecha)) delete f[nombre]; }
     }
     const dorsales = {};
     for (const [nombre, nums] of Object.entries(usos)) dorsales[nombre] = +Object.entries(nums).sort((a, b) => b[1] - a[1])[0][0];
@@ -84,9 +90,11 @@ function filasDelBosco(texto){
     // Escribir en datos.js: jugadoras nuevas al final de la lista, y dorsales/goles después
     const ini = s.indexOf(`{ id:"${id}"`); const finPl = s.indexOf('{ id:"', ini + 5);
     let b = s.slice(ini, finPl < 0 ? undefined : finPl);
-    b = b.replace(/,\s*\/\/ Dorsales y goles[^\n]*\n\s*dorsales:\{[^}]*\},\s*goles:\{[^}]*\}/, "");
+    b = b.replace(/,\s*\/\/ Dorsales y goles[^\n]*\n\s*dorsales:\{[^}]*\},\s*goles:\{[^}]*\}(,\s*golesFecha:\{[\s\S]*?\n      \})?/, "");
     const orden = Object.keys(dorsales).sort((a, b) => dorsales[a] - dorsales[b]);
-    const txt = "\n      // Dorsales y goles del Clausura según las planillas de FeMeBal (femebal-dorsales.js).\n      dorsales:{" + orden.map(n => JSON.stringify(n) + ":" + dorsales[n]).join(", ") + "},\n      goles:{" + orden.filter(n => goles[n]).map(n => JSON.stringify(n) + ":" + goles[n]).join(", ") + "}";
+    const fechas = Object.keys(porFecha).sort();
+    const txt = "\n      // Dorsales y goles del Clausura según las planillas de FeMeBal (femebal-dorsales.js).\n      dorsales:{" + orden.map(n => JSON.stringify(n) + ":" + dorsales[n]).join(", ") + "},\n      goles:{" + orden.filter(n => goles[n]).map(n => JSON.stringify(n) + ":" + goles[n]).join(", ") + "}"
+      + ",\n      golesFecha:{\n" + fechas.map(f => "        " + JSON.stringify(f) + ":{" + Object.keys(porFecha[f]).sort((a, b) => porFecha[f][b] - porFecha[f][a]).map(n => JSON.stringify(n) + ":" + porFecha[f][n]).join(", ") + "}").join(",\n") + "\n      }";
     const m = b.match(/jugadoras:\[[\s\S]*?\]/); if (!m) throw new Error("sin jugadoras: " + id);
     const lista = nuevas.length ? m[0].replace(/\s*\]$/, ",\n      " + nuevas.map(n => JSON.stringify(n)).join(", ") + "   // según las planillas de FeMeBal\n    ]") : m[0];
     b = b.replace(m[0], lista + "," + txt);

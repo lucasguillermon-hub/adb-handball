@@ -159,6 +159,24 @@ header{position:sticky;top:0;z-index:60;background:rgba(10,20,40,.92);backdrop-f
 .pf.local{background:var(--rosa);color:var(--tinta)}
 .pf.libre{background:transparent;border:1px dashed var(--linea-oscura);color:rgba(10,20,40,.45);align-items:center;justify-content:center;text-align:center;font-weight:600}
 .pf.pasado{opacity:.42}
+/* Tarjeta con ficha (partido jugado con goles cargados): se toca y abre la ficha abajo de la grilla */
+.pf.con-ficha{cursor:pointer;font:inherit;text-align:left;width:100%}
+.pf.con-ficha:hover,.pf.con-ficha[aria-expanded="true"]{opacity:1;border-color:var(--rosa-vivo)}
+.ficha{margin-top:14px;border:1px solid var(--linea-oscura);border-radius:14px;background:#fff;padding:18px 20px;display:grid;grid-template-columns:auto 1fr;gap:10px 26px;align-items:start}
+.ficha[hidden]{display:none}
+.ficha .marcador-ficha{font-family:var(--display);font-size:44px;line-height:1;letter-spacing:.02em}
+.ficha .marcador-ficha span{display:block;font-family:var(--texto);font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--rosa-vivo);margin-top:6px}
+.ficha h4{font-family:var(--display);font-size:20px;font-weight:400;margin:0;line-height:1.1}
+.ficha .meta{font-size:13.5px;color:rgba(10,20,40,.62);margin:4px 0 10px}
+.ficha ol{list-style:none;margin:0;padding:0;display:grid;gap:6px;max-width:520px}
+.ficha li{display:grid;grid-template-columns:34px 1fr auto;align-items:center;gap:10px;background:var(--hueso);border-radius:8px;padding:6px 12px;position:relative;overflow:hidden;font-size:14px}
+.ficha li::before{content:"";position:absolute;left:0;top:0;bottom:0;width:var(--w);background:var(--rosa);opacity:.4}
+.ficha li>*{position:relative}
+.ficha .dorsal{font-family:var(--display);font-size:16px;color:var(--rosa-vivo)}
+.ficha .g{font-family:var(--display);font-size:16px}
+.ficha .cerrar{grid-column:1/-1;justify-self:start;background:none;border:1px solid var(--linea-oscura);border-radius:999px;padding:6px 14px;font-family:inherit;font-size:13px;font-weight:600;color:var(--tinta);cursor:pointer}
+.ficha .cerrar:hover{border-color:var(--rosa-vivo)}
+@media(max-width:600px){.ficha{grid-template-columns:1fr}}
 .pf.pasado.ganado,.pf.pasado.empatado,.pf.pasado.perdido{opacity:.55}
 .pf .riv{font-family:var(--display);font-size:15px;line-height:1.05}
 .pf .pie{display:flex;justify-content:space-between;align-items:baseline;font-size:12px;font-weight:700;letter-spacing:.06em;margin-top:10px}
@@ -170,6 +188,10 @@ header{position:sticky;top:0;z-index:60;background:rgba(10,20,40,.92);backdrop-f
 .posiciones .nota{font-size:13.5px;color:rgba(10,20,40,.62);margin:0 0 14px}
 /* Goleadoras del Bosco en el torneo: las cinco con más goles, con barra proporcional */
 .goleadoras{margin-top:30px}
+.goleadoras .cabeza-gol{display:flex;justify-content:space-between;align-items:flex-end;gap:14px;flex-wrap:wrap}
+.goleadoras .tabs-gol{display:flex;gap:6px}
+.goleadoras .tabs-gol button{background:none;border:1px solid var(--linea-oscura);border-radius:999px;padding:6px 14px;font-family:inherit;font-size:13px;font-weight:600;color:var(--tinta);cursor:pointer}
+.goleadoras .tabs-gol button[aria-selected="true"]{background:var(--tinta);border-color:var(--tinta);color:#fff}
 .goleadoras h3{font-family:var(--display);font-size:22px;font-weight:400;margin:0 0 4px}
 .goleadoras .nota{font-size:13.5px;color:rgba(10,20,40,.62);margin:0 0 14px}
 .goleadoras ol{list-style:none;margin:0;padding:0;display:grid;gap:8px;max-width:620px}
@@ -223,6 +245,7 @@ header{position:sticky;top:0;z-index:60;background:rgba(10,20,40,.92);backdrop-f
 .opcion:disabled:hover{border-color:var(--linea)}
 .opcion:disabled[aria-pressed="true"]:hover{border-color:var(--rosa-vivo)}
 .opcion .dorsal{font-family:var(--display);font-size:20px;color:var(--rosa-vivo);min-width:34px}
+.opcion .goles-fecha{font-size:12px;color:rgba(255,255,255,.55);margin-left:8px;font-weight:600;white-space:nowrap}
 .opcion .nom{font-weight:600;font-size:15px}
 .opcion .pos{font-size:13px;opacity:.6}
 .opcion .pct{margin-left:auto;font-family:var(--display);font-size:19px}
@@ -490,6 +513,7 @@ footer a:hover{color:var(--rosa)}
 
     <div class="tabs" role="tablist" id="tabs"></div>
     <div class="grilla" id="grilla" role="tabpanel"></div>
+    <div class="ficha" id="ficha" hidden></div>
 
     <div class="leyenda">
       <span><i class="punto" style="background:var(--rosa)"></i>Jugamos en casa, Don Bosco 116</span>
@@ -909,18 +933,21 @@ DATOS.planteles.forEach((pl,i)=>{
   tabs.appendChild(b);
 });
 function pintarFixture(i){
-  const pl = DATOS.planteles[i];
+  const pl = DATOS.planteles[i]; plantelFixture = pl;
   $$(".tab",tabs).forEach((t,j)=>t.setAttribute("aria-selected", j===i));
   const hoy = new Date();
   grilla.innerHTML = pl.partidos.length ? pl.partidos.map((p,n)=>{
     if (p.c==="libre") return '<div class="pf libre">Fecha libre<span style="display:block;font-weight:400;font-size:12px;margin-top:6px">'+DIA_MES(p.f)+'</span></div>';
     const r = resultado(p);
     const pasado = cuando(p,pl) < hoy ? " pasado" : "";
-    return '<div class="pf '+(p.c==="L"?"local":"")+pasado+(r ? " "+r.clase : "")+'">'
+    const conFicha = r && golesDe(pl, p);   // jugado y con los goles de la planilla: la tarjeta abre la ficha
+    const tag = conFicha ? "button" : "div";
+    return '<'+tag+' class="pf '+(p.c==="L"?"local":"")+pasado+(r ? " "+r.clase : "")+(conFicha ? ' con-ficha" type="button" aria-expanded="false" data-f="'+p.f+'"' : '"')+'>'
       + '<span class="riv">'+p.r+'</span>'
       + (r ? '<span class="res"><b>'+r.txt+'</b>'+r.palabra+'</span>' : '')
-      + '<span class="pie"><span class="cond">'+(p.c==="L"?"LOCAL":"VISITANTE")+'</span><span>'+DIA_MES(p.f)+(p.h ? " · "+p.h : "")+'</span></span></div>';
+      + '<span class="pie"><span class="cond">'+(p.c==="L"?"LOCAL":"VISITANTE")+'</span><span>'+DIA_MES(p.f)+(p.h ? " · "+p.h : "")+'</span></span></'+tag+'>';
   }).join("") : '<p class="pf-vacio">Todavía no está cargado el fixture de '+pl.nombre+'. Apenas lo tengamos, aparece acá.</p>';
+  cerrarFicha();
   $("#leyenda-dia").textContent = pl.partidos.length ? pl.dia+", "+pl.hora+" hs (salvo que la tarjeta diga otra hora)" : "";
   pintarPosiciones(pl);
   pintarGoleadoras(pl);
@@ -960,15 +987,46 @@ function pintarPosiciones(pl){
 }
 
 // Goleadoras del torneo (de las planillas de FeMeBal): las cinco con más goles del plantel
+var plantelFixture = null;   // plantel cuya grilla está a la vista (var: se usa antes de esta línea)
+// Goles de un partido (de las planillas de FeMeBal): { nombre: goles } o null si no hay planilla cargada
+function golesDe(pl, p){ const g = conCompetencia(pl) && pl.golesFecha && pl.golesFecha[p.f]; return g && Object.keys(g).length ? g : null; }
+function listaGoles(pl, g, tope){ const top = Object.keys(g).sort((a, b) => g[b] - g[a]).slice(0, tope || 99), max = g[top[0]];
+  return '<ol>' + top.map(n => '<li style="--w:' + Math.round(g[n] / max * 100) + '%"><span class="dorsal">' + (dorsal(pl, n) || '–') + '</span>'
+    + '<span class="nom">' + nombreMostrado(pl, n) + '</span><span class="g">' + g[n] + '<small>' + (g[n] === 1 ? 'gol' : 'goles') + '</small></span></li>').join("") + '</ol>'; }
+
+// Ficha de un partido jugado: resultado y quiénes hicieron los goles
+function abrirFicha(pl, p){
+  const r = resultado(p), g = golesDe(pl, p), caja = $("#ficha");
+  $$("#grilla .con-ficha").forEach(b => b.setAttribute("aria-expanded", b.dataset.f === p.f));
+  caja.innerHTML = '<div class="marcador-ficha">' + r.txt + '<span>' + r.palabra + '</span></div>'
+    + '<div><h4>' + pl.nombre + ' vs ' + p.r + '</h4>'
+    + '<p class="meta">' + DIA_SEM(p.f) + ' ' + DIA_MES(p.f) + ' · ' + horaDe(p, pl) + ' hs · ' + (p.c === "L" ? "En Don Bosco 116" : "De visitante") + ' · Fecha ' + (pl.partidos.indexOf(p) + 1) + '</p>'
+    + listaGoles(pl, g) + '</div>'
+    + '<button class="cerrar" type="button">Cerrar la ficha</button>';
+  caja.hidden = false;
+  caja.querySelector(".cerrar").addEventListener("click", () => { cerrarFicha(); $("#grilla [data-f=\"" + p.f + "\"]").focus(); });
+  track("ficha-partido", { plantel: pl.id });
+}
+function cerrarFicha(){ const caja = $("#ficha"); caja.hidden = true; caja.innerHTML = ""; $$("#grilla .con-ficha").forEach(b => b.setAttribute("aria-expanded", "false")); }
+$("#grilla").addEventListener("click", e => {
+  const b = e.target.closest(".con-ficha"); if (!b) return;
+  const pl = plantelFixture, p = pl.partidos.find(x => x.f === b.dataset.f);
+  if (b.getAttribute("aria-expanded") === "true") cerrarFicha(); else abrirFicha(pl, p);
+});
+
+// Goleadoras: del torneo o de la última fecha jugada
+var vistaGoles = "torneo";
 function pintarGoleadoras(pl){
-  const caja = $("#goleadoras"), g = conCompetencia(pl) ? (pl.goles || {}) : {};
-  const top = Object.keys(g).filter(n => g[n] > 0).sort((a, b) => g[b] - g[a]).slice(0, 5);
-  if (!top.length){ caja.innerHTML = ""; return; }
-  const max = g[top[0]];
-  caja.innerHTML = '<h3>' + (pl.id === "masculino" ? "Goleadores" : "Goleadoras") + ' del ' + DATOS.torneo + '</h3>'
-    + '<p class="nota">' + pl.nombre + ' · según las planillas de partido de FeMeBal.</p>'
-    + '<ol>' + top.map(n => '<li style="--w:' + Math.round(g[n] / max * 100) + '%"><span class="dorsal">' + (dorsal(pl, n) || '–') + '</span>'
-      + '<span class="nom">' + nombreMostrado(pl, n) + '</span><span class="g">' + g[n] + '<small>goles</small></span></li>').join("") + '</ol>';
+  const caja = $("#goleadoras"), fem = pl.id !== "masculino";
+  const total = conCompetencia(pl) ? (pl.goles || {}) : {};
+  const ultimo = ultimoPartido(pl), gFecha = ultimo ? golesDe(pl, ultimo) : null;
+  if (!Object.keys(total).length){ caja.innerHTML = ""; return; }
+  const enFecha = vistaGoles === "fecha" && gFecha;
+  caja.innerHTML = '<div class="cabeza-gol"><div><h3>' + (fem ? "Goleadoras" : "Goleadores") + (enFecha ? ' de la fecha' : ' del ' + DATOS.torneo) + '</h3>'
+    + '<p class="nota">' + pl.nombre + (enFecha ? ' vs ' + ultimo.r + ' · ' + DIA_SEM(ultimo.f) + ' ' + DIA_MES(ultimo.f) : '') + ' · según las planillas de partido de FeMeBal.</p></div>'
+    + (gFecha ? '<div class="tabs-gol" role="tablist"><button role="tab" aria-selected="' + !enFecha + '" data-v="torneo">Torneo</button><button role="tab" aria-selected="' + !!enFecha + '" data-v="fecha">Última fecha</button></div>' : '')
+    + '</div>' + listaGoles(pl, enFecha ? gFecha : total, 5);
+  $$(".tabs-gol button", caja).forEach(b => b.addEventListener("click", () => { vistaGoles = b.dataset.v; pintarGoleadoras(pl); }));
 }
 
 /* ============================ votación MVP ============================
@@ -1036,12 +1094,13 @@ function pintarMvp(pl){
 
   const e = estadoMvp[pl.id] || { conteo: {}, total: 0, miVoto: null, cerrada: false };
   const mostrar = e.miVoto || e.cerrada;      // los resultados se ven después de votar o al cierre
+  const gp = golesDe(pl, p);                  // goles de cada una en ese partido, si la planilla ya está
   listaMvp.innerHTML = jugadorasOrdenadas(pl).map(n => {
     const pct = e.total ? Math.round((e.conteo[n] || 0) / e.total * 100) : 0;
     return '<li><button class="opcion" data-i="' + pl.jugadoras.indexOf(n) + '" aria-pressed="' + (e.miVoto === n) + '"' + (mostrar ? ' disabled' : '') + '>'
       + (mostrar ? '<span class="barra" style="width:' + pct + '%"></span>' : '')
       + '<span class="dorsal">' + (dorsal(pl, n) || "–") + '</span>'
-      + '<span><span class="nom">' + nombreMostrado(pl, n) + '</span></span>'
+      + '<span><span class="nom">' + nombreMostrado(pl, n) + '</span>' + (gp && gp[n] ? '<span class="goles-fecha">' + gp[n] + (gp[n] === 1 ? ' gol' : ' goles') + '</span>' : '') + '</span>'
       + (mostrar ? '<span class="pct">' + pct + '%</span>' : '')
       + '</button></li>';
   }).join("");

@@ -46,7 +46,16 @@ const DATOS = {
     ],
       // Dorsales y goles del Clausura según las planillas de FeMeBal (femebal-dorsales.js).
       dorsales:{"Daniela Cristaldo":1, "Noelia Alcala":4, "Katia Cuomo":6, "Mora Lionti":7, "Emilia Zarantonello":9, "Micaela Ramirez":10, "Barbara Ramirez":14, "Carla Martinez":16, "Millaray Cocha":17, "Luz Agüero":19, "Valeria Trelles":20, "Guadalupe Fernandez":22, "Justine Vargas":23, "Julieta Gimenez":27, "Thayssa Montaly":28},
-      goles:{"Noelia Alcala":15, "Katia Cuomo":13, "Mora Lionti":9, "Emilia Zarantonello":32, "Micaela Ramirez":25, "Barbara Ramirez":27, "Carla Martinez":2, "Millaray Cocha":13, "Luz Agüero":6, "Valeria Trelles":19, "Guadalupe Fernandez":7, "Justine Vargas":21, "Thayssa Montaly":11}, partidos:[
+      goles:{"Noelia Alcala":15, "Katia Cuomo":13, "Mora Lionti":9, "Emilia Zarantonello":32, "Micaela Ramirez":25, "Barbara Ramirez":27, "Carla Martinez":2, "Millaray Cocha":13, "Luz Agüero":6, "Valeria Trelles":19, "Guadalupe Fernandez":7, "Justine Vargas":21, "Thayssa Montaly":11},
+      golesFecha:{
+        "2026-08-08":{"Barbara Ramirez":4, "Emilia Zarantonello":2, "Micaela Ramirez":2, "Valeria Trelles":2, "Guadalupe Fernandez":2, "Thayssa Montaly":2, "Katia Cuomo":1, "Millaray Cocha":1, "Luz Agüero":1, "Justine Vargas":1},
+        "2026-08-15":{"Micaela Ramirez":8, "Emilia Zarantonello":5, "Katia Cuomo":4, "Barbara Ramirez":4, "Valeria Trelles":3, "Justine Vargas":3, "Millaray Cocha":1, "Luz Agüero":1, "Thayssa Montaly":1},
+        "2026-08-22":{"Justine Vargas":4, "Millaray Cocha":3, "Noelia Alcala":2, "Katia Cuomo":2, "Emilia Zarantonello":2, "Micaela Ramirez":2, "Thayssa Montaly":2, "Barbara Ramirez":1, "Carla Martinez":1, "Valeria Trelles":1, "Guadalupe Fernandez":1},
+        "2026-08-29":{"Barbara Ramirez":10, "Valeria Trelles":7, "Noelia Alcala":4, "Emilia Zarantonello":4, "Micaela Ramirez":4, "Luz Agüero":2, "Justine Vargas":2, "Thayssa Montaly":2, "Katia Cuomo":1},
+        "2026-09-05":{"Micaela Ramirez":7, "Millaray Cocha":6, "Noelia Alcala":3, "Mora Lionti":3, "Barbara Ramirez":3, "Valeria Trelles":3, "Emilia Zarantonello":2, "Luz Agüero":2, "Guadalupe Fernandez":2, "Katia Cuomo":1, "Justine Vargas":1, "Thayssa Montaly":1},
+        "2026-09-12":{"Emilia Zarantonello":8, "Mora Lionti":4, "Justine Vargas":4, "Noelia Alcala":3, "Millaray Cocha":2, "Valeria Trelles":2, "Thayssa Montaly":2, "Katia Cuomo":1, "Micaela Ramirez":1, "Guadalupe Fernandez":1},
+        "2026-09-19":{"Emilia Zarantonello":9, "Justine Vargas":6, "Barbara Ramirez":5, "Noelia Alcala":3, "Katia Cuomo":3, "Mora Lionti":2, "Micaela Ramirez":1, "Carla Martinez":1, "Valeria Trelles":1, "Guadalupe Fernandez":1, "Thayssa Montaly":1}
+      }, partidos:[
       {f:"2026-08-08",c:"V",r:"Talleres",h:"19:45",g:"18-30"},{f:"2026-08-15",c:"L",r:"San Fernando",g:"30-25"},
       {f:"2026-08-22",c:"V",r:"Dorrego",h:"16:15",g:"21-21"},{f:"2026-08-29",c:"L",r:"Dep. Laferrere",h:"19:45",g:"36-26"},
       {f:"2026-09-05",c:"V",r:"AFALP",g:"34-21"},{f:"2026-09-12",c:"L",r:"Ferro Carril Oeste",h:"19:45",g:"28-24"},
@@ -80,7 +89,16 @@ const DATOS = {
     ],
       // Dorsales y goles del Clausura según las planillas de FeMeBal (femebal-dorsales.js).
       dorsales:{"Ariana Veiga":1, "Jazmin Alarcon":4, "Sofia Marsicovetere":7, "Renata Giachello":9, "Zoe Rodriguez":11, "Marina Chazarreta":12, "Cecilia Esquivel":14, "Ariana Raminger":15, "Milagros Mosqueda":15, "Camila Gomez":16, "Ariana Cuervo Diaz":17, "Julieta Di Bona":18, "Brenda Velozo":19, "Paula Ayala":20, "Julieta Mercado":21, "Paula Glisciak":22, "Mia Badaracco":25, "Ariana Acosta":26, "Catalina Ravazzano":30, "Camila Hermosid":33},
-      goles:{"Jazmin Alarcon":6, "Sofia Marsicovetere":4, "Renata Giachello":2, "Zoe Rodriguez":16, "Cecilia Esquivel":6, "Ariana Raminger":8, "Milagros Mosqueda":3, "Ariana Cuervo Diaz":5, "Julieta Di Bona":11, "Brenda Velozo":3, "Paula Ayala":2, "Julieta Mercado":22, "Paula Glisciak":21, "Mia Badaracco":15, "Ariana Acosta":27, "Catalina Ravazzano":2, "Camila Hermosid":8}, partidos:[
+      goles:{"Jazmin Alarcon":6, "Sofia Marsicovetere":4, "Renata Giachello":2, "Zoe Rodriguez":16, "Cecilia Esquivel":6, "Ariana Raminger":8, "Milagros Mosqueda":3, "Ariana Cuervo Diaz":5, "Julieta Di Bona":11, "Brenda Velozo":3, "Paula Ayala":2, "Julieta Mercado":22, "Paula Glisciak":21, "Mia Badaracco":15, "Ariana Acosta":27, "Catalina Ravazzano":2, "Camila Hermosid":8},
+      golesFecha:{
+        "2026-08-08":{"Ariana Acosta":6, "Ariana Raminger":5, "Zoe Rodriguez":4, "Mia Badaracco":3, "Julieta Di Bona":2, "Paula Glisciak":2, "Julieta Mercado":1, "Camila Hermosid":1},
+        "2026-08-17":{"Mia Badaracco":4, "Paula Glisciak":3, "Ariana Acosta":3, "Julieta Mercado":2, "Sofia Marsicovetere":2, "Zoe Rodriguez":1, "Ariana Raminger":1, "Julieta Di Bona":1, "Brenda Velozo":1, "Catalina Ravazzano":1},
+        "2026-08-22":{"Zoe Rodriguez":4, "Sofia Marsicovetere":2, "Ariana Raminger":2, "Julieta Di Bona":2, "Paula Glisciak":2, "Mia Badaracco":2, "Ariana Cuervo Diaz":1, "Julieta Mercado":1, "Ariana Acosta":1, "Catalina Ravazzano":1},
+        "2026-08-29":{"Julieta Mercado":9, "Mia Badaracco":4, "Paula Glisciak":3, "Jazmin Alarcon":2, "Camila Hermosid":2, "Cecilia Esquivel":1, "Ariana Cuervo Diaz":1, "Julieta Di Bona":1, "Brenda Velozo":1, "Ariana Acosta":1},
+        "2026-09-05":{"Ariana Acosta":5, "Zoe Rodriguez":3, "Paula Glisciak":2, "Mia Badaracco":2, "Jazmin Alarcon":1, "Julieta Di Bona":1, "Julieta Mercado":1},
+        "2026-09-12":{"Julieta Mercado":5, "Ariana Acosta":5, "Paula Glisciak":4, "Julieta Di Bona":3, "Cecilia Esquivel":2, "Milagros Mosqueda":2, "Camila Hermosid":2, "Jazmin Alarcon":1},
+        "2026-09-19":{"Ariana Acosta":6, "Paula Glisciak":5, "Zoe Rodriguez":4, "Cecilia Esquivel":3, "Ariana Cuervo Diaz":3, "Julieta Mercado":3, "Camila Hermosid":3, "Jazmin Alarcon":2, "Renata Giachello":2, "Paula Ayala":2, "Milagros Mosqueda":1, "Julieta Di Bona":1, "Brenda Velozo":1}
+      }, partidos:[
       {f:"2026-08-08",c:"V",r:"Campana Boat Club",g:"24-25"},{f:"2026-08-17",c:"L",r:"Almirante Brown",g:"19-25"},
       {f:"2026-08-22",c:"V",r:"Boca Juniors",h:"19:45",g:"18-21"},{f:"2026-08-29",c:"L",r:"AFALP",g:"25-32"},
       {f:"2026-09-05",c:"V",r:"Argentinos Juniors",h:"19:45",g:"15-14"},{f:"2026-09-12",c:"L",r:"Huracán de San Justo",g:"24-22"},
@@ -160,7 +178,15 @@ const DATOS = {
     ],
       // Dorsales y goles del Clausura según las planillas de FeMeBal (femebal-dorsales.js).
       dorsales:{"Isabella Stoll":1, "Martina Rosales":2, "Celina Kronemberg":3, "Sofia Ballares":4, "Serena Zabatta":5, "Nina Stambullian":6, "Matilda Barrera":6, "Celeste Bello":7, "Valentina Manchi":8, "Victoria Kyanco":9, "Guillemina Fortunato":11, "Mia Calo":14, "Luana Martinez":15, "Amanda D'Urzo":16, "Helena Paz":17, "Emilia Greco":19, "Martina Antero":20},
-      goles:{"Celina Kronemberg":12, "Serena Zabatta":24, "Nina Stambullian":1, "Valentina Manchi":5, "Victoria Kyanco":15, "Guillemina Fortunato":21, "Mia Calo":21, "Luana Martinez":4, "Helena Paz":5, "Emilia Greco":48, "Martina Antero":14}, partidos:[
+      goles:{"Celina Kronemberg":12, "Serena Zabatta":24, "Nina Stambullian":1, "Valentina Manchi":5, "Victoria Kyanco":15, "Guillemina Fortunato":21, "Mia Calo":21, "Luana Martinez":4, "Helena Paz":5, "Emilia Greco":48, "Martina Antero":14},
+      golesFecha:{
+        "2026-08-09":{"Emilia Greco":7, "Guillemina Fortunato":4, "Serena Zabatta":3, "Victoria Kyanco":3, "Martina Antero":3, "Helena Paz":2, "Celina Kronemberg":1, "Valentina Manchi":1, "Luana Martinez":1},
+        "2026-08-16":{"Emilia Greco":5, "Serena Zabatta":4, "Mia Calo":4, "Victoria Kyanco":3, "Martina Antero":3, "Guillemina Fortunato":2, "Luana Martinez":1, "Helena Paz":1},
+        "2026-08-23":{"Emilia Greco":6, "Guillemina Fortunato":4, "Serena Zabatta":3, "Mia Calo":3, "Victoria Kyanco":2, "Martina Antero":2, "Nina Stambullian":1, "Valentina Manchi":1},
+        "2026-08-30":{"Emilia Greco":10, "Serena Zabatta":5, "Guillemina Fortunato":4, "Mia Calo":4, "Victoria Kyanco":2, "Celina Kronemberg":1},
+        "2026-09-06":{"Emilia Greco":8, "Celina Kronemberg":6, "Guillemina Fortunato":4, "Serena Zabatta":3, "Victoria Kyanco":3, "Martina Antero":3, "Mia Calo":2, "Valentina Manchi":1, "Luana Martinez":1},
+        "2026-09-13":{"Emilia Greco":12, "Mia Calo":8, "Serena Zabatta":6, "Celina Kronemberg":4, "Guillemina Fortunato":3, "Martina Antero":3, "Valentina Manchi":2, "Victoria Kyanco":2, "Helena Paz":2, "Luana Martinez":1}
+      }, partidos:[
       {f:"2026-08-09",c:"V",r:"Círculo de Villa Devoto",g:"25-19"},{f:"2026-08-16",c:"L",r:"Independiente",g:"23-29"},
       {f:"2026-08-23",c:"V",r:"Colegio Ward",g:"22-37"},{f:"2026-08-30",c:"L",r:"Boca Juniors",g:"26-23"},{f:"2026-09-06",c:"V",r:"Banfield",g:"31-19"},
       {f:"2026-09-13",c:"L",r:"Villa Modelo",g:"43-23"},{f:"2026-09-20",c:"V",r:"Vélez Sarsfield",g:"25-24"},
@@ -192,7 +218,15 @@ const DATOS = {
     ],
       // Dorsales y goles del Clausura según las planillas de FeMeBal (femebal-dorsales.js).
       dorsales:{"Guillermina Fortunato":11, "Luciana Chiesa":15, "Abril Coria":16, "Serena Zabatta":20, "Mia Calo":20, "Emilia Greco":21, "Emilia Juarez Leikam":24, "Ema Rosello":25, "Victoria Kyanko":26, "Isabella Greco":27, "Maria Eugenia Rotta":32},
-      goles:{"Guillermina Fortunato":4, "Luciana Chiesa":12, "Serena Zabatta":3, "Mia Calo":3, "Emilia Greco":29, "Emilia Juarez Leikam":6, "Ema Rosello":9, "Victoria Kyanko":7, "Isabella Greco":40, "Maria Eugenia Rotta":4}, partidos:[
+      goles:{"Guillermina Fortunato":4, "Luciana Chiesa":12, "Serena Zabatta":3, "Mia Calo":3, "Emilia Greco":29, "Emilia Juarez Leikam":6, "Ema Rosello":9, "Victoria Kyanko":7, "Isabella Greco":40, "Maria Eugenia Rotta":4},
+      golesFecha:{
+        "2026-08-09":{"Isabella Greco":8, "Emilia Greco":6, "Luciana Chiesa":4, "Guillermina Fortunato":2, "Victoria Kyanko":1},
+        "2026-08-16":{"Luciana Chiesa":4, "Isabella Greco":4, "Serena Zabatta":2, "Mia Calo":2, "Maria Eugenia Rotta":2, "Emilia Juarez Leikam":1, "Ema Rosello":1, "Victoria Kyanko":1},
+        "2026-08-23":{"Emilia Greco":5, "Isabella Greco":4, "Ema Rosello":3, "Luciana Chiesa":1, "Serena Zabatta":1, "Emilia Juarez Leikam":1, "Victoria Kyanko":1, "Maria Eugenia Rotta":1},
+        "2026-08-30":{"Isabella Greco":8, "Emilia Greco":6, "Ema Rosello":3, "Luciana Chiesa":2, "Mia Calo":1},
+        "2026-09-06":{"Isabella Greco":7, "Emilia Juarez Leikam":4, "Emilia Greco":3, "Luciana Chiesa":1, "Ema Rosello":1},
+        "2026-09-13":{"Emilia Greco":9, "Isabella Greco":9, "Victoria Kyanko":4, "Guillermina Fortunato":2, "Ema Rosello":1, "Maria Eugenia Rotta":1}
+      }, partidos:[
       {f:"2026-08-09",c:"V",r:"Círculo de Villa Devoto",g:"21-19"},{f:"2026-08-16",c:"L",r:"Independiente",g:"17-30"},
       {f:"2026-08-23",c:"V",r:"Colegio Ward",g:"17-25"},{f:"2026-08-30",c:"L",r:"Boca Juniors",g:"20-24"},{f:"2026-09-06",c:"V",r:"Banfield",g:"16-19"},
       {f:"2026-09-13",c:"L",r:"Villa Modelo",g:"26-31"},{f:"2026-09-20",c:"V",r:"Vélez Sarsfield",g:"17-25"},{f:"2026-09-27",c:"L",r:"Cedem Caseros"},
@@ -225,7 +259,15 @@ const DATOS = {
     ],
       // Dorsales y goles del Clausura según las planillas de FeMeBal (femebal-dorsales.js).
       dorsales:{"Julieta Antero":1, "Antonella D'Urzo":5, "Isabella Scarfo":7, "Martina Gomez":11, "Isabella Greco":14, "Angela Farias":16, "Renata Giachello":17, "Maria Rotta":20, "Luciana Toledo":21, "Luciana Chiesa Hornung":22, "Camila Dib":24, "Uma Estanga":25, "Valentina Antero":28},
-      goles:{"Antonella D'Urzo":2, "Martina Gomez":24, "Isabella Greco":5, "Renata Giachello":35, "Maria Rotta":1, "Luciana Toledo":23, "Luciana Chiesa Hornung":2, "Camila Dib":2, "Uma Estanga":15, "Valentina Antero":13}, partidos:[
+      goles:{"Antonella D'Urzo":2, "Martina Gomez":24, "Isabella Greco":5, "Renata Giachello":35, "Maria Rotta":1, "Luciana Toledo":23, "Luciana Chiesa Hornung":2, "Camila Dib":2, "Uma Estanga":15, "Valentina Antero":13},
+      golesFecha:{
+        "2026-08-09":{"Renata Giachello":8, "Uma Estanga":5, "Valentina Antero":2, "Isabella Greco":1, "Luciana Toledo":1},
+        "2026-08-16":{"Martina Gomez":5, "Uma Estanga":4, "Renata Giachello":3, "Luciana Toledo":3, "Isabella Greco":3, "Luciana Chiesa Hornung":2},
+        "2026-08-23":{"Renata Giachello":8, "Martina Gomez":7, "Luciana Toledo":4, "Valentina Antero":3, "Uma Estanga":2},
+        "2026-08-30":{"Luciana Toledo":7, "Renata Giachello":5, "Valentina Antero":5, "Martina Gomez":3, "Camila Dib":1},
+        "2026-09-06":{"Martina Gomez":5, "Uma Estanga":4, "Renata Giachello":3, "Luciana Toledo":3, "Valentina Antero":3, "Camila Dib":1},
+        "2026-09-13":{"Renata Giachello":8, "Luciana Toledo":5, "Martina Gomez":4, "Antonella D'Urzo":2, "Isabella Greco":1, "Maria Rotta":1}
+      }, partidos:[
       {f:"2026-08-09",c:"V",r:"Círculo de Villa Devoto",g:"17-34"},{f:"2026-08-16",c:"L",r:"Independiente",g:"20-29"},
       {f:"2026-08-23",c:"V",r:"Colegio Ward",g:"24-28"},{f:"2026-08-30",c:"L",r:"Boca Juniors",g:"21-17"},{f:"2026-09-06",c:"V",r:"Banfield",g:"19-28"},
       {f:"2026-09-13",c:"L",r:"Villa Modelo",g:"21-25"},{f:"2026-09-20",c:"V",r:"Vélez Sarsfield",g:"31-40"},{f:"2026-09-27",c:"L",r:"Cedem Caseros"},
@@ -258,7 +300,15 @@ const DATOS = {
     ],
       // Dorsales y goles del Clausura según las planillas de FeMeBal (femebal-dorsales.js).
       dorsales:{"Julieta Antero":1, "Sofia Marsicovetere Palmieri":3, "Jazmin Alarcon":4, "Valentina Antero":5, "Katia Cuomo":6, "Mia Badaracco":8, "Emilia Zarantonello":9, "Thayssa Montali":10, "Martina Gomez":11, "Camila Gomez":16, "Renata Giachello":17, "Luciana Toledo Rodriguez":21, "Milagros Mosqueda":22, "Julia Damario":25, "Catalina Ravazzano":33},
-      goles:{"Sofia Marsicovetere Palmieri":11, "Jazmin Alarcon":21, "Valentina Antero":8, "Katia Cuomo":33, "Mia Badaracco":15, "Emilia Zarantonello":41, "Thayssa Montali":13, "Martina Gomez":3, "Renata Giachello":5, "Milagros Mosqueda":4, "Julia Damario":8, "Catalina Ravazzano":17}, partidos:[
+      goles:{"Sofia Marsicovetere Palmieri":11, "Jazmin Alarcon":21, "Valentina Antero":8, "Katia Cuomo":33, "Mia Badaracco":15, "Emilia Zarantonello":41, "Thayssa Montali":13, "Martina Gomez":3, "Renata Giachello":5, "Milagros Mosqueda":4, "Julia Damario":8, "Catalina Ravazzano":17},
+      golesFecha:{
+        "2026-08-09":{"Emilia Zarantonello":5, "Katia Cuomo":4, "Mia Badaracco":4, "Thayssa Montali":3, "Catalina Ravazzano":3, "Sofia Marsicovetere Palmieri":2, "Valentina Antero":2},
+        "2026-08-16":{"Katia Cuomo":13, "Jazmin Alarcon":5, "Julia Damario":4, "Catalina Ravazzano":4, "Mia Badaracco":3, "Sofia Marsicovetere Palmieri":2, "Emilia Zarantonello":2, "Milagros Mosqueda":2, "Thayssa Montali":1},
+        "2026-08-23":{"Emilia Zarantonello":9, "Katia Cuomo":7, "Catalina Ravazzano":4, "Sofia Marsicovetere Palmieri":3, "Jazmin Alarcon":3, "Thayssa Montali":3, "Renata Giachello":2, "Valentina Antero":1, "Mia Badaracco":1, "Martina Gomez":1, "Julia Damario":1},
+        "2026-08-30":{"Emilia Zarantonello":14, "Thayssa Montali":4, "Sofia Marsicovetere Palmieri":3, "Katia Cuomo":2, "Julia Damario":2, "Catalina Ravazzano":2, "Jazmin Alarcon":1, "Mia Badaracco":1, "Renata Giachello":1},
+        "2026-09-06":{"Emilia Zarantonello":7, "Katia Cuomo":6, "Jazmin Alarcon":5, "Mia Badaracco":4, "Martina Gomez":2, "Sofia Marsicovetere Palmieri":1, "Valentina Antero":1, "Thayssa Montali":1, "Milagros Mosqueda":1, "Julia Damario":1},
+        "2026-09-13":{"Jazmin Alarcon":7, "Valentina Antero":4, "Emilia Zarantonello":4, "Catalina Ravazzano":4, "Mia Badaracco":2, "Renata Giachello":2, "Katia Cuomo":1, "Thayssa Montali":1, "Milagros Mosqueda":1}
+      }, partidos:[
       {f:"2026-08-09",c:"V",r:"Círculo de Villa Devoto",g:"23-34"},{f:"2026-08-16",c:"L",r:"Independiente",g:"36-31"},
       {f:"2026-08-23",c:"V",r:"Colegio Ward",g:"35-32"},{f:"2026-08-30",c:"L",r:"Boca Juniors",g:"30-31"},{f:"2026-09-06",c:"V",r:"Banfield",g:"29-16"},
       {f:"2026-09-13",c:"L",r:"Villa Modelo",g:"26-36"},{f:"2026-09-20",c:"V",r:"Vélez Sarsfield"},{f:"2026-09-27",c:"L",r:"Cedem Caseros"},
@@ -293,7 +343,15 @@ const DATOS = {
     ],
       // Dorsales y goles del Clausura según las planillas de FeMeBal (femebal-dorsales.js).
       dorsales:{"Agustin Fernandez":1, "Guillermo Corbelli":10, "Leonel Legal":11, "Marcelo Sanchez":12, "Enzo Golnner":14, "Maximiliano Gomez":16, "Gabriel Franco":17, "Julian Ponce":18, "Lionel Benitez":19, "Martin Casco":20, "Valentin Carriego":21, "Martin Vega":24, "Facundo Fernandez":41, "Fabian Franco":42, "Maximiliano Burakoski":43, "Lucas Guillermon":44},
-      goles:{"Guillermo Corbelli":1, "Enzo Golnner":52, "Gabriel Franco":2, "Julian Ponce":5, "Martin Casco":16, "Valentin Carriego":2, "Martin Vega":3, "Facundo Fernandez":7, "Fabian Franco":24, "Maximiliano Burakoski":11, "Lucas Guillermon":3}, partidos:[
+      goles:{"Guillermo Corbelli":1, "Enzo Golnner":52, "Gabriel Franco":2, "Julian Ponce":5, "Martin Casco":16, "Valentin Carriego":2, "Martin Vega":3, "Facundo Fernandez":7, "Fabian Franco":24, "Maximiliano Burakoski":11, "Lucas Guillermon":3},
+      golesFecha:{
+        "2026-08-09":{"Enzo Golnner":4, "Fabian Franco":4, "Maximiliano Burakoski":3, "Martin Casco":1, "Valentin Carriego":1},
+        "2026-08-16":{"Enzo Golnner":11, "Martin Casco":3, "Fabian Franco":2, "Maximiliano Burakoski":2},
+        "2026-08-23":{"Fabian Franco":7, "Enzo Golnner":6, "Julian Ponce":2, "Martin Casco":2, "Maximiliano Burakoski":2, "Facundo Fernandez":1, "Lucas Guillermon":1},
+        "2026-08-30":{"Enzo Golnner":7, "Martin Casco":3, "Fabian Franco":3, "Gabriel Franco":2, "Facundo Fernandez":2, "Julian Ponce":1, "Maximiliano Burakoski":1},
+        "2026-09-06":{"Enzo Golnner":14, "Martin Casco":5, "Fabian Franco":4, "Facundo Fernandez":3, "Lucas Guillermon":1, "Maximiliano Burakoski":1},
+        "2026-09-13":{"Enzo Golnner":10, "Fabian Franco":4, "Martin Vega":3, "Julian Ponce":2, "Martin Casco":2, "Maximiliano Burakoski":2, "Guillermo Corbelli":1, "Valentin Carriego":1, "Lucas Guillermon":1, "Facundo Fernandez":1}
+      }, partidos:[
       {f:"2026-08-09",c:"V",r:"Almirante Brown",g:"13-28"},{f:"2026-08-16",c:"L",r:"Dep. Laferrere",g:"18-19"},
       {f:"2026-08-23",c:"V",r:"Federal Juniors",g:"21-23"},{f:"2026-08-30",c:"L",r:"General Las Heras",g:"19-25"},
       {f:"2026-09-06",c:"V",r:"Dorrego",h:"20:15",g:"28-27"},{f:"2026-09-13",c:"L",r:"Ferrocarril Mitre",g:"27-37"},
