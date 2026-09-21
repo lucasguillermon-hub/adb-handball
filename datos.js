@@ -427,6 +427,7 @@ const DATOS = {
   // Cada foto: { src, alt (qué se ve, en castellano), alto:true si es vertical }.
   galeria: {
     fotografos: {
+      "Male Acosta": "https://instagram.com/maaleacosta",
       "Dulce Méndez Terres": "https://instagram.com/dulcephfotografia",
       "Melanie Weber": "https://instagram.com/melweber.ph",
       "Maxy Canteros": "https://instagram.com/maxyyft",
@@ -534,7 +535,7 @@ const DATOS = {
       ] },
       { titulo:"Tercera damas", fechas:[] },
       { titulo:"Cuarta caballeros", fechas:[
-        { f:"2026-09-13", rival:"Ferrocarril Mitre", c:"L", fotografo:"", fotos:[
+        { f:"2026-09-13", rival:"Ferrocarril Mitre", c:"L", fotografo:"Male Acosta", fotos:[
           { src:"fotos/cuarta-caballeros/2026-09-13-01.jpg", alt:"Cuarta caballeros contra Ferrocarril Mitre, 13/09 de local (foto 1)", alto:true },
           { src:"fotos/cuarta-caballeros/2026-09-13-02.jpg", alt:"Cuarta caballeros contra Ferrocarril Mitre, 13/09 de local (foto 2)", alto:true },
           { src:"fotos/cuarta-caballeros/2026-09-13-03.jpg", alt:"Cuarta caballeros contra Ferrocarril Mitre, 13/09 de local (foto 3)" },
