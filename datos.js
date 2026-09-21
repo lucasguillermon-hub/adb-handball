@@ -82,7 +82,7 @@ const DATOS = {
     ]},
     { id:"mayores-b", nombre:"Tercera damas", division:"Mayores · 3º División", dia:"Sábados", hora:"18:00", sponsor:"Supermercado Magdalena", jugadoras:[
       "Ariana Acosta", "Jazmin Alarcon", "Paula Ayala", "Mia Badaracco", "Marina Chazarreta", "Ariana Cuervo Diaz",
-      "Sofia Dekker", "Julieta Di Bona", "Cecilia Esquivel", "Paula Glisciak", "Camila Gomez", "Camila Hermosid",
+      "Sofía Deker", "Julieta Di Bona", "Cecilia Esquivel", "Paula Glisciak", "Camila Gomez", "Camila Hermosid",
       "Patricia Marsicovetere", "Sofia Marsicovetere", "Julieta Mercado", "Zoe Rodriguez", "Ariana Veiga",
       "Brenda Velozo",
       "Ariana Raminger", "Catalina Ravazzano", "Renata Giachello", "Milagros Mosqueda"   // según las planillas de FeMeBal
