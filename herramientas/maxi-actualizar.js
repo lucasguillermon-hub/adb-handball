@@ -83,6 +83,30 @@ const pedir = async u => { const r = await fetch(u, { headers: CAB }); const j =
     console.log("escudo nuevo:", path.relative(REPO, destino));
   }
 
+  // Goles del Clausura por jugadora (tabla de goleadoras de la liga; la web de la liga no publica
+  // planillas por partido ni números de camiseta, así que goles por fecha y dorsales no hay).
+  const sinTilde = x => x.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^a-z ]/g, " ").replace(/\s+/g, " ").trim();
+  const goles = {}, sinLista = [];
+  for (let pag = 1; pag <= 30; pag++) {
+    const j = await pedir(`${API.replace(/editions\/\d+$/, "categories/" + CATEGORIA)}/tables/scorers?page=${pag}`);
+    for (const x of j.players.data) {
+      if (!esADB(x.team.name)) continue;
+      const nom = sinTilde(x.player.name).split(" "), ap = sinTilde(x.player.lastname).split(" ");
+      // Apellido igual o a una letra (Pereiras/Pereyras) y, si hay dos con ese apellido, también el nombre
+      const dist = (x, y) => { const m = []; for (let i = 0; i <= x.length; i++) { m[i] = [i]; for (let j = 1; j <= y.length; j++) m[i][j] = i ? Math.min(m[i-1][j] + 1, m[i][j-1] + 1, m[i-1][j-1] + (x[i-1] === y[j-1] ? 0 : 1)) : j; } return m[x.length][y.length]; };
+      const parecidos = (x, y) => x === y || (x.length > 4 && y.length > 4 && dist(x, y) <= 1);
+      const porApellido = (pl.jugadoras || []).filter(jg => { const jj = sinTilde(jg).split(" "); return ap.some(a => jj.some(x => parecidos(x, a))); });
+      const club = porApellido.length === 1 ? porApellido[0] : porApellido.find(jg => { const jj = sinTilde(jg).split(" "); return nom.some(n => jj.some(x => parecidos(x, n))); });
+      const clave = club || (x.player.name.split(" ")[0] + " " + x.player.lastname);
+      if (!club) sinLista.push(clave);
+      goles[clave] = (goles[clave] || 0) + x.goals;
+    }
+    if (pag >= +j.players.last_page) break;
+  }
+  const ordenG = Object.keys(goles).sort((a, b) => goles[b] - goles[a]);
+  const bloqueG = "\n      // Goles del Clausura según la tabla de goleadoras de la liga (maxi-actualizar.js).\n      goles:{" + ordenG.map(n => JSON.stringify(n) + ":" + goles[n]).join(", ") + "}";
+  if (sinLista.length) console.log("Goleadoras que no están en la lista del club (se muestran con el nombre de la liga): " + sinLista.join(", "));
+
   // Escribir en datos.js
   const fila = p => "{" + Object.entries(p).map(([k, v]) => k + ":" + (typeof v === "string" ? '"' + v + '"' : v)).join(",") + "}";
   const bloqueP = "partidos:[\n      " + partidos.map(fila).join(",").replace(/(.{100,}?),\{/g, "$1,\n      {") + "\n    ]";
@@ -91,6 +115,8 @@ const pedir = async u => { const r = await fetch(u, { headers: CAB }); const j =
   let b = s.slice(ini, fin);
   b = b.replace(/partidos:\[[\s\S]*?\]/, bloqueP);
   b = /tabla:\[/.test(b) ? b.replace(/,?\s*tabla:\[[\s\S]*?\n    \]/, ", " + bloqueT) : b.replace(/(partidos:\[[\s\S]*?\n    \])/, "$1, " + bloqueT);
+  b = b.replace(/,?\s*\/\/ Goles del Clausura según la tabla[^\n]*\n\s*goles:\{[^}]*\}/, "");
+  b = b.replace(/(jugadoras:\[[\s\S]*?\])/, "$1," + bloqueG);
   b = b.replace(/\n    \]\s*\}\s*$/, "\n    ] }");
   s = s.slice(0, ini) + b + s.slice(fin);
   s = s.replace(/\/\/ ⚠️ Maxihandball: falta cargar su fixture[^\n]*\n/, "// Maxihandball: fixture y tabla de la Liga Maxi Handball (timbo.futbol), con maxi-actualizar.js.\n");

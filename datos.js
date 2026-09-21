@@ -389,7 +389,9 @@ const DATOS = {
       "Julieta Milanesi", "Martina Panetta", "Maru Pereyras", "Magali Prisco", "Marcela Rodriguez",
       "Florencia Rossaro", "Camila Seguin", "Paula Subiza", "Gianella Turquia", "Belen Varela",
       "Julieta Zarate"
-    ], partidos:[
+    ],
+      // Goles del Clausura según la tabla de goleadoras de la liga (maxi-actualizar.js).
+      goles:{"Magali Prisco":14, "Ariadna Aristizabal":5, "Julieta Milanesi":5, "Maru Pereyras":5, "Marcela Rodriguez":4, "Jimena Berutti":2, "Agustina Michl":2, "Florencia Rossaro":2, "Camila Seguin":2, "Agustina Bajko":1, "Gisela Loffler":1, "Martina Panetta":1, "Julieta Zarate":1}, partidos:[
       {f:"2026-08-29",c:"L",r:"Manuel Belgrano",h:"09:15",g:"12-20"},{f:"2026-09-05",c:"V",r:"Instituto Manuel Belgrano",sede:"Polideportivo N. Kirchner (Ezeiza)",g:"18-19"},
       {f:"2026-09-12",c:"V",r:"Team Ezeiza",h:"11:30",sede:"Polideportivo N. Kirchner (Ezeiza)",g:"15-14"},{f:"2026-09-26",c:"L",r:"Las 2P",sinHora:true,sede:"a confirmar"},
       {f:"2026-10-10",c:"L",r:"Panteras Handball",sinHora:true,sede:"a confirmar"},{f:"2026-10-10",c:"L",r:"Golondrinas",sinHora:true,sede:"a confirmar"},
