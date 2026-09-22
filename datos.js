@@ -19,45 +19,10 @@ const DATOS = {
   oferta: "",
 
   // Aviso del club: una barra arriba de todo, con un botón que abre el detalle. Se puede cerrar
-  // (vuelve a aparecer en la próxima visita, no se guarda nada). Poné aviso:null para sacarlo.
+  // (vuelve a aparecer en la próxima visita, no se guarda nada). Con aviso:null no se muestra.
   // "hasta" es el último día que se muestra; después de esa fecha desaparece solo.
-  aviso: {
-    hasta: "2026-11-30",
-    etiqueta: "Rifa 2026",
-    texto: "Pasá a retirar tu talonario por el club, martes y jueves.",
-    boton: "Cómo funciona",
-    titulo: "Rifa 2026 · Pro-Colaboración con el club",
-    bajada: "Como en los dos últimos años lanzamos la rifa del club, para cubrir los sueldos y el alquiler del gimnasio de diciembre, el mes en que más cuesta juntar las cuotas.",
-    // Cada punto es un bloque del detalle: título y renglones.
-    puntos: [
-      { t: "Cuánto vende cada uno", l: [
-        "Cada jugadora o jugador vende 20 rifas de $7.000.",
-        "Dos en la actividad: uno vende 20 y el otro 10.",
-        "Tres: uno vende 20, otro 10 y el tercero 2.",
-        "Cuatro: dos venden 20 y los otros dos no venden.",
-        "Quienes tienen beca también venden rifas."
-      ]},
-      { t: "Cuándo se rinde", l: [
-        "En efectivo en el club, martes y jueves.",
-        "En octubre se rinde la mitad del talonario.",
-        "En noviembre, el resto.",
-        "Las rifas no se devuelven."
-      ]},
-      { t: "Premios", l: [
-        "1º premio: $700.000",
-        "2º premio: $500.000",
-        "3º premio: $230.000",
-        "4º premio: $70.000"
-      ]},
-      { t: "Los troqueles, lo más importante", l: [
-        "El sorteo se hace a la vieja usanza, con los troqueles.",
-        "Se devuelven completos junto con el dinero.",
-        "Guardá el troquel de cada rifa vendida: sin troquel, esa rifa no entra en el sorteo."
-      ]}
-    ],
-    cierre: "Vendiendo las rifas queda cubierta la cuota de diciembre y además se colabora con el club. Gracias por acompañar siempre al Bosco.",
-    wsp: "Hola! Quiero consultar por la rifa 2026 del club."
-  },
+  // El texto de la Rifa 2026 que circuló por WhatsApp es interno: esperando una versión para el público.
+  aviso: null,
 
   /* --------- DATOS GENERALES DEL CLUB --------- */
   torneo: "Clausura 2026",
