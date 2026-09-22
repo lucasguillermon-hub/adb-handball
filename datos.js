@@ -645,6 +645,7 @@ const DATOS = {
     ]},
     { titulo:"Cadetas", marcas:[
       { n:"Body Bernal",   logo:"fotos/sponsors/body-bernal.png",   url:"", fondoOscuro:false },
+      { n:"Nelo Café",     logo:"fotos/sponsors/nelo-cafe.png",     url:"", fondoOscuro:true },
       { n:"Ladran Sancho", logo:"fotos/sponsors/ladran-sancho.png", url:"", fondoOscuro:false },
       { n:"Neobrokers",    logo:"fotos/sponsors/neobrokers.png",    url:"", fondoOscuro:false },
       { n:"Sr. Cartel",    logo:"fotos/sponsors/senor-cartel.png",  url:"", fondoOscuro:false },
@@ -652,6 +653,7 @@ const DATOS = {
     ]},
     { titulo:"Juveniles", marcas:[
       { n:"AB Transbelt · Autogoma Bernal", logo:"fotos/sponsors/autogoma-bernal-transvelt.png", url:"", fondoOscuro:false },
+      { n:"Granja del Este",                logo:"fotos/sponsors/granja-del-este.png",           url:"", fondoOscuro:false },
       { n:"Grupo Uno",                      logo:"fotos/sponsors/grupo-uno.png",                 url:"", fondoOscuro:false },
       { n:"La Asunción",                    logo:"fotos/sponsors/la-asuncion.png",               url:"", fondoOscuro:false },
       { n:"Ladran Sancho",                  logo:"fotos/sponsors/ladran-sancho.png",             url:"", fondoOscuro:false },
@@ -667,6 +669,7 @@ const DATOS = {
     ]},
     { titulo:"Primera damas", marcas:[
       { n:"Franco Liontix",         logo:"fotos/sponsors/franco-lionti.png",                url:"", fondoOscuro:false },
+      { n:"Cimino y Costantini",    logo:"fotos/sponsors/cimino-y-costantini.png",          url:"https://instagram.com/ciminoycostantini", fondoOscuro:true },
       { n:"Agua Tronador",          logo:"fotos/sponsors/tronador.png",                     url:"", fondoOscuro:false },
       { n:"Delicias Doradas",       logo:"fotos/sponsors/delicias-doradas.png",             url:"", fondoOscuro:false },
       { n:"De Cascia",              logo:"fotos/sponsors/de-cascia.png",                    url:"", fondoOscuro:false },
