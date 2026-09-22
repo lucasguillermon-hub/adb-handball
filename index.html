@@ -1048,7 +1048,7 @@ function pintarGoleadoras(pl){
   if (!Object.keys(total).length){ caja.innerHTML = ""; return; }
   const enFecha = vistaGoles === "fecha" && gFecha;
   caja.innerHTML = '<div class="cabeza-gol"><div><h3>' + (fem ? "Goleadoras" : "Goleadores") + (enFecha ? ' de la fecha' : ' del ' + DATOS.torneo) + '</h3>'
-    + '<p class="nota">' + pl.nombre + (enFecha ? ' vs ' + ultimo.r + ' · ' + DIA_SEM(ultimo.f) + ' ' + DIA_MES(ultimo.f) : '') + ' · ' + (pl.dorsales ? 'según las planillas de partido de FeMeBal.' : 'según la tabla de goleadoras de la liga.') + '</p></div>'
+    + '<p class="nota">' + pl.nombre + (enFecha ? ' vs ' + ultimo.r + ' · ' + DIA_SEM(ultimo.f) + ' ' + DIA_MES(ultimo.f) : '') + ' · ' + (pl.golesFecha ? 'según las planillas de partido de FeMeBal.' : 'según la tabla de goleadoras de la liga.') + '</p></div>'
     + (gFecha ? '<div class="tabs-gol" role="tablist"><button role="tab" aria-selected="' + !enFecha + '" data-v="torneo">Torneo</button><button role="tab" aria-selected="' + !!enFecha + '" data-v="fecha">Última fecha</button></div>' : '')
     + '</div>' + listaGoles(pl, enFecha ? gFecha : total, 5);
   $$(".tabs-gol button", caja).forEach(b => b.addEventListener("click", () => { vistaGoles = b.dataset.v; pintarGoleadoras(pl); }));

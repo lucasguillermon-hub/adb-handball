@@ -384,18 +384,20 @@ const DATOS = {
     ]},
     // Maxihandball: fixture y tabla de la Liga Maxi Handball (timbo.futbol), con maxi-actualizar.js.
     { id:"maxi", nombre:"Maxihandball", division:"Liga Maxi Handball · Clausura", dia:"Sábados", hora:"11:00", jugadoras:[
-      "Nahir Alvarez", "Ariadna Aristizabal", "Agustina Bajko", "Valentina Bajko", "Mariana Benitez",
-      "Jimena Berutti", "Julieta Biazzo", "Mayra Borrely", "Camila Lalin", "Gisela Loffler", "Agustina Michl",
-      "Julieta Milanesi", "Martina Panetta", "Maru Pereyras", "Magali Prisco", "Marcela Rodriguez",
-      "Florencia Rossaro", "Camila Seguin", "Paula Subiza", "Gianella Turquia", "Belen Varela",
-      "Julieta Zarate"
+      "Camila Lalin", "Nahir Alvarez", "Maru Pereiras", "Tiziana Sanfelice", "Magali Prisco",
+      "Giselle Loffler", "Camila Seguin", "Ariadna Aristizabal", "Martina Quintana", "Marcela Rodríguez",
+      "Agustina Michl", "Florencia Rossaro", "Paula Subiza", "Agustina Bajko", "Valentina Bajko",
+      "Mora Otamendi", "Mariana Benítez", "Julieta Biazzo", "Julieta Milanesi", "Martina Panetta",
+      "Jimena Berutti"
     ],
       // Goles del Clausura según la tabla de goleadoras de la liga (maxi-actualizar.js).
-      goles:{"Magali Prisco":14, "Ariadna Aristizabal":5, "Julieta Milanesi":5, "Maru Pereyras":5, "Marcela Rodriguez":4, "Jimena Berutti":2, "Agustina Michl":2, "Florencia Rossaro":2, "Camila Seguin":2, "Agustina Bajko":1, "Gisela Loffler":1, "Martina Panetta":1, "Julieta Zarate":1}, partidos:[
+      goles:{"Magali Prisco":14, "Ariadna Aristizabal":5, "Julieta Milanesi":5, "Maru Pereiras":5, "Marcela Rodríguez":4, "Jimena Berutti":2, "Agustina Michl":2, "Florencia Rossaro":2, "Camila Seguin":2, "Agustina Bajko":1, "Giselle Loffler":1, "Martina Panetta":1, "Julieta Zarate":1},
+      // Dorsales según la lista del club (septiembre 2026).
+      dorsales:{"Camila Lalin":3, "Nahir Alvarez":4, "Maru Pereiras":5, "Tiziana Sanfelice":6, "Magali Prisco":7, "Giselle Loffler":8, "Camila Seguin":9, "Ariadna Aristizabal":11, "Martina Quintana":12, "Marcela Rodríguez":13, "Agustina Michl":14, "Florencia Rossaro":18, "Paula Subiza":19, "Agustina Bajko":20, "Valentina Bajko":21, "Mora Otamendi":22, "Mariana Benítez":24, "Julieta Biazzo":25, "Julieta Milanesi":27, "Martina Panetta":31, "Jimena Berutti":47}, partidos:[
       {f:"2026-08-29",c:"L",r:"Manuel Belgrano",h:"09:15",g:"12-20"},{f:"2026-09-05",c:"V",r:"Instituto Manuel Belgrano",sede:"Polideportivo N. Kirchner (Ezeiza)",g:"18-19"},
-      {f:"2026-09-12",c:"V",r:"Team Ezeiza",h:"11:30",sede:"Polideportivo N. Kirchner (Ezeiza)",g:"15-14"},{f:"2026-09-26",c:"L",r:"Las 2P",sinHora:true,sede:"a confirmar"},
-      {f:"2026-10-10",c:"L",r:"Panteras Handball",sinHora:true,sede:"a confirmar"},{f:"2026-10-10",c:"L",r:"Golondrinas",sinHora:true,sede:"a confirmar"},
-      {f:"2026-10-31",c:"V",r:"Club Social",sinHora:true,sede:"a confirmar"},{f:"2026-10-31",c:"V",r:"Villa Vatteone",sinHora:true,sede:"a confirmar"},
+      {f:"2026-09-12",c:"V",r:"Team Ezeiza",h:"11:30",sede:"Polideportivo N. Kirchner (Ezeiza)",g:"15-14"},{f:"2026-09-26",c:"V",r:"Las 2P",h:"10:00",sede:"Polideportivo N. Kirchner (Ezeiza)"},
+      {f:"2026-10-03",c:"V",r:"Panteras Handball",h:"14:30",sede:"Instituto Manuel Belgrano Quilmes"},{f:"2026-10-10",c:"L",r:"Golondrinas",sinHora:true,sede:"a confirmar"},
+      {f:"2026-10-17",c:"V",r:"Club Social",sinHora:true,sede:"a confirmar"},{f:"2026-10-31",c:"V",r:"Villa Vatteone",sinHora:true,sede:"a confirmar"},
       {f:"2026-11-14",c:"V",r:"47 Handball Club",sinHora:true,sede:"a confirmar"},{f:"2026-11-14",c:"L",r:"La Patriada",sinHora:true,sede:"a confirmar"},
       {f:"2026-11-28",c:"L",r:"CAQ Handball",sinHora:true,sede:"a confirmar"}
     ], tabla:[
