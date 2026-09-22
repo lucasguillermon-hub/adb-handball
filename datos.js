@@ -21,8 +21,33 @@ const DATOS = {
   // Aviso del club: una barra arriba de todo, con un botón que abre el detalle. Se puede cerrar
   // (vuelve a aparecer en la próxima visita, no se guarda nada). Con aviso:null no se muestra.
   // "hasta" es el último día que se muestra; después de esa fecha desaparece solo.
-  // El texto de la Rifa 2026 que circuló por WhatsApp es interno: esperando una versión para el público.
-  aviso: null,
+  aviso: {
+    hasta: "2026-11-30",
+    etiqueta: "Rifa 2026",
+    texto: "Ya está en marcha la rifa del club. Pedile el talonario a tu entrenador.",
+    boton: "De qué se trata",
+    titulo: "Una rifa por nuestro club",
+    bajada: "Ser parte de un club es mucho más que venir a entrenar y jugar un partido. Es compartir momentos, aprender, hacer amigos, ponerse la camiseta y sentir que somos parte de algo más grande. Para que eso sea posible hay un montón de cosas detrás, y esta vez nos toca a nosotros poner el granito de arena.",
+    puntos: [
+      { t: "Para qué es", l: [
+        "Materiales para la temporada 2027.",
+        "Premios de la fiesta de fin de año.",
+        "Colaborar con la actividad de todos los días."
+      ]},
+      { t: "Premios", l: [
+        "1º premio: $700.000",
+        "2º premio: $500.000",
+        "3º premio: $230.000",
+        "4º premio: $70.000"
+      ]},
+      { t: "Los troqueles", l: [
+        "El sorteo se hace a la vieja usanza, con los troqueles.",
+        "Guardá el troquel de cada rifa que vendas: sin troquel, esa rifa no entra en el sorteo."
+      ]}
+    ],
+    cierre: "Cada rifa que vendemos no es un número más: es una ayuda que, entre todos, se convierte en más oportunidades para seguir haciendo lo que nos gusta. Es por el club, por la actividad y por todos nosotros.",
+    wsp: "Hola! Quiero consultar por la rifa 2026 del club."
+  },
 
   /* --------- DATOS GENERALES DEL CLUB --------- */
   torneo: "Clausura 2026",
