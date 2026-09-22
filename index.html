@@ -64,6 +64,31 @@ section{padding:76px 0}
 .rosa .bajada{color:rgba(10,20,40,.72)}
 
 /* ---------- header ---------- */
+/* Aviso del club (la rifa, por ejemplo): barra fina arriba de todo, con un botón que abre el
+   detalle y una cruz para sacarla de la pantalla. Es discreta a propósito: no tapa nada. */
+.aviso-barra{position:relative;z-index:70;background:var(--rosa);color:var(--tinta)}
+.aviso-barra .wrap{display:flex;align-items:center;gap:12px;padding:9px 0;flex-wrap:wrap}
+.aviso-barra .et{font-family:var(--display);font-size:13px;letter-spacing:.12em;text-transform:uppercase;background:var(--tinta);color:#fff;border-radius:999px;padding:3px 11px;flex-shrink:0}
+.aviso-barra p{margin:0;font-size:14.5px;font-weight:600;line-height:1.35}
+.aviso-barra .ver{background:none;border:1.5px solid rgba(10,20,40,.45);border-radius:999px;padding:5px 14px;font-family:inherit;font-size:13.5px;font-weight:700;color:var(--tinta);cursor:pointer;white-space:nowrap}
+.aviso-barra .ver:hover{border-color:var(--tinta);background:rgba(10,20,40,.06)}
+.aviso-barra .cerrar-aviso{margin-left:auto;background:none;border:0;color:var(--tinta);opacity:.6;font-size:19px;line-height:1;cursor:pointer;padding:4px 2px}
+.aviso-barra .cerrar-aviso:hover{opacity:1}
+@media(max-width:600px){.aviso-barra .ver{order:3}.aviso-barra .cerrar-aviso{order:2}}
+/* Panel con el detalle del aviso */
+.aviso-panel{position:fixed;inset:0;z-index:100;background:rgba(6,13,28,.82);display:none;padding:20px;overflow:auto}
+.aviso-panel.abierto{display:grid;place-items:start center;padding-top:6vh;padding-bottom:6vh}
+.aviso-panel .caja{background:var(--hueso);color:var(--tinta);border-radius:18px;max-width:640px;width:100%;padding:30px 32px;margin:auto}
+.aviso-panel h2{font-family:var(--display);font-size:28px;font-weight:400;line-height:1.1;margin:0 0 8px}
+.aviso-panel .baj{font-size:15.5px;line-height:1.55;color:rgba(10,20,40,.75);margin:0 0 20px}
+.aviso-panel h3{font-family:var(--display);font-size:15px;font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:var(--rosa-vivo);margin:18px 0 8px}
+.aviso-panel ul{list-style:none;margin:0;padding:0;display:grid;gap:5px}
+.aviso-panel li{position:relative;padding-left:18px;font-size:15px;line-height:1.5}
+.aviso-panel li::before{content:"";position:absolute;left:0;top:9px;width:7px;height:7px;border-radius:2px;background:var(--rosa)}
+.aviso-panel .cierre{margin:20px 0 0;font-size:15px;line-height:1.55;border-top:1px solid var(--linea-oscura);padding-top:16px}
+.aviso-panel .pie-aviso{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.aviso-panel .pie-aviso .btn{background:var(--tinta)}
+.aviso-panel .pie-aviso .cerrar{background:none;border:1.5px solid var(--linea-oscura);border-radius:999px;padding:11px 20px;font-family:inherit;font-size:14.5px;font-weight:700;color:var(--tinta);cursor:pointer}
 header{position:sticky;top:0;z-index:60;background:rgba(10,20,40,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--linea)}
 .nav{display:flex;align-items:center;gap:22px;height:70px}
 .marca{display:flex;align-items:center;gap:11px;text-decoration:none;flex:0 0 auto}
@@ -440,6 +465,9 @@ footer a:hover{color:var(--rosa)}
      Todo el contenido variable vive en datos.js, en la misma carpeta.
      Ese es el único archivo que hay que editar para cambiar contenido.
      ============================================================ -->
+
+<div class="aviso-barra" id="aviso-barra" hidden></div>
+<div class="aviso-panel" id="aviso-panel" role="dialog" aria-modal="true" aria-labelledby="aviso-titulo" hidden></div>
 
 <header>
   <div class="wrap nav">
@@ -1433,6 +1461,39 @@ $("#visor-descargar").addEventListener("click", function(){
   const a = document.createElement("a");
   a.href = this.dataset.src; a.download = ""; a.click();
 });
+
+/* ============================ aviso del club ============================
+   DATOS.aviso: barra arriba de todo con el aviso del momento (la rifa, por ejemplo) y un
+   panel con el detalle. Se cierra con la cruz o con Escape; no se guarda nada, así que
+   vuelve a aparecer en la próxima visita. Pasada la fecha "hasta", no se muestra más. */
+(function(){
+  const av = DATOS.aviso;
+  if (!av || (av.hasta && av.hasta < new Date().toISOString().slice(0, 10))) return;
+  const barra = $("#aviso-barra"), panel = $("#aviso-panel");
+  barra.innerHTML = '<div class="wrap">'
+    + (av.etiqueta ? '<span class="et">' + av.etiqueta + '</span>' : '')
+    + '<p>' + av.texto + '</p>'
+    + (av.puntos && av.puntos.length ? '<button class="ver" type="button" data-track="aviso-abierto">' + (av.boton || "Ver más") + '</button>' : '')
+    + '<button class="cerrar-aviso" type="button" aria-label="Cerrar el aviso">✕</button></div>';
+  barra.hidden = false;
+
+  panel.innerHTML = '<div class="caja"><h2 id="aviso-titulo">' + (av.titulo || av.etiqueta) + '</h2>'
+    + (av.bajada ? '<p class="baj">' + av.bajada + '</p>' : '')
+    + (av.puntos || []).map(p => '<h3>' + p.t + '</h3><ul>' + p.l.map(x => '<li>' + x + '</li>').join("") + '</ul>').join("")
+    + (av.cierre ? '<p class="cierre">' + av.cierre + '</p>' : '')
+    + '<div class="pie-aviso">'
+    + (av.wsp ? '<a class="btn" href="' + wspBase + encodeURIComponent(av.wsp) + '" target="_blank" rel="noopener" data-track="aviso-whatsapp">Consultar por WhatsApp</a>' : '')
+    + '<button class="cerrar" type="button">Cerrar</button></div></div>';
+
+  const abrir = () => { panel.hidden = false; panel.classList.add("abierto"); document.body.style.overflow = "hidden"; panel.querySelector(".cerrar").focus(); track("aviso-abierto"); };
+  const cerrarPanel = () => { panel.classList.remove("abierto"); panel.hidden = true; document.body.style.overflow = ""; };
+  barra.addEventListener("click", e => {
+    if (e.target.closest(".ver")) abrir();
+    if (e.target.closest(".cerrar-aviso")) { barra.hidden = true; track("aviso-cerrado"); }
+  });
+  panel.addEventListener("click", e => { if (e.target === panel || e.target.closest(".cerrar")) cerrarPanel(); });
+  document.addEventListener("keydown", e => { if (e.key === "Escape" && panel.classList.contains("abierto")) cerrarPanel(); });
+})();
 
 /* ============================ formularios ============================
    Los de jugar y sponsor abren WhatsApp con el mensaje armado. Los que

@@ -106,6 +106,10 @@ pertenencia. Los textos hablan de la tribuna, de las familias y del barrio, no d
   de la carpeta de diseño `6. SPONSORS 2026/`, que está ignorada en git y no se publica).
   Si llega un logo nuevo, va ahí en PNG transparente, azul sobre fondo claro, y se
   carga en `logo` dentro de `tiers`.
+- Aviso del club: `aviso` en `datos.js` pinta una barra rosa arriba de todo (etiqueta, texto y un
+  botón que abre el detalle), se puede cerrar y no guarda nada, así que vuelve en la próxima
+  visita. Desaparece sola pasada la fecha `hasta`. Hoy anuncia la Rifa 2026 (hasta el 30/11).
+  Con `aviso:null` no se muestra.
 - Club de Beneficios: está escondido con `mostrarBeneficios: false` en `datos.js` (sección,
   menú, pie y tarjeta de la portada). Acordar cada beneficio con su comercio y pasarlo a true.
 - Números reales del media kit (jugadores, familias, fechas de local).
