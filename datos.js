@@ -467,7 +467,7 @@ const DATOS = {
   noticias: [
     {
       slug: "primavera-minis-infantiles",
-      fecha: "2026-09-19",
+      fecha: "2026-09-22",
       etiqueta: "Formativas",
       titulo: "Las Minis y las Infantiles le dieron la bienvenida a la primavera",
       copete: "Entrenamiento temático, accesorios de primavera y una jornada de juegos y mucho handball.",
