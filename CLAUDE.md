@@ -92,6 +92,16 @@ pertenencia. Los textos hablan de la tribuna, de las familias y del barrio, no d
   de la figura, del prode y de las goleadoras. MVP, prode y goleadoras van de Juveniles en
   adelante.
 
+## Sincronización automática
+
+Hay una tarea programada de Claude Code, "Sincronizar FeMeBal y Maxi", que corre viernes,
+sábado, domingo y lunes a las 22 y hace sola toda la actualización semanal: resultados,
+tablas, planillas (dorsales, goles y goles por fecha), Maxihandball, verificación en el
+navegador y push. Corre solo si la app de Claude está abierta; si no, se ejecuta cuando se
+abre. **Falta correrla una vez a mano con "Run now"** (sección Scheduled de la barra lateral)
+para que queden aceptados los permisos: la primera corrida quedó catorce horas esperando una
+confirmación y no publicó nada.
+
 ## Cosas que todavía faltan
 
 - El fixture, los horarios, los resultados y las tablas de posiciones salen de FeMeBal (femebal.com/tournament-tracker,
@@ -130,6 +140,10 @@ pertenencia. Los textos hablan de la tribuna, de las familias y del barrio, no d
   (hora propia) y `g` (resultado "nuestros-de ellos"). Faltan: el horario de Minis, y decidir qué sponsor presenta cada plantel nuevo (sin
   `sponsor`, el marcador no muestra presentador). Un partido puede llevar `sinHora:true` (la liga
   no lo programó: se muestra "hora a confirmar") y `sede` ("a confirmar" o el nombre del lugar).
+- Maxihandball: el plantel y los dorsales salen de la lista del club (21 jugadoras, septiembre
+  2026); los goles, de la tabla de goleadoras de la liga. Julieta Zárate figura con 1 gol en la
+  liga pero no está en esa lista: decidir si entra al plantel o si el gol quedó mal cargado.
+  La liga no publica planillas por partido: en Maxi no hay goles por fecha ni ficha de partido.
 - Escudos de rivales en `fotos/rivales/<nombre-del-rival-en-minusculas>.png` (44 de FeMeBal
   y 13 de Maxi). Un rival nuevo se ve con su inicial hasta que se cargue el archivo.
 - Novedades: `noticias` en `datos.js`, una entrada por nota (slug, fecha, etiqueta, foto de tapa y
@@ -137,6 +151,8 @@ pertenencia. Los textos hablan de la tribuna, de las familias y del barrio, no d
   se abren en un lector; cada una tiene su link propio `#n/<slug>` para mandar por WhatsApp. Las
   fotos van en `fotos/noticias/` con las mismas reglas que la galería. Los videos de YouTube cargan
   recién cuando se tocan. Sin noticias, la sección y su link del menú no aparecen.
+  Los videos tienen que estar en YouTube (aunque sea "no listado"): las historias de Instagram
+  duran 24 horas y piden cuenta, así que no sirven para la web.
 - Galería: un álbum por categoría y adentro una entrada por fecha (rival, condición, fotógrafo,
   fotos), porque no siempre saca fotos la misma persona. Entran con `herramientas/fotos-galeria.js`
   desde `fotos/Partidos/<Plantel>/<fecha> <fotógrafo>/` (originales, ignoradas). Los Instagram de
@@ -144,6 +160,8 @@ pertenencia. Los textos hablan de la tribuna, de las familias y del barrio, no d
   con sponsor queda para el plan 2027.
 - Los sponsors del muro son acuerdos 2026, anteriores al plan; el plan de niveles
   arranca en 2027. Hasta entonces el muro sigue agrupado por categoría.
+- El newsletter mensual se escribe en `herramientas/newsletter/<AAAA-MM>.html` (estilos en línea,
+  para pegar como cuerpo del mail). El de septiembre 2026 ya está hecho y sirve de molde.
 - Elegir la herramienta para mandar los mails (Brevo, MailerLite o similar) e importarle
   el CSV de contactos. Hasta entonces la lista solo se acumula en D1. Al 18/09/2026 la
   base tenía 0 contactos reales (el flujo está probado en producción): falta difundir el
