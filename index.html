@@ -64,6 +64,45 @@ section{padding:76px 0}
 .rosa .bajada{color:rgba(10,20,40,.72)}
 
 /* ---------- header ---------- */
+/* Novedades: tira de tarjetas (de costado en el celular, grilla en la compu) y un lector a
+   pantalla completa. Cada noticia tiene su link propio (#n/<slug>) para mandar por WhatsApp. */
+.novedades .tarjetas{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(260px,1fr);gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px;margin:0 -16px;padding-left:16px;padding-right:16px}
+@media(min-width:760px){.novedades .tarjetas{grid-auto-flow:row;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));overflow:visible;margin:0;padding:0}}
+.nota{scroll-snap-align:start;background:rgba(255,255,255,.05);border:1px solid var(--linea);border-radius:16px;overflow:hidden;text-align:left;padding:0;cursor:pointer;color:inherit;font:inherit;display:flex;flex-direction:column}
+.nota:hover{border-color:var(--rosa-vivo)}
+.nota .tapa{aspect-ratio:16/10;background:var(--azul);overflow:hidden}
+.nota .tapa img{width:100%;height:100%;object-fit:cover;display:block}
+.nota .txt{padding:14px 16px 18px}
+.nota .meta{display:flex;align-items:center;gap:9px;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--rosa-vivo);margin-bottom:8px}
+.nota .meta span{color:rgba(255,255,255,.55);letter-spacing:.04em}
+.nota h3{font-family:var(--display);font-size:19px;font-weight:400;line-height:1.15;margin:0}
+.nota p{font-size:14px;line-height:1.45;color:rgba(255,255,255,.7);margin:8px 0 0}
+/* Lector */
+.lector{position:fixed;inset:0;z-index:100;background:rgba(6,13,28,.92);display:none;overflow:auto;padding:20px}
+.lector.abierto{display:block}
+.lector .hoja{background:var(--hueso);color:var(--tinta);border-radius:18px;max-width:720px;margin:0 auto;padding:0 0 28px;overflow:hidden}
+.lector .tapa-grande{margin:0}
+.lector .tapa-grande img{width:100%;display:block}
+.lector .tapa-grande figcaption{font-size:13.5px;color:rgba(10,20,40,.6);padding:8px 30px 0}
+.lector .cuerpo{padding:24px 30px 0}
+.lector .meta{display:flex;gap:10px;align-items:center;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--rosa-vivo);margin-bottom:10px}
+.lector .meta span{color:rgba(10,20,40,.55);letter-spacing:.04em}
+.lector h2{font-family:var(--display);font-size:clamp(24px,4vw,34px);font-weight:400;line-height:1.1;margin:0}
+.lector .copete{font-size:16.5px;line-height:1.5;color:rgba(10,20,40,.72);margin:10px 0 0}
+.lector .cuerpo p{font-size:16px;line-height:1.6;margin:16px 0 0}
+.lector .destacado{font-family:var(--display);font-size:22px;font-weight:400;line-height:1.25;color:var(--azul);border-left:4px solid var(--rosa);padding-left:16px;margin:22px 0}
+.lector figure{margin:20px 0 0}
+.lector figure img{width:100%;border-radius:12px;display:block}
+.lector figcaption{font-size:13.5px;color:rgba(10,20,40,.6);margin-top:7px}
+.lector .video{position:relative;aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:var(--tinta);margin:20px 0 0;display:grid;place-items:center;cursor:pointer;border:0;padding:0;width:100%}
+.lector .video img{width:100%;height:100%;object-fit:cover;opacity:.75}
+.lector .video .play{position:absolute;width:64px;height:64px;border-radius:50%;background:var(--rosa-vivo);display:grid;place-items:center;color:#fff;font-size:22px;padding-left:5px}
+.lector .video iframe{width:100%;height:100%;border:0}
+.lector .pie-nota{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+.lector .pie-nota .btn{background:var(--tinta)}
+.lector .pie-nota .cerrar{background:none;border:1.5px solid var(--linea-oscura);border-radius:999px;padding:11px 20px;font-family:inherit;font-size:14.5px;font-weight:700;color:var(--tinta);cursor:pointer}
+.lector .equis{position:sticky;top:0;float:right;margin:10px;background:rgba(10,20,40,.7);color:#fff;border:0;border-radius:50%;width:38px;height:38px;font-size:17px;cursor:pointer;z-index:2}
+
 /* Aviso del club (la rifa, por ejemplo): barra fina arriba de todo, con un botón que abre el
    detalle y una cruz para sacarla de la pantalla. Es discreta a propósito: no tapa nada. */
 .aviso-barra{position:relative;z-index:70;background:var(--rosa);color:var(--tinta)}
@@ -480,6 +519,7 @@ footer a:hover{color:var(--rosa)}
     </a>
     <button class="burger" id="burger" aria-expanded="false" aria-controls="menu">☰<span class="sr" style="position:absolute;left:-9999px">Menú</span></button>
     <nav class="menu" id="menu">
+      <a href="#novedades">Novedades</a>
       <a href="#fixture">Fixture</a>
       <a href="#votacion">Votá la MVP</a>
       <a href="#fotos">Fotos</a>
@@ -538,6 +578,20 @@ footer a:hover{color:var(--rosa)}
 <div class="franja" aria-label="Marcas que acompañan al club">
   <div class="franja-in" id="franja"></div>
 </div>
+
+<section id="novedades" class="novedades">
+  <div class="wrap">
+    <div class="cabeza">
+      <div>
+        <p class="rotulo-sec">Novedades</p>
+        <h2 class="h2">Lo que pasa<br>en el club</h2>
+      </div>
+    </div>
+    <div class="tarjetas" id="novedades-tarjetas"></div>
+  </div>
+</section>
+
+<div class="lector" id="lector" role="dialog" aria-modal="true" aria-labelledby="lector-titulo" hidden></div>
 
 <section id="fixture" class="claro">
   <div class="wrap">
@@ -1461,6 +1515,71 @@ $("#visor-descargar").addEventListener("click", function(){
   const a = document.createElement("a");
   a.href = this.dataset.src; a.download = ""; a.click();
 });
+
+/* ============================ novedades ============================
+   DATOS.noticias: tarjetas con lo que pasa en el club y un lector a pantalla completa.
+   Cada noticia tiene su link propio (#n/<slug>), que es lo que se manda por WhatsApp. */
+(function(){
+  const notas = (DATOS.noticias || []).slice().sort((a, b) => b.fecha.localeCompare(a.fecha));
+  const secc = $("#novedades"), caja = $("#novedades-tarjetas"), lector = $("#lector");
+  if (!notas.length){ secc.remove(); $$('a[href="#novedades"]').forEach(a => a.remove()); return; }
+
+  caja.innerHTML = notas.map((n, i) =>
+    '<button class="nota" type="button" data-i="' + i + '">'
+    + (n.foto ? '<span class="tapa"><img src="' + n.foto + '" alt="' + (n.alt || "") + '" loading="lazy"></span>' : '')
+    + '<span class="txt"><span class="meta">' + (n.etiqueta || "Club") + '<span>' + DIA_MES(n.fecha) + '</span></span>'
+    + '<h3>' + n.titulo + '</h3>'
+    + (n.copete ? '<p>' + n.copete + '</p>' : '') + '</span></button>').join("");
+
+  // Un bloque del cuerpo de la nota
+  const bloque = b => {
+    if (b.t === "texto") return '<p>' + b.v + '</p>';
+    if (b.t === "destacado") return '<p class="destacado">' + b.v + '</p>';
+    if (b.t === "foto") return '<figure><img src="' + b.v + '" alt="' + (b.alt || "") + '" loading="lazy">'
+      + (b.pie ? '<figcaption>' + b.pie + '</figcaption>' : '') + '</figure>';
+    if (b.t === "video"){
+      const id = (b.v.match(/(?:v=|youtu\.be\/|embed\/|shorts\/)([\w-]{11})/) || [])[1];
+      if (!id) return '<p><a href="' + b.v + '" target="_blank" rel="noopener">Ver el video</a></p>';
+      return '<button class="video" type="button" data-yt="' + id + '" aria-label="' + (b.alt || "Ver el video") + '">'
+        + '<img src="https://i.ytimg.com/vi/' + id + '/hqdefault.jpg" alt=""><span class="play">▶</span></button>';
+    }
+    if (b.t === "link") return '<p><a href="' + b.v + '" target="_blank" rel="noopener" data-track="nota-link">' + (b.texto || b.v) + '</a></p>';
+    return "";
+  };
+
+  function abrir(n, conHash){
+    lector.innerHTML = '<div class="hoja"><button class="equis" type="button" aria-label="Cerrar">✕</button>'
+      + (n.foto ? '<figure class="tapa-grande"><img src="' + n.foto + '" alt="' + (n.alt || "") + '">' + (n.pie ? '<figcaption>' + n.pie + '</figcaption>' : '') + '</figure>' : '')
+      + '<div class="cuerpo"><p class="meta">' + (n.etiqueta || "Club") + '<span>' + DIA_SEM(n.fecha) + ' ' + DIA_MES(n.fecha) + '</span></p>'
+      + '<h2 id="lector-titulo">' + n.titulo + '</h2>'
+      + (n.copete ? '<p class="copete">' + n.copete + '</p>' : '')
+      + (n.cuerpo || []).map(bloque).join("")
+      + '<div class="pie-nota">'
+      + '<a class="btn" href="' + wspBase + encodeURIComponent(n.titulo + " " + location.origin + location.pathname + "#n/" + n.slug) + '" target="_blank" rel="noopener" data-track="nota-compartida">Compartir por WhatsApp</a>'
+      + '<button class="cerrar" type="button">Cerrar</button></div></div></div>';
+    lector.hidden = false; lector.classList.add("abierto");
+    document.body.style.overflow = "hidden"; lector.scrollTop = 0;
+    lector.querySelector(".equis").focus();
+    if (conHash) history.replaceState(null, "", "#n/" + n.slug);
+    track("nota-abierta", { nota: n.slug });
+  }
+  function cerrar(){
+    lector.classList.remove("abierto"); lector.hidden = true; lector.innerHTML = "";
+    document.body.style.overflow = "";
+    if (location.hash.startsWith("#n/")) history.replaceState(null, "", location.pathname + "#novedades");
+  }
+  caja.addEventListener("click", e => { const b = e.target.closest(".nota"); if (b) abrir(notas[+b.dataset.i], true); });
+  lector.addEventListener("click", e => {
+    if (e.target === lector || e.target.closest(".equis") || e.target.closest(".cerrar")) return cerrar();
+    const v = e.target.closest(".video");   // el video recién carga cuando lo tocás
+    if (v) v.outerHTML = '<div class="video"><iframe src="https://www.youtube-nocookie.com/embed/' + v.dataset.yt + '?autoplay=1" title="Video" allow="accelerometer; autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe></div>';
+  });
+  document.addEventListener("keydown", e => { if (e.key === "Escape" && lector.classList.contains("abierto")) cerrar(); });
+
+  // Si el link trae #n/<slug>, se abre esa noticia
+  const porHash = () => { const m = location.hash.match(/^#n\/(.+)$/); const n = m && notas.find(x => x.slug === m[1]); if (n) abrir(n, false); };
+  porHash(); window.addEventListener("hashchange", porHash);
+})();
 
 /* ============================ aviso del club ============================
    DATOS.aviso: barra arriba de todo con el aviso del momento (la rifa, por ejemplo) y un

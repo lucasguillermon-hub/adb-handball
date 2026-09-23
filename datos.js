@@ -451,6 +451,38 @@ const DATOS = {
   // El prode no tiene sponsor fijo: cada partido lo presenta una marca distinta del
   // muro, elegida de forma pareja y estable (todos ven la misma para ese partido).
 
+  // ============ NOVEDADES ============
+  // Lo que pasa en el club: entrenamientos temáticos, avisos, el resumen del mes. La más
+  // nueva va primero (se ordenan por fecha sola). Cada noticia tiene su propio link para
+  // compartir: adbhandball.com/#n/<slug>.
+  //   slug     · lo que va en el link, en minúsculas y con guiones
+  //   etiqueta · una palabra para ubicarla (Club, Formativas, Rifa, Newsletter...)
+  //   foto     · la que se ve en la tarjeta (1600 px de ancho, menos de 300 KB, como la galería)
+  //   cuerpo   · los bloques de la nota, en orden. Cada uno es uno de estos:
+  //     { t:"texto",     v:"un párrafo" }
+  //     { t:"destacado", v:"una frase que va resaltada" }
+  //     { t:"foto",      v:"fotos/noticias/archivo.jpg", alt:"qué se ve", pie:"opcional" }
+  //     { t:"video",     v:"https://www.youtube.com/watch?v=...", alt:"de qué es el video" }
+  //     { t:"link",      v:"https://...", texto:"Ver en Instagram" }
+  noticias: [
+    {
+      slug: "primavera-minis-infantiles",
+      fecha: "2026-09-19",
+      etiqueta: "Formativas",
+      titulo: "Las Minis y las Infantiles le dieron la bienvenida a la primavera",
+      copete: "Entrenamiento temático, accesorios de primavera y una jornada de juegos y mucho handball.",
+      foto: "fotos/noticias/2026-09-primavera-01.jpg",
+      alt: "Las jugadoras de Minis e Infantiles posando frente al arco con vinchas de flores y accesorios de primavera",
+      pie: "Toda la tira formativa, antes de empezar los juegos.",
+      cuerpo: [
+        { t: "texto", v: "Las Minis y las Infantiles entrenaron con temática de primavera. Cada una vino con sus accesorios: vinchas de flores, guirnaldas, lentes y orejitas." },
+        { t: "texto", v: "Fue una jornada de juegos y mucho handball, de esas que hacen que las más chicas se queden con ganas de volver el martes." },
+        { t: "destacado", v: "Así se arma el club desde abajo: jugando." },
+        { t: "link", v: "https://instagram.com/adb.handball", texto: "Más fotos en el Instagram del club" }
+      ]
+    }
+  ],
+
   // ============ GALERÍA ============
   // Un álbum por categoría, y adentro una entrada por fecha (partido): rival, condición,
   // quién sacó las fotos y las fotos. No siempre es el mismo fotógrafo, por eso el crédito

@@ -132,6 +132,11 @@ pertenencia. Los textos hablan de la tribuna, de las familias y del barrio, no d
   no lo programó: se muestra "hora a confirmar") y `sede` ("a confirmar" o el nombre del lugar).
 - Escudos de rivales en `fotos/rivales/<nombre-del-rival-en-minusculas>.png` (44 de FeMeBal
   y 13 de Maxi). Un rival nuevo se ve con su inicial hasta que se cargue el archivo.
+- Novedades: `noticias` en `datos.js`, una entrada por nota (slug, fecha, etiqueta, foto de tapa y
+  un `cuerpo` de bloques: texto, destacado, foto, video de YouTube o link). Se ven como tarjetas y
+  se abren en un lector; cada una tiene su link propio `#n/<slug>` para mandar por WhatsApp. Las
+  fotos van en `fotos/noticias/` con las mismas reglas que la galería. Los videos de YouTube cargan
+  recién cuando se tocan. Sin noticias, la sección y su link del menú no aparecen.
 - Galería: un álbum por categoría y adentro una entrada por fecha (rival, condición, fotógrafo,
   fotos), porque no siempre saca fotos la misma persona. Entran con `herramientas/fotos-galeria.js`
   desde `fotos/Partidos/<Plantel>/<fecha> <fotógrafo>/` (originales, ignoradas). Los Instagram de
