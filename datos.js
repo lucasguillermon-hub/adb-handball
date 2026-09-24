@@ -470,18 +470,18 @@ const DATOS = {
       fecha: "2026-09-24",
       etiqueta: "Primera damas",
       titulo: "La Primera juega en la Casa del Handball y va por televisión",
-      copete: "Viernes 25 a las 20:00, contra Sagrado Corazón, en el estadio de FeMeBal. Lo pasa FemebalTV y la tribuna está abierta para el que quiera ir.",
+      copete: "Las dirigidas por Christian Gull abren la fecha 8 el viernes a las 20:00, contra Sagrado Corazón, en el estadio de FeMeBal. Lo pasa FemebalTV y la tribuna está abierta.",
       foto: "fotos/noticias/2026-09-casa-del-handball-01.jpg",
       alt: "Una jugadora de Primera damas salta a rematar entre dos rivales",
       cuerpo: [
         { t: "texto", v: "La fecha 8 del Clausura nos saca de Don Bosco 116. Somos locales igual, pero se juega en la Casa del Handball Argentino, el estadio de FeMeBal en el Parque Olímpico de la Juventud." },
         { t: "texto", v: "Es uno de los dos partidos televisados del viernes. La Primera abre la jornada a las 20:00 contra Sagrado Corazón, de Florencio Varela, y se puede seguir por FemebalTV." },
         { t: "foto", v: "fotos/noticias/2026-09-casa-del-handball-02.jpg", alt: "Las jugadoras de Primera damas abrazadas en la charla previa al partido", pie: "La charla de siempre, esta vez en otra cancha." },
-        { t: "texto", v: "Llegamos segundas en el Clausura, con 18 puntos en siete fechas, y primeras en la tabla anual. En el Apertura las habíamos ganado 36 a 25." },
+        { t: "texto", v: "El equipo de Gull llega segundo en el Clausura, con 18 puntos en siete fechas, y primero en la tabla anual. Hoy está en zona de ascenso a la Liga de Honor Plata, así que sumar de a tres en la recta final del torneo no es un detalle." },
+        { t: "texto", v: "Enfrente viene Sagrado Corazón, undécimo, que pelea por meterse en el Super 8. En el Apertura las nuestras se lo llevaron 36 a 25." },
         { t: "destacado", v: "Cambia la cancha, no la tribuna." },
         { t: "texto", v: "Para ir: Av. Roca 4170. La entrada general sale $7.000 y se paga en efectivo, con QR, débito o crédito. No se entra con comida, pero hay stand gastronómico adentro y el equipo de mate pasa sin problema." },
-        { t: "texto", v: "Después, a las 21:45, la jornada sigue con el masculino entre Muñiz y Grilli." },
-        { t: "texto", v: "Fotos: Julieta Tauni (JZ Audiovisuales) y Melanie Weber." },
+        { t: "texto", v: "Después, a las 21:45, la jornada sigue con el masculino entre Muñiz y Grilli, dos que están peleando abajo." },
         { t: "link", v: "https://www.instagram.com/p/Ddpp88Qmjlb/", texto: "El anuncio de la fecha, en el Instagram de FeMeBal" }
       ]
     },
