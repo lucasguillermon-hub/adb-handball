@@ -466,6 +466,24 @@ const DATOS = {
   //     { t:"link",      v:"https://...", texto:"Ver en Instagram" }
   noticias: [
     {
+      slug: "rifa-2026",
+      fecha: "2026-09-23",
+      etiqueta: "Rifa 2026",
+      titulo: "Arrancó la rifa del club: $700.000 al primer premio",
+      copete: "Cuatro premios en plata, sorteo en diciembre y un talonario a nombre de cada jugadora y jugador. Pedile el tuyo a tu entrenador.",
+      foto: "fotos/noticias/2026-09-rifa-01.jpg",
+      alt: "El plantel de Juveniles posando frente al arco antes de un partido",
+      cuerpo: [
+        { t: "texto", v: "Ya está en la calle la rifa con la que el club cierra el año. Hay un talonario a nombre de cada jugadora y cada jugador, de Minis a Maxi: se retira en el club, en el horario de entrenamiento, y se lo pedís a tu entrenador o entrenadora. Que no quede ninguno sin el suyo." },
+        { t: "destacado", v: "$700.000 · $500.000 · $230.000 · $70.000" },
+        { t: "texto", v: "Cuatro premios en efectivo, de mayor a menor, y el sorteo en diciembre." },
+        { t: "texto", v: "Se sortea a la vieja usanza, con los troqueles. Guardá el troquel de cada rifa que vendas: sin troquel, esa rifa no entra en el sorteo." },
+        { t: "texto", v: "Vender es más fácil de lo que parece. La familia, los vecinos, el kiosco de la esquina, los compañeros de trabajo, el grupo del colegio. Contá que es por el club y que los premios son en efectivo: el número se vende solo." },
+        { t: "texto", v: "Y si no jugás pero venís a la cancha, también podés comprar: preguntale a cualquiera de las chicas o los chicos, todos tienen su talonario encima." },
+        { t: "texto", v: "Dudas, cambios de talonario o rifas que se te terminaron: hablá con tu entrenador o escribinos por el WhatsApp del club." }
+      ]
+    },
+    {
       slug: "casa-del-handball-sagrado-corazon",
       fecha: "2026-09-24",
       etiqueta: "Primera damas",
