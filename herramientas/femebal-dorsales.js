@@ -65,7 +65,10 @@ function filasDelBosco(texto){
       const pdfPath = path.join(DIR, id + "-f" + h.f + ".pdf");
       if (!fs.existsSync(pdfPath)) fs.writeFileSync(pdfPath, Buffer.from(await (await fetch(h.url)).arrayBuffer()));
       const texto = (await pdf(fs.readFileSync(pdfPath))).text;
-      const fechaPartido = (texto.match(/Fecha:\s*\n?\s*(\d{4}-\d{2}-\d{2})/) || [])[1];
+      // Manda la fecha del fixture (partidos[] viene en orden de fecha 1..15): la planilla a veces
+      // trae el día en que se cerró y no el que se jugó, y la clave tiene que coincidir con el partido.
+      const enFixture = (pl.partidos || [])[h.f - 1];
+      const fechaPartido = (enFixture && enFixture.f) || (texto.match(/Fecha:\s*\n?\s*(\d{4}-\d{2}-\d{2})/) || [])[1];
       if (fechaPartido) porFecha[fechaPartido] = porFecha[fechaPartido] || {};
       for (const fila of filasDelBosco(texto)) {
         // Emparejar con la lista del club: apellido igual (o casi) y algún nombre en común
