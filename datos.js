@@ -763,20 +763,20 @@ const DATOS = {
       { n:"Agua Tronador",    logo:"fotos/sponsors/tronador.png",         url:"https://instagram.com/aguatronador", fondoOscuro:false }
     ]},
     { titulo:"Primera damas", marcas:[
-      { n:"Franco Liontix",         logo:"fotos/sponsors/franco-lionti.png",                url:"", fondoOscuro:false },
+      { n:"Franco Liontix",         logo:"fotos/sponsors/franco-lionti.png",                url:"https://instagram.com/francoliontix", fondoOscuro:false },
       { n:"Cimino y Costantini",    logo:"fotos/sponsors/cimino-y-costantini.png",          url:"https://instagram.com/ciminoycostantini", fondoOscuro:false },
       { n:"Agua Tronador",          logo:"fotos/sponsors/tronador.png",                     url:"https://instagram.com/aguatronador", fondoOscuro:false },
-      { n:"Delicias Doradas",       logo:"fotos/sponsors/delicias-doradas.png",             url:"", fondoOscuro:false },
-      { n:"De Cascia",              logo:"fotos/sponsors/de-cascia.png",                    url:"", fondoOscuro:false },
-      { n:"Carnevale",              logo:"fotos/sponsors/carnevale.png",                    url:"", fondoOscuro:false },
+      { n:"Delicias Doradas",       logo:"fotos/sponsors/delicias-doradas.png",             url:"https://instagram.com/delicias_doradas", fondoOscuro:false },
+      { n:"De Cascia",              logo:"fotos/sponsors/de-cascia.png",                    url:"https://instagram.com/decascia", fondoOscuro:false },
+      { n:"Carnevale",              logo:"fotos/sponsors/carnevale.png",                    url:"https://instagram.com/carnevale.ok", fondoOscuro:false },
       { n:"Lic. Kine Vale Trelles", logo:"fotos/sponsors/valeria-trelles-kinesiologia.png", url:"", fondoOscuro:false }
     ]},
     { titulo:"Tercera damas", marcas:[
       { n:"Textil Calchaquí",       logo:"fotos/sponsors/cortinas-calchaqui.png",     url:"https://instagram.com/textilcalchaqui.arg", fondoOscuro:false },
-      { n:"Supermercado Magdalena", logo:"fotos/sponsors/magdalena-supermercado.png", url:"", fondoOscuro:false },
-      { n:"Sorar RRHH",             logo:"fotos/sponsors/sora-rrhh.png",              url:"", fondoOscuro:false },
-      { n:"JL Javier López",        logo:"fotos/sponsors/javier-lopez.png",           url:"", fondoOscuro:false },
-      { n:"Bernuts",                logo:"fotos/sponsors/bernutss.png",               url:"", fondoOscuro:false },
+      { n:"Supermercado Magdalena", logo:"fotos/sponsors/magdalena-supermercado.png", url:"https://instagram.com/supermermercado_magdalena", fondoOscuro:false },
+      { n:"Sorar RRHH",             logo:"fotos/sponsors/sora-rrhh.png",              url:"https://instagram.com/sorarrhh", fondoOscuro:false },
+      { n:"JL Javier López",        logo:"fotos/sponsors/javier-lopez.png",           url:"https://instagram.com/jl_javierlopez", fondoOscuro:false },
+      { n:"Bernuts",                logo:"fotos/sponsors/bernutss.png",               url:"https://instagram.com/bernutss", fondoOscuro:false },
       { n:"Agua Tronador",          logo:"fotos/sponsors/tronador.png",               url:"https://instagram.com/aguatronador", fondoOscuro:false }
     ]},
     { titulo:"Cuarta caballeros", marcas:[
@@ -784,11 +784,11 @@ const DATOS = {
       { n:"Svencen Propiedades",  logo:"fotos/sponsors/svencen.png",       url:"", fondoOscuro:false }
     ]},
     { titulo:"Maxihandball", marcas:[
-      { n:"Inti Bernal",      logo:"fotos/sponsors/inti-bernal.png", url:"", fondoOscuro:false },
-      { n:"Lalomatic",        logo:"fotos/sponsors/lalomatic.png",   url:"", fondoOscuro:false },
-      { n:"Redbee",           logo:"fotos/sponsors/redbee.png",      url:"", fondoOscuro:false },
-      { n:"Graferme Gráfica", logo:"fotos/sponsors/graferne.png",    url:"", fondoOscuro:false },
-      { n:"Santa Paz",        logo:"fotos/sponsors/santa-paz.png",   url:"", fondoOscuro:false }
+      { n:"Inti Bernal",      logo:"fotos/sponsors/inti-bernal.png", url:"https://instagram.com/inti_bernal", fondoOscuro:false },
+      { n:"Lalomatic",        logo:"fotos/sponsors/lalomatic.png",   url:"https://instagram.com/lalomatic.ok", fondoOscuro:false },
+      { n:"Redbee",           logo:"fotos/sponsors/redbee.png",      url:"https://instagram.com/redbeestudios", fondoOscuro:false },
+      { n:"Graferme Gráfica", logo:"fotos/sponsors/graferne.png",    url:"https://instagram.com/grafernegrafica", fondoOscuro:false },
+      { n:"Santa Paz",        logo:"fotos/sponsors/santa-paz.png",   url:"https://instagram.com/centro.santa.paz", fondoOscuro:false }
     ]}
   ],
 
