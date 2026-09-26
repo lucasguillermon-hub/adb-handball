@@ -464,6 +464,7 @@ const DATOS = {
   //   cuerpo   · los bloques de la nota, en orden. Cada uno es uno de estos:
   //     { t:"texto",     v:"un párrafo" }
   //     { t:"destacado", v:"una frase que va resaltada" }
+  //     { t:"cita",      v:"lo que dijo", quien:"quién lo dijo" }
   //     { t:"foto",      v:"fotos/noticias/archivo.jpg", alt:"qué se ve", pie:"opcional" }
   //     { t:"video",     v:"https://www.youtube.com/watch?v=...", alt:"de qué es el video" }
   //     { t:"link",      v:"https://...", texto:"Ver en Instagram" }
@@ -482,7 +483,7 @@ const DATOS = {
         { t: "texto", v: "Un partido áspero, de muchos goles y parejo de principio a fin. El resultado no fue el esperado, pero sin dudas que seguimos más vivas que nunca en la búsqueda del ascenso." },
         { t: "destacado", v: "Seguimos más vivas que nunca en la búsqueda del ascenso." },
         { t: "texto", v: "Charlamos con Vale Trelles, una de nuestras jugadoras, y declaró:" },
-        { t: "texto", v: "“Fue un partido duro físicamente. Se notaron los nervios y eso hizo que tuviéramos imprecisiones durante todo el partido. Como siempre tenemos altibajos durante los 60 minutos, pero ellas supieron resolver mejor y el resultado se dio en los detalles. Esto no queda acá, tenemos muchos partidos por delante y si nosotras sabemos de algo, es de levantar cabeza y hacernos más fuertes. El objetivo sigue en pie y depende de nosotras únicamente, así que batallaremos hasta el último partido.”" },
+        { t: "cita", quien: "Vale Trelles", v: "Fue un partido duro físicamente. Se notaron los nervios y eso hizo que tuviéramos imprecisiones durante todo el partido. Como siempre tenemos altibajos durante los 60 minutos, pero ellas supieron resolver mejor y el resultado se dio en los detalles. Esto no queda acá, tenemos muchos partidos por delante y si nosotras sabemos de algo, es de levantar cabeza y hacernos más fuertes. El objetivo sigue en pie y depende de nosotras únicamente, así que batallaremos hasta el último partido." },
         { t: "texto", v: "Mención especial para la hinchada del Bosco, que alentó los 60 minutos. Gracias a cada familia y a cada amigo que vino a bancar a las pibas." },
         { t: "texto", v: "Los goles fueron de Micaela Ramírez (7), la propia Trelles (4), Bárbara Ramírez (3), Noelia Alcalá, Emilia Zarantonello, Justine Vargas y Thayssa Montaly (2 cada una), Katia Cuomo y Julieta Giménez. Con la derrota, el Bosco queda segundo en el Clausura con 19 puntos, a tres de Polvorines." }
       ]

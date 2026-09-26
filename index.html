@@ -92,6 +92,9 @@ section{padding:76px 0}
 .lector .cuerpo p{font-size:16px;line-height:1.6;margin:16px 0 0}
 .lector .firma{font-size:13px;letter-spacing:.06em;text-transform:uppercase;font-weight:700;color:rgba(10,20,40,.5);margin:14px 0 0;padding-top:12px;border-top:1px solid rgba(10,20,40,.12)}
 .lector .destacado{font-family:var(--display);font-size:22px;font-weight:400;line-height:1.25;color:var(--azul);border-left:4px solid var(--rosa);padding-left:16px;margin:22px 0}
+/* Lo que dice una jugadora o el entrenador: bastardilla y fondo, para que se despegue del relato */
+.lector .cuerpo .cita{font-style:italic;font-weight:600;font-size:16.5px;line-height:1.55;color:var(--azul);background:rgba(21,42,84,.055);border-left:4px solid var(--rosa-vivo);border-radius:0 12px 12px 0;padding:16px 18px;margin:20px 0 0}
+.lector .cuerpo .cita .quien{display:block;font-style:normal;font-weight:700;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--rosa-vivo);margin-top:10px}
 .lector figure{margin:20px 0 0}
 .lector figure img{width:100%;border-radius:12px;display:block}
 .lector figcaption{font-size:13.5px;color:rgba(10,20,40,.6);margin-top:7px}
@@ -1536,6 +1539,7 @@ $("#visor-descargar").addEventListener("click", function(){
   const bloque = b => {
     if (b.t === "texto") return '<p>' + b.v + '</p>';
     if (b.t === "destacado") return '<p class="destacado">' + b.v + '</p>';
+    if (b.t === "cita") return '<p class="cita">' + b.v + (b.quien ? '<span class="quien">' + b.quien + '</span>' : '') + '</p>';
     if (b.t === "foto") return '<figure><img src="' + b.v + '" alt="' + (b.alt || "") + '" loading="lazy">'
       + (b.pie ? '<figcaption>' + b.pie + '</figcaption>' : '') + '</figure>';
     if (b.t === "video"){
