@@ -64,19 +64,31 @@ section{padding:76px 0}
 .rosa .bajada{color:rgba(10,20,40,.72)}
 
 /* ---------- header ---------- */
-/* Novedades: tira de tarjetas (de costado en el celular, grilla en la compu) y un lector a
-   pantalla completa. Cada noticia tiene su link propio (#n/<slug>) para mandar por WhatsApp. */
-.novedades .tarjetas{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(260px,1fr);gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px;margin:0 -16px;padding-left:16px;padding-right:16px}
-@media(min-width:760px){.novedades .tarjetas{grid-auto-flow:row;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));overflow:visible;margin:0;padding:0}}
-.nota{scroll-snap-align:start;background:rgba(255,255,255,.05);border:1px solid var(--linea);border-radius:16px;overflow:hidden;text-align:left;padding:0;cursor:pointer;color:inherit;font:inherit;display:flex;flex-direction:column}
+/* Novedades: la última noticia grande y las demás en cuadraditos al lado, para que la
+   sección no se estire a medida que se suman notas. Cada una tiene su link propio
+   (#n/<slug>) para mandar por WhatsApp, y las viejas se despliegan con un botón. */
+.novedades .tarjetas{display:grid;gap:14px}
+@media(min-width:900px){.novedades .tarjetas{grid-template-columns:1.2fr 1fr;align-items:start}}
+.novedades .grilla{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.nota{background:rgba(255,255,255,.05);border:1px solid var(--linea);border-radius:16px;overflow:hidden;text-align:left;padding:0;cursor:pointer;color:inherit;font:inherit;display:flex;flex-direction:column}
 .nota:hover{border-color:var(--rosa-vivo)}
-.nota .tapa{aspect-ratio:16/10;background:var(--azul);overflow:hidden}
+.nota[hidden]{display:none}   /* si no, el display:flex de arriba le gana al atributo */
+.nota .tapa{background:var(--azul);overflow:hidden}
 .nota .tapa img{width:100%;height:100%;object-fit:cover;display:block}
-.nota .txt{padding:14px 16px 18px}
 .nota .meta{display:flex;align-items:center;gap:9px;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--rosa-vivo);margin-bottom:8px}
 .nota .meta span{color:rgba(255,255,255,.55);letter-spacing:.04em}
-.nota h3{font-family:var(--display);font-size:19px;font-weight:400;line-height:1.15;margin:0}
+.nota h3{font-family:var(--display);font-weight:400;line-height:1.15;margin:0}
 .nota p{font-size:14px;line-height:1.45;color:rgba(255,255,255,.7);margin:8px 0 0}
+.nota.grande .tapa{aspect-ratio:16/10}
+.nota.grande .txt{padding:18px 20px 22px}
+.nota.grande h3{font-size:clamp(21px,4.4vw,28px)}
+.nota.chica .tapa{aspect-ratio:1}
+.nota.chica .txt{padding:11px 13px 15px}
+.nota.chica .meta{font-size:10px;gap:6px;margin-bottom:6px}
+.nota.chica h3{font-size:15px}
+.nota.chica p{display:none}
+.ver-notas{grid-column:1/-1;justify-self:start;margin-top:2px;background:none;border:1px solid var(--linea);border-radius:999px;padding:9px 18px;font-family:inherit;font-size:13.5px;font-weight:600;color:inherit;cursor:pointer}
+.ver-notas:hover{border-color:var(--rosa-vivo)}
 /* Lector */
 .lector{position:fixed;inset:0;z-index:100;background:rgba(6,13,28,.92);display:none;overflow:auto;padding:20px}
 .lector.abierto{display:block}
@@ -1528,12 +1540,26 @@ $("#visor-descargar").addEventListener("click", function(){
   const secc = $("#novedades"), caja = $("#novedades-tarjetas"), lector = $("#lector");
   if (!notas.length){ secc.remove(); $$('a[href="#novedades"]').forEach(a => a.remove()); return; }
 
-  caja.innerHTML = notas.map((n, i) =>
-    '<button class="nota" type="button" data-i="' + i + '">'
+  // La más nueva va grande; el resto, en cuadraditos. De los cuadraditos se muestran unos
+  // pocos y los demás quedan atrás del botón, así la sección no crece sin fin.
+  const EN_CUADRITOS = 4;
+  const tarjeta = (n, i, tam) =>
+    '<button class="nota ' + tam + '" type="button" data-i="' + i + '"' + (i > EN_CUADRITOS ? ' hidden' : '') + '>'
     + (n.foto ? '<span class="tapa"><img src="' + n.foto + '" alt="' + (n.alt || "") + '" loading="lazy"></span>' : '')
     + '<span class="txt"><span class="meta">' + (n.etiqueta || "Club") + '<span>' + DIA_MES(n.fecha) + '</span></span>'
     + '<h3>' + n.titulo + '</h3>'
-    + (n.copete ? '<p>' + n.copete + '</p>' : '') + '</span></button>').join("");
+    + (n.copete ? '<p>' + n.copete + '</p>' : '') + '</span></button>';
+
+  const viejas = Math.max(0, notas.length - 1 - EN_CUADRITOS);
+  caja.innerHTML = tarjeta(notas[0], 0, "grande")
+    + (notas.length > 1 ? '<div class="grilla">' + notas.slice(1).map((n, i) => tarjeta(n, i + 1, "chica")).join("") + '</div>' : '')
+    + (viejas ? '<button class="ver-notas" type="button">Ver las ' + viejas + ' noticias anteriores</button>' : '');
+
+  const verMas = caja.querySelector(".ver-notas");
+  if (verMas) verMas.addEventListener("click", () => {
+    $$("#novedades-tarjetas .nota[hidden]").forEach(b => b.hidden = false);
+    verMas.remove(); track("novedades-anteriores");
+  });
 
   // Un bloque del cuerpo de la nota
   const bloque = b => {
