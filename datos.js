@@ -757,7 +757,7 @@ const DATOS = {
     ]},
     { titulo:"Juniors", marcas:[
       { n:"A los Mandarines", logo:"fotos/sponsors/a-los-mandarines.png", url:"https://instagram.com/alosmandarines.quilmes", fondoOscuro:false },
-      { n:"Acimet",           logo:"fotos/sponsors/acimet.png",           url:"", fondoOscuro:false },
+      { n:"Acimet",           logo:"fotos/sponsors/acimet.png",           url:"https://acimet.com.ar", fondoOscuro:false },
       { n:"Cosentino",        logo:"fotos/sponsors/cosentino.png",        url:"", fondoOscuro:false },
       { n:"Paher Plásticos",  logo:"fotos/sponsors/paher-plasticos.png",  url:"", fondoOscuro:false },
       { n:"Agua Tronador",    logo:"fotos/sponsors/tronador.png",         url:"https://instagram.com/aguatronador", fondoOscuro:false }
