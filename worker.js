@@ -6,7 +6,9 @@
      "votos_mvp"). Una persona = una cookie anónima; solo vive la fecha vigente
      de cada plantel y la votación cierra el viernes a las 20 (hora argentina).
      Cuando una fecha deja de ser la vigente, se guarda la ganadora en "figuras" y
-     recién ahí se borran sus votos: el GET devuelve ese historial en "anteriores".
+     recién ahí se borran sus votos. Ese historial no se publica en la web: queda
+     para el club, por si la CM tarda en subir el resultado. Se consulta con la
+     receta "Ver las figuras que quedaron guardadas" de recetas.md.
    - GET/POST /api/prode lee y guarda los pronósticos del próximo partido de cada
      plantel (tabla "prode"), con la misma cookie. Cierra cuando empieza el partido
      (la web manda la hora); solo vive el partido vigente de cada plantel. */
@@ -98,16 +100,14 @@ async function mvp(req, env, url){
   const { id, cookie } = identidad(req, url);
   const cerrada = Date.now() > cierre(fecha).getTime();
 
-  // De los votos crudos solo vive la fecha vigente del plantel. Antes de borrar una fecha
-  // vieja se guarda en "figuras" quién la ganó: ese es el historial que muestra el sitio.
-  // (MAX(n) con columnas sueltas: SQLite devuelve la fila de la jugadora más votada.)
+  // De los votos crudos solo vive la fecha vigente del plantel: ahí está la cookie de cada
+  // votante. Antes de borrar una fecha vieja se guarda en "figuras" el conteo de esa
+  // votación (una fila por jugadora), que es lo que queda para el club.
   const archivar = [
     env.DB.prepare(`INSERT OR IGNORE INTO figuras (plantel, fecha, jugadora, votos, total)
-       SELECT plantel, fecha, jugadora, MAX(n), total FROM (
-         SELECT plantel, fecha, jugadora, COUNT(*) AS n,
-                (SELECT COUNT(*) FROM votos_mvp x WHERE x.plantel = v.plantel AND x.fecha = v.fecha) AS total
-         FROM votos_mvp v WHERE plantel = ?1 AND fecha < ?2 GROUP BY plantel, fecha, jugadora)
-       GROUP BY plantel, fecha`).bind(plantel, fecha),
+       SELECT plantel, fecha, jugadora, COUNT(*),
+              (SELECT COUNT(*) FROM votos_mvp x WHERE x.plantel = v.plantel AND x.fecha = v.fecha)
+       FROM votos_mvp v WHERE plantel = ?1 AND fecha < ?2 GROUP BY plantel, fecha, jugadora`).bind(plantel, fecha),
     env.DB.prepare("DELETE FROM votos_mvp WHERE plantel = ?1 AND fecha < ?2").bind(plantel, fecha)
   ];
 
@@ -126,11 +126,7 @@ async function mvp(req, env, url){
   const conteo = {}; let total = 0, miVoto = null;
   for (const r of results){ conteo[r.jugadora] = r.n; total += r.n; if (r.mio) miVoto = r.jugadora; }
 
-  const anteriores = (await env.DB.prepare(
-    "SELECT fecha, jugadora, votos, total FROM figuras WHERE plantel = ?1 ORDER BY fecha DESC LIMIT 15"
-  ).bind(plantel).all()).results;
-
-  const res = json({ ok: true, plantel, fecha, total, conteo, miVoto, cerrada, anteriores, cierra: cierre(fecha).toISOString() });
+  const res = json({ ok: true, plantel, fecha, total, conteo, miVoto, cerrada, cierra: cierre(fecha).toISOString() });
   if (cookie) res.headers.append("Set-Cookie", cookie);
   return res;
 }

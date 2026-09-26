@@ -149,6 +149,21 @@ el porcentaje de cada jugadora, desde la tabla votos_mvp de la base D1.
 
 ---
 
+## Ver las figuras que quedaron guardadas
+
+Los votos crudos duran una sola fecha, pero el conteo de cada votación cerrada queda
+guardado en la tabla `figuras`. Sirve cuando pasaron varias fechas y todavía falta
+publicar alguna en Instagram: el dato sigue estando aunque la web ya no lo muestre.
+
+```
+Mostrame las figuras guardadas de cada plantel, fecha por fecha, con las votadas y
+cuántos votos sacó cada una, desde la tabla figuras de la base D1.
+```
+
+En la web no se ven: es un registro interno del club.
+
+---
+
 ## Si algo se rompió
 
 ```
