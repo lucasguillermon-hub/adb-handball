@@ -5,6 +5,8 @@
    - GET/POST /api/mvp lee y guarda los votos de la figura de la fecha (tabla
      "votos_mvp"). Una persona = una cookie anónima; solo vive la fecha vigente
      de cada plantel y la votación cierra el viernes a las 20 (hora argentina).
+     Cuando una fecha deja de ser la vigente, se guarda la ganadora en "figuras" y
+     recién ahí se borran sus votos: el GET devuelve ese historial en "anteriores".
    - GET/POST /api/prode lee y guarda los pronósticos del próximo partido de cada
      plantel (tabla "prode"), con la misma cookie. Cierra cuando empieza el partido
      (la web manda la hora); solo vive el partido vigente de cada plantel. */
@@ -96,16 +98,27 @@ async function mvp(req, env, url){
   const { id, cookie } = identidad(req, url);
   const cerrada = Date.now() > cierre(fecha).getTime();
 
+  // De los votos crudos solo vive la fecha vigente del plantel. Antes de borrar una fecha
+  // vieja se guarda en "figuras" quién la ganó: ese es el historial que muestra el sitio.
+  // (MAX(n) con columnas sueltas: SQLite devuelve la fila de la jugadora más votada.)
+  const archivar = [
+    env.DB.prepare(`INSERT OR IGNORE INTO figuras (plantel, fecha, jugadora, votos, total)
+       SELECT plantel, fecha, jugadora, MAX(n), total FROM (
+         SELECT plantel, fecha, jugadora, COUNT(*) AS n,
+                (SELECT COUNT(*) FROM votos_mvp x WHERE x.plantel = v.plantel AND x.fecha = v.fecha) AS total
+         FROM votos_mvp v WHERE plantel = ?1 AND fecha < ?2 GROUP BY plantel, fecha, jugadora)
+       GROUP BY plantel, fecha`).bind(plantel, fecha),
+    env.DB.prepare("DELETE FROM votos_mvp WHERE plantel = ?1 AND fecha < ?2").bind(plantel, fecha)
+  ];
+
   if (req.method === "POST"){
     if (!jugadora) return json({ error: "Falta la jugadora" }, 400);
     if (cerrada) return json({ error: "La votación de esta fecha ya cerró" }, 409);
-    // Solo vive la fecha vigente: los votos de fechas anteriores del plantel se borran.
-    await env.DB.batch([
-      env.DB.prepare("DELETE FROM votos_mvp WHERE plantel = ?1 AND fecha < ?2").bind(plantel, fecha),
+    await env.DB.batch(archivar.concat([
       env.DB.prepare("INSERT OR IGNORE INTO votos_mvp (plantel, fecha, votante, jugadora, creado) VALUES (?1, ?2, ?3, ?4, ?5)")
         .bind(plantel, fecha, id, jugadora, new Date().toISOString())
-    ]);
-  }
+    ]));
+  } else await env.DB.batch(archivar);   // así la fecha que quedó atrás pasa al historial aunque nadie vote
 
   const { results } = await env.DB.prepare(
     "SELECT jugadora, COUNT(*) AS n, MAX(votante = ?3) AS mio FROM votos_mvp WHERE plantel = ?1 AND fecha = ?2 GROUP BY jugadora"
@@ -113,7 +126,11 @@ async function mvp(req, env, url){
   const conteo = {}; let total = 0, miVoto = null;
   for (const r of results){ conteo[r.jugadora] = r.n; total += r.n; if (r.mio) miVoto = r.jugadora; }
 
-  const res = json({ ok: true, plantel, fecha, total, conteo, miVoto, cerrada, cierra: cierre(fecha).toISOString() });
+  const anteriores = (await env.DB.prepare(
+    "SELECT fecha, jugadora, votos, total FROM figuras WHERE plantel = ?1 ORDER BY fecha DESC LIMIT 15"
+  ).bind(plantel).all()).results;
+
+  const res = json({ ok: true, plantel, fecha, total, conteo, miVoto, cerrada, anteriores, cierra: cierre(fecha).toISOString() });
   if (cookie) res.headers.append("Set-Cookie", cookie);
   return res;
 }
