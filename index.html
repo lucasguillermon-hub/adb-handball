@@ -87,6 +87,15 @@ section{padding:76px 0}
 .nota.chica .meta{font-size:10px;gap:6px;margin-bottom:6px}
 .nota.chica h3{font-size:15px}
 .nota.chica p{display:none}
+/* En el celular las secundarias van una por renglón, con el cuadradito de la foto al
+   costado: ocupan un cuarto de lo que ocupaban y entran varias sin hacer scroll. */
+@media(max-width:899px){
+  .novedades .grilla{grid-template-columns:1fr;gap:10px}
+  .nota.chica{flex-direction:row;align-items:center}
+  .nota.chica .tapa{flex:0 0 88px;height:88px;aspect-ratio:auto}
+  .nota.chica .txt{padding:10px 14px 10px 12px}
+  .nota.chica h3{font-size:14.5px;line-height:1.2}
+}
 .ver-notas{grid-column:1/-1;justify-self:start;margin-top:2px;background:none;border:1px solid var(--linea);border-radius:999px;padding:9px 18px;font-family:inherit;font-size:13.5px;font-weight:600;color:inherit;cursor:pointer}
 .ver-notas:hover{border-color:var(--rosa-vivo)}
 /* Lector */
