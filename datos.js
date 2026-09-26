@@ -64,7 +64,7 @@ const DATOS = {
     comunidad: "https://chat.whatsapp.com/"      // ⚠️ pegar el link real de la comunidad
   },
 
-  // Fixture sincronizado con FeMeBal (femebal.com/tournament-tracker) el 25/09/2026.
+  // Fixture sincronizado con FeMeBal (femebal.com/tournament-tracker) el 26/09/2026.
   // nombre: como lo llama el club · division: como lo llama FeMeBal (se muestra en la tabla).
   // jugadoras: el plantel que se vota como figura de la fecha (de LISTAS PRESENTISMO 2026).
   // Minis e Infantiles son formativas: van con jugadoras:[] y no entran en nada que sea por nombre.
@@ -78,7 +78,7 @@ const DATOS = {
     ],
       // Dorsales y goles del Clausura según las planillas de FeMeBal (femebal-dorsales.js).
       dorsales:{"Daniela Cristaldo":1, "Noelia Alcala":4, "Katia Cuomo":6, "Mora Lionti":7, "Emilia Zarantonello":9, "Micaela Ramirez":10, "Barbara Ramirez":14, "Carla Martinez":16, "Millaray Cocha":17, "Luz Agüero":19, "Valeria Trelles":20, "Guadalupe Fernandez":22, "Justine Vargas":23, "Julieta Gimenez":27, "Thayssa Montaly":28},
-      goles:{"Noelia Alcala":15, "Katia Cuomo":13, "Mora Lionti":9, "Emilia Zarantonello":32, "Micaela Ramirez":25, "Barbara Ramirez":27, "Carla Martinez":2, "Millaray Cocha":13, "Luz Agüero":6, "Valeria Trelles":19, "Guadalupe Fernandez":7, "Justine Vargas":21, "Thayssa Montaly":11},
+      goles:{"Noelia Alcala":17, "Katia Cuomo":14, "Mora Lionti":9, "Emilia Zarantonello":34, "Micaela Ramirez":32, "Barbara Ramirez":30, "Carla Martinez":2, "Millaray Cocha":13, "Luz Agüero":6, "Valeria Trelles":23, "Guadalupe Fernandez":7, "Justine Vargas":23, "Julieta Gimenez":1, "Thayssa Montaly":13},
       golesFecha:{
         "2026-08-08":{"Barbara Ramirez":4, "Emilia Zarantonello":2, "Micaela Ramirez":2, "Valeria Trelles":2, "Guadalupe Fernandez":2, "Thayssa Montaly":2, "Katia Cuomo":1, "Millaray Cocha":1, "Luz Agüero":1, "Justine Vargas":1},
         "2026-08-15":{"Micaela Ramirez":8, "Emilia Zarantonello":5, "Katia Cuomo":4, "Barbara Ramirez":4, "Valeria Trelles":3, "Justine Vargas":3, "Millaray Cocha":1, "Luz Agüero":1, "Thayssa Montaly":1},
@@ -86,32 +86,33 @@ const DATOS = {
         "2026-08-29":{"Barbara Ramirez":10, "Valeria Trelles":7, "Noelia Alcala":4, "Emilia Zarantonello":4, "Micaela Ramirez":4, "Luz Agüero":2, "Justine Vargas":2, "Thayssa Montaly":2, "Katia Cuomo":1},
         "2026-09-05":{"Micaela Ramirez":7, "Millaray Cocha":6, "Noelia Alcala":3, "Mora Lionti":3, "Barbara Ramirez":3, "Valeria Trelles":3, "Emilia Zarantonello":2, "Luz Agüero":2, "Guadalupe Fernandez":2, "Katia Cuomo":1, "Justine Vargas":1, "Thayssa Montaly":1},
         "2026-09-12":{"Emilia Zarantonello":8, "Mora Lionti":4, "Justine Vargas":4, "Noelia Alcala":3, "Millaray Cocha":2, "Valeria Trelles":2, "Thayssa Montaly":2, "Katia Cuomo":1, "Micaela Ramirez":1, "Guadalupe Fernandez":1},
-        "2026-09-19":{"Emilia Zarantonello":9, "Justine Vargas":6, "Barbara Ramirez":5, "Noelia Alcala":3, "Katia Cuomo":3, "Mora Lionti":2, "Micaela Ramirez":1, "Carla Martinez":1, "Valeria Trelles":1, "Guadalupe Fernandez":1, "Thayssa Montaly":1}
+        "2026-09-19":{"Emilia Zarantonello":9, "Justine Vargas":6, "Barbara Ramirez":5, "Noelia Alcala":3, "Katia Cuomo":3, "Mora Lionti":2, "Micaela Ramirez":1, "Carla Martinez":1, "Valeria Trelles":1, "Guadalupe Fernandez":1, "Thayssa Montaly":1},
+        "2026-09-25":{"Micaela Ramirez":7, "Valeria Trelles":4, "Barbara Ramirez":3, "Noelia Alcala":2, "Emilia Zarantonello":2, "Justine Vargas":2, "Thayssa Montaly":2, "Katia Cuomo":1, "Julieta Gimenez":1}
       }, partidos:[
       {f:"2026-08-08",c:"V",r:"Talleres",h:"19:45",g:"18-30"},{f:"2026-08-15",c:"L",r:"San Fernando",g:"30-25"},
       {f:"2026-08-22",c:"V",r:"Dorrego",h:"16:15",g:"21-21"},{f:"2026-08-29",c:"L",r:"Dep. Laferrere",h:"19:45",g:"36-26"},
       {f:"2026-09-05",c:"V",r:"AFALP",g:"34-21"},{f:"2026-09-12",c:"L",r:"Ferro Carril Oeste",h:"19:45",g:"28-24"},
-      {f:"2026-09-19",c:"V",r:"Polvorines",g:"33-26"},{f:"2026-09-25",c:"L",r:"Sagrado Corazón",h:"20:00",sede:"la Casa del Handball"},
+      {f:"2026-09-19",c:"V",r:"Polvorines",g:"33-26"},{f:"2026-09-25",c:"L",r:"Sagrado Corazón",h:"20:00",g:"24-28",sede:"la Casa del Handball"},
       {f:"2026-10-03",c:"V",r:"All Boys"},{f:"2026-10-17",c:"L",r:"Vicente López"},{f:"2026-10-24",c:"V",r:"Temperley"},
       {f:"2026-10-31",c:"V",r:"Villa Ballester"},{f:"2026-11-07",c:"L",r:"Argentinos Juniors"},{f:"2026-11-14",c:"V",r:"Secla"},
       {f:"2026-11-21",c:"L",r:"Muñiz"}
     ], tabla:[
       [1,"Polvorines",22,8,7,0,1,239,219],
-      [2,"Ateneo Don Bosco",18,7,5,1,1,200,173],
-      [3,"Talleres",17,7,5,0,2,194,152],
-      [4,"Vicente López",17,7,5,0,2,197,178],
-      [5,"Secla",17,7,4,2,1,172,159],
-      [6,"Argentinos Juniors",16,8,4,0,4,204,216],
-      [7,"Dorrego",15,7,3,2,2,178,147],
-      [8,"Ferro Carril Oeste",15,7,4,0,3,198,180],
-      [9,"All Boys",15,7,4,0,3,192,197],
-      [10,"Villa Ballester",15,7,4,0,3,152,157],
-      [11,"Sagrado Corazón",13,7,3,0,4,212,201],
-      [12,"Muñiz",13,7,3,0,4,156,166],
-      [13,"AFALP",9,7,1,0,6,182,202],
-      [14,"San Fernando",9,7,1,0,6,151,177],
-      [15,"Temperley",9,7,1,0,6,163,215],
-      [16,"Dep. Laferrere",8,7,0,1,6,193,244]
+      [2,"Ateneo Don Bosco",19,8,5,1,2,224,201],
+      [3,"Vicente López",18,8,5,0,3,216,199],
+      [4,"Secla",17,7,4,2,1,172,159],
+      [5,"Talleres",17,7,5,0,2,194,152],
+      [6,"Sagrado Corazón",16,8,4,0,4,240,225],
+      [7,"Argentinos Juniors",16,8,4,0,4,204,216],
+      [8,"Dorrego",15,7,3,2,2,178,147],
+      [9,"Ferro Carril Oeste",15,7,4,0,3,198,180],
+      [10,"All Boys",15,7,4,0,3,192,197],
+      [11,"Villa Ballester",15,7,4,0,3,152,157],
+      [12,"Muñiz",14,8,3,0,5,188,199],
+      [13,"Temperley",12,8,2,0,6,184,234],
+      [14,"Dep. Laferrere",11,8,1,1,6,226,276],
+      [15,"AFALP",9,7,1,0,6,182,202],
+      [16,"San Fernando",9,7,1,0,6,151,177]
     ]},
     { id:"mayores-b", nombre:"Tercera damas", division:"Mayores · 3º División", dia:"Sábados", hora:"18:00", sponsor:"Supermercado Magdalena", jugadoras:[
       "Ariana Acosta", "Jazmin Alarcon", "Paula Ayala", "Mia Badaracco", "Marina Chazarreta", "Ariana Cuervo Diaz",
@@ -458,6 +459,7 @@ const DATOS = {
   // compartir: adbhandball.com/#n/<slug>.
   //   slug     · lo que va en el link, en minúsculas y con guiones
   //   etiqueta · una palabra para ubicarla (Club, Formativas, Rifa, Newsletter...)
+  //   firma    · quién cubrió la nota, si la firma alguien (sale abajo del copete)
   //   foto     · la que se ve en la tarjeta (1600 px de ancho, menos de 300 KB, como la galería)
   //   cuerpo   · los bloques de la nota, en orden. Cada uno es uno de estos:
   //     { t:"texto",     v:"un párrafo" }
@@ -466,6 +468,25 @@ const DATOS = {
   //     { t:"video",     v:"https://www.youtube.com/watch?v=...", alt:"de qué es el video" }
   //     { t:"link",      v:"https://...", texto:"Ver en Instagram" }
   noticias: [
+    {
+      slug: "primera-sagrado-corazon-casa-del-handball",
+      fecha: "2026-09-26",
+      etiqueta: "Primera damas",
+      titulo: "Derrota de la Primera en la Casa del Handball",
+      copete: "24 a 28 con Sagrado Corazón de Varela, por la octava fecha del Clausura. El Bosco sigue segundo y con el ascenso a tiro.",
+      firma: "Gabriel Franco",
+      foto: "fotos/noticias/2026-09-sagrado-01.jpg",
+      alt: "Dos jugadoras de espaldas saliendo a la cancha, una con la camiseta azul del Ateneo Don Bosco",
+      cuerpo: [
+        { t: "texto", v: "El viernes se enfrentaron el Ateneo Don Bosco y Sagrado Corazón de Varela por la octava fecha del torneo Clausura, y la victoria en esta ocasión fue para el equipo varelense: 28 a 24." },
+        { t: "texto", v: "Un partido áspero, de muchos goles y parejo de principio a fin. El resultado no fue el esperado, pero sin dudas que seguimos más vivas que nunca en la búsqueda del ascenso." },
+        { t: "destacado", v: "Seguimos más vivas que nunca en la búsqueda del ascenso." },
+        { t: "texto", v: "Charlamos con Vale Trelles, una de nuestras jugadoras, y declaró:" },
+        { t: "texto", v: "“Fue un partido duro físicamente. Se notaron los nervios y eso hizo que tuviéramos imprecisiones durante todo el partido. Como siempre tenemos altibajos durante los 60 minutos, pero ellas supieron resolver mejor y el resultado se dio en los detalles. Esto no queda acá, tenemos muchos partidos por delante y si nosotras sabemos de algo, es de levantar cabeza y hacernos más fuertes. El objetivo sigue en pie y depende de nosotras únicamente, así que batallaremos hasta el último partido.”" },
+        { t: "texto", v: "Mención especial para la hinchada del Bosco, que alentó los 60 minutos. Gracias a cada familia y a cada amigo que vino a bancar a las pibas." },
+        { t: "texto", v: "Los goles fueron de Micaela Ramírez (7), la propia Trelles (4), Bárbara Ramírez (3), Noelia Alcalá, Emilia Zarantonello, Justine Vargas y Thayssa Montaly (2 cada una), Katia Cuomo y Julieta Giménez. Con la derrota, el Bosco queda segundo en el Clausura con 19 puntos, a tres de Polvorines." }
+      ]
+    },
     {
       slug: "rifa-2026",
       fecha: "2026-09-23",

@@ -1,7 +1,7 @@
 /* Service worker del Ateneo Don Bosco Handball.
    Guarda la web en el teléfono para que abra al instante y funcione sin señal
    (los gimnasios suelen no tener datos). Subí la versión cuando cambies el sitio. */
-const VERSION = "adb-v40";
+const VERSION = "adb-v41";
 const BASE = [
   "./",
   "./index.html",
