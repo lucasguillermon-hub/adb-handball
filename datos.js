@@ -434,10 +434,10 @@ const DATOS = {
       {f:"2026-11-14",c:"V",r:"47 Handball Club",sinHora:true,sede:"a confirmar"},{f:"2026-11-14",c:"L",r:"La Patriada",sinHora:true,sede:"a confirmar"},
       {f:"2026-11-28",c:"L",r:"CAQ Handball",sinHora:true,sede:"a confirmar"}
     ], tabla:[
-      [1,"Manuel Belgrano",8,3,2,1,0,66,35],
-      [2,"Panteras Handball",8,3,2,1,0,59,42],
+      [1,"Panteras Handball",11,4,3,1,0,79,55],
+      [2,"Manuel Belgrano",8,3,2,1,0,66,35],
       [3,"Team Ezeiza",7,3,2,0,1,47,33],
-      [4,"CAQ Handball",6,3,1,1,1,41,41],
+      [4,"CAQ Handball",7,4,1,1,2,54,61],
       [5,"Las 2P",6,3,1,1,1,65,53],
       [6,"Instituto Manuel Belgrano",6,3,1,1,1,42,45],
       [7,"Villa Vatteone",5,2,1,1,0,36,22],
