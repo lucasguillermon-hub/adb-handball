@@ -477,11 +477,12 @@ const DATOS = {
       copete: "24 a 28 con Sagrado Corazón de Varela, por la octava fecha del Clausura. El Bosco sigue segundo y con el ascenso a tiro.",
       firma: "Gabriel Franco",
       foto: "fotos/noticias/2026-09-sagrado-01.jpg",
-      alt: "Dos jugadoras de espaldas saliendo a la cancha, una con la camiseta azul del Ateneo Don Bosco",
+      alt: "Una jugadora del Bosco salta a rematar marcada por una defensora de Sagrado Corazón, en la cancha de la Casa del Handball",
       cuerpo: [
         { t: "texto", v: "El viernes se enfrentaron el Ateneo Don Bosco y Sagrado Corazón de Varela por la octava fecha del torneo Clausura, y la victoria en esta ocasión fue para el equipo varelense: 28 a 24." },
         { t: "texto", v: "Un partido áspero, de muchos goles y parejo de principio a fin. El resultado no fue el esperado, pero sin dudas que seguimos más vivas que nunca en la búsqueda del ascenso." },
         { t: "destacado", v: "Seguimos más vivas que nunca en la búsqueda del ascenso." },
+        { t: "foto", v: "fotos/noticias/2026-09-sagrado-02.jpg", alt: "Una jugadora del Bosco remata en suspensión entre tres rivales de verde", pie: "Sesenta minutos parejos en el piso del Parque Olímpico." },
         { t: "texto", v: "Charlamos con Vale Trelles, una de nuestras jugadoras, y declaró:" },
         { t: "cita", quien: "Vale Trelles", v: "Fue un partido duro físicamente. Se notaron los nervios y eso hizo que tuviéramos imprecisiones durante todo el partido. Como siempre tenemos altibajos durante los 60 minutos, pero ellas supieron resolver mejor y el resultado se dio en los detalles. Esto no queda acá, tenemos muchos partidos por delante y si nosotras sabemos de algo, es de levantar cabeza y hacernos más fuertes. El objetivo sigue en pie y depende de nosotras únicamente, así que batallaremos hasta el último partido." },
         { t: "texto", v: "Mención especial para la hinchada del Bosco, que alentó los 60 minutos. Gracias a cada familia y a cada amigo que vino a bancar a las pibas." },
