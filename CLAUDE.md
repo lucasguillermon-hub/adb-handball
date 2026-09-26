@@ -178,7 +178,7 @@ confirmación y no publicó nada.
   presentador.
 - El `url` de cada marca es su Instagram y sale de los posteos de agradecimiento del club;
   antes de cargarlo se entra al perfil para confirmar que existe y que es el comercio. Al
-  27/09/2026 van 31 de 45. Sin url, el logo no es un link. Falta averiguar el usuario de Vale
+  26/09/2026 van 32 de 45. Sin url, el logo no es un link. Falta averiguar el usuario de Vale
   Trelles (@lic.kine.valetrelles_ no abre) y el de Grupo Uno (@grupouno____ tampoco).
 - Las cuatro placas del fixture (Instagram) nunca llegaron como archivo; ya no hacen falta
   porque los escudos salieron de FeMeBal.
