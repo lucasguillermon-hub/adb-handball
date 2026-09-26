@@ -781,7 +781,7 @@ const DATOS = {
     ]},
     { titulo:"Cuarta caballeros", marcas:[
       { n:"Ladran Sancho",        logo:"fotos/sponsors/ladran-sancho.png", url:"https://instagram.com/ladran.sancho25", fondoOscuro:false },
-      { n:"Svencen Propiedades",  logo:"fotos/sponsors/svencen.png",       url:"", fondoOscuro:false }
+      { n:"Svencen Propiedades",  logo:"fotos/sponsors/svencen.png",       url:"https://instagram.com/svencenpropiedades", fondoOscuro:false }
     ]},
     { titulo:"Maxihandball", marcas:[
       { n:"Inti Bernal",      logo:"fotos/sponsors/inti-bernal.png", url:"https://instagram.com/inti_bernal", fondoOscuro:false },
