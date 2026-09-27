@@ -10,18 +10,20 @@ repo (regla 2: sin `node_modules` en el sitio).
 
 Cada semana, después de la fecha:
 
-1. En el navegador, sobre `https://www.femebal.com/tournament-tracker/`, pegar
-   `femebal-scraper.browser.js` y correr `__todas` y `__tabla` para los ocho torneos del Bosco
-   (índices en el encabezado del script). Guardar `JSON.stringify({fix: __fix, tablas: __tablas})`
-   en `herramientas/femebal-crudo-<fecha>.json`.
+1. `node herramientas/femebal-navegador.js`: abre un Chrome headless, le inyecta
+   `femebal-scraper.browser.js` y recorre los ocho torneos del Bosco. Deja
+   `femebal-crudo-<fecha>.json` (partidos y tablas) y `femebal-planillas-<fecha>.json`
+   (los PDF de cada partido) en esta carpeta. Tarda unos siete minutos. Se le puede pasar
+   qué torneos hacer: `node herramientas/femebal-navegador.js mayores-b masculino`.
+   (Antes esto se hacía a mano desde el navegador de Claude, copiando el JSON del resultado
+   de la herramienta; el scraper sigue sirviendo para eso si hace falta mirar algo en vivo.)
 2. `node herramientas/femebal-actualizar.js`: toma el crudo más nuevo y reemplaza en `datos.js`
    los partidos (fecha, condición, rival, hora propia, resultado) y las tablas de cada plantel.
    Minis copia las fechas de Infantiles. Imprime los resultados nuevos y el puesto de cada uno.
    Si aparece un rival nuevo, corta: agregarlo a `corto` en `femebal-datos-2026-09-18.json` y
    bajar su escudo con `femebal-escudos.js`.
-3. Dorsales y goles: en el navegador correr `__hojas` para los ocho torneos, guardar
-   `JSON.stringify(__planillas)` en `herramientas/femebal-planillas-<fecha>.json` y correr
-   `node herramientas/femebal-dorsales.js`. Baja las planillas de partido (PDF) a
+3. Dorsales y goles: `node herramientas/femebal-dorsales.js`, que usa el archivo de planillas
+   del paso 1. Baja las planillas de partido (PDF) a
    `material-club/planillas/`, lee número, nombre y goles de cada jugadora del Bosco y escribe
    `dorsales`, `goles` (total) y `golesFecha` (por partido) en cada plantel de `datos.js`. Quien jugó dos o más partidos y no estaba en
    la lista del club se suma a `jugadoras`; los refuerzos de un partido no. Necesita `pdf-parse`.
