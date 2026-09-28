@@ -584,7 +584,8 @@ const DATOS = {
       "Melanie Weber": "https://instagram.com/melweber.ph",
       "Maxy Canteros": "https://instagram.com/maxyyft",
       "JZ Audiovisuales": "https://instagram.com/jz_audiovisuales",
-      "Mati": "https://instagram.com/tuteraw_"
+      "Mati": "https://instagram.com/tuteraw_",
+      "Julieta Meana": "https://instagram.com/julimeanafotos"
     },
     albumes: [
       { titulo:"Minis", fechas:[] },
@@ -683,7 +684,7 @@ const DATOS = {
           { src:"fotos/primera-damas/2026-08-22-20.jpg", alt:"Primera damas contra Dorrego, 22/08 de visitante (foto 20)" },
           { src:"fotos/primera-damas/2026-08-22-21.jpg", alt:"Primera damas contra Dorrego, 22/08 de visitante (foto 21)" }
         ]},
-        { f:"2026-08-15", rival:"San Fernando", c:"L", fotografo:"JZ Audiovisuales", fotos:[
+        { f:"2026-08-15", rival:"San Fernando", c:"L", fotografo:"Julieta Meana", fotos:[
           { src:"fotos/primera-damas/2026-08-15-01.jpg", alt:"Primera damas contra San Fernando, 15/08 de local (foto 1)" },
           { src:"fotos/primera-damas/2026-08-15-02.jpg", alt:"Primera damas contra San Fernando, 15/08 de local (foto 2)" },
           { src:"fotos/primera-damas/2026-08-15-03.jpg", alt:"Primera damas contra San Fernando, 15/08 de local (foto 3)", alto:true },
