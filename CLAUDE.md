@@ -147,6 +147,8 @@ confirmación y no publicó nada.
 - Maxihandball: el plantel y los dorsales salen de la lista del club (21 jugadoras, septiembre
   2026); los goles, de la tabla de goleadoras de la liga. Julieta Zárate figura con 1 gol en la
   liga pero no está en esa lista: decidir si entra al plantel o si el gol quedó mal cargado.
+  (Es la misma Julieta Zárate que figura como asistente de infantiles y que saca fotos para el
+  club como JZ Audiovisuales, así que lo más probable es que haya jugado un partido suelto.)
   La liga no publica planillas por partido: en Maxi no hay goles por fecha ni ficha de partido.
 - Escudos de rivales en `fotos/rivales/<nombre-del-rival-en-minusculas>.png` (44 de FeMeBal
   y 13 de Maxi). Un rival nuevo se ve con su inicial hasta que se cargue el archivo.
