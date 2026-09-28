@@ -475,6 +475,23 @@ const DATOS = {
   //     { t:"link",      v:"https://...", texto:"Ver en Instagram" }
   noticias: [
     {
+      slug: "tercera-querandi",
+      fecha: "2026-09-28",
+      etiqueta: "Tercera damas",
+      titulo: "Triunfo importante de la Tercera contra Querandí",
+      copete: "34 a 25 de local, por la octava fecha. Le ganó a un rival directo y quedó a un punto del Súper 8.",
+      cuerpo: [
+        { t: "texto", v: "El sábado el Ateneo Don Bosco recibió a Querandí por la octava fecha del torneo Clausura. En esta ocasión el triunfo fue para el local, 34 a 25, en un partido que fue de menos a más, con momentos de mucho ida y vuelta pero que supieron sobreponerse frente al equipo rival." },
+        { t: "texto", v: "Las dirigidas por Majo lograron un triunfo importante pensando en clasificarse al Súper 8." },
+        { t: "destacado", v: "Le ganamos a un rival directo por el Súper 8." },
+        { t: "texto", v: "Le preguntamos a una de nuestras jugadoras, Ari Acosta, su mirada sobre el partido y declaró:" },
+        { t: "cita", quien: "Ari Acosta", v: "Creo que fue un partido que arrancó peleado y tanto cuerpo técnico como jugadoras supieron resolver el partido sobre la marcha, sacando una buena diferencia y demostrando que fuimos superiores." },
+        { t: "texto", v: "Once jugadoras entraron en el marcador. Los goles fueron de Ariana Acosta (7), Paula Glisciak (5), Brenda Velozo, Julieta Mercado y Mia Badaracco (4 cada una), Zoe Rodríguez (3), Jazmín Alarcón y Paula Ayala (2), y uno cada una Ariana Cuervo Díaz, Julieta Di Bona y Camila Hermosid. Acosta llegó a 37 goles y es la goleadora del plantel en el torneo." },
+        { t: "texto", v: "Con la victoria el Bosco quedó noveno con 17 puntos, a uno de Secla y del propio Querandí, que están octavo y séptimo con un partido menos. Los ocho primeros se meten en el Súper 8, así que el que se ganó el sábado era de los que valen doble." },
+        { t: "texto", v: "El resto del fin de semana: el viernes la Primera cayó 28 a 24 con Sagrado Corazón en la Casa del Handball, y el domingo toda la tira de inferiores recibió a Cedem Caseros. Ganaron Infantiles 32 a 6, Menores 27 a 22 y Juniors 30 a 27; perdieron Cadetas 21 a 28 y Juveniles 18 a 25. Las Infantiles quedaron punteras de su zona." }
+      ]
+    },
+    {
       slug: "primera-sagrado-corazon-casa-del-handball",
       fecha: "2026-09-26",
       etiqueta: "Primera damas",

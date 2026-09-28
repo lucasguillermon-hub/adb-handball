@@ -75,6 +75,8 @@ section{padding:76px 0}
 .nota[hidden]{display:none}   /* si no, el display:flex de arriba le gana al atributo */
 .nota .tapa{background:var(--azul);overflow:hidden}
 .nota .tapa img{width:100%;height:100%;object-fit:cover;display:block}
+.nota .tapa.sin-foto{display:grid;place-items:center;background:linear-gradient(160deg,var(--azul),var(--tinta))}
+.nota .tapa.sin-foto img{width:34%;height:auto;opacity:.9}
 .nota .meta{display:flex;align-items:center;gap:9px;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--rosa-vivo);margin-bottom:8px}
 .nota .meta span{color:rgba(255,255,255,.55);letter-spacing:.04em}
 .nota h3{font-family:var(--display);font-weight:400;line-height:1.15;margin:0}
@@ -1554,7 +1556,10 @@ $("#visor-descargar").addEventListener("click", function(){
   const EN_CUADRITOS = 4;
   const tarjeta = (n, i, tam) =>
     '<button class="nota ' + tam + '" type="button" data-i="' + i + '"' + (i > EN_CUADRITOS ? ' hidden' : '') + '>'
-    + (n.foto ? '<span class="tapa"><img src="' + n.foto + '" alt="' + (n.alt || "") + '" loading="lazy"></span>' : '')
+    // Sin foto, la tapa lleva el escudo: una tarjeta vacía al lado de las demás queda fea
+    + '<span class="tapa' + (n.foto ? '' : ' sin-foto') + '">'
+    + (n.foto ? '<img src="' + n.foto + '" alt="' + (n.alt || "") + '" loading="lazy">' : '<img src="iconos/escudo.svg" alt="" width="300" height="400">')
+    + '</span>'
     + '<span class="txt"><span class="meta">' + (n.etiqueta || "Club") + '<span>' + DIA_MES(n.fecha) + '</span></span>'
     + '<h3>' + n.titulo + '</h3>'
     + (n.copete ? '<p>' + n.copete + '</p>' : '') + '</span></button>';
