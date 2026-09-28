@@ -76,7 +76,10 @@ const esperar = ms => new Promise(r => setTimeout(r, ms));
       if (!f.titulo.includes(" | ")) throw new Error(nombre + ": no reconocí el título del torneo (" + f.titulo + ")");
     }
 
-    const hoy = new Date().toISOString().slice(0, 10);
+    // Fecha local, no UTC: después de las 21 acá ya es el día siguiente en Greenwich y el
+    // archivo quedaba con la fecha de mañana.
+    const h = new Date();
+    const hoy = h.getFullYear() + "-" + String(h.getMonth() + 1).padStart(2, "0") + "-" + String(h.getDate()).padStart(2, "0");
     const todo = await evaluar(`JSON.stringify({fix: __fix, tablas: __tablas, planillas: __planillas})`);
     const { fix, tablas, planillas } = JSON.parse(todo);
     fs.writeFileSync(path.join(AQUI, "femebal-crudo-" + hoy + ".json"), JSON.stringify({ fix, tablas }));
