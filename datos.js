@@ -640,6 +640,25 @@ const DATOS = {
         ]}
       ] },
       { titulo:"Primera damas", fechas:[
+        { f:"2026-09-25", rival:"Sagrado Corazón", c:"L", fotografo:"", fotos:[
+          { src:"fotos/primera-damas/2026-09-25-01.jpg", alt:"Primera damas contra Sagrado Corazón, 25/09 de local (foto 1)" },
+          { src:"fotos/primera-damas/2026-09-25-02.jpg", alt:"Primera damas contra Sagrado Corazón, 25/09 de local (foto 2)", alto:true },
+          { src:"fotos/primera-damas/2026-09-25-03.jpg", alt:"Primera damas contra Sagrado Corazón, 25/09 de local (foto 3)", alto:true },
+          { src:"fotos/primera-damas/2026-09-25-04.jpg", alt:"Primera damas contra Sagrado Corazón, 25/09 de local (foto 4)" },
+          { src:"fotos/primera-damas/2026-09-25-05.jpg", alt:"Primera damas contra Sagrado Corazón, 25/09 de local (foto 5)" },
+          { src:"fotos/primera-damas/2026-09-25-06.jpg", alt:"Primera damas contra Sagrado Corazón, 25/09 de local (foto 6)", alto:true },
+          { src:"fotos/primera-damas/2026-09-25-07.jpg", alt:"Primera damas contra Sagrado Corazón, 25/09 de local (foto 7)", alto:true },
+          { src:"fotos/primera-damas/2026-09-25-08.jpg", alt:"Primera damas contra Sagrado Corazón, 25/09 de local (foto 8)", alto:true },
+          { src:"fotos/primera-damas/2026-09-25-09.jpg", alt:"Primera damas contra Sagrado Corazón, 25/09 de local (foto 9)", alto:true },
+          { src:"fotos/primera-damas/2026-09-25-10.jpg", alt:"Primera damas contra Sagrado Corazón, 25/09 de local (foto 10)", alto:true },
+          { src:"fotos/primera-damas/2026-09-25-11.jpg", alt:"Primera damas contra Sagrado Corazón, 25/09 de local (foto 11)" },
+          { src:"fotos/primera-damas/2026-09-25-12.jpg", alt:"Primera damas contra Sagrado Corazón, 25/09 de local (foto 12)" },
+          { src:"fotos/primera-damas/2026-09-25-13.jpg", alt:"Primera damas contra Sagrado Corazón, 25/09 de local (foto 13)" },
+          { src:"fotos/primera-damas/2026-09-25-14.jpg", alt:"Primera damas contra Sagrado Corazón, 25/09 de local (foto 14)" },
+          { src:"fotos/primera-damas/2026-09-25-15.jpg", alt:"Primera damas contra Sagrado Corazón, 25/09 de local (foto 15)", alto:true },
+          { src:"fotos/primera-damas/2026-09-25-16.jpg", alt:"Primera damas contra Sagrado Corazón, 25/09 de local (foto 16)", alto:true },
+          { src:"fotos/primera-damas/2026-09-25-17.jpg", alt:"Primera damas contra Sagrado Corazón, 25/09 de local (foto 17)", alto:true }
+        ]},
         { f:"2026-08-22", rival:"Dorrego", c:"V", fotografo:"Melanie Weber", fotos:[
           { src:"fotos/primera-damas/2026-08-22-01.jpg", alt:"Primera damas contra Dorrego, 22/08 de visitante (foto 1)", alto:true },
           { src:"fotos/primera-damas/2026-08-22-02.jpg", alt:"Primera damas contra Dorrego, 22/08 de visitante (foto 2)" },

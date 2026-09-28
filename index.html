@@ -1480,6 +1480,13 @@ G.albumes.forEach((al,i)=>{
   $("#album-nav").appendChild(b);
 });
 
+// Dónde se jugó esa fecha: lo dice el fixture, que es el que sabe de las sedes prestadas
+// (la Casa del Handball, por ejemplo). Si no se encuentra el partido, alcanza con la condición.
+function dondeSeJugo(titulo, fe){
+  const pl = DATOS.planteles.find(p => p.nombre === titulo);
+  const p = pl && pl.partidos.find(x => x.f === fe.f);
+  return dondeSeJuega(p || fe);
+}
 function pintarAlbum(i){
   albumActivo = i;
   const al = G.albumes[i], fechas = fechasDe(al);
@@ -1492,7 +1499,7 @@ function pintarAlbum(i){
     + '<span class="pila" aria-hidden="true">'+fe.fotos.slice(0,3).map(f=>'<img src="'+f.src+'" alt="" loading="lazy">').join("")
     + (fe.fotos.length>3 ? '<span class="mas">+'+(fe.fotos.length-3)+'</span>' : '')+'</span>'
     + '<span class="txt-fecha"><h3>'+al.titulo+' <span>vs '+fe.rival+'</span></h3>'
-    + '<p class="meta">'+DIA_SEM(fe.f)+' '+DIA_MES(fe.f)+' · '+(fe.c==="L" ? "En Don Bosco 116" : "De visitante")+' · '+fe.fotos.length+' fotos</p></span>'
+    + '<p class="meta">'+DIA_SEM(fe.f)+' '+DIA_MES(fe.f)+' · '+dondeSeJugo(al.titulo, fe)+' · '+fe.fotos.length+' fotos</p></span>'
     + '<span class="chev" aria-hidden="true"></span></button>'
     + (fe.fotografo ? '<p class="credito">Fotos de '+credito(fe)+'</p>' : '')+'</div>'
     + '<div class="fecha-cuerpo" id="fecha-'+i+'-'+k+'"'+(abierta?"":" hidden")+'><div class="mosaico">'+fe.fotos.map((f,n)=>
