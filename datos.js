@@ -480,6 +480,8 @@ const DATOS = {
       etiqueta: "Tercera damas",
       titulo: "Triunfo importante de la Tercera contra Querandí",
       copete: "34 a 25 de local, por la octava fecha. Le ganó a un rival directo y quedó a un punto del Súper 8.",
+      foto: "fotos/noticias/2026-09-tercera-01.jpg",
+      alt: "Las jugadoras del Bosco abrazadas en la ronda, antes de empezar el partido",
       cuerpo: [
         { t: "texto", v: "El sábado el Ateneo Don Bosco recibió a Querandí por la octava fecha del torneo Clausura. En esta ocasión el triunfo fue para el local, 34 a 25, en un partido que fue de menos a más, con momentos de mucho ida y vuelta pero que supieron sobreponerse frente al equipo rival." },
         { t: "texto", v: "Las dirigidas por Majo lograron un triunfo importante pensando en clasificarse al Súper 8." },
