@@ -583,7 +583,8 @@ const DATOS = {
       "Dulce Méndez Terres": "https://instagram.com/dulcephfotografia",
       "Melanie Weber": "https://instagram.com/melweber.ph",
       "Maxy Canteros": "https://instagram.com/maxyyft",
-      "JZ Audiovisuales": "https://instagram.com/jz_audiovisuales"
+      "JZ Audiovisuales": "https://instagram.com/jz_audiovisuales",
+      "Mati": "https://instagram.com/tuteraw_"
     },
     albumes: [
       { titulo:"Minis", fechas:[] },
@@ -640,7 +641,7 @@ const DATOS = {
         ]}
       ] },
       { titulo:"Primera damas", fechas:[
-        { f:"2026-09-25", rival:"Sagrado Corazón", c:"L", fotografo:"", fotos:[
+        { f:"2026-09-25", rival:"Sagrado Corazón", c:"L", fotografo:"Mati", fotos:[
           { src:"fotos/primera-damas/2026-09-25-01.jpg", alt:"Primera damas contra Sagrado Corazón, 25/09 de local (foto 1)" },
           { src:"fotos/primera-damas/2026-09-25-02.jpg", alt:"Primera damas contra Sagrado Corazón, 25/09 de local (foto 2)", alto:true },
           { src:"fotos/primera-damas/2026-09-25-03.jpg", alt:"Primera damas contra Sagrado Corazón, 25/09 de local (foto 3)", alto:true },
