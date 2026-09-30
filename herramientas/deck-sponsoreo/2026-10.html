@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Sponsoreo 2027 · Ateneo Don Bosco Handball</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/* Deck para presentar. Se abre en el navegador y se imprime a PDF con
+   herramientas/deck-sponsoreo/armar.js. Una hoja por lámina, 13,33 x 7,5 pulgadas. */
+:root{
+  --tinta:#0A1428; --azul:#152A54; --rosa:#F2B7CF; --rosa-vivo:#E4568F; --hueso:#F5F2ED;
+  --display:"Anton", Impact, sans-serif; --texto:"Archivo", Arial, sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--texto);color:var(--hueso);background:#222}
+@page{ size:13.333in 7.5in; margin:0 }
+.l{width:13.333in;height:7.5in;padding:0.72in 0.9in;background:var(--tinta);position:relative;overflow:hidden;
+   page-break-after:always;break-after:page;display:flex;flex-direction:column}
+.l:last-child{page-break-after:auto}
+.l.claro{background:var(--hueso);color:var(--tinta)}
+.rotulo{font-size:12pt;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:var(--rosa-vivo);margin-bottom:.16in}
+h1{font-family:var(--display);font-weight:400;font-size:58pt;line-height:.98;letter-spacing:.01em}
+h2{font-family:var(--display);font-weight:400;font-size:34pt;line-height:1.02;margin-bottom:.28in}
+p{font-size:13.5pt;line-height:1.5}
+.suave{opacity:.72}
+.pie{position:absolute;left:.9in;right:.9in;bottom:.42in;display:flex;justify-content:space-between;
+     font-size:9.5pt;letter-spacing:.14em;text-transform:uppercase;opacity:.5}
+
+/* Portada */
+.tapa{justify-content:center;align-items:flex-start;
+      background:radial-gradient(120% 100% at 85% 15%, #1d3a6e 0%, transparent 60%), var(--tinta)}
+.tapa .escudo{position:absolute;right:.7in;top:50%;transform:translateY(-50%);width:4.1in;opacity:.95}
+.tapa h1{font-size:76pt;max-width:7.6in}
+.tapa .bajada{font-size:16pt;margin-top:.26in;max-width:6.4in;opacity:.8}
+
+/* Números */
+.cifras{display:grid;grid-template-columns:repeat(4,1fr);gap:.34in;margin-top:.1in}
+.cifra .n{font-family:var(--display);font-size:46pt;line-height:1;color:var(--rosa)}
+.cifra .q{font-size:11.5pt;line-height:1.35;margin-top:.1in;opacity:.78}
+.l.claro .cifra .n{color:var(--azul)}
+.l.claro .cifra .q{opacity:.68}
+
+.dos{display:grid;grid-template-columns:1.15fr 1fr;gap:.7in;align-items:start;flex:1}
+ul{list-style:none}
+li{font-size:13pt;line-height:1.45;padding-left:.3in;position:relative;margin-bottom:.14in}
+li::before{content:"";position:absolute;left:0;top:.09in;width:.13in;height:.13in;border-radius:50%;background:var(--rosa-vivo)}
+
+.barras{margin-top:.2in}
+.barra{margin-bottom:.16in}
+.barra .r{display:flex;justify-content:space-between;font-size:11.5pt;margin-bottom:.06in}
+.barra .v{height:.16in;border-radius:99px;background:rgba(255,255,255,.12);overflow:hidden}
+.l.claro .barra .v{background:rgba(10,20,40,.1)}
+.barra .v i{display:block;height:100%;background:var(--rosa-vivo);border-radius:99px}
+
+/* Niveles */
+.niveles{display:grid;grid-template-columns:repeat(4,1fr);gap:.22in;margin-top:.06in}
+.nivel{border:1px solid rgba(255,255,255,.16);border-radius:.18in;padding:.26in .22in;display:flex;flex-direction:column}
+.nivel.destacado{border-color:var(--rosa-vivo);background:rgba(228,86,143,.09)}
+.nivel h3{font-family:var(--display);font-weight:400;font-size:22pt;line-height:1}
+.nivel .para{font-size:10pt;line-height:1.35;opacity:.7;margin:.09in 0 .15in;min-height:.5in}
+.nivel .precio{font-family:var(--display);font-size:25pt;color:var(--rosa);line-height:1}
+.nivel .mes{font-size:9.5pt;opacity:.6;margin-bottom:.18in}
+.nivel ul li{font-size:10pt;margin-bottom:.1in;padding-left:.22in;line-height:1.3}
+.nivel ul li::before{width:.09in;height:.09in;top:.075in}
+.nota-precio{font-size:9.5pt;line-height:1.45;opacity:.55;margin-top:.16in;padding-right:.9in}
+
+.cierre{justify-content:center}
+.cierre h1{font-size:50pt;max-width:9in}
+.datos{display:flex;gap:.7in;margin-top:.4in;font-size:13pt}
+.datos b{display:block;font-size:10pt;letter-spacing:.16em;text-transform:uppercase;color:var(--rosa-vivo);margin-bottom:.06in;font-weight:700}
+</style>
+</head>
+<body>
+
+<!-- 1. Portada -->
+<section class="l tapa">
+  <img class="escudo" src="../../iconos/escudo.svg" alt="">
+  <p class="rotulo">Ateneo Don Bosco · Handball · Bernal</p>
+  <h1>Tu marca,<br>en el club<br>del barrio</h1>
+  <p class="bajada">Plan de sponsoreo 2027. Diez planteles, doce categorías y una tribuna que viene todos los fines de semana.</p>
+  <div class="pie"><span>adbhandball.com</span><span>Octubre 2026</span></div>
+</section>
+
+<!-- 2. El club -->
+<section class="l">
+  <p class="rotulo">Quiénes somos</p>
+  <h2>Un club de handball<br>en Bernal, Quilmes</h2>
+  <div class="dos">
+    <div>
+      <p>El Ateneo Don Bosco tiene handball desde las Minis hasta el Maxi: chicas y chicos que entrenan toda la semana y juegan el fin de semana, y las familias que los acompañan.</p>
+      <p style="margin-top:.2in" class="suave">Competimos en FeMeBal en diez planteles. La Primera damas pelea el ascenso a la Liga de Honor Plata y las Infantiles son punteras de su zona.</p>
+    </div>
+    <ul>
+      <li><b>10 planteles</b> en competencia oficial</li>
+      <li><b>12 categorías</b>, de Minis a Maxihandball</li>
+      <li><b>67 partidos de local</b> en el Clausura 2026</li>
+      <li><b>45 marcas</b> nos acompañan hoy</li>
+    </ul>
+  </div>
+  <div class="pie"><span>Sponsoreo 2027</span><span>2</span></div>
+</section>
+
+<!-- 3. La audiencia -->
+<section class="l claro">
+  <p class="rotulo">A quién le hablás</p>
+  <h2>Ocho mil novecientas personas<br>por mes, casi todas de la zona</h2>
+  <div class="cifras">
+    <div class="cifra"><div class="n">8.984</div><div class="q">personas distintas vieron contenido del club en los últimos 30 días</div></div>
+    <div class="cifra"><div class="n">165.767</div><div class="q">reproducciones en el mes, 116 mil solo en historias</div></div>
+    <div class="cifra"><div class="n">2.744</div><div class="q">seguidores en Instagram, casi todos de Quilmes y Bernal</div></div>
+    <div class="cifra"><div class="n">1 de 5</div><div class="q">de los que nos ven todavía no nos sigue: alcance nuevo cada mes</div></div>
+  </div>
+  <div class="dos" style="margin-top:.5in">
+    <div>
+      <p style="font-size:15pt"><b>No te ve la jugadora: te ve la madre y el padre que la llevan.</b></p>
+      <p class="suave" style="margin-top:.16in">Seis de cada diez personas que siguen al club tienen entre 25 y 44 años, y ocho de cada diez entre 25 y 54. Son los que hacen las compras del barrio.</p>
+      <p class="suave" style="margin-top:.16in">El 68% son mujeres.</p>
+    </div>
+    <div class="barras">
+      <div class="barra"><div class="r"><span>25 a 34 años</span><b>30,3%</b></div><div class="v"><i style="width:30.3%"></i></div></div>
+      <div class="barra"><div class="r"><span>35 a 44 años</span><b>31,4%</b></div><div class="v"><i style="width:31.4%"></i></div></div>
+      <div class="barra"><div class="r"><span>45 a 54 años</span><b>18,1%</b></div><div class="v"><i style="width:18.1%"></i></div></div>
+      <div class="barra"><div class="r"><span>18 a 24 años</span><b>10,5%</b></div><div class="v"><i style="width:10.5%"></i></div></div>
+    </div>
+  </div>
+  <div class="pie"><span>Sponsoreo 2027</span><span>3</span></div>
+</section>
+
+<!-- 4. Dónde te ve la gente -->
+<section class="l">
+  <p class="rotulo">Dónde te ve la gente</p>
+  <h2>La cancha, el teléfono<br>y la camiseta</h2>
+  <div class="dos">
+    <div>
+      <ul>
+        <li><b>En la web del club.</b> adbhandball.com tiene el fixture de los diez planteles, los resultados y las tablas al día, la galería de cada fecha, las noticias y dos juegos: la votación de la figura y el prode. La familia entra cada fin de semana a ver cómo salió.</li>
+        <li><b>En el muro de sponsors</b>, agrupado por la categoría que acompañás, con tu logo enlazado a tu Instagram.</li>
+        <li><b>Presentando la votación</b> de la figura de la fecha o el prode del próximo partido.</li>
+        <li><b>En la cancha</b>, con banner en los partidos de local.</li>
+        <li><b>En Instagram</b>, en los flyers de fixture y resultados, y en las historias.</li>
+      </ul>
+    </div>
+    <div>
+      <p class="rotulo" style="margin-bottom:.2in">Lo que medimos</p>
+      <p>Desde octubre de 2026 la web cuenta cuánta gente entra cada día y cuántos tocan cada espacio de sponsor.</p>
+      <p style="margin-top:.2in" class="suave">No es una estimación: es el número real de clics en tu logo, tu cupón y tu enlace. Va en el reporte mensual, en todos los niveles.</p>
+    </div>
+  </div>
+  <div class="pie"><span>Sponsoreo 2027</span><span>4</span></div>
+</section>
+
+<!-- 5. Los niveles -->
+<section class="l claro">
+  <p class="rotulo">Los cuatro niveles</p>
+  <h2>Elegí hasta dónde<br>querés estar</h2>
+  <div class="niveles">
+    <div class="nivel" style="border-color:rgba(10,20,40,.14)">
+      <h3>Tribuna</h3>
+      <p class="para">Para el comercio de la cuadra que quiere estar cerca.</p>
+      <div class="precio" style="color:var(--azul)">$50.000</div>
+      <div class="mes">por mes</div>
+      <ul>
+        <li>Logo en el muro de sponsors de la web</li>
+        <li>Tu beneficio en el Club de Beneficios</li>
+        <li>Una historia en Instagram por mes</li>
+        <li>Reporte mensual de tu marca</li>
+      </ul>
+    </div>
+    <div class="nivel" style="border-color:rgba(10,20,40,.14)">
+      <h3>Cancha</h3>
+      <p class="para">Para el que quiere que lo vean todos los fines de semana.</p>
+      <div class="precio" style="color:var(--azul)">$120.000</div>
+      <div class="mes">por mes</div>
+      <ul>
+        <li>Todo lo del nivel Tribuna</li>
+        <li>Banner en la cancha de local</li>
+        <li>Logo en los flyers de fixture y resultados</li>
+        <li>Dos fechas al año en la portada de la web</li>
+        <li>Mención en el newsletter</li>
+      </ul>
+    </div>
+    <div class="nivel destacado" style="border-color:var(--rosa-vivo);background:rgba(228,86,143,.08)">
+      <h3>Camiseta</h3>
+      <p class="para">Para la marca que quiere quedarse todo el año.</p>
+      <div class="precio" style="color:var(--rosa-vivo)">$300.000</div>
+      <div class="mes">por mes</div>
+      <ul>
+        <li>Todo lo del nivel Cancha</li>
+        <li>Tu logo en la camiseta, en todas las categorías</li>
+        <li>Exclusividad en tu rubro</li>
+        <li>Presentás la figura de la fecha un mes al año</li>
+        <li>Una producción de fotos con un plantel</li>
+      </ul>
+    </div>
+    <div class="nivel" style="border-color:rgba(10,20,40,.14)">
+      <h3>Sensus</h3>
+      <p class="para">Un solo sponsor por temporada. El que le pone el nombre al año.</p>
+      <div class="precio" style="color:var(--azul)">$700.000</div>
+      <div class="mes">por mes</div>
+      <ul>
+        <li>Todo lo del nivel Camiseta</li>
+        <li>El pecho de la camiseta, en todas las categorías</li>
+        <li>Naming de la copa de pretemporada</li>
+        <li>Presentás el marcador de la web todo el año</li>
+        <li>Presencia en todas las comunicaciones</li>
+      </ul>
+    </div>
+  </div>
+  <p class="nota-precio">Valores de octubre de 2026, se revisan cada seis meses. Acuerdos por temporada, de marzo a noviembre. El pago de la temporada completa por adelantado tiene 15% de descuento. También tomamos acuerdos en productos o servicios.</p>
+  <div class="pie"><span></span><span>5</span></div>
+</section>
+
+<!-- 6. El reporte -->
+<section class="l">
+  <p class="rotulo">Todos los meses</p>
+  <h2>Te contamos qué pasó<br>con tu marca</h2>
+  <div class="dos">
+    <div>
+      <p>El primer viernes de cada mes te llega un correo con tus números del mes anterior:</p>
+      <ul style="margin-top:.24in">
+        <li>Cuántas personas entraron a la web</li>
+        <li>Cuántas tocaron tu logo y adónde fueron</li>
+        <li>Cuántas abrieron tu cupón del Club de Beneficios</li>
+        <li>El alcance de las historias donde apareciste</li>
+        <li>Las fotos de la fecha donde se ve tu banner</li>
+      </ul>
+    </div>
+    <div>
+      <p class="rotulo" style="margin-bottom:.2in">Por qué importa</p>
+      <p>Un sponsoreo de club se suele pagar a ciegas. Acá no: sabés cuánta gente te vio y podés decidir el año que viene con datos.</p>
+      <p style="margin-top:.2in" class="suave">Es la misma información que usamos nosotros para saber qué espacios funcionan.</p>
+    </div>
+  </div>
+  <div class="pie"><span>Sponsoreo 2027</span><span>6</span></div>
+</section>
+
+<!-- 7. Cierre -->
+<section class="l cierre">
+  <img class="escudo" src="../../iconos/escudo.svg" alt="" style="position:absolute;right:1in;top:50%;transform:translateY(-50%);width:3.2in;opacity:.18">
+  <p class="rotulo">Sensus pertinendi</p>
+  <h1>Sentido<br>de pertenencia</h1>
+  <p class="bajada" style="max-width:7in;font-size:15pt;margin-top:.26in;opacity:.8">Ser sponsor del Bosco es estar en la camiseta de las pibas del barrio, en la tribuna de los sábados y en el teléfono de las familias. Charlemos qué lugar querés ocupar.</p>
+  <div class="datos">
+    <div><b>WhatsApp</b>11 5112 8153</div>
+    <div><b>Mail</b>ateneodonboscohandball@gmail.com</div>
+    <div><b>Instagram</b>@adb.handball</div>
+    <div><b>Web</b>adbhandball.com</div>
+  </div>
+  <div class="pie"><span>Ateneo Don Bosco Handball · Bernal, Quilmes</span><span>7</span></div>
+</section>
+
+</body>
+</html>

@@ -105,3 +105,13 @@ instalado y las deja en `material-club/lanzamiento/` (ignorada en git).
 envío. Para el mes siguiente se copia el último y se cambian los textos; los datos salen de
 `datos.js` (resultados, tablas, goleadoras, próximas fechas). Primero va lo urgente (avisos del
 club), después cómo venimos, lo que se viene y las fotos.
+
+## Deck de sponsoreo
+
+`deck-sponsoreo/<AAAA-MM>.html` es la presentación para vender sponsoreo: quiénes somos, la
+audiencia, dónde te ve la gente, los cuatro niveles con precio mensual y el reporte que se
+entrega. Se arma con `node herramientas/deck-sponsoreo/armar.js`, que lo imprime a PDF con el
+Chrome instalado, una lámina por hoja de 13,33 × 7,5 pulgadas (la proporción de una
+diapositiva). Los precios están solo acá: la carpeta no se publica, así que no salen en la web.
+Los textos de los cuatro niveles son los mismos que `paquetes` en `datos.js`; si cambia uno,
+cambiar el otro. Los números de Instagram se copian a mano de las estadísticas de la cuenta.

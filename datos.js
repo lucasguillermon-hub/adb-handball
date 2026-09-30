@@ -64,7 +64,7 @@ const DATOS = {
     comunidad: "https://chat.whatsapp.com/"      // ⚠️ pegar el link real de la comunidad
   },
 
-  // Fixture sincronizado con FeMeBal (femebal.com/tournament-tracker) el 28/09/2026.
+  // Fixture sincronizado con FeMeBal (femebal.com/tournament-tracker) el 29/09/2026.
   // nombre: como lo llama el club · division: como lo llama FeMeBal (se muestra en la tabla).
   // jugadoras: el plantel que se vota como figura de la fecha (de LISTAS PRESENTISMO 2026).
   // Minis e Infantiles son formativas: van con jugadoras:[] y no entran en nada que sea por nombre.
@@ -97,17 +97,17 @@ const DATOS = {
       {f:"2026-10-31",c:"V",r:"Villa Ballester"},{f:"2026-11-07",c:"L",r:"Argentinos Juniors"},{f:"2026-11-14",c:"V",r:"Secla"},
       {f:"2026-11-21",c:"L",r:"Muñiz"}
     ], tabla:[
-      [1,"Polvorines",22,8,7,0,1,239,219],
+      [1,"Polvorines",23,9,7,0,2,261,247],
       [2,"Ateneo Don Bosco",19,8,5,1,2,224,201],
       [3,"Vicente López",19,9,5,0,4,240,225],
       [4,"Talleres",18,8,5,0,3,216,175],
       [5,"Dorrego",18,8,4,2,2,201,169],
       [6,"Ferro Carril Oeste",18,8,5,0,3,226,200],
       [7,"Secla",18,8,4,2,2,195,184],
-      [8,"All Boys",18,8,5,0,3,218,221],
-      [9,"Argentinos Juniors",17,9,4,0,5,224,244],
-      [10,"Sagrado Corazón",16,8,4,0,4,240,225],
-      [11,"Villa Ballester",15,7,4,0,3,152,157],
+      [8,"Villa Ballester",18,8,5,0,3,180,179],
+      [9,"All Boys",18,8,5,0,3,218,221],
+      [10,"Argentinos Juniors",17,9,4,0,5,224,244],
+      [11,"Sagrado Corazón",16,8,4,0,4,240,225],
       [12,"Muñiz",14,8,3,0,5,188,199],
       [13,"Temperley",13,9,2,0,7,202,256],
       [14,"AFALP",12,8,2,0,6,207,225],
@@ -151,13 +151,13 @@ const DATOS = {
       [7,"Querandí",18,8,5,0,3,228,216],
       [8,"Secla",18,8,5,0,3,175,163],
       [9,"Ateneo Don Bosco",17,9,4,0,5,210,205],
-      [10,"AFALP",13,8,3,0,4,175,203],
-      [11,"Boca Juniors",12,8,2,0,6,174,195],
-      [12,"Argentinos Juniors",11,7,2,0,5,128,149],
-      [13,"Defensores de Moreno",10,8,1,0,7,175,219],
-      [14,"Huracán de San Justo",10,8,1,0,7,152,199],
+      [10,"Argentinos Juniors",14,8,3,0,5,151,170],
+      [11,"AFALP",13,8,3,0,4,175,203],
+      [12,"Boca Juniors",12,8,2,0,6,174,195],
+      [13,"Cedem Caseros",10,8,1,0,7,186,210],
+      [14,"Defensores de Moreno",10,8,1,0,7,175,219],
       [15,"Independiente",10,8,1,0,7,172,218],
-      [16,"Cedem Caseros",9,7,1,0,6,165,187]
+      [16,"Huracán de San Justo",10,8,1,0,7,152,199]
     ]},
     // competencia:false (de Cadetas para abajo, decisión del coordinador): sin votación de la
     // figura, sin prode y sin goleadoras. Los dorsales quedan igual, son datos del plantel.
@@ -405,10 +405,10 @@ const DATOS = {
       {f:"2026-10-12",c:"L",r:"Talleres",h:"19:45"},{f:"2026-10-25",c:"V",r:"Ducilo"},{f:"2026-11-01",c:"L",r:"San Telmo"},
       {f:"2026-11-08",c:"V",r:"El Portugués"},{f:"2026-11-15",c:"V",r:"Círculo General Belgrano"},{f:"2026-11-22",c:"L",r:"Escobar"}
     ], tabla:[
-      [1,"Defensores de Glew",22,8,7,0,1,189,144],
-      [2,"Almirante Brown",20,7,6,1,0,243,160],
-      [3,"Talleres",20,8,6,0,2,152,141],
-      [4,"Ferrocarril Mitre",19,7,6,0,1,223,191],
+      [1,"Almirante Brown",23,8,7,1,0,275,190],
+      [2,"Defensores de Glew",22,8,7,0,1,189,144],
+      [3,"Ferrocarril Mitre",20,8,6,0,2,253,223],
+      [4,"Talleres",20,8,6,0,2,152,141],
       [5,"Escobar",19,8,5,1,2,177,174],
       [6,"General Las Heras",18,8,5,0,3,249,231],
       [7,"Federal Juniors",18,8,5,0,3,223,211],
@@ -442,14 +442,14 @@ const DATOS = {
       [1,"Panteras Handball",11,4,3,1,0,79,55],
       [2,"Manuel Belgrano",10,4,2,2,0,80,49],
       [3,"Villa Vatteone",10,4,2,2,0,68,44],
-      [4,"Team Ezeiza",10,4,3,0,1,64,46],
-      [5,"CAQ Handball",7,4,1,1,2,54,61],
-      [6,"Instituto Manuel Belgrano",7,4,1,1,2,55,62],
-      [7,"47 Handball Club",7,3,2,0,1,78,62],
+      [4,"47 Handball Club",10,4,3,0,1,104,79],
+      [5,"Team Ezeiza",10,4,3,0,1,64,46],
+      [6,"CAQ Handball",7,4,1,1,2,54,61],
+      [7,"Instituto Manuel Belgrano",7,4,1,1,2,55,62],
       [8,"Las 2P",6,3,1,1,1,65,53],
       [9,"La Patriada",6,4,1,0,3,46,72],
-      [10,"Ateneo Don Bosco",5,3,1,0,2,45,53],
-      [11,"Club Social",5,3,1,0,2,38,63],
+      [10,"Club Social",6,4,1,0,3,55,89],
+      [11,"Ateneo Don Bosco",5,3,1,0,2,45,53],
       [12,"Golondrinas",4,4,0,0,4,44,96]
     ] }
   ],
