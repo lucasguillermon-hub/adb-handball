@@ -874,7 +874,7 @@ const DATOS = {
   // Los usan index.html y plan-sponsoreo.html. El de partidos de local se calcula
   // solo desde el fixture: la cantidad cambia cada torneo.
   numeros: [
-    { b:"2.717", l:"seguidores en Instagram, casi todos de Quilmes y Bernal" },
+    { b:"2.744", l:"seguidores en Instagram, casi todos de Quilmes y Bernal" },
     { b:"150+", l:"jugadoras y jugadores en {categorias} categorías" },   // {categorias} se reemplaza por el total real
     { calc:"local", l:"partidos de local este torneo" },   // se calcula solo desde el fixture
     { b:"600+", l:"familias del club y del colegio en la comunidad" }

@@ -22,6 +22,7 @@ export default {
     if (url.pathname === "/api/suscribir") return suscribir(req, env);
     if (url.pathname === "/api/mvp") return mvp(req, env, url);
     if (url.pathname === "/api/prode") return prode(req, env, url);
+    if (url.pathname === "/api/evento") return evento(req, env, url);
     if (url.pathname.startsWith("/api/")) return json({ error: "No existe" }, 404);
     return env.ASSETS.fetch(req);
   }
@@ -127,6 +128,37 @@ async function mvp(req, env, url){
   for (const r of results){ conteo[r.jugadora] = r.n; total += r.n; if (r.mio) miVoto = r.jugadora; }
 
   const res = json({ ok: true, plantel, fecha, total, conteo, miVoto, cerrada, cierra: cierre(fecha).toISOString() });
+  if (cookie) res.headers.append("Set-Cookie", cookie);
+  return res;
+}
+
+/* ============================ actividad ============================
+   La web avisa acá cada vez que alguien entra ("visita") y cada vez que toca algo que
+   lleva data-track (el logo de un sponsor, una nota, un álbum). Se guarda una cuenta por
+   día y nada más: ni qué miró cada uno ni de dónde vino. Sirve para el reporte mensual
+   que el plan de sponsoreo le promete a cada marca. */
+const EVENTO_RE = /^[a-z0-9-]{1,40}$/;
+const diaArgentino = () => new Date(Date.now() - 3 * 3600 * 1000).toISOString().slice(0, 10);
+
+async function evento(req, env, url){
+  if (req.method !== "POST") return json({ error: "Método no permitido" }, 405);
+  const origin = req.headers.get("Origin");
+  if (origin && new URL(origin).host !== url.host) return json({ error: "Origen no permitido" }, 403);
+
+  let d; try { d = await req.json(); } catch { return json({ error: "Cuerpo inválido" }, 400); }
+  const nombre = String(d.e || "").trim();
+  if (!EVENTO_RE.test(nombre)) return json({ error: "Evento inválido" }, 400);
+
+  const { id, cookie } = identidad(req, url);
+  const dia = diaArgentino();
+  const pasos = [
+    env.DB.prepare("INSERT INTO eventos (dia, evento, n) VALUES (?1, ?2, 1) ON CONFLICT(dia, evento) DO UPDATE SET n = n + 1").bind(dia, nombre)
+  ];
+  // Las personas distintas se cuentan una vez por día, cuando entran
+  if (nombre === "visita") pasos.push(env.DB.prepare("INSERT OR IGNORE INTO visitas (dia, visitante) VALUES (?1, ?2)").bind(dia, id));
+  await env.DB.batch(pasos);
+
+  const res = json({ ok: true });
   if (cookie) res.headers.append("Set-Cookie", cookie);
   return res;
 }

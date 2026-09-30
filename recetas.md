@@ -140,6 +140,22 @@ escudo a fotos/rivales/ con el nombre en minúsculas. Decime qué cambió y subi
 
 ---
 
+## Ver la actividad de la web
+
+Cuánta gente entró y qué tocaron. Es lo que se le muestra a un sponsor cuando pide el
+reporte mensual que promete el plan.
+
+```
+Mostrame la actividad de la web del último mes: personas por día, visitas totales y
+cuántos clics tuvo cada espacio, desde las tablas visitas y eventos de la base D1.
+```
+
+Los nombres de los eventos son los `data-track` del sitio: `logo-sponsor` (el muro),
+`franja-sponsor` (la tira que se mueve), `sponsor-mvp` y `sponsor-prode` (los que
+presentan cada votación), `nota-abierta`, `album-abierto`, `nota-compartida`.
+
+---
+
 ## Ver cómo va la votación de la figura
 
 ```

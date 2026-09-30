@@ -922,13 +922,16 @@ const $ = (s,e=document)=>e.querySelector(s);
 const $$ = (s,e=document)=>[...e.querySelectorAll(s)];
 const DIA_MES = f => { const [a,m,d]=f.split("-"); return d+"/"+m; };
 
-/* Medición: conectá Google Analytics 4 y esto reporta solo.
-   Cada clic con data-track queda registrado; así le mostrás al sponsor
-   cuántas personas tocaron su espacio. */
+/* Medición: cada clic con data-track se cuenta en la base del club (POST /api/evento),
+   así le mostrás al sponsor cuántas personas tocaron su espacio. Solo viaja el nombre
+   del evento: nunca un mail, un teléfono ni un nombre. Si además hay Google Analytics
+   conectado, se le reporta también. */
 function track(evento, extra){
   if (window.gtag) window.gtag("event", evento, extra||{});
-  console.log("[adb]", evento, extra||"");
+  fetch("/api/evento", { method:"POST", headers:{"Content-Type":"application/json"},
+    body: JSON.stringify({ e: evento }), keepalive:true }).catch(()=>{});
 }
+track("visita");
 document.addEventListener("click", e=>{
   const el = e.target.closest("[data-track]");
   if (el) track(el.dataset.track);
