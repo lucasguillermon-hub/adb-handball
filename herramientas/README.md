@@ -116,6 +116,17 @@ diapositiva). Los precios están solo acá: la carpeta no se publica, así que n
 Los textos de los cuatro niveles son los mismos que `paquetes` en `datos.js`; si cambia uno,
 cambiar el otro. Los números de Instagram se copian a mano de las estadísticas de la cuenta.
 
+## Dónde se juega cada partido
+
+El fixture de FeMeBal no muestra la cancha, pero cada fila tiene un botón "Ver estadio" que
+abre un globito con el nombre. `__estadios(rama, categoria, idx)` de `femebal-scraper.browser.js`
+los toca uno por uno y devuelve la sede de cada partido del Bosco, incluidos los que todavía no
+se jugaron. Es la forma de saber qué fechas caen en la Casa del Handball —el estadio de FeMeBal,
+el que a veces transmite FemebalTV— y cargarlas en `femebal-correcciones.json`.
+
+En 2026 fueron cuatro: Tercera damas el 23/03 (Apertura) y el 17/08, Primera damas el 25/09 y
+Cuarta caballeros el 12/10. Las inferiores no juegan ahí.
+
 ## Dónde se jugó cada partido
 
 `node herramientas/planillas-canchas.js` lee las planillas que ya están en

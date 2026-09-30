@@ -108,3 +108,36 @@ window.__hojas = async function(rama, categoria, idx){
   window.open = orig; window.__planillas[titulo] = out;
   return { titulo, n: out.length };
 };
+
+// Dónde se juega cada partido del Bosco. El fixture no muestra la cancha, pero cada fila tiene
+// un botón "Ver estadio" que abre un globito con el nombre: se lo toca uno por uno y se lee.
+// Sirve para saber qué fechas caen en la Casa del Handball (el estadio de FeMeBal, el que a
+// veces transmite FemebalTV) y cargarlas en femebal-correcciones.json. A diferencia de las
+// planillas, esto también sabe la sede de los partidos que todavía no se jugaron.
+// Después: JSON.stringify(__sedes)
+window.__sedes = window.__sedes || {};
+window.__estadios = async function(rama, categoria, idx){
+  const esperar = ms => new Promise(r => setTimeout(r, ms));
+  const clickTexto = (sel, re) => { const e = [...document.querySelectorAll(sel)].find(x => re.test(x.textContent.trim())); if (e) e.click(); return !!e; };
+  if (clickTexto('button', /Volver al menú/)) await esperar(2000);
+  let c = [...document.querySelectorAll('[role=combobox]')];
+  if (!new RegExp('^' + rama).test(c[0].textContent)) { c[0].click(); await esperar(500); clickTexto('[role=option]', new RegExp('^' + rama)); await esperar(2000); c = [...document.querySelectorAll('[role=combobox]')]; }
+  if (!c[1] || !new RegExp('^' + categoria).test(c[1].textContent)) { c[1].click(); await esperar(500); clickTexto('[role=option]', new RegExp('^' + categoria)); await esperar(2400); }
+  [...document.querySelectorAll('div.bg-white-h100')][idx].click(); await esperar(3200);
+  clickTexto('button', /Todas las fechas/) || clickTexto('span, div', /^Todas las fechas$/); await esperar(2600);
+  const titulo = (document.body.innerText.split('\n').find(l => /\|/.test(l)) || '').trim();
+  const out = [];
+  for (const fila of [...document.querySelectorAll('.ms-Grid-col.ms-sm12.mt-1')].filter(f => /Ateneo Don Bosco/.test(f.textContent))){
+    const b = [...fila.querySelectorAll('button')].find(x => x.title === 'Ver estadio');
+    let sede = "";
+    if (b){
+      b.click(); await esperar(650);
+      const cajas = [...document.querySelectorAll('[role=dialog], .ms-Callout')].map(x => (x.innerText || '').trim()).filter(Boolean);
+      sede = (cajas.pop() || '').replace(/\s*Ver direcci[oó]n\s*$/i, '').replace(/\s+/g, ' ').trim();
+      document.body.click(); await esperar(250);   // cerrar el globito antes del siguiente
+    }
+    out.push({ texto: fila.innerText.replace(/\s+/g, ' ').trim(), sede });
+  }
+  window.__sedes[titulo] = out;
+  return { titulo, n: out.length, casa: out.filter(o => /casa del handball/i.test(o.sede) && !/Libre/.test(o.texto)).length };
+};
