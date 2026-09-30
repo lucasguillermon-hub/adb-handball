@@ -402,8 +402,9 @@ const DATOS = {
       {f:"2026-08-23",c:"V",r:"Federal Juniors",g:"21-23"},{f:"2026-08-30",c:"L",r:"General Las Heras",g:"19-25"},
       {f:"2026-09-06",c:"V",r:"Dorrego",h:"20:15",g:"28-27"},{f:"2026-09-13",c:"L",r:"Ferrocarril Mitre",g:"27-37"},
       {f:"2026-09-20",c:"libre"},{f:"2026-09-27",c:"libre"},{f:"2026-10-04",c:"V",r:"Defensores de Glew",h:"19:45"},
-      {f:"2026-10-12",c:"L",r:"Talleres",h:"19:45"},{f:"2026-10-25",c:"V",r:"Ducilo"},{f:"2026-11-01",c:"L",r:"San Telmo"},
-      {f:"2026-11-08",c:"V",r:"El Portugués"},{f:"2026-11-15",c:"V",r:"Círculo General Belgrano"},{f:"2026-11-22",c:"L",r:"Escobar"}
+      {f:"2026-10-12",c:"L",r:"Talleres",h:"19:45",sede:"la Casa del Handball"},{f:"2026-10-25",c:"V",r:"Ducilo"},
+      {f:"2026-11-01",c:"L",r:"San Telmo"},{f:"2026-11-08",c:"V",r:"El Portugués"},{f:"2026-11-15",c:"V",r:"Círculo General Belgrano"},
+      {f:"2026-11-22",c:"L",r:"Escobar"}
     ], tabla:[
       [1,"Almirante Brown",23,8,7,1,0,275,190],
       [2,"Defensores de Glew",22,8,7,0,1,189,144],
