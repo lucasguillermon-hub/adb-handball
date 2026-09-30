@@ -115,3 +115,12 @@ Chrome instalado, una lámina por hoja de 13,33 × 7,5 pulgadas (la proporción 
 diapositiva). Los precios están solo acá: la carpeta no se publica, así que no salen en la web.
 Los textos de los cuatro niveles son los mismos que `paquetes` en `datos.js`; si cambia uno,
 cambiar el otro. Los números de Instagram se copian a mano de las estadísticas de la cuenta.
+
+## Dónde se jugó cada partido
+
+`node herramientas/planillas-canchas.js` lee las planillas que ya están en
+`material-club/planillas/` y lista plantel, fecha y cancha. El fixture de FeMeBal no dice la
+sede, pero la planilla sí. Sirve para saber a qué planteles les toca la Casa del Handball
+(Primera damas, Tercera damas y, desde octubre de 2026, Cuarta caballeros: las inferiores no
+van), que es lo que a veces transmite FemebalTV, y para cargar esas fechas en
+`femebal-correcciones.json`. Necesita `pdf-parse`.

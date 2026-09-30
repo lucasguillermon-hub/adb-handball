@@ -135,7 +135,7 @@ const DATOS = {
         "2026-09-24":{"Paula Glisciak":5, "Julieta Mercado":4, "Ariana Acosta":3, "Cecilia Esquivel":1, "Camila Gomez":1, "Brenda Velozo":1},
         "2026-09-26":{"Ariana Acosta":7, "Paula Glisciak":5, "Brenda Velozo":4, "Julieta Mercado":4, "Mia Badaracco":4, "Zoe Rodriguez":3, "Jazmin Alarcon":2, "Paula Ayala":2, "Ariana Cuervo Diaz":1, "Julieta Di Bona":1, "Camila Hermosid":1}
       }, partidos:[
-      {f:"2026-08-08",c:"V",r:"Campana Boat Club",g:"24-25"},{f:"2026-08-17",c:"L",r:"Almirante Brown",g:"19-25"},
+      {f:"2026-08-08",c:"V",r:"Campana Boat Club",g:"24-25"},{f:"2026-08-17",c:"L",r:"Almirante Brown",g:"19-25",sede:"la Casa del Handball"},
       {f:"2026-08-22",c:"V",r:"Boca Juniors",h:"19:45",g:"18-21"},{f:"2026-08-29",c:"L",r:"AFALP",g:"25-32"},
       {f:"2026-09-05",c:"V",r:"Argentinos Juniors",h:"19:45",g:"15-14"},{f:"2026-09-12",c:"L",r:"Huracán de San Justo",g:"24-22"},
       {f:"2026-09-19",c:"V",r:"Independiente",g:"36-20"},{f:"2026-09-26",c:"L",r:"Querandí",g:"34-25"},{f:"2026-10-03",c:"V",r:"Defensores de Moreno"},
