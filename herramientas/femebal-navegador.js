@@ -64,7 +64,14 @@ const esperar = ms => new Promise(r => setTimeout(r, ms));
 
     await cmd("Page.enable"); await cmd("Runtime.enable");
     await cmd("Page.navigate", { url: "https://www.femebal.com/tournament-tracker/" });
-    await esperar(6000);
+    // El tablero es una app React: hay que esperar a que pinte el selector de rama, que es
+    // por donde entra el scraper. Algunos días tarda bastante más que otros.
+    let listo = false;
+    for (let i = 0; i < 40 && !listo; i++) {
+      await esperar(1000);
+      listo = await evaluar(`document.querySelectorAll("[role=combobox]").length > 0`);
+    }
+    if (!listo) throw new Error("El tablero de FeMeBal no terminó de cargar");
     await evaluar(fs.readFileSync(path.join(AQUI, "femebal-scraper.browser.js"), "utf8") + ";'ok'");
 
     for (const nombre of pedidos) {
