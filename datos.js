@@ -483,6 +483,38 @@ const DATOS = {
   //     { t:"link",      v:"https://...", texto:"Ver en Instagram" }
   noticias: [
     {
+      slug: "cuarta-caballeros-casa-del-handball",
+      fecha: "2026-10-06",
+      etiqueta: "Cuarta caballeros",
+      titulo: "El lunes la Cuarta juega en la Casa del Handball y los queremos a todos ahí",
+      copete: "Lunes 12, 19:45, contra Talleres. Es la primera vez del plantel en el estadio de FeMeBal y la idea es llenar la tribuna.",
+      foto: "fotos/noticias/2026-10-cuarta-casa-01.jpg",
+      alt: "Placa del club con la camiseta azul y un teléfono que marca 19:45, lunes 12 de octubre",
+      cuerpo: [
+        { t: "texto", v: "El lunes 12, feriado, la Cuarta caballeros juega contra Talleres a las 19:45 en la Casa del Handball Argentino, el estadio de FeMeBal en el Parque Olímpico de la Juventud. Somos locales, pero se juega ahí." },
+        { t: "texto", v: "Es la primera vez que el plantel masculino pisa ese estadio. En lo que va del año solo pasaron por ahí la Primera y la Tercera damas, así que para los muchachos es un estreno." },
+        { t: "destacado", v: "Vamos a ser locales en una cancha prestada. Depende de nosotros que se note." },
+        { t: "texto", v: "Por eso los esperamos a todos: familias, jugadoras de las otras categorías, amigos, los que vienen siempre a Don Bosco 116 y los que hace rato no se dan una vuelta. Un lunes feriado a la tarde no hay excusa, y la cancha queda a un rato de viaje." },
+        { t: "texto", v: "Para ir: Av. Roca 4170, Parque Olímpico de la Juventud. Se entra con entrada general y se puede llevar el equipo de mate." },
+        { t: "texto", v: "La Cuarta viene de perder 38 a 29 con Defensores de Glew después de dos fechas libres, así que el aliento va a hacer falta. Vamos Bosco." }
+      ]
+    },
+    {
+      slug: "resumen-fecha-9",
+      fecha: "2026-10-05",
+      etiqueta: "Fecha 9",
+      titulo: "Resumen de la fecha 9",
+      copete: "Dos triunfos el sábado con la Primera y la Tercera, y una tira de inferiores que se repartió los resultados en Hurlingham.",
+      cuerpo: [
+        { t: "texto", v: "La fecha arrancó el sábado con dos triunfos: Primera y Tercera damas. La Primera se enfrentó contra All Boys y ganó 31 a 26, mientras que la Tercera ganó 28 a 22 frente a Defensores de Moreno." },
+        { t: "texto", v: "El domingo nuestra tira de inferiores visitó a Hurlingham y los resultados fueron los siguientes: Infantiles ganó 34 a 14, Menores perdió 21 a 23, Cadetas perdió 17 a 22, las Juves perdieron 20 a 24 y la tira cerró con las Juniors, que ganaron 23 a 17." },
+        { t: "texto", v: "Después de dos semanas de fecha libre, Cuarta caballeros volvió a jugar. Visitó a Defensores de Glew y el resultado fue derrota, 38 a 29." },
+        { t: "destacado", v: "Si bien no siempre se gana, siempre se aprende." },
+        { t: "texto", v: "Como cada fecha, nuestros equipos dejaron todo. ¡Vamos Bosco!" },
+        { t: "texto", v: "En la tabla, las dos de arriba siguen bien: la Primera es segunda con 22 puntos y la Tercera se metió en zona de Súper 8, octava con 20. Las Infantiles son segundas de su zona con 22 y las Menores cuartas con 20." }
+      ]
+    },
+    {
       slug: "tercera-querandi",
       fecha: "2026-09-28",
       etiqueta: "Tercera damas",

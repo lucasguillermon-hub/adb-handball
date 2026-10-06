@@ -40,7 +40,7 @@ const esperar = ms => new Promise(r => setTimeout(r, ms));
 
 (async () => {
   const perfil = path.join(process.env.TEMP || "/tmp", "adb-chrome-femebal");
-  const chrome = spawn(CHROME, ["--headless=new", "--disable-gpu", "--remote-debugging-port=9222",
+  const chrome = spawn(CHROME, ["--headless=new", "--disable-gpu", "--window-size=1400,900", "--remote-debugging-port=9222",
     "--user-data-dir=" + perfil, "about:blank"], { stdio: "ignore" });
   let ws;
   try {
@@ -74,13 +74,35 @@ const esperar = ms => new Promise(r => setTimeout(r, ms));
     if (!listo) throw new Error("El tablero de FeMeBal no terminó de cargar");
     await evaluar(fs.readFileSync(path.join(AQUI, "femebal-scraper.browser.js"), "utf8") + ";'ok'");
 
+    // El tablero falla seguido: a veces no abre el desplegable, a veces devuelve la pantalla
+    // anterior. En vez de afinar más las esperas, se reintenta recargando la página.
+    const cargar = async () => {
+      await cmd("Page.navigate", { url: "https://www.femebal.com/tournament-tracker/" });
+      let ok = false;
+      for (let i = 0; i < 40 && !ok; i++) { await esperar(1000); ok = await evaluar(`document.querySelectorAll("[role=combobox]").length > 0`); }
+      if (!ok) throw new Error("El tablero de FeMeBal no terminó de cargar");
+      await evaluar(fs.readFileSync(path.join(AQUI, "femebal-scraper.browser.js"), "utf8") + ";'ok'");
+    };
+
     for (const nombre of pedidos) {
       const [rama, cat, idx] = TORNEOS[nombre];
-      const f = await evaluar(`__todas(${JSON.stringify(rama)}, ${JSON.stringify(cat)}, ${idx})`);
-      const t = await evaluar(`__tabla(${JSON.stringify(rama)}, ${JSON.stringify(cat)}, ${idx})`);
-      const h = await evaluar(`__hojas(${JSON.stringify(rama)}, ${JSON.stringify(cat)}, ${idx})`);
-      console.log(nombre.padEnd(11) + f.n + " partidos · " + t.n + " equipos · " + h.n + " planillas");
-      if (!f.titulo.includes(" | ")) throw new Error(nombre + ": no reconocí el título del torneo (" + f.titulo + ")");
+      let listo = false, ultimo = null;
+      for (let intento = 1; intento <= 3 && !listo; intento++) {
+        try {
+          const f = await evaluar(`__todas(${JSON.stringify(rama)}, ${JSON.stringify(cat)}, ${idx})`);
+          if (!f.titulo.includes(" | ") || !f.n) throw new Error("no trajo los partidos (" + f.titulo + ")");
+          const t = await evaluar(`__tabla(${JSON.stringify(rama)}, ${JSON.stringify(cat)}, ${idx})`);
+          if (t.n < 8) throw new Error("la tabla vino con " + t.n + " equipos");
+          const h = await evaluar(`__hojas(${JSON.stringify(rama)}, ${JSON.stringify(cat)}, ${idx})`);
+          console.log(nombre.padEnd(11) + f.n + " partidos · " + t.n + " equipos · " + h.n + " planillas");
+          listo = true;
+        } catch (e) {
+          ultimo = e;
+          console.log(nombre.padEnd(11) + "intento " + intento + " falló (" + String(e.message).slice(0, 60) + "), recargo");
+          await cargar();
+        }
+      }
+      if (!listo) throw ultimo;
     }
 
     // Fecha local, no UTC: después de las 21 acá ya es el día siguiente en Greenwich y el
