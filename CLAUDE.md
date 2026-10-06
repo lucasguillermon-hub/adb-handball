@@ -157,6 +157,11 @@ confirmación y no publicó nada.
   se abren en un lector; cada una tiene su link propio `#n/<slug>` para mandar por WhatsApp. Las
   fotos van en `fotos/noticias/` con las mismas reglas que la galería. Los videos de YouTube cargan
   recién cuando se tocan. Sin noticias, la sección y su link del menú no aparecen.
+  **Toda nota lleva una foto de partido o de jugadores, en alta.** Si el club no manda una, se
+  elige del banco: `fotos/<plantel>/` tiene las fechas ya exportadas de cada fotógrafa. Mejor una
+  del plantel del que habla la nota; si no hay, una del club que sirva (una ronda antes del
+  partido vale para un resumen). La tapa se recorta desde arriba, así que la foto tiene que
+  funcionar en su franja superior. El escudo sobre fondo azul es el último recurso, no la opción.
   Los videos tienen que estar en YouTube (aunque sea "no listado"): las historias de Instagram
   duran 24 horas y piden cuenta, así que no sirven para la web.
 - Galería: un álbum por categoría y adentro una entrada por fecha (rival, condición, fotógrafo,

@@ -505,6 +505,8 @@ const DATOS = {
       etiqueta: "Fecha 9",
       titulo: "Resumen de la fecha 9",
       copete: "Dos triunfos el sábado con la Primera y la Tercera, y una tira de inferiores que se repartió los resultados en Hurlingham.",
+      foto: "fotos/noticias/2026-10-fecha-9-01.jpg",
+      alt: "El plantel del Bosco en ronda con el cuerpo técnico, antes de salir a la cancha",
       cuerpo: [
         { t: "texto", v: "La fecha arrancó el sábado con dos triunfos: Primera y Tercera damas. La Primera se enfrentó contra All Boys y ganó 31 a 26, mientras que la Tercera ganó 28 a 22 frente a Defensores de Moreno." },
         { t: "texto", v: "El domingo nuestra tira de inferiores visitó a Hurlingham y los resultados fueron los siguientes: Infantiles ganó 34 a 14, Menores perdió 21 a 23, Cadetas perdió 17 a 22, las Juves perdieron 20 a 24 y la tira cerró con las Juniors, que ganaron 23 a 17." },
