@@ -21,6 +21,42 @@
 
 window.__pares = window.__pares || {}; window.__fix = window.__fix || {}; window.__tablas = window.__tablas || {};
 
+// El tablero es React y tarda lo que quiere: en vez de esperar un rato fijo, se espera a que
+// aparezca lo que viene después. Antes había esperas de dos segundos y algunos días no alcanzaban.
+window.__hasta = async function(cond, ms){
+  const t0 = Date.now();
+  while (Date.now() - t0 < (ms || 25000)){
+    try { if (cond()) return true; } catch {}
+    await new Promise(r => setTimeout(r, 300));
+  }
+  return false;
+};
+// Deja la pantalla en el torneo pedido, con "Todas las fechas" abierto. Devuelve el título.
+window.__abrir = async function(rama, categoria, idx){
+  const combos = () => [...document.querySelectorAll('[role=combobox]')];
+  const clickTexto = (sel, re) => { const e = [...document.querySelectorAll(sel)].find(x => re.test(x.textContent.trim())); if (e) e.click(); return !!e; };
+  if (clickTexto('button', /Volver al menú/)) await window.__hasta(() => combos().length > 0);
+  await window.__hasta(() => combos().length > 0);
+  if (!new RegExp('^' + rama).test(combos()[0].textContent)){
+    combos()[0].click();
+    await window.__hasta(() => document.querySelector('[role=option]'));
+    clickTexto('[role=option]', new RegExp('^' + rama));
+    await window.__hasta(() => combos().length > 1 && new RegExp('^' + rama).test(combos()[0].textContent));
+  }
+  if (!combos()[1] || !new RegExp('^' + categoria).test(combos()[1].textContent)){
+    combos()[1].click();
+    await window.__hasta(() => document.querySelector('[role=option]'));
+    clickTexto('[role=option]', new RegExp('^' + categoria));
+    await window.__hasta(() => document.querySelectorAll('div.bg-white-h100').length > 0 && new RegExp('^' + categoria).test(combos()[1].textContent));
+  }
+  if (idx == null) return [...document.querySelectorAll('div.bg-white-h100')].map((c, i) => i + ': ' + c.textContent.trim().replace(/\s+/g, ' ').slice(0, 70));
+  [...document.querySelectorAll('div.bg-white-h100')][idx].click();
+  await window.__hasta(() => /\|/.test(document.body.innerText));
+  clickTexto('button', /Todas las fechas/) || clickTexto('span, div', /^Todas las fechas$/);
+  await window.__hasta(() => document.querySelectorAll('.ms-Grid-col.ms-sm12.mt-1').length > 3);
+  return (document.body.innerText.split('\n').find(l => /\|/.test(l)) || '').trim();
+};
+
 // Navega al menú, aplica rama y categoría, y (si idx no es null) abre ese torneo y junta nombre → escudo.
 window.__paso = async function(rama, categoria, idx){
   const esperar = ms => new Promise(r => setTimeout(r, ms));

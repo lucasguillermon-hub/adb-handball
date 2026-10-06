@@ -64,7 +64,7 @@ const DATOS = {
     comunidad: "https://chat.whatsapp.com/"      // ⚠️ pegar el link real de la comunidad
   },
 
-  // Fixture sincronizado con FeMeBal (femebal.com/tournament-tracker) el 04/10/2026.
+  // Fixture sincronizado con FeMeBal (femebal.com/tournament-tracker) el 06/10/2026.
   // nombre: como lo llama el club · division: como lo llama FeMeBal (se muestra en la tabla).
   // jugadoras: el plantel que se vota como figura de la fecha (de LISTAS PRESENTISMO 2026).
   // Minis e Infantiles son formativas: van con jugadoras:[] y no entran en nada que sea por nombre.
@@ -146,14 +146,14 @@ const DATOS = {
     ], tabla:[
       [1,"Mariano Acosta",25,9,8,0,1,230,183],
       [2,"San Telmo",24,10,7,0,3,267,236],
-      [3,"Campana Boat Club",23,8,7,1,0,198,177],
+      [3,"Campana Boat Club",24,9,7,1,1,223,207],
       [4,"Almirante Brown",23,9,7,0,2,283,241],
       [5,"Colegio del Parque",23,9,7,0,2,278,214],
       [6,"Nueva Chicago",22,9,6,1,2,233,205],
       [7,"Querandí",21,9,6,0,3,249,234],
       [8,"Ateneo Don Bosco",20,10,5,0,5,238,227],
       [9,"Secla",19,9,5,0,4,193,184],
-      [10,"Argentinos Juniors",14,8,3,0,5,151,170],
+      [10,"Argentinos Juniors",17,9,4,0,5,181,195],
       [11,"AFALP",14,9,3,0,5,199,238],
       [12,"Boca Juniors",13,9,2,0,7,199,223],
       [13,"Huracán de San Justo",13,9,2,0,7,176,222],
@@ -190,19 +190,19 @@ const DATOS = {
       {f:"2026-11-15",c:"V",r:"Sagrado Corazón"},{f:"2026-11-22",c:"L",r:"Estrella de Boedo"}
     ], tabla:[
       [1,"Sagrado Corazón",27,9,9,0,0,244,95],
-      [2,"La Patriada",23,9,7,0,2,227,163],
-      [3,"Muñiz",23,9,7,0,2,246,190],
-      [4,"Polvorines",23,9,7,0,2,157,126],
-      [5,"Ateneo Don Bosco",22,8,7,0,1,212,102],
+      [2,"Ateneo Don Bosco",25,9,8,0,1,246,116],
+      [3,"La Patriada",23,9,7,0,2,227,163],
+      [4,"Muñiz",23,9,7,0,2,246,190],
+      [5,"Polvorines",23,9,7,0,2,157,126],
       [6,"C.I.D. Moreno",22,8,7,0,1,177,137],
       [7,"Colegio Ward",21,8,6,1,1,172,126],
-      [8,"Estrella de Boedo",16,8,3,2,3,197,184],
-      [9,"Hurlingham",16,8,4,0,4,164,154],
+      [8,"Estrella de Boedo",19,9,4,2,3,226,195],
+      [9,"Hurlingham",17,9,4,0,5,178,188],
       [10,"Banfield",15,9,3,0,6,207,220],
       [11,"Boca Juniors",14,9,2,1,6,155,185],
       [12,"Independiente",13,9,2,0,7,150,193],
       [13,"Villa Modelo",13,9,2,0,7,181,251],
-      [14,"Vélez Sarsfield",10,8,1,0,7,108,186],
+      [14,"Vélez Sarsfield",11,9,1,0,8,119,215],
       [15,"Cedem Caseros",9,9,0,0,9,113,233],
       [16,"Círculo de Villa Devoto",9,9,0,0,9,155,320]
     ] },
@@ -284,16 +284,16 @@ const DATOS = {
       [3,"Sagrado Corazón",22,9,6,1,2,229,213],
       [4,"Villa Modelo",21,9,6,0,3,218,205],
       [5,"Cedem Caseros",20,9,5,1,3,230,205],
-      [6,"Independiente",19,9,5,0,4,199,181],
-      [7,"Hurlingham",18,9,4,1,4,174,157],
-      [8,"Colegio Ward",17,7,4,2,1,153,147],
-      [9,"C.I.D. Moreno",15,7,4,0,3,146,142],
-      [10,"Polvorines",15,9,2,2,5,193,205],
+      [6,"Colegio Ward",20,8,5,2,1,173,163],
+      [7,"Independiente",19,9,5,0,4,199,181],
+      [8,"Hurlingham",18,9,4,1,4,174,157],
+      [9,"Muñiz",17,9,4,0,5,158,163],
+      [10,"C.I.D. Moreno",16,8,4,0,4,166,164],
       [11,"La Patriada",15,9,3,0,6,169,192],
-      [12,"Muñiz",14,8,3,0,5,136,143],
+      [12,"Polvorines",15,9,2,2,5,193,205],
       [13,"Estrella de Boedo",13,9,2,0,7,195,216],
       [14,"Círculo de Villa Devoto",13,9,2,0,7,200,217],
-      [15,"Boca Juniors",12,8,2,0,6,122,150],
+      [15,"Boca Juniors",13,9,2,0,7,138,170],
       [16,"Ateneo Don Bosco",11,9,1,0,8,172,223]
     ] },
     { id:"juveniles", nombre:"Juveniles", division:"Juveniles · División C", dia:"Domingos", hora:"14:30",
@@ -326,8 +326,8 @@ const DATOS = {
     ], tabla:[
       [1,"Círculo de Villa Devoto",27,9,9,0,0,297,179],
       [2,"Polvorines",27,9,9,0,0,298,232],
-      [3,"Sagrado Corazón",20,8,6,0,2,268,225],
-      [4,"Cedem Caseros",20,8,6,0,2,225,197],
+      [3,"Sagrado Corazón",22,9,6,1,2,301,258],
+      [4,"Cedem Caseros",22,9,6,1,2,258,230],
       [5,"Hurlingham",19,9,5,0,4,222,190],
       [6,"Banfield",19,9,5,0,4,237,220],
       [7,"Villa Modelo",19,9,5,0,4,228,241],
@@ -336,10 +336,10 @@ const DATOS = {
       [10,"Independiente",16,8,4,0,4,218,235],
       [11,"La Patriada",15,9,3,0,6,212,215],
       [12,"Vélez Sarsfield",15,9,3,0,6,231,248],
-      [13,"Estrella de Boedo",13,9,2,0,7,232,307],
-      [14,"C.I.D. Moreno",11,7,2,0,5,146,186],
+      [13,"C.I.D. Moreno",14,8,3,0,5,167,203],
+      [14,"Estrella de Boedo",13,9,2,0,7,232,307],
       [15,"Ateneo Don Bosco",11,9,1,0,8,191,250],
-      [16,"Muñiz",8,8,0,0,8,133,211]
+      [16,"Muñiz",9,9,0,0,9,150,232]
     ] },
     { id:"juniors", nombre:"Juniors", division:"Junior · División C", dia:"Domingos", hora:"16:00",
       jugadoras:[
@@ -370,15 +370,15 @@ const DATOS = {
     ], tabla:[
       [1,"Círculo de Villa Devoto",27,9,9,0,0,261,196],
       [2,"Vélez Sarsfield",22,9,6,1,2,242,199],
-      [3,"Estrella de Boedo",20,8,6,0,2,284,213],
-      [4,"Ateneo Don Bosco",20,9,5,1,3,258,250],
-      [5,"Villa Modelo",19,7,6,0,1,225,173],
-      [6,"Boca Juniors",18,8,5,0,3,240,193],
-      [7,"Cedem Caseros",18,8,5,0,3,211,183],
-      [8,"Muñiz",18,8,5,0,3,193,202],
-      [9,"Polvorines",18,9,4,1,4,221,235],
-      [10,"C.I.D. Moreno",15,7,4,0,3,196,156],
-      [11,"Sagrado Corazón",15,7,4,0,3,198,181],
+      [3,"Cedem Caseros",21,9,6,0,3,236,200],
+      [4,"Estrella de Boedo",20,8,6,0,2,284,213],
+      [5,"Ateneo Don Bosco",20,9,5,1,3,258,250],
+      [6,"Villa Modelo",19,7,6,0,1,225,173],
+      [7,"Muñiz",19,9,5,0,4,210,239],
+      [8,"C.I.D. Moreno",18,8,5,0,3,233,173],
+      [9,"Boca Juniors",18,8,5,0,3,240,193],
+      [10,"Polvorines",18,9,4,1,4,221,235],
+      [11,"Sagrado Corazón",16,8,4,0,4,215,206],
       [12,"La Patriada",13,9,2,0,7,222,292],
       [13,"Independiente",12,8,2,0,6,180,251],
       [14,"Banfield",11,9,1,0,8,161,272],
@@ -421,11 +421,11 @@ const DATOS = {
       [6,"Ducilo",21,9,6,0,3,198,187],
       [7,"Talleres",21,9,6,0,3,183,173],
       [8,"El Portugués",20,9,5,1,3,220,226],
-      [9,"Federal Juniors",18,8,5,0,3,223,211],
+      [9,"Federal Juniors",19,9,5,0,4,238,232],
       [10,"Dep. Laferrere",15,9,3,0,6,216,238],
       [11,"San Telmo",15,9,3,0,6,163,197],
       [12,"Ateneo Don Bosco",15,9,3,0,6,159,197],
-      [13,"Dorrego",11,8,1,1,6,181,211],
+      [13,"Dorrego",14,9,2,1,6,202,226],
       [14,"Círculo General Belgrano",8,9,1,0,7,154,229]
     ]},
     // Maxihandball: fixture y tabla de la Liga Maxi Handball (timbo.futbol), con maxi-actualizar.js.
@@ -442,7 +442,7 @@ const DATOS = {
       dorsales:{"Camila Lalin":3, "Nahir Alvarez":4, "Maru Pereiras":5, "Tiziana Sanfelice":6, "Magali Prisco":7, "Giselle Loffler":8, "Camila Seguin":9, "Ariadna Aristizabal":11, "Martina Quintana":12, "Marcela Rodríguez":13, "Agustina Michl":14, "Florencia Rossaro":18, "Paula Subiza":19, "Agustina Bajko":20, "Valentina Bajko":21, "Mora Otamendi":22, "Mariana Benítez":24, "Julieta Biazzo":25, "Julieta Milanesi":27, "Martina Panetta":31, "Jimena Berutti":47}, partidos:[
       {f:"2026-08-29",c:"L",r:"Manuel Belgrano",h:"09:15",g:"12-20"},{f:"2026-09-05",c:"V",r:"Instituto Manuel Belgrano",sede:"Polideportivo N. Kirchner (Ezeiza)",g:"18-19"},
       {f:"2026-09-12",c:"V",r:"Team Ezeiza",h:"11:30",sede:"Polideportivo N. Kirchner (Ezeiza)",g:"15-14"},{f:"2026-09-26",c:"V",r:"Las 2P",h:"10:00",sede:"Polideportivo N. Kirchner (Ezeiza)"},
-      {f:"2026-10-03",c:"V",r:"Panteras Handball",h:"14:30",sede:"Instituto Manuel Belgrano Quilmes"},{f:"2026-10-10",c:"L",r:"Golondrinas",sinHora:true,sede:"a confirmar"},
+      {f:"2026-10-03",c:"V",r:"Panteras Handball",h:"14:30",sede:"Instituto Manuel Belgrano Quilmes"},{f:"2026-10-10",c:"V",r:"Golondrinas",h:"13:00",sede:"Polideportivo N. Kirchner (Ezeiza)"},
       {f:"2026-10-17",c:"V",r:"Club Social",sinHora:true,sede:"a confirmar"},{f:"2026-10-31",c:"V",r:"Villa Vatteone",sinHora:true,sede:"a confirmar"},
       {f:"2026-11-14",c:"V",r:"47 Handball Club",sinHora:true,sede:"a confirmar"},{f:"2026-11-14",c:"L",r:"La Patriada",sinHora:true,sede:"a confirmar"},
       {f:"2026-11-28",c:"L",r:"CAQ Handball",sinHora:true,sede:"a confirmar"}
