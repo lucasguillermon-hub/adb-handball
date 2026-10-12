@@ -64,7 +64,7 @@ const DATOS = {
     comunidad: "https://chat.whatsapp.com/"      // ⚠️ pegar el link real de la comunidad
   },
 
-  // Fixture sincronizado con FeMeBal (femebal.com/tournament-tracker) el 11/10/2026.
+  // Fixture sincronizado con FeMeBal (femebal.com/tournament-tracker) el 12/10/2026.
   // nombre: como lo llama el club · division: como lo llama FeMeBal (se muestra en la tabla).
   // jugadoras: el plantel que se vota como figura de la fecha (de LISTAS PRESENTISMO 2026).
   // Minis e Infantiles son formativas: van con jugadoras:[] y no entran en nada que sea por nombre.
@@ -189,22 +189,22 @@ const DATOS = {
       {f:"2026-10-25",c:"V",r:"Muñiz"},{f:"2026-11-01",c:"L",r:"Polvorines"},{f:"2026-11-08",c:"V",r:"C.I.D. Moreno"},
       {f:"2026-11-15",c:"V",r:"Sagrado Corazón"},{f:"2026-11-22",c:"L",r:"Estrella de Boedo"}
     ], tabla:[
-      [1,"Sagrado Corazón",27,9,9,0,0,244,95],
-      [2,"Polvorines",26,10,8,0,2,178,145],
-      [3,"Ateneo Don Bosco",25,9,8,0,1,246,116],
-      [4,"C.I.D. Moreno",25,9,8,0,1,199,154],
-      [5,"Muñiz",24,10,7,0,3,265,211],
-      [6,"La Patriada",23,9,7,0,2,227,163],
-      [7,"Colegio Ward",22,9,6,1,2,189,148],
-      [8,"Estrella de Boedo",19,9,4,2,3,226,195],
-      [9,"Hurlingham",17,9,4,0,5,178,188],
-      [10,"Banfield",15,9,3,0,6,207,220],
-      [11,"Boca Juniors",14,9,2,1,6,155,185],
-      [12,"Independiente",13,9,2,0,7,150,193],
-      [13,"Villa Modelo",13,9,2,0,7,181,251],
-      [14,"Vélez Sarsfield",11,9,1,0,8,119,215],
-      [15,"Cedem Caseros",9,9,0,0,9,113,233],
-      [16,"Círculo de Villa Devoto",9,9,0,0,9,155,320]
+      [1,"Sagrado Corazón",30,10,10,0,0,274,106],
+      [2,"Ateneo Don Bosco",28,10,9,0,1,272,138],
+      [3,"C.I.D. Moreno",28,10,9,0,1,222,170],
+      [4,"Polvorines",26,10,8,0,2,178,145],
+      [5,"Colegio Ward",25,10,7,1,2,217,170],
+      [6,"Muñiz",24,10,7,0,3,265,211],
+      [7,"La Patriada",24,10,7,0,3,249,189],
+      [8,"Estrella de Boedo",22,10,5,2,3,262,212],
+      [9,"Hurlingham",18,10,4,0,6,189,218],
+      [10,"Banfield",16,10,3,0,7,229,248],
+      [11,"Boca Juniors",15,10,2,1,7,171,208],
+      [12,"Vélez Sarsfield",14,10,2,0,8,149,229],
+      [13,"Independiente",13,9,2,0,7,150,193],
+      [14,"Villa Modelo",13,9,2,0,7,181,251],
+      [15,"Cedem Caseros",10,10,0,0,10,130,269],
+      [16,"Círculo de Villa Devoto",10,10,0,0,10,169,350]
     ] },
     { id:"menores", competencia:false, nombre:"Menores", division:"Menores · División C", dia:"Domingos", hora:"11:30",
       nombresCortos:true, jugadoras:[
@@ -217,7 +217,7 @@ const DATOS = {
     ],
       // Dorsales y goles del Clausura según las planillas de FeMeBal (femebal-dorsales.js).
       dorsales:{"Isabella Stoll":1, "Martina Rosales":2, "Celina Kronemberg":3, "Sofia Ballares":4, "Serena Zabatta":5, "Nina Stambullian":6, "Celeste Bello":7, "Valentina Manchi":8, "Victoria Kyanco":9, "Matilda Barrera":10, "Guillemina Fortunato":11, "Mia Calo":14, "Luana Martinez":15, "Amanda D'Urzo":16, "Helena Paz":17, "Emilia Greco":19, "Martina Antero":20},
-      goles:{"Martina Rosales":3, "Celina Kronemberg":14, "Serena Zabatta":38, "Nina Stambullian":1, "Celeste Bello":1, "Valentina Manchi":8, "Victoria Kyanco":22, "Guillemina Fortunato":33, "Mia Calo":26, "Luana Martinez":5, "Helena Paz":7, "Emilia Greco":65, "Martina Antero":20},
+      goles:{"Martina Rosales":3, "Celina Kronemberg":16, "Sofia Ballares":4, "Serena Zabatta":41, "Nina Stambullian":1, "Celeste Bello":3, "Valentina Manchi":8, "Victoria Kyanco":22, "Guillemina Fortunato":35, "Mia Calo":31, "Luana Martinez":5, "Helena Paz":8, "Emilia Greco":75, "Martina Antero":22},
       golesFecha:{
         "2026-08-09":{"Emilia Greco":7, "Guillemina Fortunato":4, "Serena Zabatta":3, "Victoria Kyanco":3, "Martina Antero":3, "Helena Paz":2, "Celina Kronemberg":1, "Valentina Manchi":1, "Luana Martinez":1},
         "2026-08-16":{"Emilia Greco":5, "Serena Zabatta":4, "Mia Calo":4, "Victoria Kyanco":3, "Martina Antero":3, "Guillemina Fortunato":2, "Luana Martinez":1, "Helena Paz":1},
@@ -227,31 +227,32 @@ const DATOS = {
         "2026-09-13":{"Emilia Greco":12, "Mia Calo":8, "Serena Zabatta":6, "Celina Kronemberg":4, "Guillemina Fortunato":3, "Martina Antero":3, "Valentina Manchi":2, "Victoria Kyanco":2, "Helena Paz":2, "Luana Martinez":1},
         "2026-09-20":{"Emilia Greco":9, "Guillemina Fortunato":5, "Serena Zabatta":4, "Valentina Manchi":2, "Martina Rosales":1, "Victoria Kyanco":1, "Mia Calo":1, "Helena Paz":1, "Martina Antero":1},
         "2026-09-27":{"Serena Zabatta":7, "Emilia Greco":6, "Victoria Kyanco":3, "Mia Calo":3, "Martina Rosales":2, "Celeste Bello":1, "Valentina Manchi":1, "Guillemina Fortunato":1, "Luana Martinez":1, "Helena Paz":1, "Martina Antero":1},
-        "2026-10-04":{"Guillemina Fortunato":6, "Martina Antero":4, "Victoria Kyanco":3, "Serena Zabatta":3, "Celina Kronemberg":2, "Emilia Greco":2, "Mia Calo":1}
+        "2026-10-04":{"Guillemina Fortunato":6, "Martina Antero":4, "Victoria Kyanco":3, "Serena Zabatta":3, "Celina Kronemberg":2, "Emilia Greco":2, "Mia Calo":1},
+        "2026-10-11":{"Emilia Greco":10, "Mia Calo":5, "Sofia Ballares":4, "Serena Zabatta":3, "Celina Kronemberg":2, "Celeste Bello":2, "Guillemina Fortunato":2, "Martina Antero":2, "Helena Paz":1}
       }, partidos:[
       {f:"2026-08-09",c:"V",r:"Círculo de Villa Devoto",g:"25-19"},{f:"2026-08-16",c:"L",r:"Independiente",g:"23-29"},
       {f:"2026-08-23",c:"V",r:"Colegio Ward",g:"22-37"},{f:"2026-08-30",c:"L",r:"Boca Juniors",g:"26-23"},{f:"2026-09-06",c:"V",r:"Banfield",g:"31-19"},
       {f:"2026-09-13",c:"L",r:"Villa Modelo",g:"43-23"},{f:"2026-09-20",c:"V",r:"Vélez Sarsfield",g:"25-24"},
-      {f:"2026-09-27",c:"L",r:"Cedem Caseros",g:"27-22"},{f:"2026-10-04",c:"V",r:"Hurlingham",g:"21-23"},{f:"2026-10-11",c:"L",r:"La Patriada",g:"28-37"},
+      {f:"2026-09-27",c:"L",r:"Cedem Caseros",g:"27-22"},{f:"2026-10-04",c:"V",r:"Hurlingham",g:"21-23"},{f:"2026-10-11",c:"L",r:"La Patriada",g:"31-44"},
       {f:"2026-10-25",c:"V",r:"Muñiz"},{f:"2026-11-01",c:"L",r:"Polvorines"},{f:"2026-11-08",c:"V",r:"C.I.D. Moreno"},
       {f:"2026-11-15",c:"V",r:"Sagrado Corazón"},{f:"2026-11-22",c:"L",r:"Estrella de Boedo"}
     ], tabla:[
-      [1,"La Patriada",27,9,9,0,0,308,180],
-      [2,"Independiente",27,9,9,0,0,270,161],
-      [3,"Colegio Ward",25,9,8,0,1,279,160],
-      [4,"Sagrado Corazón",21,9,6,0,3,230,164],
-      [5,"Ateneo Don Bosco",21,9,6,0,3,243,219],
-      [6,"C.I.D. Moreno",20,9,5,1,3,213,199],
-      [7,"Vélez Sarsfield",20,9,5,1,3,202,188],
-      [8,"Estrella de Boedo",17,9,3,2,4,229,238],
-      [9,"Hurlingham",17,9,3,2,4,206,217],
-      [10,"Cedem Caseros",16,9,3,1,5,178,188],
-      [11,"Polvorines",16,9,3,1,5,139,168],
-      [12,"Boca Juniors",15,9,2,2,5,173,205],
+      [1,"La Patriada",30,10,10,0,0,352,211],
+      [2,"Colegio Ward",28,10,9,0,1,308,180],
+      [3,"Independiente",27,9,9,0,0,270,161],
+      [4,"Sagrado Corazón",23,10,6,1,3,249,183],
+      [5,"Vélez Sarsfield",23,10,6,1,3,238,206],
+      [6,"C.I.D. Moreno",23,10,6,1,3,228,213],
+      [7,"Ateneo Don Bosco",22,10,6,0,4,274,263],
+      [8,"Estrella de Boedo",20,10,4,2,4,252,259],
+      [9,"Polvorines",19,10,4,1,5,164,183],
+      [10,"Hurlingham",19,10,3,3,4,225,236],
+      [11,"Cedem Caseros",17,10,3,1,6,199,211],
+      [12,"Boca Juniors",16,10,2,2,6,187,220],
       [13,"Villa Modelo",13,9,2,0,7,181,292],
-      [14,"Muñiz",11,9,1,0,8,177,244],
-      [15,"Banfield",11,9,1,0,8,176,274],
-      [16,"Círculo de Villa Devoto",11,9,1,0,8,151,258]
+      [14,"Muñiz",12,10,1,0,9,192,269],
+      [15,"Banfield",12,10,1,0,9,196,303],
+      [16,"Círculo de Villa Devoto",12,10,1,0,9,169,294]
     ] },
     { id:"cadetas", competencia:false, nombre:"Cadetas", division:"Cadetes · División C", dia:"Domingos", hora:"13:00",
       nombresCortos:true, jugadoras:[
@@ -259,8 +260,8 @@ const DATOS = {
       "Victoria Kyanko", "Emilia Greco", "Guillermina Fortunato", "Serena Zabatta", "Mia Calo"   // según las planillas de FeMeBal
     ],
       // Dorsales y goles del Clausura según las planillas de FeMeBal (femebal-dorsales.js).
-      dorsales:{"Guillermina Fortunato":11, "Luciana Chiesa":15, "Abril Coria":16, "Serena Zabatta":20, "Mia Calo":20, "Emilia Greco":21, "Emilia Juarez Leikam":24, "Ema Rosello":25, "Victoria Kyanko":26, "Isabella Greco":27, "Maria Eugenia Rotta":32},
-      goles:{"Guillermina Fortunato":7, "Luciana Chiesa":12, "Serena Zabatta":5, "Mia Calo":4, "Emilia Greco":39, "Emilia Juarez Leikam":10, "Ema Rosello":12, "Victoria Kyanko":14, "Isabella Greco":59, "Maria Eugenia Rotta":10},
+      dorsales:{"Guillermina Fortunato":11, "Luciana Chiesa":15, "Abril Coria":16, "Serena Zabatta":20, "Mia Calo":20, "Emilia Greco":22, "Emilia Juarez Leikam":24, "Ema Rosello":25, "Victoria Kyanko":26, "Isabella Greco":27, "Maria Eugenia Rotta":32},
+      goles:{"Guillermina Fortunato":10, "Luciana Chiesa":12, "Serena Zabatta":7, "Mia Calo":4, "Emilia Greco":48, "Emilia Juarez Leikam":11, "Ema Rosello":13, "Victoria Kyanko":14, "Isabella Greco":71, "Maria Eugenia Rotta":14},
       golesFecha:{
         "2026-08-09":{"Isabella Greco":8, "Emilia Greco":6, "Luciana Chiesa":4, "Guillermina Fortunato":2, "Victoria Kyanko":1},
         "2026-08-16":{"Luciana Chiesa":4, "Isabella Greco":4, "Serena Zabatta":2, "Mia Calo":2, "Maria Eugenia Rotta":2, "Emilia Juarez Leikam":1, "Ema Rosello":1, "Victoria Kyanko":1},
@@ -270,31 +271,32 @@ const DATOS = {
         "2026-09-13":{"Emilia Greco":9, "Isabella Greco":9, "Victoria Kyanko":4, "Guillermina Fortunato":2, "Ema Rosello":1, "Maria Eugenia Rotta":1},
         "2026-09-20":{"Emilia Greco":5, "Victoria Kyanko":4, "Guillermina Fortunato":2, "Emilia Juarez Leikam":2, "Isabella Greco":2, "Ema Rosello":1, "Maria Eugenia Rotta":1},
         "2026-09-27":{"Isabella Greco":10, "Emilia Greco":4, "Ema Rosello":2, "Maria Eugenia Rotta":2, "Guillermina Fortunato":1, "Emilia Juarez Leikam":1, "Mia Calo":1},
-        "2026-10-04":{"Isabella Greco":7, "Victoria Kyanko":3, "Maria Eugenia Rotta":3, "Serena Zabatta":2, "Emilia Greco":1, "Emilia Juarez Leikam":1}
+        "2026-10-04":{"Isabella Greco":7, "Victoria Kyanko":3, "Maria Eugenia Rotta":3, "Serena Zabatta":2, "Emilia Greco":1, "Emilia Juarez Leikam":1},
+        "2026-10-11":{"Isabella Greco":12, "Emilia Greco":9, "Maria Eugenia Rotta":4, "Guillermina Fortunato":3, "Serena Zabatta":2, "Emilia Juarez Leikam":1, "Ema Rosello":1}
       }, partidos:[
       {f:"2026-08-09",c:"V",r:"Círculo de Villa Devoto",g:"21-19"},{f:"2026-08-16",c:"L",r:"Independiente",g:"17-30"},
       {f:"2026-08-23",c:"V",r:"Colegio Ward",g:"17-25"},{f:"2026-08-30",c:"L",r:"Boca Juniors",g:"20-24"},{f:"2026-09-06",c:"V",r:"Banfield",g:"16-19"},
       {f:"2026-09-13",c:"L",r:"Villa Modelo",g:"26-31"},{f:"2026-09-20",c:"V",r:"Vélez Sarsfield",g:"17-25"},
-      {f:"2026-09-27",c:"L",r:"Cedem Caseros",g:"21-28"},{f:"2026-10-04",c:"V",r:"Hurlingham",g:"17-22"},{f:"2026-10-11",c:"L",r:"La Patriada"},
+      {f:"2026-09-27",c:"L",r:"Cedem Caseros",g:"21-28"},{f:"2026-10-04",c:"V",r:"Hurlingham",g:"17-22"},{f:"2026-10-11",c:"L",r:"La Patriada",g:"32-33"},
       {f:"2026-10-25",c:"V",r:"Muñiz"},{f:"2026-11-01",c:"L",r:"Polvorines"},{f:"2026-11-08",c:"V",r:"C.I.D. Moreno"},
       {f:"2026-11-15",c:"V",r:"Sagrado Corazón"},{f:"2026-11-22",c:"L",r:"Estrella de Boedo"}
     ], tabla:[
-      [1,"Banfield",27,9,9,0,0,195,158],
-      [2,"Vélez Sarsfield",24,9,7,1,1,183,160],
-      [3,"Sagrado Corazón",22,9,6,1,2,229,213],
-      [4,"Villa Modelo",21,9,6,0,3,218,205],
-      [5,"Colegio Ward",21,9,5,2,2,198,190],
-      [6,"Cedem Caseros",20,9,5,1,3,230,205],
-      [7,"Independiente",19,9,5,0,4,199,181],
-      [8,"C.I.D. Moreno",19,9,5,0,4,193,189],
-      [9,"Hurlingham",18,9,4,1,4,174,157],
-      [10,"Muñiz",17,9,4,0,5,158,163],
-      [11,"La Patriada",15,9,3,0,6,169,192],
-      [12,"Polvorines",15,9,2,2,5,193,205],
-      [13,"Estrella de Boedo",13,9,2,0,7,195,216],
-      [14,"Círculo de Villa Devoto",13,9,2,0,7,200,217],
-      [15,"Boca Juniors",13,9,2,0,7,138,170],
-      [16,"Ateneo Don Bosco",11,9,1,0,8,172,223]
+      [1,"Banfield",30,10,10,0,0,216,176],
+      [2,"Sagrado Corazón",25,10,7,1,2,256,233],
+      [3,"Vélez Sarsfield",25,10,7,1,2,199,183],
+      [4,"Cedem Caseros",23,10,6,1,3,261,228],
+      [5,"Colegio Ward",22,10,5,2,3,216,211],
+      [6,"Villa Modelo",21,9,6,0,3,218,205],
+      [7,"C.I.D. Moreno",20,10,5,0,5,212,210],
+      [8,"Independiente",19,9,5,0,4,199,181],
+      [9,"Hurlingham",19,10,4,1,5,194,184],
+      [10,"Muñiz",18,10,4,0,6,171,177],
+      [11,"Polvorines",18,10,3,2,5,207,218],
+      [12,"La Patriada",18,10,4,0,6,202,224],
+      [13,"Círculo de Villa Devoto",16,10,3,0,7,223,233],
+      [14,"Boca Juniors",16,10,3,0,7,159,189],
+      [15,"Estrella de Boedo",14,10,2,0,8,218,247],
+      [16,"Ateneo Don Bosco",12,10,1,0,9,204,256]
     ] },
     { id:"juveniles", nombre:"Juveniles", division:"Juveniles · División C", dia:"Domingos", hora:"14:30",
       jugadoras:[
@@ -305,7 +307,7 @@ const DATOS = {
     ],
       // Dorsales y goles del Clausura según las planillas de FeMeBal (femebal-dorsales.js).
       dorsales:{"Julieta Antero":1, "Antonella D'Urzo":5, "Ema Rosello":5, "Isabella Scarfo":7, "Martina Gomez":11, "Isabella Greco":14, "Angela Farias":16, "Renata Giachello":17, "Maria Rotta":20, "Luciana Toledo":21, "Luciana Chiesa Hornung":22, "Camila Dib":24, "Uma Estanga":25, "Valentina Antero":28},
-      goles:{"Antonella D'Urzo":2, "Martina Gomez":29, "Isabella Greco":10, "Renata Giachello":58, "Maria Rotta":2, "Luciana Toledo":31, "Luciana Chiesa Hornung":2, "Camila Dib":4, "Uma Estanga":26, "Valentina Antero":27},
+      goles:{"Antonella D'Urzo":5, "Martina Gomez":31, "Isabella Greco":10, "Renata Giachello":69, "Maria Rotta":2, "Luciana Toledo":38, "Luciana Chiesa Hornung":2, "Camila Dib":4, "Uma Estanga":29, "Valentina Antero":27},
       golesFecha:{
         "2026-08-09":{"Renata Giachello":8, "Uma Estanga":5, "Valentina Antero":2, "Isabella Greco":1, "Luciana Toledo":1},
         "2026-08-16":{"Martina Gomez":5, "Uma Estanga":4, "Renata Giachello":3, "Luciana Toledo":3, "Isabella Greco":3, "Luciana Chiesa Hornung":2},
@@ -315,31 +317,32 @@ const DATOS = {
         "2026-09-13":{"Renata Giachello":8, "Luciana Toledo":5, "Martina Gomez":4, "Antonella D'Urzo":2, "Isabella Greco":1, "Maria Rotta":1},
         "2026-09-20":{"Renata Giachello":11, "Uma Estanga":7, "Valentina Antero":6, "Luciana Toledo":3, "Martina Gomez":2, "Camila Dib":2},
         "2026-09-27":{"Renata Giachello":5, "Valentina Antero":4, "Uma Estanga":3, "Martina Gomez":2, "Isabella Greco":2, "Luciana Toledo":2},
-        "2026-10-04":{"Renata Giachello":7, "Valentina Antero":4, "Isabella Greco":3, "Luciana Toledo":3, "Martina Gomez":1, "Maria Rotta":1, "Uma Estanga":1}
+        "2026-10-04":{"Renata Giachello":7, "Valentina Antero":4, "Isabella Greco":3, "Luciana Toledo":3, "Martina Gomez":1, "Maria Rotta":1, "Uma Estanga":1},
+        "2026-10-11":{"Renata Giachello":11, "Luciana Toledo":7, "Antonella D'Urzo":3, "Uma Estanga":3, "Martina Gomez":2}
       }, partidos:[
       {f:"2026-08-09",c:"V",r:"Círculo de Villa Devoto",g:"17-34"},{f:"2026-08-16",c:"L",r:"Independiente",g:"20-29"},
       {f:"2026-08-23",c:"V",r:"Colegio Ward",g:"24-28"},{f:"2026-08-30",c:"L",r:"Boca Juniors",g:"21-17"},{f:"2026-09-06",c:"V",r:"Banfield",g:"19-28"},
       {f:"2026-09-13",c:"L",r:"Villa Modelo",g:"21-25"},{f:"2026-09-20",c:"V",r:"Vélez Sarsfield",g:"31-40"},
-      {f:"2026-09-27",c:"L",r:"Cedem Caseros",g:"18-25"},{f:"2026-10-04",c:"V",r:"Hurlingham",g:"20-24"},{f:"2026-10-11",c:"L",r:"La Patriada"},
+      {f:"2026-09-27",c:"L",r:"Cedem Caseros",g:"18-25"},{f:"2026-10-04",c:"V",r:"Hurlingham",g:"20-24"},{f:"2026-10-11",c:"L",r:"La Patriada",g:"26-20"},
       {f:"2026-10-25",c:"V",r:"Muñiz"},{f:"2026-11-01",c:"L",r:"Polvorines"},{f:"2026-11-08",c:"V",r:"C.I.D. Moreno"},
       {f:"2026-11-15",c:"V",r:"Sagrado Corazón"},{f:"2026-11-22",c:"L",r:"Estrella de Boedo"}
     ], tabla:[
-      [1,"Círculo de Villa Devoto",30,10,10,0,0,329,210],
-      [2,"Polvorines",27,9,9,0,0,298,232],
-      [3,"Cedem Caseros",23,10,6,1,3,289,262],
-      [4,"Sagrado Corazón",22,9,6,1,2,301,258],
-      [5,"Hurlingham",19,9,5,0,4,222,190],
-      [6,"Banfield",19,9,5,0,4,237,220],
-      [7,"Independiente",19,9,5,0,4,255,254],
-      [8,"Villa Modelo",19,9,5,0,4,228,241],
-      [9,"Colegio Ward",17,9,4,0,5,268,258],
-      [10,"Boca Juniors",17,9,4,0,5,207,238],
-      [11,"C.I.D. Moreno",17,9,4,0,5,203,238],
-      [12,"La Patriada",15,9,3,0,6,212,215],
-      [13,"Vélez Sarsfield",15,9,3,0,6,231,248],
-      [14,"Estrella de Boedo",13,9,2,0,7,232,307],
-      [15,"Ateneo Don Bosco",11,9,1,0,8,191,250],
-      [16,"Muñiz",9,9,0,0,9,150,232]
+      [1,"Círculo de Villa Devoto",33,11,11,0,0,361,230],
+      [2,"Polvorines",30,10,10,0,0,327,256],
+      [3,"Cedem Caseros",26,11,7,1,3,325,290],
+      [4,"Sagrado Corazón",25,10,7,1,2,334,280],
+      [5,"Independiente",22,10,6,0,4,288,282],
+      [6,"Colegio Ward",20,10,5,0,5,296,275],
+      [7,"Hurlingham",20,10,5,0,5,244,223],
+      [8,"Banfield",20,10,5,0,5,254,248],
+      [9,"Villa Modelo",20,10,5,0,5,256,274],
+      [10,"Boca Juniors",19,10,4,1,5,232,263],
+      [11,"C.I.D. Moreno",19,10,4,1,5,228,263],
+      [12,"La Patriada",16,10,3,0,7,232,241],
+      [13,"Vélez Sarsfield",16,10,3,0,7,251,280],
+      [14,"Ateneo Don Bosco",14,10,2,0,8,217,270],
+      [15,"Estrella de Boedo",14,10,2,0,8,260,343],
+      [16,"Muñiz",10,10,0,0,10,174,261]
     ] },
     { id:"juniors", nombre:"Juniors", division:"Junior · División C", dia:"Domingos", hora:"16:00",
       jugadoras:[
@@ -349,7 +352,7 @@ const DATOS = {
     ],
       // Dorsales y goles del Clausura según las planillas de FeMeBal (femebal-dorsales.js).
       dorsales:{"Julieta Antero":1, "Sofia Marsicovetere Palmieri":3, "Jazmin Alarcon":4, "Valentina Antero":5, "Katia Cuomo":6, "Mia Badaracco":8, "Emilia Zarantonello":9, "Thayssa Montaly":10, "Martina Gomez":11, "Camila Gomez":16, "Renata Giachello":17, "Luciana Toledo Rodriguez":18, "Milagros Mosqueda":22, "Julia Damario":25, "Catalina Ravazzano":33},
-      goles:{"Sofia Marsicovetere Palmieri":11, "Jazmin Alarcon":27, "Valentina Antero":10, "Katia Cuomo":53, "Mia Badaracco":23, "Emilia Zarantonello":59, "Thayssa Montaly":20, "Martina Gomez":3, "Renata Giachello":5, "Luciana Toledo Rodriguez":3, "Milagros Mosqueda":10, "Julia Damario":12, "Catalina Ravazzano":22},
+      goles:{"Sofia Marsicovetere Palmieri":15, "Jazmin Alarcon":29, "Valentina Antero":10, "Katia Cuomo":59, "Mia Badaracco":28, "Emilia Zarantonello":64, "Thayssa Montaly":22, "Martina Gomez":3, "Renata Giachello":6, "Luciana Toledo Rodriguez":3, "Milagros Mosqueda":11, "Julia Damario":14, "Catalina Ravazzano":25},
       golesFecha:{
         "2026-08-09":{"Emilia Zarantonello":5, "Katia Cuomo":4, "Mia Badaracco":4, "Thayssa Montaly":3, "Catalina Ravazzano":3, "Sofia Marsicovetere Palmieri":2, "Valentina Antero":2},
         "2026-08-16":{"Katia Cuomo":13, "Jazmin Alarcon":5, "Julia Damario":4, "Catalina Ravazzano":4, "Mia Badaracco":3, "Sofia Marsicovetere Palmieri":2, "Emilia Zarantonello":2, "Milagros Mosqueda":2, "Thayssa Montaly":1},
@@ -359,31 +362,32 @@ const DATOS = {
         "2026-09-13":{"Jazmin Alarcon":7, "Valentina Antero":4, "Emilia Zarantonello":4, "Catalina Ravazzano":4, "Mia Badaracco":2, "Renata Giachello":2, "Katia Cuomo":1, "Thayssa Montaly":1, "Milagros Mosqueda":1},
         "2026-09-20":{"Katia Cuomo":7, "Emilia Zarantonello":7, "Thayssa Montaly":3, "Luciana Toledo Rodriguez":3, "Valentina Antero":2, "Mia Badaracco":2, "Milagros Mosqueda":1, "Julia Damario":1},
         "2026-09-27":{"Katia Cuomo":8, "Emilia Zarantonello":5, "Jazmin Alarcon":4, "Catalina Ravazzano":4, "Mia Badaracco":3, "Thayssa Montaly":2, "Milagros Mosqueda":2, "Julia Damario":2},
-        "2026-10-04":{"Emilia Zarantonello":6, "Katia Cuomo":5, "Mia Badaracco":3, "Milagros Mosqueda":3, "Jazmin Alarcon":2, "Thayssa Montaly":2, "Julia Damario":1, "Catalina Ravazzano":1}
+        "2026-10-04":{"Emilia Zarantonello":6, "Katia Cuomo":5, "Mia Badaracco":3, "Milagros Mosqueda":3, "Jazmin Alarcon":2, "Thayssa Montaly":2, "Julia Damario":1, "Catalina Ravazzano":1},
+        "2026-10-11":{"Katia Cuomo":6, "Mia Badaracco":5, "Emilia Zarantonello":5, "Sofia Marsicovetere Palmieri":4, "Catalina Ravazzano":3, "Jazmin Alarcon":2, "Thayssa Montaly":2, "Julia Damario":2, "Renata Giachello":1, "Milagros Mosqueda":1}
       }, partidos:[
       {f:"2026-08-09",c:"V",r:"Círculo de Villa Devoto",g:"23-34"},{f:"2026-08-16",c:"L",r:"Independiente",g:"36-31"},
       {f:"2026-08-23",c:"V",r:"Colegio Ward",g:"35-32"},{f:"2026-08-30",c:"L",r:"Boca Juniors",g:"30-31"},{f:"2026-09-06",c:"V",r:"Banfield",g:"29-16"},
       {f:"2026-09-13",c:"L",r:"Villa Modelo",g:"26-36"},{f:"2026-09-20",c:"V",r:"Vélez Sarsfield",g:"26-26"},
-      {f:"2026-09-27",c:"L",r:"Cedem Caseros",g:"30-27"},{f:"2026-10-04",c:"V",r:"Hurlingham",g:"23-17"},{f:"2026-10-11",c:"L",r:"La Patriada"},
+      {f:"2026-09-27",c:"L",r:"Cedem Caseros",g:"30-27"},{f:"2026-10-04",c:"V",r:"Hurlingham",g:"23-17"},{f:"2026-10-11",c:"L",r:"La Patriada",g:"31-28"},
       {f:"2026-10-25",c:"V",r:"Muñiz"},{f:"2026-11-01",c:"L",r:"Polvorines"},{f:"2026-11-08",c:"V",r:"C.I.D. Moreno"},
       {f:"2026-11-15",c:"V",r:"Sagrado Corazón"},{f:"2026-11-22",c:"L",r:"Estrella de Boedo"}
     ], tabla:[
-      [1,"Círculo de Villa Devoto",30,10,10,0,0,286,220],
-      [2,"Vélez Sarsfield",22,9,6,1,2,242,199],
-      [3,"Cedem Caseros",22,10,6,0,4,260,225],
-      [4,"C.I.D. Moreno",21,9,6,0,3,279,206],
-      [5,"Boca Juniors",21,9,6,0,3,271,216],
-      [6,"Estrella de Boedo",20,8,6,0,2,284,213],
-      [7,"Ateneo Don Bosco",20,9,5,1,3,258,250],
-      [8,"Villa Modelo",19,7,6,0,1,225,173],
-      [9,"Muñiz",19,9,5,0,4,210,239],
-      [10,"Polvorines",18,9,4,1,4,221,235],
-      [11,"Sagrado Corazón",16,8,4,0,4,215,206],
-      [12,"La Patriada",13,9,2,0,7,222,292],
-      [13,"Independiente",13,9,2,0,7,203,282],
-      [14,"Banfield",11,9,1,0,8,161,272],
-      [15,"Colegio Ward",10,9,0,1,8,231,284],
-      [16,"Hurlingham",9,9,0,0,9,184,240]
+      [1,"Círculo de Villa Devoto",33,11,11,0,0,317,245],
+      [2,"Estrella de Boedo",23,9,7,0,2,316,238],
+      [3,"C.I.D. Moreno",23,10,6,1,3,306,233],
+      [4,"Boca Juniors",23,10,6,1,3,298,243],
+      [5,"Vélez Sarsfield",23,10,6,1,3,267,230],
+      [6,"Cedem Caseros",23,11,6,0,5,285,257],
+      [7,"Ateneo Don Bosco",23,10,6,1,3,289,278],
+      [8,"Villa Modelo",22,8,7,0,1,259,193],
+      [9,"Polvorines",21,10,5,1,4,251,252],
+      [10,"Muñiz",20,10,5,0,5,227,269],
+      [11,"Sagrado Corazón",19,9,5,0,4,254,219],
+      [12,"La Patriada",14,10,2,0,8,250,323],
+      [13,"Independiente",14,10,2,0,8,223,316],
+      [14,"Colegio Ward",13,10,1,1,8,257,305],
+      [15,"Banfield",12,10,1,0,9,182,298],
+      [16,"Hurlingham",10,10,0,0,10,197,279]
     ] },
     { id:"masculino", nombre:"Cuarta caballeros", division:"Mayores · 4º División", dia:"Domingos", hora:"18:00", sponsor:"Ladran Sancho", jugadoras:[
       "Lionel Benitez", "Patricio Britez", "Maximiliano Burakoski", "Valentin Carriego", "Martin Casco",
@@ -415,18 +419,18 @@ const DATOS = {
     ], tabla:[
       [1,"Almirante Brown",29,10,9,1,0,279,190],
       [2,"Defensores de Glew",25,9,8,0,1,227,173],
-      [3,"Ferrocarril Mitre",23,9,7,0,2,279,247],
-      [4,"Escobar",22,9,6,1,2,179,174],
-      [5,"General Las Heras",21,9,6,0,3,285,259],
-      [6,"Ducilo",21,9,6,0,3,198,187],
+      [3,"General Las Heras",24,10,7,0,3,317,280],
+      [4,"Ferrocarril Mitre",24,10,7,0,3,303,278],
+      [5,"Escobar",22,9,6,1,2,179,174],
+      [6,"Federal Juniors",22,10,6,0,4,269,256],
       [7,"Talleres",21,9,6,0,3,183,173],
-      [8,"El Portugués",20,9,5,1,3,220,226],
-      [9,"Federal Juniors",19,9,5,0,4,238,232],
+      [8,"Ducilo",21,9,6,0,3,198,187],
+      [9,"El Portugués",20,9,5,1,3,220,226],
       [10,"Dep. Laferrere",18,10,4,0,6,218,238],
-      [11,"San Telmo",15,9,3,0,6,163,197],
+      [11,"San Telmo",18,10,4,0,6,186,219],
       [12,"Ateneo Don Bosco",15,9,3,0,6,159,197],
-      [13,"Dorrego",14,9,2,1,6,202,226],
-      [14,"Círculo General Belgrano",8,9,1,0,7,154,229]
+      [13,"Dorrego",15,10,2,1,7,223,258],
+      [14,"Círculo General Belgrano",9,10,1,0,8,176,252]
     ]},
     // Maxihandball: fixture y tabla de la Liga Maxi Handball (timbo.futbol), con maxi-actualizar.js.
     { id:"maxi", nombre:"Maxihandball", division:"Liga Maxi Handball · Clausura", dia:"Sábados", hora:"11:00", jugadoras:[
@@ -437,12 +441,12 @@ const DATOS = {
       "Jimena Berutti"
     ],
       // Goles del Clausura según la tabla de goleadoras de la liga (maxi-actualizar.js).
-      goles:{"Magali Prisco":21, "Ariadna Aristizabal":6, "Julieta Milanesi":5, "Maru Pereiras":5, "Florencia Rossaro":5, "Marcela Rodríguez":4, "Jimena Berutti":3, "Paula Subiza":3, "Agustina Michl":2, "Camila Seguin":2, "Agustina Bajko":1, "Giselle Loffler":1, "Martina Panetta":1, "Julieta Zarate":1},
+      goles:{"Magali Prisco":23, "Maru Pereiras":10, "Julieta Milanesi":9, "Marcela Rodríguez":9, "Ariadna Aristizabal":8, "Paula Subiza":6, "Florencia Rossaro":5, "Agustina Bajko":3, "Jimena Berutti":3, "Camila Seguin":3, "Agustina Michl":2, "Julieta Biazzo":1, "Sofía Dekker":1, "Giselle Loffler":1, "Martina Panetta":1, "Julieta Zarate":1},
       // Dorsales según la lista del club (septiembre 2026).
       dorsales:{"Camila Lalin":3, "Nahir Alvarez":4, "Maru Pereiras":5, "Tiziana Sanfelice":6, "Magali Prisco":7, "Giselle Loffler":8, "Camila Seguin":9, "Ariadna Aristizabal":11, "Martina Quintana":12, "Marcela Rodríguez":13, "Agustina Michl":14, "Florencia Rossaro":18, "Paula Subiza":19, "Agustina Bajko":20, "Valentina Bajko":21, "Mora Otamendi":22, "Mariana Benítez":24, "Julieta Biazzo":25, "Julieta Milanesi":27, "Martina Panetta":31, "Jimena Berutti":47}, partidos:[
       {f:"2026-08-29",c:"L",r:"Manuel Belgrano",h:"09:15",g:"12-20"},{f:"2026-09-05",c:"V",r:"Instituto Manuel Belgrano",sede:"Polideportivo N. Kirchner (Ezeiza)",g:"18-19"},
       {f:"2026-09-12",c:"V",r:"Team Ezeiza",h:"11:30",sede:"Polideportivo N. Kirchner (Ezeiza)",g:"15-14"},{f:"2026-09-26",c:"V",r:"Las 2P",h:"10:00",sede:"Polideportivo N. Kirchner (Ezeiza)",g:"15-18"},
-      {f:"2026-10-03",c:"V",r:"Panteras Handball",h:"14:30",sede:"Instituto Manuel Belgrano Quilmes"},{f:"2026-10-10",c:"V",r:"Golondrinas",h:"13:00",sede:"Polideportivo N. Kirchner (Ezeiza)"},
+      {f:"2026-10-03",c:"V",r:"Panteras Handball",h:"14:30",sede:"Instituto Manuel Belgrano Quilmes"},{f:"2026-10-10",c:"V",r:"Golondrinas",h:"13:00",sede:"Polideportivo N. Kirchner (Ezeiza)",g:"26-11"},
       {f:"2026-10-17",c:"V",r:"Club Social",sinHora:true,sede:"a confirmar"},{f:"2026-10-31",c:"V",r:"Villa Vatteone",sinHora:true,sede:"a confirmar"},
       {f:"2026-11-14",c:"V",r:"47 Handball Club",sinHora:true,sede:"a confirmar"},{f:"2026-11-14",c:"L",r:"La Patriada",sinHora:true,sede:"a confirmar"},
       {f:"2026-11-28",c:"L",r:"CAQ Handball",sinHora:true,sede:"a confirmar"}
@@ -454,11 +458,11 @@ const DATOS = {
       [5,"47 Handball Club",11,5,3,0,2,120,105],
       [6,"Team Ezeiza",10,4,3,0,1,64,46],
       [7,"Las 2P",9,4,2,1,1,83,68],
-      [8,"CAQ Handball",8,5,1,1,3,68,76],
-      [9,"La Patriada",8,6,1,0,5,75,107],
-      [10,"Instituto Manuel Belgrano",7,4,1,1,2,55,62],
-      [11,"Ateneo Don Bosco",6,4,1,0,3,60,71],
-      [12,"Golondrinas",4,4,0,0,4,44,96]
+      [8,"Ateneo Don Bosco",9,5,2,0,3,86,82],
+      [9,"CAQ Handball",8,5,1,1,3,68,76],
+      [10,"La Patriada",8,6,1,0,5,75,107],
+      [11,"Instituto Manuel Belgrano",7,4,1,1,2,55,62],
+      [12,"Golondrinas",5,5,0,0,5,55,122]
     ] }
   ],
 
