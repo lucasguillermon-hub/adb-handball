@@ -488,6 +488,25 @@ const DATOS = {
   //     { t:"link",      v:"https://...", texto:"Ver en Instagram" }
   noticias: [
     {
+      slug: "cuarta-debut-casa-del-handball",
+      fecha: "2026-10-15",
+      etiqueta: "Cuarta caballeros",
+      titulo: "Debut de la Cuarta en la Casa del Handball",
+      copete: "24 a 21 para Talleres en la fecha 10. El resultado no acompañó, pero el plantel masculino pisó por primera vez el estadio de FeMeBal y la tribuna se hizo sentir.",
+      foto: "fotos/noticias/2026-10-cuarta-debut-01.jpg",
+      alt: "El plantel de Cuarta caballeros posando en la cancha de la Casa del Handball, con la tribuna llena de familias atrás",
+      cuerpo: [
+        { t: "texto", v: "El lunes pasado se vivió un hecho histórico para nuestro club: la Cuarta caballeros visitó por primera vez la Casa del Handball." },
+        { t: "texto", v: "Fue por la fecha 10 contra Talleres de Remedios de Escalada y el resultado fue 24 a 21 a favor del rival." },
+        { t: "texto", v: "Fue un partido inestable, con buenos momentos de juego y otros no tanto, pero nuestros mayores nos regalaron unos últimos minutos electrizantes donde dejaron demostrado que no se rindieron hasta que el árbitro marcó el final del partido." },
+        { t: "destacado", v: "No se rindieron hasta que el árbitro marcó el final." },
+        { t: "texto", v: "Charlamos con Gabriel Franco, uno de nuestros jugadores, que declaró lo siguiente:" },
+        { t: "cita", quien: "Gabriel Franco", v: "Fue un partido cargado de emociones, que por momentos nos jugaron en contra a la hora de la toma de decisiones tanto en ataque como en defensa. Nos hubiera gustado traernos los tres puntos, pero si algo podemos decir es que lo dejamos todo hasta el final. Gracias a todos los que estuvieron presentes alentando, se hicieron sentir y nos dejaron un recuerdo inolvidable." },
+        { t: "texto", v: "Los goles fueron de Patricio Britez (6), Enzo Golnner (5), Martín Vega, Martín Casco y Fabián Franco (3 cada uno) y Maximiliano Burakoski. Golnner llegó a 65 en el torneo y sigue siendo el goleador del plantel." },
+        { t: "texto", v: "La próxima es el 25 de octubre, de visitante contra Ducilo. Y en 2027 habrá revancha: a cada plantel le toca su fecha en ese estadio una vez por torneo." }
+      ]
+    },
+    {
       slug: "cuarta-caballeros-casa-del-handball",
       fecha: "2026-10-06",
       etiqueta: "Cuarta caballeros",
