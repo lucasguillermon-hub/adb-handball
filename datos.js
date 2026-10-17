@@ -775,6 +775,28 @@ const DATOS = {
       ] },
       { titulo:"Tercera damas", fechas:[] },
       { titulo:"Cuarta caballeros", fechas:[
+        { f:"2026-10-12", rival:"Talleres", c:"L", fotografo:"Julieta Meana", fotos:[
+          { src:"fotos/cuarta-caballeros/2026-10-12-01.jpg", alt:"Cuarta caballeros contra Talleres, 12/10 de local (foto 1)", alto:true },
+          { src:"fotos/cuarta-caballeros/2026-10-12-02.jpg", alt:"Cuarta caballeros contra Talleres, 12/10 de local (foto 2)" },
+          { src:"fotos/cuarta-caballeros/2026-10-12-03.jpg", alt:"Cuarta caballeros contra Talleres, 12/10 de local (foto 3)" },
+          { src:"fotos/cuarta-caballeros/2026-10-12-04.jpg", alt:"Cuarta caballeros contra Talleres, 12/10 de local (foto 4)", alto:true },
+          { src:"fotos/cuarta-caballeros/2026-10-12-05.jpg", alt:"Cuarta caballeros contra Talleres, 12/10 de local (foto 5)", alto:true },
+          { src:"fotos/cuarta-caballeros/2026-10-12-06.jpg", alt:"Cuarta caballeros contra Talleres, 12/10 de local (foto 6)", alto:true },
+          { src:"fotos/cuarta-caballeros/2026-10-12-07.jpg", alt:"Cuarta caballeros contra Talleres, 12/10 de local (foto 7)", alto:true },
+          { src:"fotos/cuarta-caballeros/2026-10-12-08.jpg", alt:"Cuarta caballeros contra Talleres, 12/10 de local (foto 8)", alto:true },
+          { src:"fotos/cuarta-caballeros/2026-10-12-09.jpg", alt:"Cuarta caballeros contra Talleres, 12/10 de local (foto 9)", alto:true },
+          { src:"fotos/cuarta-caballeros/2026-10-12-10.jpg", alt:"Cuarta caballeros contra Talleres, 12/10 de local (foto 10)" },
+          { src:"fotos/cuarta-caballeros/2026-10-12-11.jpg", alt:"Cuarta caballeros contra Talleres, 12/10 de local (foto 11)", alto:true },
+          { src:"fotos/cuarta-caballeros/2026-10-12-12.jpg", alt:"Cuarta caballeros contra Talleres, 12/10 de local (foto 12)" },
+          { src:"fotos/cuarta-caballeros/2026-10-12-13.jpg", alt:"Cuarta caballeros contra Talleres, 12/10 de local (foto 13)", alto:true },
+          { src:"fotos/cuarta-caballeros/2026-10-12-14.jpg", alt:"Cuarta caballeros contra Talleres, 12/10 de local (foto 14)", alto:true },
+          { src:"fotos/cuarta-caballeros/2026-10-12-15.jpg", alt:"Cuarta caballeros contra Talleres, 12/10 de local (foto 15)", alto:true },
+          { src:"fotos/cuarta-caballeros/2026-10-12-16.jpg", alt:"Cuarta caballeros contra Talleres, 12/10 de local (foto 16)", alto:true },
+          { src:"fotos/cuarta-caballeros/2026-10-12-17.jpg", alt:"Cuarta caballeros contra Talleres, 12/10 de local (foto 17)", alto:true },
+          { src:"fotos/cuarta-caballeros/2026-10-12-18.jpg", alt:"Cuarta caballeros contra Talleres, 12/10 de local (foto 18)", alto:true },
+          { src:"fotos/cuarta-caballeros/2026-10-12-19.jpg", alt:"Cuarta caballeros contra Talleres, 12/10 de local (foto 19)" },
+          { src:"fotos/cuarta-caballeros/2026-10-12-20.jpg", alt:"Cuarta caballeros contra Talleres, 12/10 de local (foto 20)", alto:true }
+        ]},
         { f:"2026-09-13", rival:"Ferrocarril Mitre", c:"L", fotografo:"Male Acosta", fotos:[
           { src:"fotos/cuarta-caballeros/2026-09-13-01.jpg", alt:"Cuarta caballeros contra Ferrocarril Mitre, 13/09 de local (foto 1)", alto:true },
           { src:"fotos/cuarta-caballeros/2026-09-13-02.jpg", alt:"Cuarta caballeros contra Ferrocarril Mitre, 13/09 de local (foto 2)", alto:true },

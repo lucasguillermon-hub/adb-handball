@@ -48,9 +48,12 @@ if (!archivos.length) { console.error("No hay fotos en " + origen); process.exit
     n++;
     const nombre = fecha + "-" + String(n).padStart(2, "0") + ".jpg";
     const salida = path.join(destinoDir, nombre);
-    // Calidad 80 y, si pasa los 300 KB, baja de a poco hasta entrar
+    // 1600 px del lado más largo: una vertical a 1600 de ancho queda de 2400 de alto y pesa
+    // el doble, y en pantalla se ve igual. Calidad 80 y, si pasa los 300 KB, baja hasta entrar.
     for (const quality of [80, 72, 64, 56, 48]) {
-      await sharp(path.join(origen, a)).rotate().resize({ width: 1600, withoutEnlargement: true }).jpeg({ quality, mozjpeg: true }).toFile(salida);
+      await sharp(path.join(origen, a)).rotate()
+        .resize({ width: 1600, height: 1600, fit: "inside", withoutEnlargement: true })
+        .jpeg({ quality, mozjpeg: true }).toFile(salida);
       if (fs.statSync(salida).size <= 300 * 1024) break;
     }
     const meta = await sharp(salida).metadata();
