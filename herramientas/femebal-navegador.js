@@ -39,15 +39,18 @@ for (const p of pedidos) if (!TORNEOS[p]) throw new Error("Torneo desconocido: "
 const esperar = ms => new Promise(r => setTimeout(r, ms));
 
 (async () => {
-  const perfil = path.join(process.env.TEMP || "/tmp", "adb-chrome-femebal");
-  const chrome = spawn(CHROME, ["--headless=new", "--disable-gpu", "--window-size=1400,900", "--remote-debugging-port=9222",
+  // Perfil y puerto nuevos en cada corrida: si queda un Chrome colgado de la vez anterior,
+  // el que se abre se engancha a ese y navega en una pestaña que no es la que se mira.
+  const perfil = path.join(process.env.TEMP || "/tmp", "adb-chrome-femebal-" + process.pid);
+  const puerto = 9300 + (process.pid % 500);
+  const chrome = spawn(CHROME, ["--headless=new", "--disable-gpu", "--window-size=1400,900", "--remote-debugging-port=" + puerto,
     "--user-data-dir=" + perfil, "about:blank"], { stdio: "ignore" });
   let ws;
   try {
     let paginas = null;
     for (let i = 0; i < 20 && !paginas; i++) {                 // Chrome tarda un segundo en abrir el puerto
       await esperar(700);
-      try { paginas = (await (await fetch("http://127.0.0.1:9222/json")).json()).filter(t => t.type === "page"); } catch {}
+      try { paginas = (await (await fetch("http://127.0.0.1:" + puerto + "/json")).json()).filter(t => t.type === "page"); } catch {}
     }
     if (!paginas || !paginas.length) throw new Error("Chrome no abrió el puerto de depuración");
 
@@ -117,5 +120,7 @@ const esperar = ms => new Promise(r => setTimeout(r, ms));
   } finally {
     if (ws) try { ws.close(); } catch {}
     chrome.kill();
+    await esperar(1500);                                       // que suelte los archivos antes de borrar
+    try { fs.rmSync(perfil, { recursive: true, force: true }); } catch {}
   }
 })();
