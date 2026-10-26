@@ -90,7 +90,7 @@ const DATOS = {
         "2026-09-25":{"Micaela Ramirez":7, "Valeria Trelles":4, "Barbara Ramirez":3, "Noelia Alcala":2, "Emilia Zarantonello":2, "Justine Vargas":2, "Thayssa Montaly":2, "Katia Cuomo":1, "Julieta Gimenez":1},
         "2026-10-03":{"Noelia Alcala":6, "Mora Lionti":6, "Barbara Ramirez":5, "Micaela Ramirez":4, "Valeria Trelles":3, "Justine Vargas":3, "Emilia Zarantonello":2, "Luz Agüero":1, "Guadalupe Fernandez":1},
         "2026-10-17":{"Barbara Ramirez":6, "Noelia Alcala":4, "Emilia Zarantonello":3, "Millaray Cocha":3, "Justine Vargas":3, "Micaela Ramirez":2, "Valeria Trelles":1},
-        "2026-10-24":{"Millaray Cocha":9, "Micaela Ramirez":8, "Katia Cuomo":5, "Noelia Alcala":4, "Barbara Ramirez":4, "Mora Lionti":3, "Valeria Trelles":3, "Justine Vargas":3, "Thayssa Montaly":2, "Guadalupe Fernandez":1}
+        "2026-10-24":{"Millaray Cocha":9, "Micaela Ramirez":8, "Katia Cuomo":5, "Noelia Alcala":4, "Barbara Ramirez":4, "Mora Lionti":3, "Valeria Trelles":3, "Justine Vargas":3, "Jazmin Alarcon":2, "Thayssa Montaly":2, "Guadalupe Fernandez":1}
       }, partidos:[
       {f:"2026-08-08",c:"V",r:"Talleres",h:"19:45",g:"18-30"},{f:"2026-08-15",c:"L",r:"San Fernando",g:"30-25"},
       {f:"2026-08-22",c:"V",r:"Dorrego",h:"16:15",g:"21-21"},{f:"2026-08-29",c:"L",r:"Dep. Laferrere",h:"19:45",g:"36-26"},
@@ -359,7 +359,7 @@ const DATOS = {
     ],
       // Dorsales y goles del Clausura según las planillas de FeMeBal (femebal-dorsales.js).
       dorsales:{"Julieta Antero":1, "Sofia Marsicovetere Palmieri":3, "Jazmin Alarcon":4, "Valentina Antero":5, "Katia Cuomo":6, "Mia Badaracco":8, "Emilia Zarantonello":9, "Thayssa Montaly":10, "Martina Gomez":11, "Camila Gomez":16, "Renata Giachello":17, "Luciana Toledo Rodriguez":18, "Milagros Mosqueda":22, "Julia Damario":25, "Catalina Ravazzano":33},
-      goles:{"Sofia Marsicovetere Palmieri":15, "Jazmin Alarcon":29, "Valentina Antero":10, "Katia Cuomo":59, "Mia Badaracco":28, "Emilia Zarantonello":64, "Thayssa Montaly":22, "Martina Gomez":3, "Renata Giachello":6, "Luciana Toledo Rodriguez":3, "Milagros Mosqueda":11, "Julia Damario":14, "Catalina Ravazzano":25},
+      goles:{"Julieta Antero":1, "Sofia Marsicovetere Palmieri":15, "Jazmin Alarcon":34, "Valentina Antero":10, "Katia Cuomo":65, "Mia Badaracco":33, "Emilia Zarantonello":64, "Thayssa Montaly":32, "Martina Gomez":4, "Renata Giachello":7, "Luciana Toledo Rodriguez":5, "Milagros Mosqueda":11, "Julia Damario":14, "Catalina Ravazzano":29},
       golesFecha:{
         "2026-08-09":{"Emilia Zarantonello":5, "Katia Cuomo":4, "Mia Badaracco":4, "Thayssa Montaly":3, "Catalina Ravazzano":3, "Sofia Marsicovetere Palmieri":2, "Valentina Antero":2},
         "2026-08-16":{"Katia Cuomo":13, "Jazmin Alarcon":5, "Julia Damario":4, "Catalina Ravazzano":4, "Mia Badaracco":3, "Sofia Marsicovetere Palmieri":2, "Emilia Zarantonello":2, "Milagros Mosqueda":2, "Thayssa Montaly":1},
@@ -370,31 +370,32 @@ const DATOS = {
         "2026-09-20":{"Katia Cuomo":7, "Emilia Zarantonello":7, "Thayssa Montaly":3, "Luciana Toledo Rodriguez":3, "Valentina Antero":2, "Mia Badaracco":2, "Milagros Mosqueda":1, "Julia Damario":1},
         "2026-09-27":{"Katia Cuomo":8, "Emilia Zarantonello":5, "Jazmin Alarcon":4, "Catalina Ravazzano":4, "Mia Badaracco":3, "Thayssa Montaly":2, "Milagros Mosqueda":2, "Julia Damario":2},
         "2026-10-04":{"Emilia Zarantonello":6, "Katia Cuomo":5, "Mia Badaracco":3, "Milagros Mosqueda":3, "Jazmin Alarcon":2, "Thayssa Montaly":2, "Julia Damario":1, "Catalina Ravazzano":1},
-        "2026-10-11":{"Katia Cuomo":6, "Mia Badaracco":5, "Emilia Zarantonello":5, "Sofia Marsicovetere Palmieri":4, "Catalina Ravazzano":3, "Jazmin Alarcon":2, "Thayssa Montaly":2, "Julia Damario":2, "Renata Giachello":1, "Milagros Mosqueda":1}
+        "2026-10-11":{"Katia Cuomo":6, "Mia Badaracco":5, "Emilia Zarantonello":5, "Sofia Marsicovetere Palmieri":4, "Catalina Ravazzano":3, "Jazmin Alarcon":2, "Thayssa Montaly":2, "Julia Damario":2, "Renata Giachello":1, "Milagros Mosqueda":1},
+        "2026-10-25":{"Thayssa Montaly":10, "Katia Cuomo":6, "Jazmin Alarcon":5, "Mia Badaracco":5, "Catalina Ravazzano":4, "Luciana Toledo Rodriguez":2, "Julieta Antero":1, "Martina Gomez":1, "Renata Giachello":1}
       }, partidos:[
       {f:"2026-08-09",c:"V",r:"Círculo de Villa Devoto",g:"23-34"},{f:"2026-08-16",c:"L",r:"Independiente",g:"36-31"},
       {f:"2026-08-23",c:"V",r:"Colegio Ward",g:"35-32"},{f:"2026-08-30",c:"L",r:"Boca Juniors",g:"30-31"},{f:"2026-09-06",c:"V",r:"Banfield",g:"29-16"},
       {f:"2026-09-13",c:"L",r:"Villa Modelo",g:"26-36"},{f:"2026-09-20",c:"V",r:"Vélez Sarsfield",g:"26-26"},
       {f:"2026-09-27",c:"L",r:"Cedem Caseros",g:"30-27"},{f:"2026-10-04",c:"V",r:"Hurlingham",g:"23-17"},{f:"2026-10-11",c:"L",r:"La Patriada",g:"31-28"},
-      {f:"2026-10-25",c:"V",r:"Muñiz",g:"33-18"},{f:"2026-11-01",c:"L",r:"Polvorines"},{f:"2026-11-08",c:"V",r:"C.I.D. Moreno"},
+      {f:"2026-10-25",c:"V",r:"Muñiz",g:"35-26"},{f:"2026-11-01",c:"L",r:"Polvorines"},{f:"2026-11-08",c:"V",r:"C.I.D. Moreno"},
       {f:"2026-11-15",c:"V",r:"Sagrado Corazón"},{f:"2026-11-22",c:"L",r:"Estrella de Boedo"}
     ], tabla:[
       [1,"Círculo de Villa Devoto",33,11,11,0,0,317,245],
-      [2,"Estrella de Boedo",26,10,8,0,2,348,266],
-      [3,"Villa Modelo",26,10,8,0,2,323,258],
-      [4,"C.I.D. Moreno",23,10,6,1,3,306,233],
-      [5,"Boca Juniors",23,10,6,1,3,298,243],
-      [6,"Vélez Sarsfield",23,10,6,1,3,267,230],
-      [7,"Cedem Caseros",23,11,6,0,5,285,257],
-      [8,"Ateneo Don Bosco",23,10,6,1,3,289,278],
-      [9,"Polvorines",21,10,5,1,4,251,252],
-      [10,"Sagrado Corazón",20,10,5,0,5,287,255],
-      [11,"Muñiz",20,10,5,0,5,227,269],
-      [12,"La Patriada",14,10,2,0,8,250,323],
-      [13,"Independiente",14,10,2,0,8,223,316],
-      [14,"Colegio Ward",13,10,1,1,8,257,305],
-      [15,"Banfield",12,10,1,0,9,182,298],
-      [16,"Hurlingham",10,10,0,0,10,197,279]
+      [2,"Estrella de Boedo",29,11,9,0,2,374,288],
+      [3,"Villa Modelo",27,11,8,0,3,343,288],
+      [4,"C.I.D. Moreno",26,11,7,1,3,345,262],
+      [5,"Boca Juniors",26,11,7,1,3,337,262],
+      [6,"Vélez Sarsfield",26,11,7,1,3,291,249],
+      [7,"Ateneo Don Bosco",26,11,7,1,3,324,304],
+      [8,"Cedem Caseros",23,11,6,0,5,285,257],
+      [9,"Sagrado Corazón",23,11,6,0,5,321,281],
+      [10,"Polvorines",22,11,5,1,5,280,291],
+      [11,"Muñiz",21,11,5,0,6,253,304],
+      [12,"Colegio Ward",16,11,2,1,8,287,325],
+      [13,"La Patriada",15,11,2,0,9,276,357],
+      [14,"Independiente",15,11,2,0,9,242,340],
+      [15,"Banfield",13,11,1,0,10,201,337],
+      [16,"Hurlingham",11,11,0,0,11,219,305]
     ] },
     { id:"masculino", nombre:"Cuarta caballeros", division:"Mayores · 4º División", dia:"Domingos", hora:"18:00", sponsor:"Ladran Sancho", jugadoras:[
       "Lionel Benitez", "Patricio Britez", "Maximiliano Burakoski", "Valentin Carriego", "Martin Casco",
@@ -405,8 +406,8 @@ const DATOS = {
       "Facundo Fernandez"   // según las planillas de FeMeBal
     ],
       // Dorsales y goles del Clausura según las planillas de FeMeBal (femebal-dorsales.js).
-      dorsales:{"Agustin Fernandez":1, "Guillermo Corbelli":10, "Leonel Legal":11, "Marcelo Sanchez":12, "Enzo Golnner":14, "Maximiliano Gomez":16, "Gabriel Franco":17, "Julian Ponce":18, "Martin Vega":18, "Lionel Benitez":19, "Patricio Britez":19, "Martin Casco":20, "Valentin Carriego":21, "Mariano Magnani":22, "Lucas Guillermon":40, "Facundo Fernandez":41, "Fabian Franco":42, "Maximiliano Burakoski":43},
-      goles:{"Guillermo Corbelli":1, "Enzo Golnner":65, "Gabriel Franco":4, "Julian Ponce":5, "Martin Vega":6, "Patricio Britez":16, "Martin Casco":21, "Valentin Carriego":3, "Lucas Guillermon":3, "Facundo Fernandez":7, "Fabian Franco":30, "Maximiliano Burakoski":15},
+      dorsales:{"Agustin Fernandez":1, "Guillermo Corbelli":10, "Leonel Legal":11, "Marcelo Sanchez":12, "Enzo Golnner":14, "Maximiliano Gomez":16, "Gabriel Franco":17, "Julian Ponce":18, "Lionel Benitez":19, "Patricio Britez":19, "Martin Casco":20, "Valentin Carriego":21, "Martin Vega":22, "Mariano Magnani":22, "Lucas Guillermon":40, "Facundo Fernandez":41, "Fabian Franco":42, "Maximiliano Burakoski":43},
+      goles:{"Guillermo Corbelli":1, "Enzo Golnner":69, "Gabriel Franco":4, "Julian Ponce":5, "Patricio Britez":24, "Martin Casco":22, "Valentin Carriego":3, "Martin Vega":7, "Lucas Guillermon":4, "Facundo Fernandez":10, "Fabian Franco":31, "Maximiliano Burakoski":16},
       golesFecha:{
         "2026-08-09":{"Enzo Golnner":4, "Fabian Franco":4, "Maximiliano Burakoski":3, "Martin Casco":1, "Valentin Carriego":1},
         "2026-08-16":{"Enzo Golnner":11, "Martin Casco":3, "Fabian Franco":2, "Maximiliano Burakoski":2},
@@ -415,30 +416,31 @@ const DATOS = {
         "2026-09-06":{"Enzo Golnner":14, "Martin Casco":5, "Fabian Franco":4, "Facundo Fernandez":3, "Lucas Guillermon":1, "Maximiliano Burakoski":1},
         "2026-09-13":{"Enzo Golnner":10, "Fabian Franco":4, "Martin Vega":3, "Julian Ponce":2, "Martin Casco":2, "Maximiliano Burakoski":2, "Guillermo Corbelli":1, "Valentin Carriego":1, "Lucas Guillermon":1, "Facundo Fernandez":1},
         "2026-10-04":{"Patricio Britez":10, "Enzo Golnner":8, "Fabian Franco":3, "Maximiliano Burakoski":3, "Gabriel Franco":2, "Martin Casco":2, "Valentin Carriego":1},
-        "2026-10-12":{"Patricio Britez":6, "Enzo Golnner":5, "Martin Vega":3, "Martin Casco":3, "Fabian Franco":3, "Maximiliano Burakoski":1}
+        "2026-10-12":{"Patricio Britez":6, "Enzo Golnner":5, "Martin Vega":3, "Martin Casco":3, "Fabian Franco":3, "Maximiliano Burakoski":1},
+        "2026-10-25":{"Patricio Britez":8, "Enzo Golnner":4, "Ivan Piscopo":4, "Facundo Fernandez":3, "Martin Vega":1, "Martin Casco":1, "Lucas Guillermon":1, "Fabian Franco":1, "Maximiliano Burakoski":1}
       }, partidos:[
       {f:"2026-08-09",c:"V",r:"Almirante Brown",g:"13-28"},{f:"2026-08-16",c:"L",r:"Dep. Laferrere",g:"18-19"},
       {f:"2026-08-23",c:"V",r:"Federal Juniors",g:"21-23"},{f:"2026-08-30",c:"L",r:"General Las Heras",g:"19-25"},
       {f:"2026-09-06",c:"V",r:"Dorrego",h:"20:15",g:"28-27"},{f:"2026-09-13",c:"L",r:"Ferrocarril Mitre",g:"27-37"},
       {f:"2026-09-20",c:"libre"},{f:"2026-09-27",c:"libre"},{f:"2026-10-04",c:"V",r:"Defensores de Glew",h:"19:45",g:"29-38"},
-      {f:"2026-10-12",c:"L",r:"Talleres",h:"19:45",g:"21-24",sede:"la Casa del Handball"},{f:"2026-10-25",c:"V",r:"Ducilo",h:"19:45"},
+      {f:"2026-10-12",c:"L",r:"Talleres",h:"19:45",g:"21-24",sede:"la Casa del Handball"},{f:"2026-10-25",c:"V",r:"Ducilo",h:"19:45",g:"24-24"},
       {f:"2026-11-01",c:"L",r:"San Telmo"},{f:"2026-11-08",c:"V",r:"El Portugués"},{f:"2026-11-15",c:"V",r:"Círculo General Belgrano"},
       {f:"2026-11-22",c:"L",r:"Escobar"}
     ], tabla:[
       [1,"Almirante Brown",31,11,9,2,0,309,220],
       [2,"Defensores de Glew",30,11,9,1,1,287,226],
-      [3,"Federal Juniors",25,11,7,0,4,271,256],
-      [4,"General Las Heras",24,10,7,0,3,317,280],
-      [5,"Ferrocarril Mitre",24,10,7,0,3,303,278],
-      [6,"Talleres",24,10,7,0,3,207,194],
-      [7,"Escobar",23,10,6,1,3,202,204],
-      [8,"El Portugués",23,10,6,1,3,243,246],
+      [3,"General Las Heras",27,11,8,0,3,356,315],
+      [4,"Escobar",26,11,7,1,3,236,221],
+      [5,"El Portugués",26,11,7,1,3,271,271],
+      [6,"Ferrocarril Mitre",25,11,7,0,4,338,317],
+      [7,"Federal Juniors",25,11,7,0,4,271,256],
+      [8,"Talleres",25,11,7,0,4,224,228],
       [9,"Ducilo",22,10,6,0,4,218,210],
       [10,"Dep. Laferrere",21,11,5,0,6,220,238],
-      [11,"San Telmo",18,10,4,0,6,186,219],
+      [11,"San Telmo",19,11,4,0,7,211,247],
       [12,"Ateneo Don Bosco",16,10,3,0,7,180,221],
-      [13,"Dorrego",15,10,2,1,7,223,258],
-      [14,"Círculo General Belgrano",9,10,1,0,8,176,252]
+      [13,"Dorrego",16,11,2,1,8,245,283],
+      [14,"Círculo General Belgrano",12,11,2,0,8,201,274]
     ]},
     // Maxihandball: fixture y tabla de la Liga Maxi Handball (timbo.futbol), con maxi-actualizar.js.
     { id:"maxi", nombre:"Maxihandball", division:"Liga Maxi Handball · Clausura", dia:"Sábados", hora:"11:00", jugadoras:[

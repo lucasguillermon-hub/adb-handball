@@ -10,7 +10,8 @@
      usó más veces, y goles: { "Nombre Apellido": total }. Los nombres se emparejan con
      planteles[].jugadoras de datos.js (la lista del club, que manda en la grafía). Quien jugó
      dos o más partidos con el plantel y no está en la lista se agrega a jugadoras; quien jugó
-     uno solo se toma como refuerzo de otra categoría y se informa nada más.
+     uno solo se toma como refuerzo de otra categoría: no entra al plantel ni a los goles del
+     torneo, pero sus goles quedan en la ficha del partido que jugó.
    - Minis e Infantiles (jugadoras:[]) no entran: son formativas.
    - Escribe en datos.js `dorsales:{...}`, `goles:{...}` (total del torneo) y `golesFecha:{ fecha:{...} }`
      (goles de cada partido, con la fecha del partido como clave) en cada plantel; reemplaza si
@@ -88,7 +89,9 @@ function filasDelBosco(texto){
     for (const nombre of Object.keys(usos)) {
       if (pl.jugadoras.includes(nombre)) continue;
       if (partidos[nombre] >= 2) { nuevas.push(nombre); agregadas.push(pl.nombre + ": " + nombre + " (" + partidos[nombre] + " partidos)"); }
-      else { refuerzos.push(pl.nombre + ": " + nombre); delete usos[nombre]; delete goles[nombre]; for (const f of Object.values(porFecha)) delete f[nombre]; }
+      // El refuerzo sale del plantel y de los goles del torneo, pero no de la ficha del partido
+      // que jugó: si no, los goles de esa fecha no suman el resultado.
+      else { refuerzos.push(pl.nombre + ": " + nombre); delete usos[nombre]; delete goles[nombre]; }
     }
     const dorsales = {};
     for (const [nombre, nums] of Object.entries(usos)) dorsales[nombre] = +Object.entries(nums).sort((a, b) => b[1] - a[1])[0][0];
