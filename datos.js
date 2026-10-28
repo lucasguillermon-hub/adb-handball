@@ -72,13 +72,13 @@ const DATOS = {
   // igual no aparecen por nombre en ningún lado). De Juveniles para arriba, nombre y apellido.
   planteles: [
     { id:"mayores-a", nombre:"Primera damas", division:"Mayores · 1º División", dia:"Sábados", hora:"18:00", sponsor:"Franco Liontix", jugadoras:[
-      "Luz Agüero", "Noelia Alcala", "Millaray Cocha", "Daniela Cristaldo", "Katia Cuomo", "Guadalupe Fernandez",
+      "Luz Agüero", "Jazmin Alarcon", "Noelia Alcala", "Millaray Cocha", "Daniela Cristaldo", "Katia Cuomo", "Guadalupe Fernandez",
       "Julieta Gimenez", "Mora Lionti", "Carla Martinez", "Thayssa Montaly", "Barbara Ramirez",
       "Micaela Ramirez", "Valeria Trelles", "Justine Vargas", "Emilia Zarantonello"
     ],
       // Dorsales y goles del Clausura según las planillas de FeMeBal (femebal-dorsales.js).
-      dorsales:{"Daniela Cristaldo":1, "Noelia Alcala":4, "Katia Cuomo":6, "Mora Lionti":7, "Emilia Zarantonello":9, "Micaela Ramirez":10, "Barbara Ramirez":14, "Carla Martinez":16, "Millaray Cocha":17, "Luz Agüero":19, "Valeria Trelles":20, "Guadalupe Fernandez":22, "Justine Vargas":23, "Julieta Gimenez":27, "Thayssa Montaly":28},
-      goles:{"Noelia Alcala":31, "Katia Cuomo":19, "Mora Lionti":18, "Emilia Zarantonello":39, "Micaela Ramirez":46, "Barbara Ramirez":45, "Carla Martinez":2, "Millaray Cocha":25, "Luz Agüero":7, "Valeria Trelles":30, "Guadalupe Fernandez":9, "Justine Vargas":32, "Julieta Gimenez":1, "Thayssa Montaly":15},
+      dorsales:{"Daniela Cristaldo":1, "Jazmin Alarcon":3, "Noelia Alcala":4, "Katia Cuomo":6, "Mora Lionti":7, "Emilia Zarantonello":9, "Micaela Ramirez":10, "Barbara Ramirez":14, "Carla Martinez":16, "Millaray Cocha":17, "Luz Agüero":19, "Valeria Trelles":20, "Guadalupe Fernandez":22, "Justine Vargas":23, "Julieta Gimenez":27, "Thayssa Montaly":28},
+      goles:{"Jazmin Alarcon":2, "Noelia Alcala":31, "Katia Cuomo":19, "Mora Lionti":18, "Emilia Zarantonello":39, "Micaela Ramirez":46, "Barbara Ramirez":45, "Carla Martinez":2, "Millaray Cocha":25, "Luz Agüero":7, "Valeria Trelles":30, "Guadalupe Fernandez":9, "Justine Vargas":32, "Julieta Gimenez":1, "Thayssa Montaly":15},
       golesFecha:{
         "2026-08-08":{"Barbara Ramirez":4, "Emilia Zarantonello":2, "Micaela Ramirez":2, "Valeria Trelles":2, "Guadalupe Fernandez":2, "Thayssa Montaly":2, "Katia Cuomo":1, "Millaray Cocha":1, "Luz Agüero":1, "Justine Vargas":1},
         "2026-08-15":{"Micaela Ramirez":8, "Emilia Zarantonello":5, "Katia Cuomo":4, "Barbara Ramirez":4, "Valeria Trelles":3, "Justine Vargas":3, "Millaray Cocha":1, "Luz Agüero":1, "Thayssa Montaly":1},
@@ -118,7 +118,7 @@ const DATOS = {
       [16,"Dep. Laferrere",14,11,1,1,9,299,367]
     ]},
     { id:"mayores-b", nombre:"Tercera damas", division:"Mayores · 3º División", dia:"Sábados", hora:"18:00", sponsor:"Supermercado Magdalena", jugadoras:[
-      "Ariana Acosta", "Jazmin Alarcon", "Paula Ayala", "Mia Badaracco", "Marina Chazarreta", "Ariana Cuervo Diaz",
+      "Ariana Acosta", "Paula Ayala", "Mia Badaracco", "Marina Chazarreta", "Ariana Cuervo Diaz",
       "Sofía Deker", "Julieta Di Bona", "Cecilia Esquivel", "Paula Glisciak", "Camila Gomez", "Camila Hermosid",
       "Patricia Marsicovetere", "Sofia Marsicovetere", "Julieta Mercado", "Zoe Rodriguez", "Ariana Veiga",
       "Brenda Velozo",
@@ -401,13 +401,13 @@ const DATOS = {
       "Lionel Benitez", "Patricio Britez", "Maximiliano Burakoski", "Valentin Carriego", "Martin Casco",
       "Guillermo Corbelli", "Agustin Fernandez", "Fabian Franco", "Gabriel Franco", "Enzo Golnner",
       "Maximiliano Gomez", "Lucas Guillermon", "Agustin Iacuzzi", "Leonel Legal", "Leandro Maggi",
-      "Julian Ponce", "Leandro Salvetti", "Marcelo Sanchez", "Matias Solis", "Matias Vallejos",
+      "Ivan Piscopo", "Julian Ponce", "Leandro Salvetti", "Marcelo Sanchez", "Matias Solis", "Matias Vallejos",
       "Martin Vega", "Mariano Magnani",
       "Facundo Fernandez"   // según las planillas de FeMeBal
     ],
       // Dorsales y goles del Clausura según las planillas de FeMeBal (femebal-dorsales.js).
-      dorsales:{"Agustin Fernandez":1, "Guillermo Corbelli":10, "Leonel Legal":11, "Marcelo Sanchez":12, "Enzo Golnner":14, "Maximiliano Gomez":16, "Gabriel Franco":17, "Julian Ponce":18, "Lionel Benitez":19, "Patricio Britez":19, "Martin Casco":20, "Valentin Carriego":21, "Martin Vega":22, "Mariano Magnani":22, "Lucas Guillermon":40, "Facundo Fernandez":41, "Fabian Franco":42, "Maximiliano Burakoski":43},
-      goles:{"Guillermo Corbelli":1, "Enzo Golnner":69, "Gabriel Franco":4, "Julian Ponce":5, "Patricio Britez":24, "Martin Casco":22, "Valentin Carriego":3, "Martin Vega":7, "Lucas Guillermon":4, "Facundo Fernandez":10, "Fabian Franco":31, "Maximiliano Burakoski":16},
+      dorsales:{"Agustin Fernandez":1, "Guillermo Corbelli":10, "Leonel Legal":11, "Marcelo Sanchez":12, "Enzo Golnner":14, "Maximiliano Gomez":16, "Gabriel Franco":17, "Julian Ponce":18, "Lionel Benitez":19, "Patricio Britez":19, "Martin Casco":20, "Valentin Carriego":21, "Martin Vega":22, "Mariano Magnani":22, "Ivan Piscopo":23, "Lucas Guillermon":40, "Facundo Fernandez":41, "Fabian Franco":42, "Maximiliano Burakoski":43},
+      goles:{"Guillermo Corbelli":1, "Enzo Golnner":69, "Gabriel Franco":4, "Julian Ponce":5, "Patricio Britez":24, "Martin Casco":22, "Valentin Carriego":3, "Martin Vega":7, "Ivan Piscopo":4, "Lucas Guillermon":4, "Facundo Fernandez":10, "Fabian Franco":31, "Maximiliano Burakoski":16},
       golesFecha:{
         "2026-08-09":{"Enzo Golnner":4, "Fabian Franco":4, "Maximiliano Burakoski":3, "Martin Casco":1, "Valentin Carriego":1},
         "2026-08-16":{"Enzo Golnner":11, "Martin Casco":3, "Fabian Franco":2, "Maximiliano Burakoski":2},
@@ -448,28 +448,28 @@ const DATOS = {
       "Giselle Loffler", "Camila Seguin", "Ariadna Aristizabal", "Martina Quintana", "Marcela Rodríguez",
       "Agustina Michl", "Florencia Rossaro", "Paula Subiza", "Agustina Bajko", "Valentina Bajko",
       "Mora Otamendi", "Mariana Benítez", "Julieta Biazzo", "Julieta Milanesi", "Martina Panetta",
-      "Jimena Berutti"
+      "Jimena Berutti", "Julieta Zárate"
     ],
       // Goles del Clausura según la tabla de goleadoras de la liga (maxi-actualizar.js).
-      goles:{"Magali Prisco":23, "Maru Pereiras":18, "Julieta Milanesi":16, "Marcela Rodríguez":16, "Ariadna Aristizabal":8, "Florencia Rossaro":7, "Paula Subiza":7, "Agustina Bajko":4, "Jimena Berutti":3, "Camila Seguin":3, "Julieta Biazzo":2, "Agustina Michl":2, "María Varela":2, "Sofía Dekker":1, "Camila Lalin":1, "Giselle Loffler":1, "Martina Panetta":1, "Julieta Zarate":1},
+      goles:{"Magali Prisco":23, "Maru Pereiras":18, "Julieta Milanesi":16, "Marcela Rodríguez":16, "Ariadna Aristizabal":8, "Florencia Rossaro":7, "Paula Subiza":7, "Agustina Bajko":4, "Jimena Berutti":3, "Camila Seguin":3, "Julieta Biazzo":2, "Agustina Michl":2, "María Varela":2, "Sofía Dekker":1, "Camila Lalin":1, "Giselle Loffler":1, "Martina Panetta":1, "Julieta Zárate":1},
       // Dorsales según la lista del club (septiembre 2026).
-      dorsales:{"Camila Lalin":3, "Nahir Alvarez":4, "Maru Pereiras":5, "Tiziana Sanfelice":6, "Magali Prisco":7, "Giselle Loffler":8, "Camila Seguin":9, "Ariadna Aristizabal":11, "Martina Quintana":12, "Marcela Rodríguez":13, "Agustina Michl":14, "Florencia Rossaro":18, "Paula Subiza":19, "Agustina Bajko":20, "Valentina Bajko":21, "Mora Otamendi":22, "Mariana Benítez":24, "Julieta Biazzo":25, "Julieta Milanesi":27, "Martina Panetta":31, "Jimena Berutti":47}, partidos:[
+      dorsales:{"Camila Lalin":3, "Nahir Alvarez":4, "Maru Pereiras":5, "Tiziana Sanfelice":6, "Magali Prisco":7, "Giselle Loffler":8, "Camila Seguin":9, "Julieta Zárate":10, "Ariadna Aristizabal":11, "Martina Quintana":12, "Marcela Rodríguez":13, "Agustina Michl":14, "Florencia Rossaro":18, "Paula Subiza":19, "Agustina Bajko":20, "Valentina Bajko":21, "Mora Otamendi":22, "Mariana Benítez":24, "Julieta Biazzo":25, "Julieta Milanesi":27, "Martina Panetta":31, "Jimena Berutti":47}, partidos:[
       {f:"2026-08-29",c:"L",r:"Manuel Belgrano",h:"09:15",g:"12-20"},{f:"2026-09-05",c:"V",r:"Instituto Manuel Belgrano",sede:"Polideportivo N. Kirchner (Ezeiza)",g:"18-19"},
       {f:"2026-09-12",c:"V",r:"Team Ezeiza",h:"11:30",sede:"Polideportivo N. Kirchner (Ezeiza)",g:"15-14"},{f:"2026-09-26",c:"V",r:"Las 2P",h:"10:00",sede:"Polideportivo N. Kirchner (Ezeiza)",g:"15-18"},
       {f:"2026-10-03",c:"V",r:"Panteras Handball",h:"14:30",sede:"Instituto Manuel Belgrano Quilmes",g:"14-16"},
       {f:"2026-10-10",c:"V",r:"Golondrinas",h:"13:00",sede:"Polideportivo N. Kirchner (Ezeiza)",g:"26-11"},{f:"2026-10-17",c:"V",r:"Club Social",h:"16:00",sede:"Polideportivo N. Kirchner (Ezeiza)",g:"16-19"},
-      {f:"2026-10-31",c:"V",r:"Villa Vatteone",sinHora:true,sede:"a confirmar"},{f:"2026-11-14",c:"V",r:"47 Handball Club",sinHora:true,sede:"a confirmar"},
+      {f:"2026-10-31",c:"V",r:"Villa Vatteone",h:"18:30",sede:"Polideportivo N. Kirchner (Ezeiza)"},{f:"2026-11-07",c:"V",r:"47 Handball Club",sinHora:true,sede:"a confirmar"},
       {f:"2026-11-14",c:"L",r:"La Patriada",sinHora:true,sede:"a confirmar"},{f:"2026-11-28",c:"L",r:"CAQ Handball",sinHora:true,sede:"a confirmar"}
     ], tabla:[
       [1,"Panteras Handball",20,7,6,1,0,127,96],
       [2,"Manuel Belgrano",16,6,4,2,0,132,81],
-      [3,"Club Social",15,7,4,0,3,103,131],
-      [4,"Instituto Manuel Belgrano",14,7,3,1,3,97,101],
-      [5,"Las 2P",14,7,3,1,3,130,121],
-      [6,"Villa Vatteone",13,5,3,2,0,89,61],
+      [3,"Villa Vatteone",16,6,4,2,0,105,76],
+      [4,"Club Social",15,7,4,0,3,103,131],
+      [5,"Instituto Manuel Belgrano",14,7,3,1,3,97,101],
+      [6,"Las 2P",14,7,3,1,3,130,121],
       [7,"Team Ezeiza",12,6,3,0,3,90,80],
-      [8,"47 Handball Club",11,5,3,0,2,120,105],
-      [9,"CAQ Handball",11,6,2,1,3,92,87],
+      [8,"CAQ Handball",12,7,2,1,4,107,103],
+      [9,"47 Handball Club",11,5,3,0,2,120,105],
       [10,"Ateneo Don Bosco",11,7,2,0,5,116,117],
       [11,"La Patriada",8,6,1,0,5,75,107],
       [12,"Golondrinas",7,7,0,0,7,76,160]

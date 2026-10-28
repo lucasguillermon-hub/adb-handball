@@ -9,9 +9,10 @@
    - Para cada plantel arma dorsales: { "Nombre Apellido": número }, con el número que la jugadora
      usó más veces, y goles: { "Nombre Apellido": total }. Los nombres se emparejan con
      planteles[].jugadoras de datos.js (la lista del club, que manda en la grafía). Quien jugó
-     dos o más partidos con el plantel y no está en la lista se agrega a jugadoras; quien jugó
-     uno solo se toma como refuerzo de otra categoría: no entra al plantel ni a los goles del
-     torneo, pero sus goles quedan en la ficha del partido que jugó.
+     dos o más partidos con el plantel y no está en la lista se agrega a jugadoras (salvo que
+     esté en FUERA, acá abajo: ésas las pasaron a otro plantel); quien jugó uno solo se toma como
+     refuerzo de otra categoría: no entra al plantel ni a los goles del torneo, pero sus goles
+     quedan en la ficha del partido que jugó.
    - Minis e Infantiles (jugadoras:[]) no entran: son formativas.
    - Escribe en datos.js `dorsales:{...}`, `goles:{...}` (total del torneo) y `golesFecha:{ fecha:{...} }`
      (goles de cada partido, con la fecha del partido como clave) en cada plantel; reemplaza si
@@ -27,6 +28,13 @@ const TORNEOS = { "Mayores - 1º División - Femenino": "mayores-a", "Mayores - 
   "Infantiles - C - Femenino": "infantiles", "Menores - C - Femenino": "menores", "Cadetes - C - Femenino": "cadetas", "Juveniles - C - Femenino": "juveniles", "Junior - C - Femenino": "juniors" };
 const idDe = t => { const k = Object.keys(TORNEOS).find(k => t.endsWith(k)); if (!k) throw new Error("Torneo desconocido: " + t); return TORNEOS[k]; };
 const DIR = path.join(REPO, "material-club/planillas"); fs.mkdirSync(DIR, { recursive: true });
+
+// Quien el club pasó a otro plantel. Jugó varios partidos acá, así que sin esto el script la
+// volvería a sumar a la lista en cada sincronización. Los goles que hizo con este plantel se
+// quedan donde los hizo: lo que cambia es de qué lista es ahora (la MVP, el prode).
+const FUERA = {
+  "mayores-b": ["Jazmin Alarcon"],   // la subieron a Primera damas (el club, 28/10/2026)
+};
 
 const sinTilde = s => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^a-z ]/g, " ").replace(/\s+/g, " ").trim();
 const titulo = s => s.toLowerCase().replace(/(^|[\s'])\S/g, c => c.toUpperCase());
@@ -88,6 +96,7 @@ function filasDelBosco(texto){
     const nuevas = [];
     for (const nombre of Object.keys(usos)) {
       if (pl.jugadoras.includes(nombre)) continue;
+      if ((FUERA[id] || []).includes(nombre)) continue;   // la pasaron a otro plantel: no vuelve a la lista
       if (partidos[nombre] >= 2) { nuevas.push(nombre); agregadas.push(pl.nombre + ": " + nombre + " (" + partidos[nombre] + " partidos)"); }
       // El refuerzo sale del plantel y de los goles del torneo, pero no de la ficha del partido
       // que jugó: si no, los goles de esa fecha no suman el resultado.

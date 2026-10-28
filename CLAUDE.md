@@ -137,6 +137,11 @@ confirmación y no publicó nada.
   de la MVP se ordena por dorsal. Minis e Infantiles son formativas: `jugadoras: []`, no entran
   en nada que sea por nombre. Menores, Cadetas y Juveniles muestran nombres cortos
   (`nombresCortos: true`).
+  Si el club pasa a alguien de un plantel a otro, se la saca de `jugadoras` donde ya no está y
+  se la suma donde ahora juega, y se la anota en `FUERA` de `femebal-dorsales.js`: si no, el
+  script la vuelve a agregar en cada sincronización, porque jugó esos partidos. Los goles que
+  hizo con el plantel anterior se quedan ahí (es lo que pasó). Jazmín Alarcón pasó de la Tercera
+  a la Primera el 28/10/2026 y sigue jugando en Juniors; Iván Piscopo entró a la Cuarta.
 - Planteles: los nombres son los del club (Primera damas, Tercera damas, Cuarta caballeros) y
   cada uno lleva `division`, el nombre de FeMeBal, que se muestra en la tabla de posiciones.
   Minis, Infantiles, Menores, Cadetas, Juveniles y Juniors son la tira de
@@ -144,11 +149,10 @@ confirmación y no publicó nada.
   (hora propia) y `g` (resultado "nuestros-de ellos"). Faltan: el horario de Minis, y decidir qué sponsor presenta cada plantel nuevo (sin
   `sponsor`, el marcador no muestra presentador). Un partido puede llevar `sinHora:true` (la liga
   no lo programó: se muestra "hora a confirmar") y `sede` ("a confirmar" o el nombre del lugar).
-- Maxihandball: el plantel y los dorsales salen de la lista del club (21 jugadoras, septiembre
-  2026); los goles, de la tabla de goleadoras de la liga. Julieta Zárate figura con 1 gol en la
-  liga pero no está en esa lista: decidir si entra al plantel o si el gol quedó mal cargado.
-  (Es la misma Julieta Zárate que figura como asistente de infantiles y que saca fotos para el
-  club como JZ Audiovisuales, así que lo más probable es que haya jugado un partido suelto.)
+- Maxihandball: el plantel y los dorsales salen de la lista del club (22 jugadoras); los goles,
+  de la tabla de goleadoras de la liga. Julieta Zárate juega (lo confirmó el club el 28/10/2026):
+  usa cualquier camiseta libre, así que se le puso la 10. Es la misma Julieta Zárate que figura
+  como asistente de infantiles y que saca fotos para el club como JZ Audiovisuales.
   La liga no publica planillas por partido: en Maxi no hay goles por fecha ni ficha de partido.
 - Escudos de rivales en `fotos/rivales/<nombre-del-rival-en-minusculas>.png` (44 de FeMeBal
   y 13 de Maxi). Un rival nuevo se ve con su inicial hasta que se cargue el archivo.
