@@ -987,6 +987,8 @@ function horaTxt(p, plantel){ return p.sinHora ? "hora a confirmar" : horaDe(p, 
 // Dónde se juega: de local, en Don Bosco 116 salvo que el partido traiga una sede propia
 // (por ejemplo la Casa del Handball de FeMeBal, donde cada categoría juega una fecha).
 function dondeSeJuega(p){ return p.sede === "a confirmar" ? "Sede a confirmar" : p.sede ? "En " + p.sede : p.c === "L" ? "En Don Bosco 116" : "De visitante"; }
+// Sin fecha (la liga se la sacó y todavía no lo reprogramó) devuelve una fecha inválida, que no
+// es ni mayor ni menor que hoy: el partido no cuenta como próximo ni como último jugado.
 function cuando(p, plantel){ return new Date(p.f+"T"+horaDe(p, plantel)+":00"); }
 const DIAS_SEM = ["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"];
 const DIA_SEM = f => DIAS_SEM[new Date(f+"T12:00:00").getDay()];
@@ -1093,7 +1095,7 @@ function pintarFixture(i){
       + '<span class="riv">'+p.r+'</span>'
       + (r ? '<span class="res"><b>'+r.txt+'</b>'+r.palabra+'</span>' : '')
       + (p.sede ? '<span class="sede">'+(p.sede === "a confirmar" ? "sede a confirmar" : p.sede)+'</span>' : '')
-      + '<span class="pie"><span class="cond">'+(p.c==="L"?"LOCAL":"VISITANTE")+'</span><span>'+DIA_MES(p.f)+(p.h ? " · "+p.h : p.sinHora ? " · hora a conf." : "")+'</span></span></'+tag+'>';
+      + '<span class="pie"><span class="cond">'+(p.c==="L"?"LOCAL":"VISITANTE")+'</span><span>'+(p.sinFecha ? "fecha a conf." : DIA_MES(p.f)+(p.h ? " · "+p.h : p.sinHora ? " · hora a conf." : ""))+'</span></span></'+tag+'>';
   }).join("") : '<p class="pf-vacio">Todavía no está cargado el fixture de '+pl.nombre+'. Apenas lo tengamos, aparece acá.</p>';
   cerrarFicha();
   $("#leyenda-dia").textContent = pl.partidos.length ? pl.dia+", "+pl.hora+" hs (salvo que la tarjeta diga otra hora)" : "";

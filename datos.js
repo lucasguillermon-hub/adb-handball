@@ -64,7 +64,7 @@ const DATOS = {
     comunidad: "https://chat.whatsapp.com/"      // ⚠️ pegar el link real de la comunidad
   },
 
-  // Fixture sincronizado con FeMeBal (femebal.com/tournament-tracker) el 25/10/2026.
+  // Fixture sincronizado con FeMeBal (femebal.com/tournament-tracker) el 29/10/2026.
   // nombre: como lo llama el club · division: como lo llama FeMeBal (se muestra en la tabla).
   // jugadoras: el plantel que se vota como figura de la fecha (de LISTAS PRESENTISMO 2026).
   // Minis e Infantiles son formativas: van con jugadoras:[] y no entran en nada que sea por nombre.
@@ -97,7 +97,7 @@ const DATOS = {
       {f:"2026-09-05",c:"V",r:"AFALP",g:"34-21"},{f:"2026-09-12",c:"L",r:"Ferro Carril Oeste",h:"19:45",g:"28-24"},
       {f:"2026-09-19",c:"V",r:"Polvorines",g:"33-26"},{f:"2026-09-25",c:"L",r:"Sagrado Corazón",h:"20:00",g:"24-28",sede:"la Casa del Handball"},
       {f:"2026-10-03",c:"V",r:"All Boys",g:"31-26"},{f:"2026-10-17",c:"L",r:"Vicente López",h:"19:45",g:"22-22"},
-      {f:"2026-10-24",c:"V",r:"Temperley",g:"44-24"},{f:"2026-10-31",c:"V",r:"Villa Ballester",h:"19:45"},{f:"2026-11-07",c:"L",r:"Argentinos Juniors"},
+      {f:"2026-10-24",c:"V",r:"Temperley",g:"44-24"},{f:"2026-10-31",c:"V",r:"Villa Ballester",h:"19:45"},{f:"2026-11-07",c:"L",r:"Argentinos Juniors",h:"19:45"},
       {f:"2026-11-14",c:"V",r:"Secla"},{f:"2026-11-21",c:"L",r:"Muñiz"}
     ], tabla:[
       [1,"Polvorines",29,11,9,0,2,315,296],
@@ -145,25 +145,25 @@ const DATOS = {
       {f:"2026-09-05",c:"V",r:"Argentinos Juniors",h:"19:45",g:"15-14"},{f:"2026-09-12",c:"L",r:"Huracán de San Justo",g:"24-22"},
       {f:"2026-09-19",c:"V",r:"Independiente",g:"36-20"},{f:"2026-09-26",c:"L",r:"Querandí",g:"34-25"},{f:"2026-10-03",c:"V",r:"Defensores de Moreno",g:"28-22"},
       {f:"2026-10-17",c:"L",r:"Mariano Acosta",g:"27-22"},{f:"2026-09-24",c:"L",r:"San Telmo",h:"21:15",g:"15-21"},
-      {f:"2026-10-31",c:"V",r:"Nueva Chicago"},{f:"2026-11-07",c:"L",r:"Secla"},{f:"2026-11-14",c:"V",r:"Colegio del Parque"},
+      {f:"2026-10-31",c:"V",r:"Nueva Chicago",h:"19:45"},{f:"2026-11-07",c:"L",r:"Secla"},{f:"2026-11-14",c:"V",r:"Colegio del Parque"},
       {f:"2026-11-21",c:"L",r:"Cedem Caseros"}
     ], tabla:[
-      [1,"Campana Boat Club",29,11,8,2,1,263,239],
-      [2,"Mariano Acosta",28,11,8,1,2,275,233],
-      [3,"Almirante Brown",27,11,8,0,3,333,294],
-      [4,"Querandí",27,11,8,0,3,310,271],
-      [5,"Nueva Chicago",27,11,7,2,2,286,253],
-      [6,"San Telmo",26,11,7,1,3,285,254],
-      [7,"Colegio del Parque",24,10,7,0,3,303,241],
+      [1,"Querandí",30,12,9,0,3,340,294],
+      [2,"Campana Boat Club",29,11,8,2,1,275,251],
+      [3,"Mariano Acosta",28,11,8,1,2,275,233],
+      [4,"Colegio del Parque",27,11,8,0,3,339,261],
+      [5,"Almirante Brown",27,11,8,0,3,333,294],
+      [6,"Nueva Chicago",27,11,7,2,2,286,253],
+      [7,"San Telmo",26,11,7,1,3,285,254],
       [8,"Secla",24,11,6,1,4,248,220],
       [9,"Ateneo Don Bosco",23,11,6,0,5,265,249],
       [10,"Argentinos Juniors",21,11,5,0,6,229,245],
-      [11,"Boca Juniors",20,12,4,0,8,271,292],
+      [11,"Boca Juniors",21,13,4,0,9,294,322],
       [12,"Huracán de San Justo",18,12,3,0,9,252,301],
       [13,"AFALP",16,11,3,0,7,248,295],
-      [14,"Independiente",15,11,1,2,8,223,288],
+      [14,"Independiente",15,11,1,2,8,235,300],
       [15,"Cedem Caseros",14,11,1,1,9,241,288],
-      [16,"Defensores de Moreno",12,10,1,0,9,210,279]
+      [16,"Defensores de Moreno",13,11,1,0,10,230,315]
     ]},
     // competencia:false (de Cadetas para abajo, decisión del coordinador): sin votación de la
     // figura, sin prode y sin goleadoras. Los dorsales quedan igual, son datos del plantel.
@@ -201,14 +201,14 @@ const DATOS = {
       [6,"Muñiz",27,11,8,0,3,287,232],
       [7,"Estrella de Boedo",25,11,6,2,3,284,231],
       [8,"La Patriada",25,11,7,0,4,263,215],
-      [9,"Independiente",19,11,4,0,7,189,218],
-      [10,"Hurlingham",19,11,4,0,7,208,240],
-      [11,"Banfield",16,10,3,0,7,229,248],
-      [12,"Boca Juniors",15,10,2,1,7,171,208],
+      [9,"Banfield",19,11,4,0,7,262,266],
+      [10,"Independiente",19,11,4,0,7,189,218],
+      [11,"Hurlingham",19,11,4,0,7,208,240],
+      [12,"Boca Juniors",16,11,2,1,8,189,241],
       [13,"Villa Modelo",15,11,2,0,9,206,293],
       [14,"Vélez Sarsfield",15,11,2,0,9,162,251],
-      [15,"Cedem Caseros",10,10,0,0,10,130,269],
-      [16,"Círculo de Villa Devoto",10,10,0,0,10,169,350]
+      [15,"Cedem Caseros",12,11,0,1,10,149,288],
+      [16,"Círculo de Villa Devoto",12,11,0,1,10,188,369]
     ] },
     { id:"menores", competencia:false, nombre:"Menores", division:"Menores · División C", dia:"Domingos", hora:"11:30",
       nombresCortos:true, jugadoras:[
@@ -288,16 +288,16 @@ const DATOS = {
       {f:"2026-11-15",c:"V",r:"Sagrado Corazón"},{f:"2026-11-22",c:"L",r:"Estrella de Boedo"}
     ], tabla:[
       [1,"Banfield",33,11,11,0,0,238,191],
-      [2,"Vélez Sarsfield",26,11,7,1,3,215,200],
-      [3,"Cedem Caseros",26,11,7,1,3,281,247],
-      [4,"Independiente",25,11,7,0,4,234,214],
-      [5,"Sagrado Corazón",25,10,7,1,2,256,233],
+      [2,"Sagrado Corazón",28,11,8,1,2,278,252],
+      [3,"Vélez Sarsfield",26,11,7,1,3,215,200],
+      [4,"Cedem Caseros",26,11,7,1,3,281,247],
+      [5,"Independiente",25,11,7,0,4,234,214],
       [6,"Villa Modelo",25,11,7,0,4,258,244],
       [7,"Colegio Ward",23,11,5,2,4,237,234],
       [8,"Hurlingham",22,11,5,1,5,212,199],
       [9,"Muñiz",21,11,5,0,6,200,198],
       [10,"C.I.D. Moreno",20,10,5,0,5,212,210],
-      [11,"La Patriada",18,10,4,0,6,202,224],
+      [11,"La Patriada",19,11,4,0,7,221,246],
       [12,"Polvorines",18,10,3,2,5,207,218],
       [13,"Círculo de Villa Devoto",17,11,3,0,8,242,253],
       [14,"Boca Juniors",17,11,3,0,8,174,211],
@@ -424,21 +424,21 @@ const DATOS = {
       {f:"2026-09-06",c:"V",r:"Dorrego",h:"20:15",g:"28-27"},{f:"2026-09-13",c:"L",r:"Ferrocarril Mitre",g:"27-37"},
       {f:"2026-09-20",c:"libre"},{f:"2026-09-27",c:"libre"},{f:"2026-10-04",c:"V",r:"Defensores de Glew",h:"19:45",g:"29-38"},
       {f:"2026-10-12",c:"L",r:"Talleres",h:"19:45",g:"21-24",sede:"la Casa del Handball"},{f:"2026-10-25",c:"V",r:"Ducilo",h:"19:45",g:"24-24"},
-      {f:"2026-11-01",c:"L",r:"San Telmo"},{f:"2026-11-08",c:"V",r:"El Portugués"},{f:"2026-11-15",c:"V",r:"Círculo General Belgrano"},
+      {f:"2026-11-01",c:"L",r:"San Telmo",h:"19:45"},{f:"2026-11-08",c:"V",r:"El Portugués"},{f:"2026-11-15",c:"V",r:"Círculo General Belgrano"},
       {f:"2026-11-22",c:"L",r:"Escobar"}
     ], tabla:[
-      [1,"Almirante Brown",31,11,9,2,0,309,220],
+      [1,"Almirante Brown",34,12,10,2,0,339,242],
       [2,"Defensores de Glew",30,11,9,1,1,287,226],
-      [3,"General Las Heras",27,11,8,0,3,356,315],
-      [4,"Escobar",26,11,7,1,3,236,221],
-      [5,"El Portugués",26,11,7,1,3,271,271],
-      [6,"Ferrocarril Mitre",25,11,7,0,4,338,317],
-      [7,"Federal Juniors",25,11,7,0,4,271,256],
-      [8,"Talleres",25,11,7,0,4,224,228],
-      [9,"Ducilo",22,10,6,0,4,218,210],
+      [3,"General Las Heras",30,12,9,0,3,358,315],
+      [4,"Federal Juniors",28,12,8,0,4,273,256],
+      [5,"Escobar",26,11,7,1,3,236,221],
+      [6,"El Portugués",26,11,7,1,3,271,271],
+      [7,"Talleres",26,12,7,0,5,246,258],
+      [8,"Ferrocarril Mitre",25,11,7,0,4,338,317],
+      [9,"Ducilo",24,11,6,1,4,242,234],
       [10,"Dep. Laferrere",21,11,5,0,6,220,238],
       [11,"San Telmo",19,11,4,0,7,211,247],
-      [12,"Ateneo Don Bosco",16,10,3,0,7,180,221],
+      [12,"Ateneo Don Bosco",18,11,3,1,7,204,245],
       [13,"Dorrego",16,11,2,1,8,245,283],
       [14,"Círculo General Belgrano",12,11,2,0,8,201,274]
     ]},
@@ -458,7 +458,7 @@ const DATOS = {
       {f:"2026-09-12",c:"V",r:"Team Ezeiza",h:"11:30",sede:"Polideportivo N. Kirchner (Ezeiza)",g:"15-14"},{f:"2026-09-26",c:"V",r:"Las 2P",h:"10:00",sede:"Polideportivo N. Kirchner (Ezeiza)",g:"15-18"},
       {f:"2026-10-03",c:"V",r:"Panteras Handball",h:"14:30",sede:"Instituto Manuel Belgrano Quilmes",g:"14-16"},
       {f:"2026-10-10",c:"V",r:"Golondrinas",h:"13:00",sede:"Polideportivo N. Kirchner (Ezeiza)",g:"26-11"},{f:"2026-10-17",c:"V",r:"Club Social",h:"16:00",sede:"Polideportivo N. Kirchner (Ezeiza)",g:"16-19"},
-      {f:"2026-10-31",c:"V",r:"Villa Vatteone",h:"18:30",sede:"Polideportivo N. Kirchner (Ezeiza)"},{f:"2026-11-07",c:"V",r:"47 Handball Club",sinHora:true,sede:"a confirmar"},
+      {f:"",c:"V",r:"Villa Vatteone",sinFecha:true,sede:"a confirmar"},{f:"2026-11-07",c:"V",r:"47 Handball Club",sinHora:true,sede:"a confirmar"},
       {f:"2026-11-14",c:"L",r:"La Patriada",sinHora:true,sede:"a confirmar"},{f:"2026-11-28",c:"L",r:"CAQ Handball",sinHora:true,sede:"a confirmar"}
     ], tabla:[
       [1,"Panteras Handball",20,7,6,1,0,127,96],

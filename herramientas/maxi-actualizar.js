@@ -7,7 +7,8 @@
 
    Escribe en datos.js, en el plantel "maxi": partidos (fecha, condición nominal, rival, hora
    propia, sede, resultado) y tabla del Clausura. Un partido sin horario (00:00) lleva
-   sinHora:true y la web dice "hora a confirmar"; sin sede, sede:"a confirmar". Un rival nuevo corta el script: agregarlo a
+   sinHora:true y la web dice "hora a confirmar"; uno al que la liga le sacó el día lleva
+   sinFecha:true y dice "fecha a confirmar"; sin sede, sede:"a confirmar". Un rival nuevo corta el script: agregarlo a
    CORTO y bajar su escudo a fotos/rivales/ (este script lo baja si falta, con sharp). */
 const fs = require("fs"); const path = require("path");
 const REPO = path.resolve(__dirname, "..");
@@ -55,16 +56,23 @@ const pedir = async u => { const r = await fetch(u, { headers: CAB }); const j =
       const sedeApi = m.venue && m.venue.name;
       const somosLocal = sedeApi ? /Ateneo Don Bosco/i.test(sedeApi) : esADB(eq[0].name);
       const nuestroIndice = esADB(eq[0].name) ? 0 : 1;
-      const [f, hora] = m.date_iso.slice(0, 16).split("T");
-      const p = { f, c: somosLocal ? "L" : "V", r: corto(eq[1 - nuestroIndice].name) };
-      if (hora === "00:00") p.sinHora = true; else if (hora !== pl.hora) p.h = hora;
+      // date_iso vacío: la liga le sacó el día al partido (pasó con Villa Vatteone, que estaba
+      // para el 31/10). Queda sin fecha y en el lugar de su ronda hasta que la reprogramen.
+      const [f, hora] = (m.date_iso || "").slice(0, 16).split("T");
+      const p = { f: f || "", c: somosLocal ? "L" : "V", r: corto(eq[1 - nuestroIndice].name) };
+      if (!f) p.sinFecha = true;
+      else if (hora === "00:00") p.sinHora = true; else if (hora !== pl.hora) p.h = hora;
       if (sedeApi && !somosLocal) p.sede = SEDES[sedeApi] || sedeApi;
       if (!sedeApi && !p.g) p.sede = "a confirmar";   // la liga todavía no dijo dónde se juega
       if (m.closed && m.show_result && m.goals) { const [a, b] = m.goals; p.g = nuestroIndice === 0 ? a + "-" + b : b + "-" + a; }
       partidos.push(p);
     }
   }
-  partidos.sort((a, b) => a.f.localeCompare(b.f));
+  // Van por fecha, no por ronda: la liga reprograma seguido. El que todavía no tiene fecha se
+  // ordena como el último que sí la tenía, así queda en el lugar de su ronda y no primero.
+  const orden = new Map(); let ultima = "";
+  partidos.forEach((p, i) => { if (p.f) ultima = p.f; orden.set(p, [p.f || ultima, i]); });
+  partidos.sort((a, b) => orden.get(a)[0].localeCompare(orden.get(b)[0]) || orden.get(a)[1] - orden.get(b)[1]);
 
   // Tabla del Clausura
   const tablas = await pedir(`${API}/tables/points`);
@@ -125,5 +133,5 @@ const pedir = async u => { const r = await fetch(u, { headers: CAB }); const j =
 
   const D = new Function(s + ";return DATOS")(); const m = D.planteles.find(p => p.id === "maxi"); const adb = m.tabla.find(f => f[1] === "Ateneo Don Bosco");
   console.log("Maxihandball:", m.partidos.length, "partidos,", m.partidos.filter(p => p.g).length, "jugados ·", adb ? adb[0] + "º de " + m.tabla.length + " · " + adb[2] + " pts" : "sin tabla");
-  m.partidos.forEach(p => console.log("  " + p.f + " " + (p.c === "L" ? "vs" : "en") + " " + p.r + (p.h ? " " + p.h : p.sinHora ? " (hora a confirmar)" : "") + (p.sede ? " · " + p.sede : "") + (p.g ? " → " + p.g : "")));
+  m.partidos.forEach(p => console.log("  " + (p.f || "fecha a confirmar") + " " + (p.c === "L" ? "vs" : "en") + " " + p.r + (p.h ? " " + p.h : p.sinHora ? " (hora a confirmar)" : "") + (p.sede ? " · " + p.sede : "") + (p.g ? " → " + p.g : "")));
 })();

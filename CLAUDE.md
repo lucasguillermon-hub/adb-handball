@@ -148,7 +148,9 @@ confirmación y no publicó nada.
   inferiores (mismas fechas y lugar, cada una a su hora). Cada partido puede llevar `h`
   (hora propia) y `g` (resultado "nuestros-de ellos"). Faltan: el horario de Minis, y decidir qué sponsor presenta cada plantel nuevo (sin
   `sponsor`, el marcador no muestra presentador). Un partido puede llevar `sinHora:true` (la liga
-  no lo programó: se muestra "hora a confirmar") y `sede` ("a confirmar" o el nombre del lugar).
+  no lo programó: se muestra "hora a confirmar"), `sinFecha:true` (le sacaron el día y todavía no
+  lo reprogramaron: se muestra "fecha a confirmar" y no cuenta como próximo partido) y `sede`
+  ("a confirmar" o el nombre del lugar).
 - Maxihandball: el plantel y los dorsales salen de la lista del club (22 jugadoras); los goles,
   de la tabla de goleadoras de la liga. Julieta Zárate juega (lo confirmó el club el 28/10/2026):
   usa cualquier camiseta libre, así que se le puso la 10. Es la misma Julieta Zárate que figura
