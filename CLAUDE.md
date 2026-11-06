@@ -150,7 +150,10 @@ confirmación y no publicó nada.
   `sponsor`, el marcador no muestra presentador). Un partido puede llevar `sinHora:true` (la liga
   no lo programó: se muestra "hora a confirmar"), `sinFecha:true` (le sacaron el día y todavía no
   lo reprogramaron: se muestra "fecha a confirmar" y no cuenta como próximo partido) y `sede`
-  ("a confirmar" o el nombre del lugar).
+  ("a confirmar" o el nombre del lugar). El número de fecha sale de la posición en `partidos`,
+  porque los torneos de FeMeBal vienen en orden; los del Maxi se ordenan por día (la liga
+  reprograma seguido, y una reprogramación puede correr un partido detrás de uno de ronda
+  posterior), así que cada uno lleva `n` con la ronda que dice la liga.
 - Maxihandball: el plantel y los dorsales salen de la lista del club (22 jugadoras); los goles,
   de la tabla de goleadoras de la liga. Julieta Zárate juega (lo confirmó el club el 28/10/2026):
   usa cualquier camiseta libre, así que se le puso la 10. Es la misma Julieta Zárate que figura

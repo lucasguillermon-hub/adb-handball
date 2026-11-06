@@ -59,7 +59,10 @@ const pedir = async u => { const r = await fetch(u, { headers: CAB }); const j =
       // date_iso vacío: la liga le sacó el día al partido (pasó con Villa Vatteone, que estaba
       // para el 31/10). Queda sin fecha y en el lugar de su ronda hasta que la reprogramen.
       const [f, hora] = (m.date_iso || "").slice(0, 16).split("T");
-      const p = { f: f || "", c: somosLocal ? "L" : "V", r: corto(eq[1 - nuestroIndice].name) };
+      // n es la ronda de la liga. Los partidos se ordenan por fecha, así que la posición en el
+      // fixture no sirve para numerar la fecha: una reprogramación puede correr un partido
+      // detrás de uno de ronda posterior (Villa Vatteone pasó al 9/11, detrás de la ronda 9).
+      const p = { f: f || "", c: somosLocal ? "L" : "V", r: corto(eq[1 - nuestroIndice].name), n: r };
       if (!f) p.sinFecha = true;
       else if (hora === "00:00") p.sinHora = true; else if (hora !== pl.hora) p.h = hora;
       if (sedeApi && !somosLocal) p.sede = SEDES[sedeApi] || sedeApi;

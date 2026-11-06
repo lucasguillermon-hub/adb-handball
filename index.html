@@ -990,6 +990,9 @@ function dondeSeJuega(p){ return p.sede === "a confirmar" ? "Sede a confirmar" :
 // Sin fecha (la liga se la sacó y todavía no lo reprogramó) devuelve una fecha inválida, que no
 // es ni mayor ni menor que hoy: el partido no cuenta como próximo ni como último jugado.
 function cuando(p, plantel){ return new Date(p.f+"T"+horaDe(p, plantel)+":00"); }
+// Qué número de fecha es. Los planteles de FeMeBal vienen en orden de fecha, así que la posición
+// alcanza; el Maxi se ordena por día (la liga reprograma seguido) y guarda la ronda en `n`.
+function nroFecha(pl, p){ return p.n || pl.partidos.indexOf(p) + 1; }
 const DIAS_SEM = ["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"];
 const DIA_SEM = f => DIAS_SEM[new Date(f+"T12:00:00").getDay()];
 // Resultado de un partido jugado: "28-24" es nuestros-de ellos.
@@ -1021,7 +1024,7 @@ function proximoPartido(){
 const prox = proximoPartido();
 
 if (prox){
-  const nro = prox.pl.partidos.indexOf(prox.p)+1;
+  const nro = nroFecha(prox.pl, prox.p);
   $("#tab-torneo").textContent = DATOS.torneo+" · Fecha "+nro;
   $("#tab-fecha").textContent = DIA_SEM(prox.p.f)+" "+DIA_MES(prox.p.f)+" · "+horaTxt(prox.p, prox.pl);
   $("#tab-plantel").textContent = prox.pl.nombre;
@@ -1151,7 +1154,7 @@ function abrirFicha(pl, p){
   $$("#grilla .con-ficha").forEach(b => b.setAttribute("aria-expanded", b.dataset.f === p.f));
   caja.innerHTML = '<div class="marcador-ficha">' + r.txt + '<span>' + r.palabra + '</span></div>'
     + '<div><h4>' + pl.nombre + ' vs ' + p.r + '</h4>'
-    + '<p class="meta">' + DIA_SEM(p.f) + ' ' + DIA_MES(p.f) + ' · ' + horaTxt(p, pl) + ' · ' + dondeSeJuega(p) + ' · Fecha ' + (pl.partidos.indexOf(p) + 1) + '</p>'
+    + '<p class="meta">' + DIA_SEM(p.f) + ' ' + DIA_MES(p.f) + ' · ' + horaTxt(p, pl) + ' · ' + dondeSeJuega(p) + ' · Fecha ' + nroFecha(pl, p) + '</p>'
     + listaGoles(pl, g) + '</div>'
     + '<button class="cerrar" type="button">Cerrar la ficha</button>';
   caja.hidden = false;
@@ -1238,7 +1241,7 @@ function pintarMvp(pl){
     $("#sponsor-mvp").textContent = "el Bosco"; marcaMvp = "el Bosco";
     listaMvp.innerHTML = ""; $("#mvp-estado").textContent = ""; return;
   }
-  const nro = pl.partidos.indexOf(p) + 1;
+  const nro = nroFecha(pl, p);
   const r = resultado(p);
   $("#mvp-contexto").textContent = pl.nombre + " · Fecha " + nro + " · " + DIA_SEM(p.f) + " " + DIA_MES(p.f) + " vs " + p.r + (r ? " · " + r.txt + " (" + r.palabra.toLowerCase() + ")" : "");
   marcaMvp = sponsorDeLaMvp(pl, p);
