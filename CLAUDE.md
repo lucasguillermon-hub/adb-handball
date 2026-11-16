@@ -73,6 +73,11 @@ signos de exclamación en cadena. El lema del club es *sensus pertinendi*: senti
 pertenencia. Los textos hablan de la tribuna, de las familias y del barrio, no de
 "experiencias" ni de "soluciones".
 
+Cuando el texto lo manda el club, se publica con sus palabras. Se pueden sumar datos que
+salen de `datos.js` (goleadoras, posiciones, cuándo es la próxima), pero no frases de
+color ni remates propios: el club pidió sacar uno ("el partido de menos goles del año, y
+el que más valía", 16/11/2026) porque se notaba escrito por una IA.
+
 ## Decisiones tomadas (no volver a preguntar)
 
 - La web completa se publicó el 20/9/2026 (antes `index.html` era una página de espera con
