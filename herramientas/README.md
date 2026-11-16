@@ -26,7 +26,9 @@ Cada semana, después de la fecha:
    del paso 1. Baja las planillas de partido (PDF) a
    `material-club/planillas/`, lee número, nombre y goles de cada jugadora del Bosco y escribe
    `dorsales`, `goles` (total) y `golesFecha` (por partido) en cada plantel de `datos.js`. Quien jugó dos o más partidos y no estaba en
-   la lista del club se suma a `jugadoras`; los refuerzos de un partido no. Necesita `pdf-parse`.
+   la lista del club se suma a `jugadoras`; los refuerzos de un partido no. Necesita `pdf-parse`
+   **de la versión 1** (`npm install "pdf-parse@^1"`): la 2 cambió la API y además extrae el texto
+   de otra forma, que es justo lo que lee el parser de planillas.
 4. Maxihandball: `node herramientas/maxi-actualizar.js`. No está en FeMeBal: juega la Liga Maxi
    Handball (LMHF), que publica en timbo.futbol. El script usa la API de esa web (con dos
    encabezados de versión de app; si responde "update-app", subir `API_VERSION`), trae los partidos

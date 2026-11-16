@@ -55,7 +55,9 @@ function partido(fila, horaBase){
   const p = { f, c: somosLocal ? "L" : "V", r: corto(somosLocal ? fila.visita : fila.local) };
   if (m[3] !== "00:00" && m[3] !== horaBase) p.h = m[3];
   const g = m[4].match(/(\d+) (\d+)/);   // jugado: "local 26 33visita"; pendiente: "localVsvisita"
-  if (g) p.g = somosLocal ? g[1] + "-" + g[2] : g[2] + "-" + g[1];   // siempre nuestros-de ellos
+  // "0 0" no es un resultado: en handball no hay 0 a 0. Es lo que muestra FeMeBal cuando pasó
+  // la fecha y todavía no cargó el partido (pasó con Cadetas el 15/11). Queda como pendiente.
+  if (g && !(g[1] === "0" && g[2] === "0")) p.g = somosLocal ? g[1] + "-" + g[2] : g[2] + "-" + g[1];   // siempre nuestros-de ellos
   return p;
 }
 const filaPartido = p => "{" + Object.entries(p).map(([k, v]) => k + ':"' + v + '"').join(",") + "}";
