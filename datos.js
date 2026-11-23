@@ -560,7 +560,7 @@ const DATOS = {
       alt: "El plantel de Primera damas festejando en la cancha de la Casa del Handball, con el marcador en 21 a 20 y la tribuna llena atrás",
       cuerpo: [
         { t: "texto", v: "La noche del viernes la Primera se jugaba un partido clave por el ascenso frente a Secla en la Casa del Handball. El resultado fue 21 a 20 para las nuestras, que con ese resultado consumaron el ascenso a Liga Plata." },
-        { t: "marcador", v: "21-20", rival: "Secla", donde: "Casa del Handball · viernes 13/11 · fecha 14", remate: "Ascenso a Liga Plata" },
+        { t: "marcador", v: "21-20", rival: "Secla", donde: "Casa del Handball · viernes 13/11 · fecha 14", remate: "Ascenso a Liga Plata", festejo: true },
         { t: "texto", v: "En un partido donde se trabajó muy duro en defensa y costó el gol, las dirigidas por Gull supieron dar una muestra de carácter y remontar el resultado para conseguir la victoria en los últimos minutos." },
         { t: "destacado", v: "Se jugaba el ascenso, en la Casa del Handball y con la tribuna llena." },
         { t: "texto", v: "Hablamos con Mora Lionti, una de las capitanas de este equipo, y declaró lo siguiente:" },

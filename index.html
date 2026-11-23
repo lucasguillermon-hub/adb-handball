@@ -121,7 +121,7 @@ section{padding:76px 0}
 .lector .cuerpo .cita .quien{display:block;font-style:normal;font-weight:700;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--rosa-vivo);margin-top:10px}
 /* Marcador de una nota: el resultado grande, para un partido que lo merece (un ascenso, una final).
    Los números arrancan en cero y suben al abrirse el lector; con prefers-reduced-motion van derecho. */
-.lector .marcador-nota{margin:26px 0 0;padding:26px 22px;border-radius:16px;background:var(--azul);color:var(--hueso);text-align:center}
+.lector .marcador-nota{margin:26px 0 0;padding:26px 22px;border-radius:16px;background:var(--azul);color:var(--hueso);text-align:center;position:relative;overflow:hidden;isolation:isolate}
 /* El panel se ve siempre; la entrada es un agregado que solo se activa si el navegador está
    pintando (la clase la pone un requestAnimationFrame). Así nunca queda invisible. */
 .lector .marcador-nota.entra{animation:marcador-entra .5s ease both}
@@ -141,6 +141,18 @@ section{padding:76px 0}
 .lector .marcador-nota .guion{font-family:var(--display);font-size:clamp(28px,7vw,44px);line-height:1;color:var(--rosa-vivo)}
 .lector .marcador-nota .remate{font-family:var(--display);font-size:clamp(22px,5.6vw,32px);line-height:1.1;color:var(--rosa);margin:18px 0 0;letter-spacing:.02em}
 @media(prefers-reduced-motion:reduce){.lector .marcador-nota.entra{animation:none}}
+/* Festejo: chispas que salen de dos o tres puntos del panel, en los colores del escudo. Van
+   detrás del texto (z-index 0 contra el contenido, que queda en 1) y se borran solas al terminar. */
+.lector .marcador-nota > *{position:relative;z-index:1}
+.lector .festejo{position:absolute;inset:0;z-index:0;pointer-events:none}
+.lector .chispa{position:absolute;width:7px;height:7px;border-radius:50%;background:var(--c);opacity:0;
+  animation:chispa 1.25s cubic-bezier(.17,.84,.44,1) var(--retraso) both}
+@keyframes chispa{
+  0%{transform:translate(0,0) scale(.2);opacity:1}
+  70%{opacity:1}
+  100%{transform:translate(var(--dx),calc(var(--dy) + 28px)) scale(1);opacity:0}
+}
+@media(prefers-reduced-motion:reduce){.lector .festejo{display:none}}
 .lector figure{margin:20px 0 0}
 .lector figure img{width:100%;border-radius:12px;display:block}
 .lector figcaption{font-size:13.5px;color:rgba(10,20,40,.6);margin-top:7px}
@@ -1640,7 +1652,7 @@ $("#visor-descargar").addEventListener("click", function(){
     if (b.t === "link") return '<p><a href="' + b.v + '" target="_blank" rel="noopener" data-track="nota-link">' + (b.texto || b.v) + '</a></p>';
     if (b.t === "marcador"){
       const [nos, ellos] = b.v.split("-");
-      return '<div class="marcador-nota" role="img" aria-label="Ateneo Don Bosco ' + nos + ', ' + b.rival + ' ' + ellos + (b.remate ? ". " + b.remate : "") + '">'
+      return '<div class="marcador-nota"' + (b.festejo ? ' data-festejo="1"' : '') + ' role="img" aria-label="Ateneo Don Bosco ' + nos + ', ' + b.rival + ' ' + ellos + (b.remate ? ". " + b.remate : "") + '">'
         + (b.donde ? '<p class="donde">' + b.donde + '</p>' : '')
         + '<div class="tanteador" aria-hidden="true">'
         + '<span class="eq eq-a">Ateneo Don Bosco</span><span class="eq eq-b">' + b.rival + '</span>'
@@ -1657,10 +1669,32 @@ $("#visor-descargar").addEventListener("click", function(){
   // segundo plano, y ahí los números se quedarían en cero: por eso va también un setTimeout, que
   // sí dispara, y escribe el resultado si la animación no llegó. Con prefers-reduced-motion no anima.
   const MS_MARCADOR = 900;
+  // Chispas desde tres puntos del panel, como una bengala. Es decoración: va detrás del texto,
+  // no se puede tocar y los nodos se borran solos. Con prefers-reduced-motion el CSS la esconde
+  // y acá ni se arma, así que no se crean nodos al pedo.
+  const COLORES_FESTEJO = ["var(--rosa)", "var(--rosa-vivo)", "var(--hueso)", "var(--rosa)"];
+  function festejar(panel){
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const capa = document.createElement("div"); capa.className = "festejo"; capa.setAttribute("aria-hidden", "true");
+    const focos = [[22, 32], [50, 20], [78, 34]];   // en % del panel
+    focos.forEach(([x, y], f) => {
+      for (let i = 0; i < 16; i++) {
+        const ang = (Math.PI * 2 * i) / 16 + f, dist = 50 + Math.random() * 70;
+        const c = document.createElement("i"); c.className = "chispa";
+        c.style.cssText = "left:" + x + "%;top:" + y + "%;--dx:" + Math.round(Math.cos(ang) * dist) + "px;--dy:"
+          + Math.round(Math.sin(ang) * dist) + "px;--retraso:" + (f * 260 + Math.random() * 90) + "ms;--c:"
+          + COLORES_FESTEJO[i % COLORES_FESTEJO.length];
+        capa.appendChild(c);
+      }
+    });
+    panel.appendChild(capa);
+    setTimeout(() => capa.remove(), 2600);
+  }
   function animarMarcador(caja){
     const quieto = matchMedia("(prefers-reduced-motion: reduce)").matches;
     caja.querySelectorAll(".marcador-nota").forEach(m => {
       requestAnimationFrame(() => m.classList.add("entra"));
+      if (m.dataset.festejo) setTimeout(() => festejar(m), 420);   // entra el panel, después el festejo
       m.querySelectorAll(".tanto").forEach(el => {
         const fin = +el.dataset.n;
         setTimeout(() => { if (+el.textContent !== fin) el.textContent = fin; }, MS_MARCADOR + 600);
