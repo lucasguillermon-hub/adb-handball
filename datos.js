@@ -21,6 +21,11 @@ const DATOS = {
   // Aviso del club: una barra arriba de todo, con un botón que abre el detalle. Se puede cerrar
   // (vuelve a aparecer en la próxima visita, no se guarda nada). Con aviso:null no se muestra.
   // "hasta" es el último día que se muestra; después de esa fecha desaparece solo.
+  // Festejo del club: tira chispas sobre el tablero de la portada, una vez por visita (no se
+  // guarda nada: vuelve a salir si recargás). Desaparece solo pasada la fecha "hasta".
+  // Con festejo:null no se muestra.
+  festejo: { hasta: "2026-12-21", motivo: "Ascenso a Liga Plata" },
+
   aviso: {
     hasta: "2026-11-30",
     etiqueta: "Rifa 2026",
