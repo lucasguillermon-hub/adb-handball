@@ -119,6 +119,28 @@ section{padding:76px 0}
 /* Lo que dice una jugadora o el entrenador: bastardilla y fondo, para que se despegue del relato */
 .lector .cuerpo .cita{font-style:italic;font-weight:600;font-size:16.5px;line-height:1.55;color:var(--azul);background:rgba(21,42,84,.055);border-left:4px solid var(--rosa-vivo);border-radius:0 12px 12px 0;padding:16px 18px;margin:20px 0 0}
 .lector .cuerpo .cita .quien{display:block;font-style:normal;font-weight:700;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--rosa-vivo);margin-top:10px}
+/* Marcador de una nota: el resultado grande, para un partido que lo merece (un ascenso, una final).
+   Los números arrancan en cero y suben al abrirse el lector; con prefers-reduced-motion van derecho. */
+.lector .marcador-nota{margin:26px 0 0;padding:26px 22px;border-radius:16px;background:var(--azul);color:var(--hueso);text-align:center}
+/* El panel se ve siempre; la entrada es un agregado que solo se activa si el navegador está
+   pintando (la clase la pone un requestAnimationFrame). Así nunca queda invisible. */
+.lector .marcador-nota.entra{animation:marcador-entra .5s ease both}
+@keyframes marcador-entra{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.lector .marcador-nota .donde{font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:rgba(245,242,237,.7);margin:0 0 16px}
+/* Dos filas: los nombres arriba y los números abajo. Así el nombre largo puede partirse en dos
+   líneas en el celular sin desalinear los tantos ni el guión. */
+.lector .marcador-nota .tanteador{display:grid;grid-template-columns:1fr auto 1fr;align-items:end;
+  column-gap:clamp(10px,4vw,24px);row-gap:8px}
+.lector .marcador-nota .eq{font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:rgba(245,242,237,.82);margin:0;grid-row:1}
+.lector .marcador-nota .eq-a{grid-column:1}
+.lector .marcador-nota .eq-b{grid-column:3}
+.lector .marcador-nota .tanto-a{grid-area:2/1}
+.lector .marcador-nota .guion{grid-area:2/2;align-self:center}
+.lector .marcador-nota .tanto-b{grid-area:2/3}
+.lector .marcador-nota .tanto{font-family:var(--display);font-size:clamp(56px,15vw,92px);line-height:.9;font-variant-numeric:tabular-nums}
+.lector .marcador-nota .guion{font-family:var(--display);font-size:clamp(28px,7vw,44px);line-height:1;color:var(--rosa-vivo)}
+.lector .marcador-nota .remate{font-family:var(--display);font-size:clamp(22px,5.6vw,32px);line-height:1.1;color:var(--rosa);margin:18px 0 0;letter-spacing:.02em}
+@media(prefers-reduced-motion:reduce){.lector .marcador-nota.entra{animation:none}}
 .lector figure{margin:20px 0 0}
 .lector figure img{width:100%;border-radius:12px;display:block}
 .lector figcaption{font-size:13.5px;color:rgba(10,20,40,.6);margin-top:7px}
@@ -1616,9 +1638,40 @@ $("#visor-descargar").addEventListener("click", function(){
         + '<img src="https://i.ytimg.com/vi/' + id + '/hqdefault.jpg" alt=""><span class="play">▶</span></button>';
     }
     if (b.t === "link") return '<p><a href="' + b.v + '" target="_blank" rel="noopener" data-track="nota-link">' + (b.texto || b.v) + '</a></p>';
+    if (b.t === "marcador"){
+      const [nos, ellos] = b.v.split("-");
+      return '<div class="marcador-nota" role="img" aria-label="Ateneo Don Bosco ' + nos + ', ' + b.rival + ' ' + ellos + (b.remate ? ". " + b.remate : "") + '">'
+        + (b.donde ? '<p class="donde">' + b.donde + '</p>' : '')
+        + '<div class="tanteador" aria-hidden="true">'
+        + '<span class="eq eq-a">Ateneo Don Bosco</span><span class="eq eq-b">' + b.rival + '</span>'
+        + '<span class="tanto tanto-a" data-n="' + nos + '">0</span>'
+        + '<span class="guion">–</span>'
+        + '<span class="tanto tanto-b" data-n="' + ellos + '">0</span>'
+        + '</div>'
+        + (b.remate ? '<p class="remate" aria-hidden="true">' + b.remate + '</p>' : '') + '</div>';
+    }
     return "";
   };
 
+  // Los números del marcador suben de cero. requestAnimationFrame no corre si la página está en
+  // segundo plano, y ahí los números se quedarían en cero: por eso va también un setTimeout, que
+  // sí dispara, y escribe el resultado si la animación no llegó. Con prefers-reduced-motion no anima.
+  const MS_MARCADOR = 900;
+  function animarMarcador(caja){
+    const quieto = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    caja.querySelectorAll(".marcador-nota").forEach(m => {
+      requestAnimationFrame(() => m.classList.add("entra"));
+      m.querySelectorAll(".tanto").forEach(el => {
+        const fin = +el.dataset.n;
+        setTimeout(() => { if (+el.textContent !== fin) el.textContent = fin; }, MS_MARCADOR + 600);
+        if (quieto) { el.textContent = fin; return; }
+        const t0 = performance.now();
+        (function paso(t){ const k = Math.min(1, (t - t0) / MS_MARCADOR);
+          el.textContent = Math.round(fin * (1 - Math.pow(1 - k, 3)));   // frena sobre el final
+          if (k < 1) requestAnimationFrame(paso); })(t0);
+      });
+    });
+  }
   function abrir(n, conHash){
     lector.innerHTML = '<div class="hoja"><button class="equis" type="button" aria-label="Cerrar">✕</button>'
       + (n.foto ? '<figure class="tapa-grande"><img src="' + n.foto + '" alt="' + (n.alt || "") + '">' + (n.pie ? '<figcaption>' + n.pie + '</figcaption>' : '') + '</figure>' : '')
@@ -1631,6 +1684,7 @@ $("#visor-descargar").addEventListener("click", function(){
       + '<a class="btn" href="' + wspBase + encodeURIComponent(n.titulo + " " + location.origin + location.pathname + "#n/" + n.slug) + '" target="_blank" rel="noopener" data-track="nota-compartida">Compartir por WhatsApp</a>'
       + '<button class="cerrar" type="button">Cerrar</button></div></div></div>';
     lector.hidden = false; lector.classList.add("abierto");
+    animarMarcador(lector);
     document.body.style.overflow = "hidden"; lector.scrollTop = 0;
     lector.querySelector(".equis").focus();
     if (conHash) history.replaceState(null, "", "#n/" + n.slug);

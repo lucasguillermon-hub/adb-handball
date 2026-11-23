@@ -531,6 +531,26 @@ const DATOS = {
   //     { t:"link",      v:"https://...", texto:"Ver en Instagram" }
   noticias: [
     {
+      slug: "cierre-clausura-2026",
+      fecha: "2026-11-23",
+      etiqueta: "Clausura 2026",
+      titulo: "Cómo terminó cada plantel el Clausura",
+      copete: "Quince fechas, nueve planteles y un ascenso. La Primera cerró tercera, Infantiles y Menores cuartas, y al Maxi le queda un partido.",
+      foto: "fotos/noticias/2026-11-cierre-clausura-01.jpg",
+      alt: "Un plantel del Bosco en ronda, abrazadas antes de salir a la cancha",
+      cuerpo: [
+        { t: "texto", v: "Se terminó el Clausura. Quince fechas para cada plantel de FeMeBal, de agosto a noviembre, y la última se jugó entera en Don Bosco 116 y en Sagrado Corazón." },
+        { t: "texto", v: "La Primera damas cerró tercera con 37 puntos: diez ganados, dos empatados y tres perdidos. Y arriba de eso, el ascenso a Liga Plata, que se consumó el viernes 13 en la Casa del Handball contra Secla. Micaela Ramírez fue la goleadora del plantel con 58." },
+        { t: "texto", v: "La Tercera damas quedó novena con 31 puntos. Terminó con un 32 a 22 a Cedem Caseros, el partido en el que Paula Glisciak le dio alcance a Ariana Acosta en la tabla de goleadoras: 57 contra 56, definido en la última fecha." },
+        { t: "destacado", v: "Quince fechas, nueve planteles y un ascenso." },
+        { t: "texto", v: "En las inferiores, Infantiles y Menores fueron las de mejor campaña: cuartas las dos, con 38 y 37 puntos y once partidos ganados cada una. Juniors terminó octava con 32. Juveniles quedó decimocuarta y Cadetas última, aunque las dos cerraron la temporada peleando: las Juves ganaron 32 a 30 la última y Cadetas había ganado dos fechas antes." },
+        { t: "texto", v: "La Cuarta caballeros fue undécima con 28 puntos en un torneo de catorce equipos, y se quedó con la fecha en la Casa del Handball, la primera del plantel masculino. Enzo Golnner cerró como goleador con 69." },
+        { t: "texto", v: "En Juveniles la goleadora fue Renata Giachello con 96 y en Juniors Katia Cuomo con 93." },
+        { t: "texto", v: "Al Maxihandball le queda un partido: el sábado 28 contra CAQ Handball, de visitante. Va décimo con 15 puntos y viene de ganarle 26 a 14 a La Patriada, su mejor partido del año. Magali Prisco es la goleadora con 33." },
+        { t: "texto", v: "Gracias a cada familia que llenó la tribuna de Don Bosco 116 y a las que viajaron. Nos vemos en 2027." }
+      ]
+    },
+    {
       slug: "ascenso-liga-plata",
       fecha: "2026-11-16",
       etiqueta: "Primera damas",
@@ -540,6 +560,7 @@ const DATOS = {
       alt: "El plantel de Primera damas festejando en la cancha de la Casa del Handball, con el marcador en 21 a 20 y la tribuna llena atrás",
       cuerpo: [
         { t: "texto", v: "La noche del viernes la Primera se jugaba un partido clave por el ascenso frente a Secla en la Casa del Handball. El resultado fue 21 a 20 para las nuestras, que con ese resultado consumaron el ascenso a Liga Plata." },
+        { t: "marcador", v: "21-20", rival: "Secla", donde: "Casa del Handball · viernes 13/11 · fecha 14", remate: "Ascenso a Liga Plata" },
         { t: "texto", v: "En un partido donde se trabajó muy duro en defensa y costó el gol, las dirigidas por Gull supieron dar una muestra de carácter y remontar el resultado para conseguir la victoria en los últimos minutos." },
         { t: "destacado", v: "Se jugaba el ascenso, en la Casa del Handball y con la tribuna llena." },
         { t: "texto", v: "Hablamos con Mora Lionti, una de las capitanas de este equipo, y declaró lo siguiente:" },
