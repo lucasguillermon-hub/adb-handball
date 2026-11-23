@@ -593,17 +593,42 @@ footer a:hover{color:var(--rosa)}
    una guirnalda de luces colgando de la barra de arriba y nieve cayendo en la portada.
    Las dos son decoración: aria-hidden, sin capturar el mouse, y se apagan con
    prefers-reduced-motion (ahí ni se arman, así que tampoco se crean los nodos). */
-[data-tema="navidad"] .guirnalda{position:absolute;left:0;right:0;top:100%;height:16px;display:flex;
-  justify-content:space-around;align-items:flex-start;pointer-events:none;
-  border-top:1px solid rgba(242,183,207,.4)}
+/* Guirnalda: cuelga del borde de abajo de la barra (--cuelga:100%) o del borde de arriba de
+   cada sección (0). El hilo va en rosa vivo al 45 %, que se ve lo mismo sobre azul que sobre
+   hueso, y cada luz lleva un aro oscuro para que la de color hueso no desaparezca en las
+   secciones claras. */
+[data-tema="navidad"] .guirnalda{position:absolute;left:0;right:0;top:var(--cuelga,0);height:16px;display:flex;
+  justify-content:space-around;align-items:flex-start;pointer-events:none;z-index:2;
+  border-top:1px solid rgba(228,86,143,.45)}
 [data-tema="navidad"] .guirnalda i{width:7px;height:7px;border-radius:50%;background:var(--c);
-  box-shadow:0 0 9px var(--c);margin-top:var(--baja);animation:luz 2.4s ease-in-out var(--retraso) infinite}
+  border:1px solid rgba(10,20,40,.18);box-shadow:0 0 9px var(--c);margin-top:var(--baja);
+  animation:luz 2.4s ease-in-out var(--retraso) infinite}
+/* Las guirnaldas fuera de pantalla se pausan: son once secciones, y si titilan todas a la vez
+   el teléfono pasa el rato animando cosas que nadie ve. */
+[data-tema="navidad"] .guirnalda.quieta i{animation-play-state:paused}
 @keyframes luz{0%,100%{opacity:.4;transform:scale(.85)}50%{opacity:1;transform:scale(1)}}
-[data-tema="navidad"] .nieve{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:0}
-[data-tema="navidad"] .hero > .wrap{position:relative;z-index:1}
+
+/* Nieve: una sola capa fija del tamaño de la ventana, para toda la página. Va por debajo de la
+   barra de arriba (60), del lector (100) y del visor, así que no nieva sobre el texto de una nota. */
+[data-tema="navidad"] .nieve{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:5}
 [data-tema="navidad"] .copo{position:absolute;top:-14px;width:var(--t);height:var(--t);border-radius:50%;
-  background:var(--hueso);opacity:.5;animation:caer var(--dur) linear var(--retraso) infinite}
-@keyframes caer{to{transform:translate3d(var(--dx),720px,0)}}
+  background:var(--hueso);opacity:.55;animation:caer var(--dur) linear var(--retraso) infinite}
+@keyframes caer{to{transform:translate3d(var(--dx),105vh,0)}}
+
+/* Nieve acumulada: una tira de hueso con el borde de abajo festoneado, pegada al borde de arriba.
+   Va en los botones y en el canto del tablero, no en todo: sobre las tarjetas de noticias,
+   que son fotos, parecía una raya blanca y no nieve. */
+[data-tema="navidad"] .btn,[data-tema="navidad"] .tablero{position:relative}
+[data-tema="navidad"] .btn::after,[data-tema="navidad"] .tablero::after{
+  content:"";position:absolute;left:5px;right:5px;top:-5px;height:12px;pointer-events:none;z-index:2;
+  /* Una repisa de 5 px y, colgando de ella, grumos redondos cada 36 px. Los grumos van sueltos y
+     no pegados: si se tocan, el hueco entre uno y otro queda en punta y parece una sierra. */
+  background:
+    radial-gradient(circle 9px at 18px 3px,var(--hueso) 98%,transparent 100%) repeat-x 0 0/36px 36px,
+    linear-gradient(var(--hueso),var(--hueso)) no-repeat 0 0/100% 5px;
+  border-radius:999px 999px 0 0}
+/* En el lector y en el visor no nieva: son superficies claras y encima tapan la página */
+[data-tema="navidad"] .lector .btn::after,[data-tema="navidad"] .visor .btn::after{display:none}
 </style>
 </head>
 <body>
@@ -1703,29 +1728,48 @@ function festejar(panel){
   if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
   const LUCES = ["var(--rosa)", "var(--hueso)", "var(--rosa-vivo)"];
-  const guirnalda = document.createElement("div");
-  guirnalda.className = "guirnalda"; guirnalda.setAttribute("aria-hidden", "true");
-  for (let i = 0; i < 24; i++) {
-    const luz = document.createElement("i");
-    // Las pares cuelgan un poco más abajo, para que el hilo no quede como una regla
-    luz.style.cssText = "--c:" + LUCES[i % 3] + ";--retraso:" + (i * 160 % 2400) + "ms;--baja:" + (i % 2 ? 7 : 2) + "px";
-    guirnalda.appendChild(luz);
-  }
-  document.querySelector("header").appendChild(guirnalda);
+  const colgar = (donde, cuelga) => {
+    if (getComputedStyle(donde).position === "static") donde.style.position = "relative";
+    const g = document.createElement("div");
+    g.className = "guirnalda quieta"; g.setAttribute("aria-hidden", "true");
+    if (cuelga) g.style.setProperty("--cuelga", cuelga);
+    for (let i = 0; i < 16; i++) {
+      const luz = document.createElement("i");
+      // Las pares cuelgan un poco más abajo, para que el hilo no quede como una regla
+      luz.style.cssText = "--c:" + LUCES[i % 3] + ";--retraso:" + (i * 160 % 2400) + "ms;--baja:" + (i % 2 ? 7 : 2) + "px";
+      g.appendChild(luz);
+    }
+    donde.appendChild(g);
+    return g;
+  };
 
-  const hero = document.querySelector(".hero"); if (!hero) return;
+  // Una guirnalda colgando de la barra de arriba y otra en el canto de cada sección
+  const guirnaldas = [colgar(document.querySelector("header"), "100%")];
+  document.querySelectorAll("main > section").forEach(sec => guirnaldas.push(colgar(sec, null)));
+
+  // Solo titilan las que se ven. Sin IntersectionObserver se prenden todas y listo.
+  if ("IntersectionObserver" in window) {
+    const obs = new IntersectionObserver(es => {
+      es.forEach(e => e.target.classList.toggle("quieta", !e.isIntersecting));
+    }, { rootMargin: "120px" });
+    guirnaldas.forEach(g => obs.observe(g));
+  } else {
+    guirnaldas.forEach(g => g.classList.remove("quieta"));
+  }
+
+  // Nieve: una sola capa fija para toda la página, no una por sección
   const nieve = document.createElement("div");
   nieve.className = "nieve"; nieve.setAttribute("aria-hidden", "true");
-  for (let i = 0; i < 18; i++) {
+  for (let i = 0; i < 34; i++) {
     const copo = document.createElement("i"); copo.className = "copo";
     // El retraso va en negativo: así la nieve ya está cayendo cuando se abre la página,
-    // en vez de arrancar con la portada vacía.
+    // en vez de arrancar con la pantalla vacía.
     copo.style.cssText = "left:" + Math.round(Math.random() * 100) + "%;--t:" + (3 + Math.round(Math.random() * 4))
-      + "px;--dur:" + (9 + Math.random() * 7).toFixed(1) + "s;--retraso:-" + (Math.random() * 12).toFixed(1)
-      + "s;--dx:" + (Math.round(Math.random() * 60) - 30) + "px";
+      + "px;--dur:" + (9 + Math.random() * 8).toFixed(1) + "s;--retraso:-" + (Math.random() * 16).toFixed(1)
+      + "s;--dx:" + (Math.round(Math.random() * 70) - 35) + "px";
     nieve.appendChild(copo);
   }
-  hero.prepend(nieve);
+  document.body.appendChild(nieve);
 })();
 
 /* ============================ novedades ============================

@@ -93,8 +93,12 @@ El sitio usa animaciones propias, sin librerías. Tres cuidados que ya costaron 
 
 `DATOS.festejo` tira chispas sobre el tablero de la portada hasta su fecha `hasta`; el bloque
 `marcador` de una nota las tira con `festejo:true`. `DATOS.tema` pinta la temática de temporada
-entre `desde` y `hasta` (hoy, navidad: guirnalda arriba y nieve en la portada, con los colores
-del escudo). Para verla fuera de fecha: `?tema=navidad` en la dirección.
+entre `desde` y `hasta`. La de navidad: una guirnalda colgando de la barra de arriba y otra en
+el canto de cada sección, nieve en una sola capa fija para toda la página, y nieve acumulada en
+los botones y en el canto del tablero. Todo con los colores del escudo. Para verla fuera de
+fecha: `?tema=navidad` en la dirección. Las guirnaldas fuera de pantalla se pausan (son once
+secciones: si titilan todas a la vez el teléfono anima cosas que nadie ve). La nieve va a
+`z-index:5`, debajo de la barra (60) y del lector (100), así que no nieva sobre una nota.
 
 **Contraste:** el rosa vivo sobre fondo claro da 3,1-3,5:1, así que va solo en títulos grandes,
 bordes y fondos. El texto chico que era rosa vivo es `--azul` y los botones rosa llevan texto
