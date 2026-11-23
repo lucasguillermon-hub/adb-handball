@@ -21,6 +21,11 @@ const DATOS = {
   // Aviso del club: una barra arriba de todo, con un botón que abre el detalle. Se puede cerrar
   // (vuelve a aparecer en la próxima visita, no se guarda nada). Con aviso:null no se muestra.
   // "hasta" es el último día que se muestra; después de esa fecha desaparece solo.
+  // Temática de temporada: pinta la web entre esas dos fechas (guirnalda arriba y nieve en la
+  // portada, con los colores del escudo). Con tema:null no se muestra nada.
+  // Para verla antes de tiempo, agregar ?tema=navidad a la dirección.
+  tema: { nombre: "navidad", desde: "2026-12-08", hasta: "2026-12-26" },
+
   // Festejo del club: tira chispas sobre el tablero de la portada, una vez por visita (no se
   // guarda nada: vuelve a salir si recargás). Desaparece solo pasada la fecha "hasta".
   // Con festejo:null no se muestra.

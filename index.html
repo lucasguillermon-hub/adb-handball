@@ -588,6 +588,22 @@ footer a:hover{color:var(--rosa)}
 .instalar .btn{padding:9px 16px;font-size:13.5px}
 .instalar .cerrar{background:none;border:0;color:rgba(255,255,255,.5);font-size:20px;cursor:pointer;padding:4px 8px;line-height:1}
 @media(max-width:520px){.instalar{flex-wrap:wrap}.instalar .acciones{width:100%;margin-left:0;justify-content:flex-end}}
+/* ============================ temática de temporada ============================
+   DATOS.tema pinta la web entre dos fechas. La de navidad usa los colores del escudo:
+   una guirnalda de luces colgando de la barra de arriba y nieve cayendo en la portada.
+   Las dos son decoración: aria-hidden, sin capturar el mouse, y se apagan con
+   prefers-reduced-motion (ahí ni se arman, así que tampoco se crean los nodos). */
+[data-tema="navidad"] .guirnalda{position:absolute;left:0;right:0;top:100%;height:16px;display:flex;
+  justify-content:space-around;align-items:flex-start;pointer-events:none;
+  border-top:1px solid rgba(242,183,207,.4)}
+[data-tema="navidad"] .guirnalda i{width:7px;height:7px;border-radius:50%;background:var(--c);
+  box-shadow:0 0 9px var(--c);margin-top:var(--baja);animation:luz 2.4s ease-in-out var(--retraso) infinite}
+@keyframes luz{0%,100%{opacity:.4;transform:scale(.85)}50%{opacity:1;transform:scale(1)}}
+[data-tema="navidad"] .nieve{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+[data-tema="navidad"] .hero > .wrap{position:relative;z-index:1}
+[data-tema="navidad"] .copo{position:absolute;top:-14px;width:var(--t);height:var(--t);border-radius:50%;
+  background:var(--hueso);opacity:.5;animation:caer var(--dur) linear var(--retraso) infinite}
+@keyframes caer{to{transform:translate3d(var(--dx),720px,0)}}
 </style>
 </head>
 <body>
@@ -1656,16 +1672,60 @@ function festejar(panel){
   const panel = $("#tablero"); if (!panel) return;
   let tirado = false;
   const tirar = () => { if (tirado) return; tirado = true; festejar(panel); };
-  // Si el tablero ya se ve al cargar, que es lo normal en una compu, se tira y listo: mirar la
-  // geometría no depende de que el navegador esté pintando, y el observer sí.
-  const enPantalla = () => { const r = panel.getBoundingClientRect(); return r.top < innerHeight && r.bottom > 0; };
-  if (enPantalla()) { setTimeout(tirar, 450); return; }
-  // En el celular queda abajo del pliegue: ahí sí se espera a que la persona llegue.
-  if (!("IntersectionObserver" in window)) return;
-  const obs = new IntersectionObserver(es => {
-    if (es.some(e => e.isIntersecting)) { obs.disconnect(); setTimeout(tirar, 350); }
-  }, { threshold: 0 });
-  obs.observe(panel);
+  // El tablero lo pinta el script más abajo, así que al principio mide cero de alto: hay que
+  // esperar a que tenga tamaño antes de preguntarle dónde está.
+  let intentos = 0;
+  const intentar = () => {
+    const r = panel.getBoundingClientRect();
+    if (!r.height && intentos++ < 12) { setTimeout(intentar, 250); return; }
+    // Si ya se ve, se tira y listo: la geometría no depende de que el navegador esté pintando,
+    // y el IntersectionObserver sí (en una pestaña de fondo no dispara nunca).
+    if (r.top < innerHeight && r.bottom > 0) { tirar(); return; }
+    // En el celular queda abajo del pliegue: ahí sí se espera a que la persona llegue.
+    if (!("IntersectionObserver" in window)) return;
+    const obs = new IntersectionObserver(es => {
+      if (es.some(e => e.isIntersecting)) { obs.disconnect(); setTimeout(tirar, 350); }
+    }, { threshold: 0 });
+    obs.observe(panel);
+  };
+  setTimeout(intentar, 450);
+})();
+
+/* DATOS.tema: la temática de temporada, entre su "desde" y su "hasta". Para verla antes de
+   tiempo (o para una foto), se le puede pasar ?tema=navidad a la dirección. */
+(function(){
+  const t = DATOS.tema, hoy = new Date().toISOString().slice(0, 10);
+  const forzado = new URLSearchParams(location.search).get("tema");
+  const enFecha = t && t.nombre && (!t.desde || t.desde <= hoy) && (!t.hasta || hoy <= t.hasta);
+  const tema = forzado || (enFecha ? t.nombre : null);
+  if (tema !== "navidad") return;
+  document.documentElement.dataset.tema = "navidad";
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  const LUCES = ["var(--rosa)", "var(--hueso)", "var(--rosa-vivo)"];
+  const guirnalda = document.createElement("div");
+  guirnalda.className = "guirnalda"; guirnalda.setAttribute("aria-hidden", "true");
+  for (let i = 0; i < 24; i++) {
+    const luz = document.createElement("i");
+    // Las pares cuelgan un poco más abajo, para que el hilo no quede como una regla
+    luz.style.cssText = "--c:" + LUCES[i % 3] + ";--retraso:" + (i * 160 % 2400) + "ms;--baja:" + (i % 2 ? 7 : 2) + "px";
+    guirnalda.appendChild(luz);
+  }
+  document.querySelector("header").appendChild(guirnalda);
+
+  const hero = document.querySelector(".hero"); if (!hero) return;
+  const nieve = document.createElement("div");
+  nieve.className = "nieve"; nieve.setAttribute("aria-hidden", "true");
+  for (let i = 0; i < 18; i++) {
+    const copo = document.createElement("i"); copo.className = "copo";
+    // El retraso va en negativo: así la nieve ya está cayendo cuando se abre la página,
+    // en vez de arrancar con la portada vacía.
+    copo.style.cssText = "left:" + Math.round(Math.random() * 100) + "%;--t:" + (3 + Math.round(Math.random() * 4))
+      + "px;--dur:" + (9 + Math.random() * 7).toFixed(1) + "s;--retraso:-" + (Math.random() * 12).toFixed(1)
+      + "s;--dx:" + (Math.round(Math.random() * 60) - 30) + "px";
+    nieve.appendChild(copo);
+  }
+  hero.prepend(nieve);
 })();
 
 /* ============================ novedades ============================

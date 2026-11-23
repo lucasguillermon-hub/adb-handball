@@ -78,6 +78,28 @@ salen de `datos.js` (goleadoras, posiciones, cuándo es la próxima), pero no fr
 color ni remates propios: el club pidió sacar uno ("el partido de menos goles del año, y
 el que más valía", 16/11/2026) porque se notaba escrito por una IA.
 
+## Animaciones y temática
+
+El sitio usa animaciones propias, sin librerías. Tres cuidados que ya costaron errores:
+
+- **Nunca dejar el estado final atrás de una animación.** Lo que se ve de base tiene que ser el
+  estado completo (barra entera, tarjeta visible, fila rosa); la animación solo lo recorre. Si se
+  arranca invisible y la animación no corre, queda invisible para siempre.
+- **`requestAnimationFrame` y `IntersectionObserver` no corren si el navegador no está pintando**
+  (pestaña de fondo, panel oculto). No apoyar en ellos nada que tenga que terminar en un estado
+  correcto: para eso va un `setTimeout` de respaldo, o mirar la geometría, que no depende de la
+  pintura. Sí sirven para prender una animación, porque si no corren tampoco hay nada que ver.
+- **Todo se apaga con `prefers-reduced-motion`**, y lo que crea nodos ni los crea.
+
+`DATOS.festejo` tira chispas sobre el tablero de la portada hasta su fecha `hasta`; el bloque
+`marcador` de una nota las tira con `festejo:true`. `DATOS.tema` pinta la temática de temporada
+entre `desde` y `hasta` (hoy, navidad: guirnalda arriba y nieve en la portada, con los colores
+del escudo). Para verla fuera de fecha: `?tema=navidad` en la dirección.
+
+**Contraste:** el rosa vivo sobre fondo claro da 3,1-3,5:1, así que va solo en títulos grandes,
+bordes y fondos. El texto chico que era rosa vivo es `--azul` y los botones rosa llevan texto
+`--tinta`. Antes de dar por terminado un cambio de color, medirlo.
+
 ## Decisiones tomadas (no volver a preguntar)
 
 - La web completa se publicó el 20/9/2026 (antes `index.html` era una página de espera con
