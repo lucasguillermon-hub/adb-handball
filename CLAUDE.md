@@ -100,6 +100,25 @@ fecha: `?tema=navidad` en la dirección. Las guirnaldas fuera de pantalla se pau
 secciones: si titilan todas a la vez el teléfono anima cosas que nadie ve). La nieve va a
 `z-index:5`, debajo de la barra (60) y del lector (100), así que no nieva sobre una nota.
 
+Cuatro cosas de la temática que costaron una pasada de más, y que valen para cualquier efecto
+que se agregue:
+
+- **Nada de bordes duros.** Un disco opaco de color hueso al 55 % sobre el azul da un punto gris
+  y parece polvo. El copo es un núcleo blanco que se desvanece, con el halo exterior azulado: ese
+  halo es lo único que se ve sobre las secciones color hueso, donde un copo blanco no existe.
+- **Un copo con una sola animación es lluvia.** Son dos elementos: el de afuera cae y el de
+  adentro se hamaca. Y van en tres capas de profundidad (chicos, apagados y lentos atrás; grandes,
+  brillantes y desenfocados adelante), porque todos iguales se leen como una grilla de puntos.
+- **Lo que se dibuja sobre un botón tiene que estar recortado por el botón.** La nieve acumulada
+  va en un `::after` con el botón en `overflow:hidden`, si no se sale del pill y queda una tira
+  flotando con el fondo asomando debajo. La forma va por `mask` y el color por debajo, así el
+  manto puede sombrearse a sí mismo (blanco arriba, azul abajo) en vez de ser un relleno liso.
+- **Un patrón que se repite no puede cortar sus propias figuras.** Los grumos del manto se dibujan
+  dentro de una baldosa de 124 px: el que asoma por el borde queda cortado al ras y deja un
+  escalón vertical a la vista cada 124 px. Lo mismo vale para el hilo de la guirnalda, que se
+  dibuja como tres panzas a lo ancho y le pasa a cada luz, en `--baja`, la altura de esa misma
+  curva: con el hilo recto y las luces en fila parece una regla con puntos.
+
 **Contraste:** el rosa vivo sobre fondo claro da 3,1-3,5:1, así que va solo en títulos grandes,
 bordes y fondos. El texto chico que era rosa vivo es `--azul` y los botones rosa llevan texto
 `--tinta`. Antes de dar por terminado un cambio de color, medirlo.

@@ -590,45 +590,83 @@ footer a:hover{color:var(--rosa)}
 @media(max-width:520px){.instalar{flex-wrap:wrap}.instalar .acciones{width:100%;margin-left:0;justify-content:flex-end}}
 /* ============================ temática de temporada ============================
    DATOS.tema pinta la web entre dos fechas. La de navidad usa los colores del escudo:
-   una guirnalda de luces colgando de la barra de arriba y nieve cayendo en la portada.
-   Las dos son decoración: aria-hidden, sin capturar el mouse, y se apagan con
-   prefers-reduced-motion (ahí ni se arman, así que tampoco se crean los nodos). */
-/* Guirnalda: cuelga del borde de abajo de la barra (--cuelga:100%) o del borde de arriba de
-   cada sección (0). El hilo va en rosa vivo al 45 %, que se ve lo mismo sobre azul que sobre
-   hueso, y cada luz lleva un aro oscuro para que la de color hueso no desaparezca en las
-   secciones claras. */
-[data-tema="navidad"] .guirnalda{position:absolute;left:0;right:0;top:var(--cuelga,0);height:16px;display:flex;
-  justify-content:space-around;align-items:flex-start;pointer-events:none;z-index:2;
-  border-top:1px solid rgba(228,86,143,.45)}
-[data-tema="navidad"] .guirnalda i{width:7px;height:7px;border-radius:50%;background:var(--c);
-  border:1px solid rgba(10,20,40,.18);box-shadow:0 0 9px var(--c);margin-top:var(--baja);
-  animation:luz 2.4s ease-in-out var(--retraso) infinite}
+   guirnaldas de luces, nieve cayendo en toda la página y nieve acumulada en los cantos.
+   Todo es decoración: aria-hidden, sin capturar el mouse, y se apaga con
+   prefers-reduced-motion (ahí ni se arma, así que tampoco se crean los nodos). */
+
+/* Guirnalda. El hilo se dibuja como tres panzas (un SVG de fondo, estirado al ancho) y cada
+   luz cuelga a la altura que le toca de esa curva: el script le pasa en --baja el valor de la
+   misma cuenta que dibuja el SVG. Con el hilo recto y las luces en fila parecía una regla con
+   puntos. El hilo va en rosa vivo al 50 %, que se ve igual sobre azul que sobre hueso. */
+[data-tema="navidad"] .guirnalda{position:absolute;left:0;right:0;top:var(--cuelga,0);height:24px;
+  display:flex;justify-content:space-around;align-items:flex-start;pointer-events:none;z-index:2;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 24' preserveAspectRatio='none'%3E%3Cpath d='M0 1.5 Q50 17.5 100 1.5 Q150 17.5 200 1.5 Q250 17.5 300 1.5' fill='none' stroke='%23E4568F' stroke-opacity='.5' stroke-width='1.3'/%3E%3C/svg%3E") no-repeat 0 0/100% 24px}
+/* Cada luz es una gota con el brillo arriba a la izquierda y el borde apagado: así tiene
+   volumen y no es un círculo plano. El aro oscuro es para que la de color hueso no
+   desaparezca en las secciones claras. */
+[data-tema="navidad"] .guirnalda i{width:8px;height:10px;margin-top:var(--baja);flex:0 0 auto;
+  border-radius:50% 50% 54% 54%/40% 40% 60% 60%;border:1px solid rgba(10,20,40,.34);
+  background:radial-gradient(circle at 36% 28%,rgba(255,255,255,.95) 0 13%,var(--c) 50%,rgba(10,20,40,.32) 100%);
+  box-shadow:0 0 10px var(--c),0 1px 2px rgba(10,20,40,.4);
+  animation:luz var(--parpadeo,2.4s) ease-in-out var(--retraso) infinite}
 /* Las guirnaldas fuera de pantalla se pausan: son once secciones, y si titilan todas a la vez
    el teléfono pasa el rato animando cosas que nadie ve. */
 [data-tema="navidad"] .guirnalda.quieta i{animation-play-state:paused}
-@keyframes luz{0%,100%{opacity:.4;transform:scale(.85)}50%{opacity:1;transform:scale(1)}}
+@keyframes luz{0%,100%{opacity:.45;filter:brightness(.8)}50%{opacity:1;filter:brightness(1.15)}}
 
 /* Nieve: una sola capa fija del tamaño de la ventana, para toda la página. Va por debajo de la
-   barra de arriba (60), del lector (100) y del visor, así que no nieva sobre el texto de una nota. */
+   barra de arriba (60), del lector (100) y del visor, así que no nieva sobre el texto de una nota.
+   Cada copo son dos elementos: el de afuera cae y el de adentro se hamaca de un lado al otro.
+   Un copo con una sola animación baja en línea recta y parece lluvia. */
 [data-tema="navidad"] .nieve{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:5}
-[data-tema="navidad"] .copo{position:absolute;top:-14px;width:var(--t);height:var(--t);border-radius:50%;
-  background:var(--hueso);opacity:.55;animation:caer var(--dur) linear var(--retraso) infinite}
-@keyframes caer{to{transform:translate3d(var(--dx),105vh,0)}}
+[data-tema="navidad"] .copo{position:absolute;top:-4%;left:var(--x);width:var(--t);height:var(--t);
+  animation:caer var(--dur) linear var(--retraso) infinite}
+/* El copo no tiene borde: es un núcleo blanco que se desvanece. Un disco de borde duro al 55 %
+   sobre el azul da un punto gris, que es lo que parecía polvo. El halo exterior es azulado, no
+   blanco: sobre el azul suma brillo, y sobre las secciones color hueso es lo único que se ve
+   (un copo blanco sobre fondo hueso no existe). */
+[data-tema="navidad"] .copo b{display:block;width:100%;height:100%;border-radius:50%;opacity:var(--op);
+  background:radial-gradient(circle at 42% 38%,#fff 0 26%,rgba(255,255,255,.72) 46%,rgba(164,182,214,.5) 72%,rgba(164,182,214,0) 100%);
+  animation:vaiven var(--vai) ease-in-out var(--retraso) infinite alternate}
+/* Los de adelante van desenfocados, como en una foto: es lo que separa las tres capas */
+[data-tema="navidad"] .copo.cerca b{filter:blur(1.1px)}
+@keyframes caer{to{transform:translate3d(0,112vh,0)}}
+@keyframes vaiven{from{transform:translateX(calc(var(--dx) * -1))}to{transform:translateX(var(--dx))}}
 
-/* Nieve acumulada: una tira de hueso con el borde de abajo festoneado, pegada al borde de arriba.
-   Va en los botones y en el canto del tablero, no en todo: sobre las tarjetas de noticias,
-   que son fotos, parecía una raya blanca y no nieve. */
+/* Nieve acumulada en los cantos. La forma va por máscara y el color por debajo, así el manto
+   puede tener sombra propia: blanco arriba, azul del escudo abajo. La nieve se sombrea a sí
+   misma, y sin eso queda un sticker blanco pegado al borde. */
 [data-tema="navidad"] .btn,[data-tema="navidad"] .tablero{position:relative}
+/* El botón recorta: el manto tiene que seguir la curva del pill. Antes se dibujaba por afuera
+   y quedaba una tira flotando con el fondo oscuro asomando debajo. */
+[data-tema="navidad"] .btn{overflow:hidden}
+@supports ((mask:linear-gradient(#000,#000)) or (-webkit-mask:linear-gradient(#000,#000))){
 [data-tema="navidad"] .btn::after,[data-tema="navidad"] .tablero::after{
-  content:"";position:absolute;left:5px;right:5px;top:-5px;height:12px;pointer-events:none;z-index:2;
-  /* Una repisa de 5 px y, colgando de ella, grumos redondos cada 36 px. Los grumos van sueltos y
-     no pegados: si se tocan, el hueco entre uno y otro queda en punta y parece una sierra. */
+  content:"";position:absolute;left:0;right:0;top:0;height:15px;pointer-events:none;z-index:3;
+  /* Una repisa de 5 px y, encima, cuatro grumos que se pisan entre sí. Las capas de máscara se
+     suman, así que al pisarse dan un borde ondulado continuo. Dibujados uno al lado del otro el
+     hueco entre dos quedaba en punta y parecía una sierra. El paso es de 124 px para que en un
+     botón corto no se note que se repite, y ningún grumo se sale de su baldosa: el que asoma por
+     el borde queda cortado al ras y deja un escalón vertical a la vista. */
+  --manto:
+    radial-gradient(21px 8px at 23px 4px,#000 97%,transparent 100%) repeat-x 0 0/124px 100%,
+    radial-gradient(11px 8px at 46px 5px,#000 97%,transparent 100%) repeat-x 0 0/124px 100%,
+    radial-gradient(25px 9px at 68px 5px,#000 97%,transparent 100%) repeat-x 0 0/124px 100%,
+    radial-gradient(15px 6px at 104px 3px,#000 97%,transparent 100%) repeat-x 0 0/124px 100%,
+    linear-gradient(#000,#000) no-repeat 0 0/100% 5px;
+  -webkit-mask:var(--manto);mask:var(--manto);
+  /* Textura: brillos blancos abajo (donde el manto ya está sombreado, que es donde se ven) y
+     dos puntos fríos en el medio. Sin eso el manto es un relleno liso. */
   background:
-    radial-gradient(circle 9px at 18px 3px,var(--hueso) 98%,transparent 100%) repeat-x 0 0/36px 36px,
-    linear-gradient(var(--hueso),var(--hueso)) no-repeat 0 0/100% 5px;
-  border-radius:999px 999px 0 0}
+    radial-gradient(1.5px 1.5px at 30px 11px,rgba(255,255,255,.95),transparent) repeat-x 0 0/124px 100%,
+    radial-gradient(1.2px 1.2px at 71px 12px,rgba(255,255,255,.9),transparent) repeat-x 0 0/124px 100%,
+    radial-gradient(1.6px 1.6px at 107px 10px,rgba(255,255,255,.95),transparent) repeat-x 0 0/124px 100%,
+    radial-gradient(1.8px 1.8px at 48px 7px,rgba(21,42,84,.18),transparent) repeat-x 0 0/124px 100%,
+    radial-gradient(1.5px 1.5px at 88px 8px,rgba(21,42,84,.16),transparent) repeat-x 0 0/124px 100%,
+    linear-gradient(180deg,#fff 0,var(--hueso) 30%,#B6C1D6 100%)}
 /* En el lector y en el visor no nieva: son superficies claras y encima tapan la página */
 [data-tema="navidad"] .lector .btn::after,[data-tema="navidad"] .visor .btn::after{display:none}
+}
 </style>
 </head>
 <body>
@@ -1728,15 +1766,20 @@ function festejar(panel){
   if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
   const LUCES = ["var(--rosa)", "var(--hueso)", "var(--rosa-vivo)"];
+  const N_LUCES = 16;
+  // La panza del hilo. El SVG del CSS dibuja tres arcos de Bézier cuadrática a lo ancho; esta
+  // es la misma cuenta, para que cada luz cuelgue justo de la curva y no por encima o por debajo.
+  const panza = x => { const p = (x * 3) % 1; return Math.round(32 * p * (1 - p)); };
   const colgar = (donde, cuelga) => {
     if (getComputedStyle(donde).position === "static") donde.style.position = "relative";
     const g = document.createElement("div");
     g.className = "guirnalda quieta"; g.setAttribute("aria-hidden", "true");
     if (cuelga) g.style.setProperty("--cuelga", cuelga);
-    for (let i = 0; i < 16; i++) {
+    for (let i = 0; i < N_LUCES; i++) {
       const luz = document.createElement("i");
-      // Las pares cuelgan un poco más abajo, para que el hilo no quede como una regla
-      luz.style.cssText = "--c:" + LUCES[i % 3] + ";--retraso:" + (i * 160 % 2400) + "ms;--baja:" + (i % 2 ? 7 : 2) + "px";
+      // space-around deja cada luz en (i + 0,5) / N del ancho: ahí se le pide la altura al hilo
+      luz.style.cssText = "--c:" + LUCES[i % 3] + ";--retraso:" + (i * 160 % 2400)
+        + "ms;--parpadeo:" + (2.1 + (i % 4) * 0.35).toFixed(2) + "s;--baja:" + panza((i + 0.5) / N_LUCES) + "px";
       g.appendChild(luz);
     }
     donde.appendChild(g);
@@ -1757,16 +1800,30 @@ function festejar(panel){
     guirnaldas.forEach(g => g.classList.remove("quieta"));
   }
 
-  // Nieve: una sola capa fija para toda la página, no una por sección
+  // Nieve: una sola capa fija para toda la página, no una por sección. Tres capas de
+  // profundidad: los de atrás chicos, apagados y lentos; los de adelante grandes, brillantes,
+  // rápidos y desenfocados. Todos iguales se ven como una lluvia de puntos.
+  const CAPAS = [
+    { peso: 45, t: [2, 3],  op: [.28, .42], dur: [20, 30], dx: [8, 16],  vai: [4.5, 7], cerca: false },
+    { peso: 35, t: [4, 6],  op: [.5, .68],  dur: [14, 20], dx: [14, 24], vai: [3.5, 6], cerca: false },
+    { peso: 20, t: [7, 11], op: [.78, .95], dur: [9, 13],  dx: [20, 34], vai: [2.5, 4.5], cerca: true }
+  ];
+  const entre = ([a, b]) => a + Math.random() * (b - a);
   const nieve = document.createElement("div");
   nieve.className = "nieve"; nieve.setAttribute("aria-hidden", "true");
-  for (let i = 0; i < 34; i++) {
-    const copo = document.createElement("i"); copo.className = "copo";
+  const cuantos = innerWidth < 600 ? 44 : 70;
+  for (let i = 0; i < cuantos; i++) {
+    let r = Math.random() * 100, capa = CAPAS[0];
+    for (const c of CAPAS) { if (r < c.peso) { capa = c; break; } r -= c.peso; }
+    const copo = document.createElement("i");
+    copo.className = "copo" + (capa.cerca ? " cerca" : "");
     // El retraso va en negativo: así la nieve ya está cayendo cuando se abre la página,
-    // en vez de arrancar con la pantalla vacía.
-    copo.style.cssText = "left:" + Math.round(Math.random() * 100) + "%;--t:" + (3 + Math.round(Math.random() * 4))
-      + "px;--dur:" + (9 + Math.random() * 8).toFixed(1) + "s;--retraso:-" + (Math.random() * 16).toFixed(1)
-      + "s;--dx:" + (Math.round(Math.random() * 70) - 35) + "px";
+    // en vez de arrancar con la pantalla vacía. También desfasa el vaivén de cada copo.
+    copo.style.cssText = "--x:" + (Math.random() * 100).toFixed(1) + "%;--t:" + entre(capa.t).toFixed(1)
+      + "px;--op:" + entre(capa.op).toFixed(2) + ";--dur:" + entre(capa.dur).toFixed(1)
+      + "s;--vai:" + entre(capa.vai).toFixed(1) + "s;--dx:" + Math.round(entre(capa.dx))
+      + "px;--retraso:-" + (Math.random() * 30).toFixed(1) + "s";
+    copo.appendChild(document.createElement("b"));
     nieve.appendChild(copo);
   }
   document.body.appendChild(nieve);
