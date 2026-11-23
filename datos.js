@@ -554,7 +554,7 @@ const DATOS = {
         { t: "texto", v: "La Tercera damas quedó novena con 31 puntos. Terminó con un 32 a 22 a Cedem Caseros, el partido en el que Paula Glisciak le dio alcance a Ariana Acosta en la tabla de goleadoras: 57 contra 56, definido en la última fecha." },
         { t: "destacado", v: "Quince fechas, nueve planteles y un ascenso." },
         { t: "texto", v: "En las inferiores, Infantiles y Menores fueron las de mejor campaña: cuartas las dos, con 38 y 37 puntos y once partidos ganados cada una. Juniors terminó octava con 32. Juveniles quedó decimocuarta y Cadetas última, aunque las dos cerraron la temporada peleando: las Juves ganaron 32 a 30 la última y Cadetas había ganado dos fechas antes." },
-        { t: "texto", v: "La Cuarta caballeros fue undécima con 28 puntos en un torneo de catorce equipos, y se quedó con la fecha en la Casa del Handball, la primera del plantel masculino. Enzo Golnner cerró como goleador con 69." },
+        { t: "texto", v: "La Cuarta caballeros fue undécima con 28 puntos en un torneo de catorce equipos, y en octubre jugó por primera vez en la Casa del Handball: perdió 24 a 21 con Talleres, pero fue el estreno del plantel masculino en ese estadio. Enzo Golnner cerró como goleador con 69." },
         { t: "texto", v: "En Juveniles la goleadora fue Renata Giachello con 96 y en Juniors Katia Cuomo con 93." },
         { t: "texto", v: "Al Maxihandball le queda un partido: el sábado 28 contra CAQ Handball, de visitante. Va décimo con 15 puntos y viene de ganarle 26 a 14 a La Patriada, su mejor partido del año. Magali Prisco es la goleadora con 33." },
         { t: "texto", v: "Gracias a cada familia que llenó la tribuna de Don Bosco 116 y a las que viajaron. Nos vemos en 2027." }
