@@ -30,7 +30,9 @@
   --azul:#152A54;
   --azul-2:#1E3A6E;
   --rosa:#F2B7CF;
-  --rosa-vivo:#E4568F;
+  --rosa-vivo:#E4568F;   /* Acento. Sobre claro da 3,1-3,5:1, así que solo va en texto grande,
+     bordes y fondos; el texto chico que era rosa vivo pasó a --azul (12,6:1) y los botones
+     rosa llevan texto --tinta (5,3:1). */
   --hueso:#F5F2ED;
   --blanco:#ffffff;
   --linea:rgba(242,183,207,.26);
@@ -109,7 +111,7 @@ section{padding:76px 0}
 .lector .tapa-grande img{width:100%;display:block}
 .lector .tapa-grande figcaption{font-size:13.5px;color:rgba(10,20,40,.6);padding:8px 30px 0}
 .lector .cuerpo{padding:24px 30px 0}
-.lector .meta{display:flex;gap:10px;align-items:center;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--rosa-vivo);margin-bottom:10px}
+.lector .meta{display:flex;gap:10px;align-items:center;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--azul);margin-bottom:10px}
 .lector .meta span{color:rgba(10,20,40,.55);letter-spacing:.04em}
 .lector h2{font-family:var(--display);font-size:clamp(24px,4vw,34px);font-weight:400;line-height:1.1;margin:0}
 .lector .copete{font-size:16.5px;line-height:1.5;color:rgba(10,20,40,.72);margin:10px 0 0}
@@ -118,7 +120,7 @@ section{padding:76px 0}
 .lector .destacado{font-family:var(--display);font-size:22px;font-weight:400;line-height:1.25;color:var(--azul);border-left:4px solid var(--rosa);padding-left:16px;margin:22px 0}
 /* Lo que dice una jugadora o el entrenador: bastardilla y fondo, para que se despegue del relato */
 .lector .cuerpo .cita{font-style:italic;font-weight:600;font-size:16.5px;line-height:1.55;color:var(--azul);background:rgba(21,42,84,.055);border-left:4px solid var(--rosa-vivo);border-radius:0 12px 12px 0;padding:16px 18px;margin:20px 0 0}
-.lector .cuerpo .cita .quien{display:block;font-style:normal;font-weight:700;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--rosa-vivo);margin-top:10px}
+.lector .cuerpo .cita .quien{display:block;font-style:normal;font-weight:700;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--azul);margin-top:10px}
 /* Marcador de una nota: el resultado grande, para un partido que lo merece (un ascenso, una final).
    Los números arrancan en cero y suben al abrirse el lector; con prefers-reduced-motion van derecho. */
 .lector .marcador-nota{margin:26px 0 0;padding:26px 22px;border-radius:16px;background:var(--azul);color:var(--hueso);text-align:center;position:relative;overflow:hidden;isolation:isolate}
@@ -161,7 +163,7 @@ section{padding:76px 0}
 .lector .video .play{position:absolute;width:64px;height:64px;border-radius:50%;background:var(--rosa-vivo);display:grid;place-items:center;color:#fff;font-size:22px;padding-left:5px}
 .lector .video iframe{width:100%;height:100%;border:0}
 .lector .pie-nota{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
-.lector .pie-nota .btn{background:var(--tinta)}
+.lector .pie-nota .btn{background:var(--tinta);color:var(--hueso)}
 .lector .pie-nota .cerrar{background:none;border:1.5px solid var(--linea-oscura);border-radius:999px;padding:11px 20px;font-family:inherit;font-size:14.5px;font-weight:700;color:var(--tinta);cursor:pointer}
 .lector .equis{position:sticky;top:0;float:right;margin:10px;background:rgba(10,20,40,.7);color:#fff;border:0;border-radius:50%;width:38px;height:38px;font-size:17px;cursor:pointer;z-index:2}
 
@@ -182,13 +184,13 @@ section{padding:76px 0}
 .aviso-panel .caja{background:var(--hueso);color:var(--tinta);border-radius:18px;max-width:640px;width:100%;padding:30px 32px;margin:auto}
 .aviso-panel h2{font-family:var(--display);font-size:28px;font-weight:400;line-height:1.1;margin:0 0 8px}
 .aviso-panel .baj{font-size:15.5px;line-height:1.55;color:rgba(10,20,40,.75);margin:0 0 20px}
-.aviso-panel h3{font-family:var(--display);font-size:15px;font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:var(--rosa-vivo);margin:18px 0 8px}
+.aviso-panel h3{font-family:var(--display);font-size:15px;font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:var(--azul);margin:18px 0 8px}
 .aviso-panel ul{list-style:none;margin:0;padding:0;display:grid;gap:5px}
 .aviso-panel li{position:relative;padding-left:18px;font-size:15px;line-height:1.5}
 .aviso-panel li::before{content:"";position:absolute;left:0;top:9px;width:7px;height:7px;border-radius:2px;background:var(--rosa)}
 .aviso-panel .cierre{margin:20px 0 0;font-size:15px;line-height:1.55;border-top:1px solid var(--linea-oscura);padding-top:16px}
 .aviso-panel .pie-aviso{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
-.aviso-panel .pie-aviso .btn{background:var(--tinta)}
+.aviso-panel .pie-aviso .btn{background:var(--tinta);color:var(--hueso)}
 .aviso-panel .pie-aviso .cerrar{background:none;border:1.5px solid var(--linea-oscura);border-radius:999px;padding:11px 20px;font-family:inherit;font-size:14.5px;font-weight:700;color:var(--tinta);cursor:pointer}
 header{position:sticky;top:0;z-index:60;background:rgba(10,20,40,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--linea)}
 .nav{display:flex;align-items:center;gap:22px;height:70px}
@@ -199,7 +201,10 @@ header{position:sticky;top:0;z-index:60;background:rgba(10,20,40,.92);backdrop-f
 .menu{display:flex;gap:20px;margin-left:auto;align-items:center}
 .menu a{text-decoration:none;font-size:14.5px;font-weight:500;color:rgba(255,255,255,.82);padding:6px 0;border-bottom:2px solid transparent}
 .menu a:hover{color:#fff;border-color:var(--rosa-vivo)}
-.btn{display:inline-block;text-decoration:none;font-weight:700;font-size:14.5px;padding:11px 20px;border-radius:999px;border:0;cursor:pointer;background:var(--rosa-vivo);color:#fff}
+/* `.menu a` le gana en especificidad al color de `.btn`, y el blanco al 82 % sobre rosa vivo
+   daba 2,8:1. El botón del menú se pinta como cualquier otro botón. */
+.menu a.btn{color:var(--tinta)}
+.btn{display:inline-block;text-decoration:none;font-weight:700;font-size:14.5px;padding:11px 20px;border-radius:999px;border:0;cursor:pointer;background:var(--rosa-vivo);color:var(--tinta)}
 .btn:hover{background:#c9407b}
 .btn.linea{background:transparent;border:1.5px solid var(--rosa);color:var(--rosa)}
 .btn.linea:hover{background:var(--rosa);color:var(--tinta)}
@@ -291,7 +296,7 @@ header{position:sticky;top:0;z-index:60;background:rgba(10,20,40,.92);backdrop-f
 .ficha{margin-top:14px;border:1px solid var(--linea-oscura);border-radius:14px;background:#fff;padding:18px 20px;display:grid;grid-template-columns:auto 1fr;gap:10px 26px;align-items:start}
 .ficha[hidden]{display:none}
 .ficha .marcador-ficha{font-family:var(--display);font-size:44px;line-height:1;letter-spacing:.02em}
-.ficha .marcador-ficha span{display:block;font-family:var(--texto);font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--rosa-vivo);margin-top:6px}
+.ficha .marcador-ficha span{display:block;font-family:var(--texto);font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--azul);margin-top:6px}
 .ficha h4{font-family:var(--display);font-size:20px;font-weight:400;margin:0;line-height:1.1}
 .ficha .meta{font-size:13.5px;color:rgba(10,20,40,.62);margin:4px 0 10px}
 .ficha ol{list-style:none;margin:0;padding:0;display:grid;gap:6px;max-width:520px}
@@ -299,7 +304,7 @@ header{position:sticky;top:0;z-index:60;background:rgba(10,20,40,.92);backdrop-f
 .ficha li{display:grid;grid-template-columns:34px 1fr auto;align-items:center;gap:10px;background:var(--hueso);border-radius:8px;padding:6px 12px;position:relative;overflow:hidden;font-size:14px}
 .ficha li::before{content:"";position:absolute;left:0;top:0;bottom:0;width:var(--w);background:var(--rosa);opacity:.4}
 .ficha li>*{position:relative}
-.ficha .dorsal{font-family:var(--display);font-size:16px;color:var(--rosa-vivo)}
+.ficha .dorsal{font-family:var(--display);font-size:16px;color:var(--azul)}
 .ficha .g{font-family:var(--display);font-size:16px}
 .ficha .cerrar{grid-column:1/-1;justify-self:start;background:none;border:1px solid var(--linea-oscura);border-radius:999px;padding:6px 14px;font-family:inherit;font-size:13px;font-weight:600;color:var(--tinta);cursor:pointer}
 .ficha .cerrar:hover{border-color:var(--rosa-vivo)}
@@ -328,7 +333,7 @@ header{position:sticky;top:0;z-index:60;background:rgba(10,20,40,.92);backdrop-f
 .goleadoras li{display:grid;grid-template-columns:38px 1fr auto;align-items:center;gap:12px;background:#fff;border:1px solid var(--linea-oscura);border-radius:10px;padding:8px 14px;position:relative;overflow:hidden}
 .goleadoras li::before{content:"";position:absolute;left:0;top:0;bottom:0;width:var(--w);background:var(--rosa);opacity:.35}
 .goleadoras li>*{position:relative}
-.goleadoras .dorsal{font-family:var(--display);font-size:18px;color:var(--rosa-vivo)}
+.goleadoras .dorsal{font-family:var(--display);font-size:18px;color:var(--azul)}
 .goleadoras .nom{font-weight:600;font-size:14.5px}
 .goleadoras .g{font-family:var(--display);font-size:18px}
 .goleadoras .g small{font-family:var(--texto);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:rgba(10,20,40,.55);margin-left:4px}
@@ -426,7 +431,7 @@ a.marca-chip:hover{outline:2px solid var(--rosa-vivo);outline-offset:1px}
 .cats{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px}
 .cat{border:1px solid var(--linea-oscura);border-radius:14px;padding:20px;background:#fff;box-shadow:0 1px 0 rgba(10,20,40,.06)}
 .cat h4{font-family:var(--display);font-size:20px;margin:0 0 4px;font-weight:400}
-.cat .edad{font-size:13px;color:var(--rosa-vivo);font-weight:600}
+.cat .edad{font-size:13px;color:var(--azul);font-weight:600}
 .cat .dt{font-size:14px;color:rgba(10,20,40,.62);margin:10px 0 0}
 .cat .horario{font-size:14px;margin:6px 0 0;color:var(--tinta);font-weight:500}
 .staff{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin-top:18px}
@@ -436,7 +441,7 @@ a.marca-chip:hover{outline:2px solid var(--rosa-vivo);outline-offset:1px}
 
 /* ---------- sponsors ---------- */
 .tier{margin-bottom:34px}
-.tier h4{font-family:var(--display);font-size:17px;font-weight:400;letter-spacing:.14em;color:var(--rosa-vivo);margin:0 0 12px;text-transform:uppercase}
+.tier h4{font-family:var(--display);font-size:17px;font-weight:400;letter-spacing:.14em;color:var(--azul);margin:0 0 12px;text-transform:uppercase}
 .logos{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:10px}
 .logo-b{border:1px solid var(--linea-oscura);border-radius:11px;background:#fff;height:92px;display:flex;align-items:center;justify-content:center;padding:14px 18px;text-align:center;font-family:var(--display);font-size:16px;line-height:1.05;color:var(--tinta);text-decoration:none;overflow:hidden}
 .logo-b:hover{border-color:var(--rosa-vivo)}
@@ -611,7 +616,7 @@ footer a:hover{color:var(--rosa)}
   <div class="wrap">
     <p class="lema">SENSUS PERTINENDI</p>
     <h1 class="h1">Acá se juega<br><em>por los colores.</em></h1>
-    <p class="bajada">Handball en Bernal desde las minis hasta maxi. <span id="hero-planteles">Cuatro</span> planteles, un club, la misma tribuna. Entrenamos en Don Bosco 116 y jugamos todos los fines de semana el Clausura 2026.</p>
+    <p class="bajada">Handball en Bernal desde las minis hasta maxi. <span id="hero-planteles">Cuatro</span> planteles, un club, la misma tribuna. Entrenamos en Don Bosco 116 y jugamos los fines de semana. La Primera damas ascendió a Liga Plata.</p>
     <div class="hero-cta">
       <a class="btn" href="#sumate" data-track="cta-hero-inscripcion">Vení a probar un entrenamiento</a>
       <a class="btn linea" href="#fixture" data-track="cta-hero-fixture">Ver el fixture</a>
@@ -1479,7 +1484,7 @@ function tarjetaSponsor(m){
 $("#tiers").innerHTML = DATOS.tiers.map(t=>
   '<div class="tier"><h4>'+t.titulo+'</h4><div class="logos">'
   + t.marcas.map(tarjetaSponsor).join("")
-  + '<a class="logo-b" href="#ser-sponsor" style="border-style:dashed;color:var(--rosa-vivo)" data-track="logo-vacante">Espacio disponible</a>'
+  + '<a class="logo-b" href="#ser-sponsor" style="border-style:dashed;color:var(--azul)" data-track="logo-vacante">Espacio disponible</a>'
   + '</div></div>').join("");
 
 /* Los partidos de local se cuentan desde el fixture: cambian con cada torneo. */
