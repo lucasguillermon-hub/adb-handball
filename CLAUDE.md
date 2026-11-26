@@ -101,10 +101,17 @@ El sitio usa animaciones propias, sin librerías. Tres cuidados que ya costaron 
 `marcador` de una nota las tira con `festejo:true`. `DATOS.tema` pinta la temática de temporada
 entre `desde` y `hasta`. La de navidad: una guirnalda colgando de la barra de arriba y otra en
 el canto de cada sección, nieve en una sola capa fija para toda la página, y nieve acumulada en
-los botones y en el canto del tablero. Todo con los colores del escudo. Para verla fuera de
-fecha: `?tema=navidad` en la dirección. Las guirnaldas fuera de pantalla se pausan (son once
-secciones: si titilan todas a la vez el teléfono anima cosas que nadie ve). La nieve va a
+los botones y en los cantos del tablero y del popup. Todo con los colores del escudo. Para verla
+fuera de fecha: `?tema=navidad` en la dirección. Las guirnaldas fuera de pantalla se pausan (son
+once secciones: si titilan todas a la vez el teléfono anima cosas que nadie ve). La nieve va a
 `z-index:5`, debajo de la barra (60) y del lector (100), así que no nieva sobre una nota.
+
+La capa de nieve la arma `nevar(donde, cuantos)`, que la usan la temática (para toda la página) y
+el popup. El popup necesita la suya porque va a `z-index:110` y tapa la de la página con su propio
+fondo. En el celular no se la arma: el panel ocupa casi toda la pantalla, los copos quedarían en un
+margen de pocos píxeles y serían treinta animaciones que nadie mira. `hayNavidad()` dice si está la
+temática **y** además se pueden animar cosas: el atributo `data-tema` se pone igual con
+`prefers-reduced-motion` (de ahí salen los colores y la nieve acumulada, que son quietos).
 
 Cuatro cosas de la temática que costaron una pasada de más, y que valen para cualquier efecto
 que se agregue:

@@ -682,12 +682,14 @@ footer a:hover{color:var(--rosa)}
 /* Nieve acumulada en los cantos. La forma va por máscara y el color por debajo, así el manto
    puede tener sombra propia: blanco arriba, azul del escudo abajo. La nieve se sombrea a sí
    misma, y sin eso queda un sticker blanco pegado al borde. */
-[data-tema="navidad"] .btn,[data-tema="navidad"] .tablero{position:relative}
+[data-tema="navidad"] .btn,[data-tema="navidad"] .tablero,
+[data-tema="navidad"] .popup-caja{position:relative}
 /* El botón recorta: el manto tiene que seguir la curva del pill. Antes se dibujaba por afuera
    y quedaba una tira flotando con el fondo oscuro asomando debajo. */
 [data-tema="navidad"] .btn{overflow:hidden}
 @supports ((mask:linear-gradient(#000,#000)) or (-webkit-mask:linear-gradient(#000,#000))){
-[data-tema="navidad"] .btn::after,[data-tema="navidad"] .tablero::after{
+[data-tema="navidad"] .btn::after,[data-tema="navidad"] .tablero::after,
+[data-tema="navidad"] .popup-caja::after{
   content:"";position:absolute;left:0;right:0;top:0;height:15px;pointer-events:none;z-index:3;
   /* Una repisa de 5 px y, encima, cuatro grumos que se pisan entre sí. Las capas de máscara se
      suman, así que al pisarse dan un borde ondulado continuo. Dibujados uno al lado del otro el
@@ -713,6 +715,11 @@ footer a:hover{color:var(--rosa)}
 /* En el lector y en el visor no nieva: son superficies claras y encima tapan la página */
 [data-tema="navidad"] .lector .btn::after,[data-tema="navidad"] .visor .btn::after{display:none}
 }
+/* El popup entra en la temática: nieva detrás del panel y se le acumula en el canto de arriba.
+   La nieve de la página va a z-index 5 y el popup la tapa con su fondo, así que sin su propia
+   capa el anuncio de la fiesta sería lo único de la web donde no nieva. */
+[data-tema="navidad"] .popup .nieve{position:absolute;inset:0;z-index:0}
+[data-tema="navidad"] .popup-caja{z-index:1;overflow:hidden}
 </style>
 </head>
 <body>
@@ -1800,6 +1807,44 @@ function festejar(panel){
   setTimeout(intentar, 450);
 })();
 
+/* Arma una capa de nieve adentro de "donde", con tres capas de profundidad: los de atrás chicos,
+   apagados y lentos; los de adelante grandes, brillantes y desenfocados. Todos iguales se ven
+   como una lluvia de puntos. La usan la temática (para toda la página) y el popup, que va arriba
+   de todo y por eso necesita la suya. */
+const CAPAS_NIEVE = [
+  { peso: 45, t: [2, 3],  op: [.28, .42], dur: [20, 30], dx: [8, 16],  vai: [4.5, 7],   cerca: false },
+  { peso: 35, t: [4, 6],  op: [.5, .68],  dur: [14, 20], dx: [14, 24], vai: [3.5, 6],   cerca: false },
+  { peso: 20, t: [7, 11], op: [.78, .95], dur: [9, 13],  dx: [20, 34], vai: [2.5, 4.5], cerca: true }
+];
+function nevar(donde, cuantos){
+  const entre = ([a, b]) => a + Math.random() * (b - a);
+  const nieve = document.createElement("div");
+  nieve.className = "nieve"; nieve.setAttribute("aria-hidden", "true");
+  for (let i = 0; i < cuantos; i++) {
+    let r = Math.random() * 100, capa = CAPAS_NIEVE[0];
+    for (const c of CAPAS_NIEVE) { if (r < c.peso) { capa = c; break; } r -= c.peso; }
+    const copo = document.createElement("i");
+    copo.className = "copo" + (capa.cerca ? " cerca" : "");
+    // El retraso va en negativo: así la nieve ya está cayendo cuando se abre, en vez de arrancar
+    // con la pantalla vacía. También desfasa el vaivén de cada copo.
+    copo.style.cssText = "--x:" + (Math.random() * 100).toFixed(1) + "%;--t:" + entre(capa.t).toFixed(1)
+      + "px;--op:" + entre(capa.op).toFixed(2) + ";--dur:" + entre(capa.dur).toFixed(1)
+      + "s;--vai:" + entre(capa.vai).toFixed(1) + "s;--dx:" + Math.round(entre(capa.dx))
+      + "px;--retraso:-" + (Math.random() * 30).toFixed(1) + "s";
+    copo.appendChild(document.createElement("b"));
+    nieve.appendChild(copo);
+  }
+  donde.appendChild(nieve);
+  return nieve;
+}
+/* Si está puesta la temática de navidad y además se pueden animar cosas. El atributo lo pone la
+   temática aunque haya prefers-reduced-motion (de ahí salen la nieve acumulada y los colores,
+   que son quietos), así que para lo que se mueve hay que preguntar las dos cosas. */
+function hayNavidad(){
+  return document.documentElement.dataset.tema === "navidad"
+    && !matchMedia("(prefers-reduced-motion: reduce)").matches;
+}
+
 /* DATOS.tema: la temática de temporada, entre su "desde" y su "hasta". Para verla antes de
    tiempo (o para una foto), se le puede pasar ?tema=navidad a la dirección. */
 (function(){
@@ -1846,33 +1891,8 @@ function festejar(panel){
     guirnaldas.forEach(g => g.classList.remove("quieta"));
   }
 
-  // Nieve: una sola capa fija para toda la página, no una por sección. Tres capas de
-  // profundidad: los de atrás chicos, apagados y lentos; los de adelante grandes, brillantes,
-  // rápidos y desenfocados. Todos iguales se ven como una lluvia de puntos.
-  const CAPAS = [
-    { peso: 45, t: [2, 3],  op: [.28, .42], dur: [20, 30], dx: [8, 16],  vai: [4.5, 7], cerca: false },
-    { peso: 35, t: [4, 6],  op: [.5, .68],  dur: [14, 20], dx: [14, 24], vai: [3.5, 6], cerca: false },
-    { peso: 20, t: [7, 11], op: [.78, .95], dur: [9, 13],  dx: [20, 34], vai: [2.5, 4.5], cerca: true }
-  ];
-  const entre = ([a, b]) => a + Math.random() * (b - a);
-  const nieve = document.createElement("div");
-  nieve.className = "nieve"; nieve.setAttribute("aria-hidden", "true");
-  const cuantos = innerWidth < 600 ? 44 : 70;
-  for (let i = 0; i < cuantos; i++) {
-    let r = Math.random() * 100, capa = CAPAS[0];
-    for (const c of CAPAS) { if (r < c.peso) { capa = c; break; } r -= c.peso; }
-    const copo = document.createElement("i");
-    copo.className = "copo" + (capa.cerca ? " cerca" : "");
-    // El retraso va en negativo: así la nieve ya está cayendo cuando se abre la página,
-    // en vez de arrancar con la pantalla vacía. También desfasa el vaivén de cada copo.
-    copo.style.cssText = "--x:" + (Math.random() * 100).toFixed(1) + "%;--t:" + entre(capa.t).toFixed(1)
-      + "px;--op:" + entre(capa.op).toFixed(2) + ";--dur:" + entre(capa.dur).toFixed(1)
-      + "s;--vai:" + entre(capa.vai).toFixed(1) + "s;--dx:" + Math.round(entre(capa.dx))
-      + "px;--retraso:-" + (Math.random() * 30).toFixed(1) + "s";
-    copo.appendChild(document.createElement("b"));
-    nieve.appendChild(copo);
-  }
-  document.body.appendChild(nieve);
+  // Nieve: una sola capa fija para toda la página, no una por sección
+  nevar(document.body, innerWidth < 600 ? 44 : 70);
 })();
 
 /* ============================ novedades ============================
@@ -2081,6 +2101,11 @@ function festejar(panel){
     // fondo), la clase se agrega pero la animación no avanza y el panel se queda invisible para
     // siempre. Por eso se le saca la clase al terminar, y un setTimeout la saca igual aunque la
     // animación nunca haya corrido: sin la clase, el panel vuelve a su estado de base, entero.
+    // Con la temática puesta, el popup nieva por su cuenta (ver el CSS de la temática). En el
+    // celular no: el panel ocupa casi toda la pantalla, los copos quedan en un margen de unos
+    // pocos píxeles y no se ven, así que serían treinta animaciones que nadie mira. Ahí la
+    // temática se nota igual en el manto del canto, que es quieto.
+    if (hayNavidad() && innerWidth >= 680 && !caja.querySelector(".nieve")) nevar(caja, 34);
     const panel = caja.querySelector(".popup-caja");
     const sacar = () => panel.classList.remove("entra");
     requestAnimationFrame(() => {
