@@ -89,6 +89,12 @@ El sitio usa animaciones propias, sin librerías. Tres cuidados que ya costaron 
   (pestaña de fondo, panel oculto). No apoyar en ellos nada que tenga que terminar en un estado
   correcto: para eso va un `setTimeout` de respaldo, o mirar la geometría, que no depende de la
   pintura. Sí sirven para prender una animación, porque si no corren tampoco hay nada que ver.
+- **Pero una animación de entrada que arranca en `opacity:0` se congela ahí.** No alcanza con
+  agregarle la clase desde un `requestAnimationFrame`: si el rAF corre y la pintura no avanza, la
+  animación queda parada en su primer fotograma y el panel no se ve nunca (le pasó al popup de la
+  fiesta). La clase se le saca con el `animationend` y, de respaldo, con un `setTimeout` que se
+  programa en el mismo momento en que se agregó: sin la clase, el elemento vuelve a su estado de
+  base, que es el completo.
 - **Todo se apaga con `prefers-reduced-motion`**, y lo que crea nodos ni los crea.
 
 `DATOS.festejo` tira chispas sobre el tablero de la portada hasta su fecha `hasta`; el bloque
@@ -171,6 +177,15 @@ confirmación y no publicó nada.
   visita. Desaparece sola pasada la fecha `hasta`. Hoy anuncia la Rifa 2026 (hasta el 30/11) con
   el texto que el club aprobó para el público: el que circuló por WhatsApp con las cantidades por
   familia y las fechas de rendición es interno y no va a la web.
+- Popup del club: `popup` en `datos.js` abre un panel grande y centrado a los pocos segundos de
+  entrar, armado como la placa que publica el club (encabezado, la fecha enorme, el horario, los
+  puntos y un botón que abre la noticia). Se cierra con la cruz, con "Más tarde", con Escape o
+  tocando afuera; mientras está abierto el tabulador no se va de adentro. Como no se guarda nada,
+  vuelve en la próxima visita, así que es para un anuncio puntual y con fecha de vencimiento
+  (`hasta`), no para algo permanente: para eso está la barra de `aviso`. No se abre si la
+  dirección ya trae un `#` (esa persona entró a algo concreto y taparle la pantalla es una
+  molestia). Para verlo fuera de fecha: `?popup=1`. Hoy anuncia la fiesta de fin de año
+  (viernes 18/12, 19 hs, en el patio del club).
 - Club de Beneficios: está escondido con `mostrarBeneficios: false` en `datos.js` (sección,
   menú, pie y tarjeta de la portada). Acordar cada beneficio con su comercio y pasarlo a true.
 - Números reales del media kit (jugadores, familias, fechas de local).

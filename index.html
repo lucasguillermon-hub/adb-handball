@@ -120,6 +120,9 @@ section{padding:76px 0}
 .lector .destacado{font-family:var(--display);font-size:22px;font-weight:400;line-height:1.25;color:var(--azul);border-left:4px solid var(--rosa);padding-left:16px;margin:22px 0}
 /* Lo que dice una jugadora o el entrenador: bastardilla y fondo, para que se despegue del relato */
 .lector .cuerpo .cita{font-style:italic;font-weight:600;font-size:16.5px;line-height:1.55;color:var(--azul);background:rgba(21,42,84,.055);border-left:4px solid var(--rosa-vivo);border-radius:0 12px 12px 0;padding:16px 18px;margin:20px 0 0}
+.lector .cuerpo .lista-nota{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:7px}
+.lector .cuerpo .lista-nota li{position:relative;padding-left:20px;font-size:16px;line-height:1.55}
+.lector .cuerpo .lista-nota li::before{content:"";position:absolute;left:0;top:9px;width:8px;height:8px;border-radius:2px;background:var(--rosa-vivo)}
 .lector .cuerpo .cita .quien{display:block;font-style:normal;font-weight:700;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--azul);margin-top:10px}
 /* Marcador de una nota: el resultado grande, para un partido que lo merece (un ascenso, una final).
    Los números arrancan en cero y suben al abrirse el lector; con prefers-reduced-motion van derecho. */
@@ -178,6 +181,49 @@ section{padding:76px 0}
 .aviso-barra .cerrar-aviso{margin-left:auto;background:none;border:0;color:var(--tinta);opacity:.6;font-size:19px;line-height:1;cursor:pointer;padding:4px 2px}
 .aviso-barra .cerrar-aviso:hover{opacity:1}
 @media(max-width:600px){.aviso-barra .ver{order:3}.aviso-barra .cerrar-aviso{order:2}}
+/* Popup del club: el anuncio grande del momento, armado como la placa que publica el club
+   (el encabezado, la fecha enorme y el horario). Va arriba de todo mientras está abierto.
+   Se cierra con la cruz, con "Más tarde", con Escape o tocando afuera. No guarda nada. */
+.popup{position:fixed;inset:0;z-index:110;background:rgba(6,13,28,.86);display:none;padding:18px;overflow:auto;
+  -webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px)}
+.popup.abierto{display:grid;place-items:center}
+.popup-caja{position:relative;width:100%;max-width:520px;margin:auto;color:var(--hueso);text-align:center;
+  background:radial-gradient(130% 75% at 50% 0%,rgba(228,86,143,.26),transparent 68%),
+    linear-gradient(180deg,var(--azul),var(--tinta));
+  border:1px solid rgba(242,183,207,.3);border-radius:22px;padding:30px 28px 26px;
+  box-shadow:0 30px 70px rgba(6,13,28,.6)}
+/* El estado de base de la caja es el final: la animación solo lo recorre. Si el navegador no
+   está pintando, no se agrega la clase y el popup se ve igual de entero. */
+.popup-caja.entra{animation:popup-entra .42s cubic-bezier(.2,.8,.3,1)}
+@keyframes popup-entra{from{opacity:0;transform:translateY(20px) scale(.97)}to{opacity:1;transform:none}}
+.popup .escudo-popup{width:46px;height:auto;display:block;margin:0 auto 14px}
+.popup .encima{margin:0;font-size:14.5px;font-style:italic;color:var(--rosa)}
+.popup h2{font-family:var(--display);font-weight:400;font-size:clamp(30px,8vw,40px);line-height:1;
+  margin:6px 0 0;letter-spacing:.01em;text-transform:uppercase}
+/* La fecha es el elemento grande del popup, como en la placa del club */
+.popup .popup-cuando{margin:16px 0 0}
+.popup .popup-cuando b{display:block;font-family:var(--display);font-weight:400;
+  font-size:clamp(56px,17vw,78px);line-height:.88;color:var(--rosa);letter-spacing:.01em}
+.popup .popup-cuando span{display:block;margin-top:9px;font-size:13px;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--rosa)}
+.popup .donde{margin:13px 0 0;font-size:14.5px;line-height:1.5;color:rgba(245,242,237,.82)}
+.popup .popup-puntos{list-style:none;margin:20px 0 0;padding:16px 0 0;display:grid;gap:7px;text-align:left;
+  border-top:1px solid rgba(242,183,207,.22)}
+.popup .popup-puntos li{position:relative;padding-left:20px;font-size:14.5px;line-height:1.45}
+.popup .popup-puntos li::before{content:"";position:absolute;left:0;top:8px;width:8px;height:8px;
+  border-radius:2px;background:var(--rosa-vivo)}
+.popup .para{margin:16px 0 0;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--rosa)}
+.popup .acciones-popup{margin-top:20px;display:grid;gap:8px;justify-items:center}
+.popup .acciones-popup .btn{width:100%}
+.popup .mas-tarde{background:none;border:0;color:rgba(245,242,237,.68);font-family:inherit;font-size:14px;
+  cursor:pointer;padding:8px 12px;border-radius:8px}
+.popup .mas-tarde:hover{color:var(--hueso);text-decoration:underline}
+.popup-cerrar{position:absolute;top:10px;right:10px;width:36px;height:36px;display:grid;place-items:center;
+  background:rgba(6,13,28,.55);border:1px solid rgba(242,183,207,.32);border-radius:50%;color:var(--hueso);
+  font-size:15px;line-height:1;cursor:pointer}
+.popup-cerrar:hover{background:var(--rosa-vivo);color:var(--tinta);border-color:var(--rosa-vivo)}
+@media(max-width:420px){.popup{padding:12px}.popup-caja{padding:26px 20px 22px}}
+@media(prefers-reduced-motion:reduce){.popup-caja.entra{animation:none}}
 /* Panel con el detalle del aviso */
 .aviso-panel{position:fixed;inset:0;z-index:100;background:rgba(6,13,28,.82);display:none;padding:20px;overflow:auto}
 .aviso-panel.abierto{display:grid;place-items:start center;padding-top:6vh;padding-bottom:6vh}
@@ -1865,6 +1911,7 @@ function festejar(panel){
   const bloque = b => {
     if (b.t === "texto") return '<p>' + b.v + '</p>';
     if (b.t === "destacado") return '<p class="destacado">' + b.v + '</p>';
+    if (b.t === "lista") return '<ul class="lista-nota">' + b.v.map(x => '<li>' + x + '</li>').join("") + '</ul>';
     if (b.t === "cita") return '<p class="cita">' + b.v + (b.quien ? '<span class="quien">' + b.quien + '</span>' : '') + '</p>';
     if (b.t === "foto") return '<figure><img src="' + b.v + '" alt="' + (b.alt || "") + '" loading="lazy">'
       + (b.pie ? '<figcaption>' + b.pie + '</figcaption>' : '') + '</figure>';
@@ -1977,6 +2024,92 @@ function festejar(panel){
   });
   panel.addEventListener("click", e => { if (e.target === panel || e.target.closest(".cerrar")) cerrarPanel(); });
   document.addEventListener("keydown", e => { if (e.key === "Escape" && panel.classList.contains("abierto")) cerrarPanel(); });
+})();
+
+/* ============================ popup del club ============================
+   DATOS.popup: el anuncio grande del momento (la fiesta de fin de año, por ejemplo). Se abre
+   solo a los pocos segundos, una vez por visita, y no guarda nada: vuelve en la próxima.
+   No se abre si la dirección ya venía apuntando a algo (una noticia, una sección): esa persona
+   ya pidió algo concreto y taparle la pantalla es una molestia. Pasada la fecha "hasta" no se
+   muestra más. Para verlo fuera de fecha: ?popup=1 en la dirección.
+   ==================================================================== */
+(function(){
+  const p = DATOS.popup;
+  if (!p || !p.titulo) return;
+  const forzado = new URLSearchParams(location.search).get("popup");
+  if (!forzado) {
+    if (p.hasta && p.hasta < new Date().toISOString().slice(0, 10)) return;
+    if (location.hash) return;
+  }
+
+  const caja = document.createElement("div");
+  caja.className = "popup";
+  caja.setAttribute("role", "dialog");
+  caja.setAttribute("aria-modal", "true");
+  caja.setAttribute("aria-labelledby", "popup-titulo");
+  caja.hidden = true;
+  caja.innerHTML = '<div class="popup-caja">'
+    + '<button class="popup-cerrar" type="button" aria-label="Cerrar el aviso">✕</button>'
+    + '<img class="escudo-popup" src="iconos/escudo.svg" alt="" width="300" height="400">'
+    + (p.encima ? '<p class="encima">' + p.encima + '</p>' : '')
+    + '<h2 id="popup-titulo">' + p.titulo + '</h2>'
+    + (p.dia ? '<p class="popup-cuando"><b>' + p.dia + '</b>'
+        + (p.hora ? '<span>' + p.hora + '</span>' : '') + '</p>' : '')
+    + (p.donde ? '<p class="donde">' + p.donde + '</p>' : '')
+    + (p.puntos && p.puntos.length
+        ? '<ul class="popup-puntos">' + p.puntos.map(x => '<li>' + x + '</li>').join("") + '</ul>' : '')
+    + (p.para ? '<p class="para">' + p.para + '</p>' : '')
+    + '<div class="acciones-popup">'
+    + (p.nota ? '<a class="btn" href="#n/' + p.nota + '" data-track="popup-nota">' + (p.boton || "Ver más") + '</a>' : '')
+    + '<button class="mas-tarde" type="button">Más tarde</button>'
+    + '</div></div>';
+  document.body.appendChild(caja);
+
+  let volverA = null;
+  const abierto = () => caja.classList.contains("abierto");
+  const cerrar = () => {
+    if (!abierto()) return;
+    caja.classList.remove("abierto"); caja.hidden = true;
+    document.body.style.overflow = "";
+    if (volverA && volverA.focus) volverA.focus();
+  };
+  const abrir = () => {
+    volverA = document.activeElement;
+    caja.hidden = false; caja.classList.add("abierto");
+    document.body.style.overflow = "hidden";
+    // La animación de entrada arranca en opacity:0. Si el navegador no está pintando (pestaña de
+    // fondo), la clase se agrega pero la animación no avanza y el panel se queda invisible para
+    // siempre. Por eso se le saca la clase al terminar, y un setTimeout la saca igual aunque la
+    // animación nunca haya corrido: sin la clase, el panel vuelve a su estado de base, entero.
+    const panel = caja.querySelector(".popup-caja");
+    const sacar = () => panel.classList.remove("entra");
+    requestAnimationFrame(() => {
+      panel.classList.add("entra");
+      panel.addEventListener("animationend", sacar, { once: true });
+      setTimeout(sacar, 700);
+    });
+    caja.querySelector(".popup-cerrar").focus();
+    track("popup-abierto");
+  };
+
+  caja.addEventListener("click", e => {
+    // Tocar afuera, la cruz o "Más tarde" cierra. El botón abre la noticia, así que el popup se
+    // va primero: si no, queda tapando el lector.
+    if (e.target === caja || e.target.closest(".popup-cerrar, .mas-tarde, a")) cerrar();
+  });
+  document.addEventListener("keydown", e => {
+    if (!abierto()) return;
+    if (e.key === "Escape") { cerrar(); return; }
+    if (e.key !== "Tab") return;
+    // Mientras está abierto el tabulador no se va del popup
+    const f = [...caja.querySelectorAll("a[href], button")].filter(x => x.offsetParent !== null);
+    if (!f.length) return;
+    const primero = f[0], ultimo = f[f.length - 1];
+    if (e.shiftKey && document.activeElement === primero) { e.preventDefault(); ultimo.focus(); }
+    else if (!e.shiftKey && document.activeElement === ultimo) { e.preventDefault(); primero.focus(); }
+  });
+
+  setTimeout(abrir, 1400);
 })();
 
 /* ============================ formularios ============================

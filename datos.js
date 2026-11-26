@@ -59,6 +59,29 @@ const DATOS = {
     wsp: "Hola! Quiero consultar por la rifa 2026 del club."
   },
 
+  // Popup grande: se abre solo a los pocos segundos, una vez por visita (no se guarda nada, así
+  // que vuelve si recargás) y desaparece solo pasada la fecha "hasta". Es para un anuncio
+  // puntual y fuerte; la barra de "aviso" es para lo que tiene que estar a la vista todos los
+  // días. No se abre si la dirección ya viene apuntando a una noticia. Con popup:null no se
+  // muestra. Para verlo fuera de fecha: ?popup=1 en la dirección.
+  popup: {
+    hasta: "2026-12-18",
+    encima: "Despedimos este 2026 juntos",
+    titulo: "Fiesta de fin de año",
+    dia: "18/12",
+    hora: "19 hs",
+    donde: "En el patio del club · Don Bosco 116, Bernal",
+    para: "Para jugadores y familias del club",
+    puntos: [
+      "Premiaciones para todas las categorías",
+      "Sorteos de indumentaria, merch y mucho más",
+      "Sorteo de la Rifa de Fin de Año 2026",
+      "Regalitos para jugadores"
+    ],
+    boton: "Ver todos los detalles",
+    nota: "fiesta-fin-de-ano-2026"
+  },
+
   /* --------- DATOS GENERALES DEL CLUB --------- */
   torneo: "Clausura 2026",
 
@@ -540,6 +563,31 @@ const DATOS = {
   //     { t:"video",     v:"https://www.youtube.com/watch?v=...", alt:"de qué es el video" }
   //     { t:"link",      v:"https://...", texto:"Ver en Instagram" }
   noticias: [
+    {
+      slug: "fiesta-fin-de-ano-2026",
+      fecha: "2026-11-25",
+      etiqueta: "El club",
+      titulo: "La fiesta del Bosco es el viernes 18/12",
+      copete: "Despedimos el 2026 juntos, en el patio del club, a las 19. Premiaciones para todas las categorías, sorteos y el sorteo de la Rifa 2026. Están invitados los jugadores y las familias.",
+      foto: "fotos/noticias/2026-12-fiesta-fin-de-ano-01.jpg",
+      alt: "Una jugadora de Juniors festejando un gol con los puños cerrados, y familias del club mirando el partido sentadas contra la pared",
+      cuerpo: [
+        { t: "texto", v: "Tenemos día y horario para festejar juntos este año." },
+        { t: "texto", v: "Vamos a tener:" },
+        { t: "lista", v: [
+          "Premiaciones para todas las categorías.",
+          "Sorteos de indumentaria, merch y mucho más.",
+          "Sorteo de la Rifa de Fin de Año 2026 (y qué premios que se vienen...).",
+          "Regalitos para jugadores.",
+          "Y mucho más."
+        ]},
+        { t: "texto", v: "Están invitados todos los jugadores y familias del club, para pasar juntos la última tarde en el club." },
+        { t: "texto", v: "Podés traerte el mate, el tereré, la merienda o los snacks y te sentás con ese amigo que te hiciste durante el año." },
+        { t: "destacado", v: "Porque sí, acá somos una familia gigante." },
+        { t: "texto", v: "Agendate la fecha: viernes 18 de diciembre, 19 hs, en el patio del club. Don Bosco 116, Bernal." },
+        { t: "texto", v: "No te la pierdas. Yo sé lo que te digo." }
+      ]
+    },
     {
       slug: "cierre-clausura-2026",
       fecha: "2026-11-23",
