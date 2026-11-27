@@ -24,7 +24,7 @@ const DATOS = {
   // Temática de temporada: pinta la web entre esas dos fechas (guirnalda arriba y nieve en la
   // portada, con los colores del escudo). Con tema:null no se muestra nada.
   // Para verla antes de tiempo, agregar ?tema=navidad a la dirección.
-  tema: { nombre: "navidad", desde: "2026-12-08", hasta: "2026-12-26" },
+  tema: { nombre: "navidad", desde: "2026-11-27", hasta: "2026-12-26" },
 
   // Festejo del club: tira chispas sobre el tablero de la portada, una vez por visita (no se
   // guarda nada: vuelve a salir si recargás). Desaparece solo pasada la fecha "hasta".
@@ -97,7 +97,7 @@ const DATOS = {
     comunidad: "https://chat.whatsapp.com/"      // ⚠️ pegar el link real de la comunidad
   },
 
-  // Fixture sincronizado con FeMeBal (femebal.com/tournament-tracker) el 23/11/2026.
+  // Fixture sincronizado con FeMeBal (femebal.com/tournament-tracker) el 27/11/2026.
   // nombre: como lo llama el club · division: como lo llama FeMeBal (se muestra en la tabla).
   // jugadoras: el plantel que se vota como figura de la fecha (de LISTAS PRESENTISMO 2026).
   // Minis e Infantiles son formativas: van con jugadoras:[] y no entran en nada que sea por nombre.
@@ -192,10 +192,10 @@ const DATOS = {
       {f:"2026-10-31",c:"V",r:"Nueva Chicago",h:"19:45",g:"19-26"},{f:"2026-11-07",c:"L",r:"Secla",g:"22-21"},
       {f:"2026-11-14",c:"V",r:"Colegio del Parque",g:"26-30"},{f:"2026-11-21",c:"L",r:"Cedem Caseros",g:"32-22"}
     ], tabla:[
-      [1,"Colegio del Parque",39,15,12,0,3,459,349],
-      [2,"Mariano Acosta",38,15,11,1,3,373,322],
-      [3,"Querandí",36,14,11,0,3,394,342],
-      [4,"Nueva Chicago",35,14,9,3,2,353,309],
+      [1,"Querandí",39,15,12,0,3,422,363],
+      [2,"Colegio del Parque",39,15,12,0,3,459,349],
+      [3,"Mariano Acosta",38,15,11,1,3,373,322],
+      [4,"Nueva Chicago",38,15,10,3,2,381,331],
       [5,"Campana Boat Club",35,15,9,2,4,368,363],
       [6,"Almirante Brown",33,15,9,0,6,433,394],
       [7,"San Telmo",32,15,8,1,6,391,361],
@@ -204,9 +204,9 @@ const DATOS = {
       [10,"Secla",30,15,7,1,7,325,307],
       [11,"Independiente",25,15,4,2,9,341,398],
       [12,"Boca Juniors",25,15,5,0,10,350,373],
-      [13,"Huracán de San Justo",22,14,4,0,10,310,359],
+      [13,"Huracán de San Justo",23,15,4,0,11,332,387],
       [14,"Cedem Caseros",22,15,3,1,11,335,387],
-      [15,"AFALP",19,14,3,0,10,323,389],
+      [15,"AFALP",20,15,3,0,11,344,417],
       [16,"Defensores de Moreno",17,15,1,0,14,310,429]
     ]},
     // competencia:false (de Cadetas para abajo, decisión del coordinador): sin votación de la
@@ -295,7 +295,7 @@ const DATOS = {
       [3,"La Patriada",41,15,13,0,2,522,336],
       [4,"Ateneo Don Bosco",37,15,11,0,4,414,362],
       [5,"C.I.D. Moreno",34,15,9,1,5,344,325],
-      [6,"Vélez Sarsfield",31,14,8,1,5,315,303],
+      [6,"Vélez Sarsfield",34,15,9,1,5,345,325],
       [7,"Estrella de Boedo",31,15,7,2,6,360,365],
       [8,"Sagrado Corazón",30,15,7,1,7,336,289],
       [9,"Boca Juniors",29,15,6,2,7,300,323],
@@ -304,7 +304,7 @@ const DATOS = {
       [12,"Cedem Caseros",26,15,5,1,9,291,345],
       [13,"Muñiz",21,15,3,0,12,283,388],
       [14,"Banfield",19,15,2,0,13,296,411],
-      [15,"Villa Modelo",18,14,2,0,12,279,457],
+      [15,"Villa Modelo",19,15,2,0,13,301,487],
       [16,"Círculo de Villa Devoto",17,15,1,0,14,247,436]
     ] },
     { id:"cadetas", competencia:false, nombre:"Cadetas", division:"Cadetes · División C", dia:"Domingos", hora:"13:00",
@@ -343,15 +343,15 @@ const DATOS = {
       [2,"Sagrado Corazón",37,15,10,2,3,384,342],
       [3,"Cedem Caseros",36,15,9,3,3,383,315],
       [4,"Independiente",36,15,10,1,4,329,285],
-      [5,"Villa Modelo",32,14,9,0,5,337,315],
-      [6,"Vélez Sarsfield",31,14,8,1,5,259,253],
+      [5,"Villa Modelo",35,15,10,0,5,367,331],
+      [6,"Vélez Sarsfield",32,15,8,1,6,275,283],
       [7,"C.I.D. Moreno",31,15,8,0,7,345,346],
-      [8,"Muñiz",29,15,7,0,8,284,299],
-      [9,"Colegio Ward",28,14,6,2,6,298,307],
+      [8,"Colegio Ward",29,15,6,2,7,313,323],
+      [9,"Muñiz",29,15,7,0,8,284,299],
       [10,"Hurlingham",28,15,6,1,8,294,292],
       [11,"Polvorines",28,15,5,3,7,325,339],
-      [12,"Círculo de Villa Devoto",25,15,5,0,10,334,339],
-      [13,"La Patriada",24,14,5,0,9,284,318],
+      [12,"La Patriada",27,15,6,0,9,300,333],
+      [13,"Círculo de Villa Devoto",25,15,5,0,10,334,339],
       [14,"Estrella de Boedo",23,15,4,0,11,331,355],
       [15,"Boca Juniors",23,15,4,0,11,235,301],
       [16,"Ateneo Don Bosco",19,15,2,0,13,316,388]
@@ -444,9 +444,9 @@ const DATOS = {
       [1,"Círculo de Villa Devoto",45,15,15,0,0,458,320],
       [2,"Estrella de Boedo",41,15,13,0,2,524,377],
       [3,"C.I.D. Moreno",38,15,11,1,3,486,358],
-      [4,"Villa Modelo",35,15,10,0,5,445,386],
-      [5,"Vélez Sarsfield",34,15,9,1,5,391,347],
-      [6,"Boca Juniors",33,14,9,1,4,418,334],
+      [4,"Boca Juniors",36,15,10,1,4,451,359],
+      [5,"Villa Modelo",35,15,10,0,5,445,386],
+      [6,"Vélez Sarsfield",34,15,9,1,5,391,347],
       [7,"Sagrado Corazón",33,15,9,0,6,440,365],
       [8,"Ateneo Don Bosco",32,15,8,1,6,431,425],
       [9,"Cedem Caseros",31,15,8,0,7,399,348],
@@ -456,7 +456,7 @@ const DATOS = {
       [13,"Independiente",21,15,3,0,12,332,453],
       [14,"La Patriada",19,15,2,0,13,366,489],
       [15,"Banfield",17,15,1,0,14,267,480],
-      [16,"Hurlingham",16,14,1,0,13,288,400]
+      [16,"Hurlingham",17,15,1,0,14,313,433]
     ] },
     { id:"masculino", nombre:"Cuarta caballeros", division:"Mayores · 4º División", dia:"Domingos", hora:"18:00", sponsor:"Ladran Sancho", jugadoras:[
       "Lionel Benitez", "Patricio Britez", "Maximiliano Burakoski", "Valentin Carriego", "Martin Casco",
@@ -494,12 +494,12 @@ const DATOS = {
     ], tabla:[
       [1,"Almirante Brown",43,15,13,2,0,446,318],
       [2,"Defensores de Glew",40,15,12,1,2,428,325],
-      [3,"Escobar",38,15,11,1,3,365,306],
-      [4,"Ferrocarril Mitre",37,15,11,0,4,404,360],
-      [5,"General Las Heras",36,14,11,0,3,402,352],
+      [3,"General Las Heras",39,15,12,0,3,433,382],
+      [4,"Escobar",38,15,11,1,3,365,306],
+      [5,"Ferrocarril Mitre",37,15,11,0,4,404,360],
       [6,"Federal Juniors",33,15,9,0,6,326,334],
-      [7,"El Portugués",30,15,7,1,7,380,414],
-      [8,"Talleres",30,14,8,0,6,298,304],
+      [7,"Talleres",31,15,8,0,7,328,335],
+      [8,"El Portugués",30,15,7,1,7,380,414],
       [9,"Ducilo",30,15,7,1,7,327,344],
       [10,"Dep. Laferrere",29,15,7,0,8,321,347],
       [11,"Ateneo Don Bosco",28,15,6,1,8,313,345],
@@ -526,7 +526,7 @@ const DATOS = {
       {f:"2026-10-17",c:"V",r:"Club Social",n:7,h:"16:00",sede:"Polideportivo N. Kirchner (Ezeiza)",g:"16-19"},
       {f:"2026-11-07",c:"L",r:"47 Handball Club",n:9,h:"13:15"},{f:"2026-11-09",c:"V",r:"Villa Vatteone",n:8,h:"15:00",sede:"Polideportivo N. Kirchner (Ezeiza)",g:"14-19"},
       {f:"2026-11-14",c:"V",r:"La Patriada",n:10,h:"13:00",sede:"Polideportivo N. Kirchner (Ezeiza)",g:"26-14"},
-      {f:"2026-11-28",c:"V",r:"CAQ Handball",n:11,sede:"Polideportivo N. Kirchner (Ezeiza)"}
+      {f:"2026-11-28",c:"V",r:"CAQ Handball",n:11,sinHora:true,sede:"Polideportivo N. Kirchner (Ezeiza)"}
     ], tabla:[
       [1,"Villa Vatteone",28,10,8,2,0,193,136],
       [2,"Panteras Handball",27,10,8,1,1,192,134],
