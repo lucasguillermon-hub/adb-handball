@@ -29,7 +29,9 @@ const TORNEOS = {
   "infantiles": ["Femenino",  "Infantiles", 7],
   "menores":    ["Femenino",  "Menores",    7],
   "cadetas":    ["Femenino",  "Cadetes",    7],
-  "juveniles":  ["Femenino",  "Juveniles",  7],
+  // Juveniles va en 8 y no en 7 como el resto: la liga le sumó dos tarjetas de Super 8 a esa
+  // categoría (27/11/2026) y le corrió los índices un lugar. El torneo es el 3er "Clausura".
+  "juveniles":  ["Femenino",  "Juveniles",  8],
   "juniors":    ["Femenino",  "Junior",     7],
 };
 
